@@ -1,6 +1,6 @@
-a100705,João Pedro Mota Baptista,joaopedro2003 
+Trabalho de LI3 realizado por:
 
-a100896,João Pedro da Rocha Rodrigues,JoaoRodrigues03 
-
-a100645,Mateus Lemos Martins,MateusMartins2702 
-
+Nome - Aluno - GitHub User
+João Pedro Mota Baptista - a100705 - joaopedro2003
+João Pedro da Rocha Rodrigues - a100896 - joaorodrigues03
+Mateus Lemos Martins - a100645 - mateusmartins2702

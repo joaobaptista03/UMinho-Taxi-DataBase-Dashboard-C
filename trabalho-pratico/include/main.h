@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <glib.h>
 
 #include "structs.h"
 #include "query1.h"
