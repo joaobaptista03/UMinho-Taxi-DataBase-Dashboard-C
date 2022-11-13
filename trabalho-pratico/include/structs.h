@@ -7,12 +7,11 @@
 #ifndef STRUCTS
 #define STRUCTS
 
-char temp_id[20];
-char temp_gender[5];
-char temp_distance[10];
-char temp_score_driver[5];
-char temp_tip[5];
-
+/**
+ *
+ * Esta é a Struct que define o que é um Driver, e contém todas as informações dele. Será inserida no catálogo das Drivers.
+ * 
+ */
 typedef struct
 {
     int id;
@@ -27,6 +26,11 @@ typedef struct
 
 } Driver;
 
+/**
+ *
+ * Esta é a Struct que define o que é um User, e contém todas as informações dele. Será inserida no catálogo dos Users.
+ * 
+ */
 typedef struct
 {
     char user[30];
@@ -39,6 +43,11 @@ typedef struct
 
 } User;
 
+/**
+ *
+ * Esta é a Struct que define o que é uma Ride, e contém todas as informações dela. Será inserida no catálogo das Rides.
+ * 
+ */
 typedef struct
 {
     int id;
@@ -53,6 +62,12 @@ typedef struct
 
 } Ride;
 
-void inserir_dados(); // Função que insere os dados dos drivers, users e rides nos catálogos respetivos.
+
+/**
+ *
+ * Este é o header da função que insere os dados dos drivers, users e rides nos catálogos respetivos.
+ * 
+ */
+void inserir_dados();
 
 #endif
