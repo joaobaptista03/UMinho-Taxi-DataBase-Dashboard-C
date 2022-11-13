@@ -4,8 +4,10 @@
  * 
  */
 
-#ifndef STRUCTS
-#define STRUCTS
+#ifndef STRUCTS_H
+#define STRUCTS_H
+
+#include "main.h"
 
 /**
  *

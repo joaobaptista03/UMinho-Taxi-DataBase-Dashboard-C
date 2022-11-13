@@ -5,8 +5,8 @@
  * 
  */
 
-#ifndef QUERY1
-#define QUERY1
+#ifndef QUERY1_H
+#define QUERY1_H
 
 #include "main.h"
 #include "randomfuncs.h"

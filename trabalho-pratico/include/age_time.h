@@ -5,8 +5,8 @@
  * 
  */
 
-#ifndef AGE_TIME
-#define AGE_TIME
+#ifndef AGE_TIME_H
+#define AGE_TIME_H
 
 #include <time.h>
 

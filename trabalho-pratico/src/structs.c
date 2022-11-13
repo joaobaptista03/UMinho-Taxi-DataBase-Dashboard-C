@@ -5,7 +5,6 @@
  */
 
 #include "../include/structs.h"
-#include "../include/main.h"
 
 void inserir_dados() {
 
