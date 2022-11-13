@@ -4,6 +4,9 @@
 # Unignore all with extensions
 !*.*
 
+# Unignore the Makefile
+!Makefile
+
 # Unignore all dirs
 !*/
 
@@ -14,4 +17,5 @@ a.out
 *users*.csv
 *drivers*.csv
 *rides*.csv
-Ficheiros CSV/
+Dataset/
+Resultados/

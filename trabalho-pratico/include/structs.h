@@ -7,17 +7,22 @@
 #ifndef STRUCTS
 #define STRUCTS
 
+char temp_id[20];
+char temp_gender[5];
+char temp_distance[10];
+char temp_score_driver[5];
+char temp_tip[5];
 
 typedef struct
 {
     int id;
     char name[100];
-    int age;
+    char birth_date[10];
     char gender;
     char car_class[50];
     char licence_plate[10];
     char city[20];
-    char acc_age[2];
+    char acc_creation[10];
     char status[10];
 
 } Driver;
@@ -27,8 +32,8 @@ typedef struct
     char user[30];
     char name[100];
     char gender;
-    int age;
-    char acc_age[2];
+    char birth_date[10];
+    char acc_creation[10];
     char pay_method[20];
     char status[10];
 
@@ -48,6 +53,6 @@ typedef struct
 
 } Ride;
 
-
+void inserir_dados(); // Função que insere os dados dos drivers, users e rides nos catálogos respetivos.
 
 #endif

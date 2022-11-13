@@ -11,6 +11,7 @@
 #include "main.h"
 #include "randomfuncs.h"
 
+
 /**
  *
  * Este é o header da função que executa a Query 1, dado um ID em forma de string.

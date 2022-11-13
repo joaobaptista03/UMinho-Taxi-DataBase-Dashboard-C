@@ -19,7 +19,6 @@ FILE *drivers;
 FILE *users;
 FILE *rides;
 FILE *inputs;
-FILE *outputs;
 
 /**
  *
