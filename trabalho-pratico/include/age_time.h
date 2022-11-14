@@ -12,27 +12,6 @@
 
 /**
  *
- * Este é o header da função que dá return ao ano atual.
- * 
- */
-int act_year();
-
-/**
- *
- * Este é o header da função que dá return ao mês atual.
- * 
- */
-int act_month();
-
-/**
- *
- * Este é o header da função que dá return ao dia atual.
- * 
- */
-int act_day();
-
-/**
- *
  * Este é o header da função que dá return à idade, dando input à data de nascimento em string.
  * 
  */

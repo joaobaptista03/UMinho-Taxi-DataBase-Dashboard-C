@@ -7,31 +7,11 @@
 
 #include "../include/age_time.h"
 
-int act_year() {
-    time_t ts;
-    struct tm *ct;
-    ts = time(NULL);
-    ct = localtime(&ts);
-    return ct->tm_year + 1900;
-}
-
-int act_month() {
-    time_t ts;
-    struct tm *ct;
-    ts = time(NULL);
-    ct = localtime(&ts);
-    return ct->tm_mon + 1;
-}
-
-int act_day() {
-    time_t ts;
-    struct tm *ct;
-    ts = time(NULL);
-    ct = localtime(&ts);
-    return ct->tm_mday;
-}
-
 int age(char date[]) {
+
+    int act_day = 09;
+    int act_month = 10;
+    int act_year = 2022;
 
     int day = (date[0]-48)*10 + date[1]-48;
     int month = (date[3]-48)*10 + date[4]-48;
@@ -39,10 +19,10 @@ int age(char date[]) {
 
     int alr_bday = 1;
 
-    if (act_month() > month) alr_bday = 0;
-    else if (act_month() == month) {
-        if (act_day() > day) alr_bday = 0;
+    if (act_month > month) alr_bday = 0;
+    else if (act_month == month) {
+        if (act_day > day) alr_bday = 0;
     }
 
-    return act_year() - year - alr_bday;
+    return act_year - year - alr_bday;
 }
