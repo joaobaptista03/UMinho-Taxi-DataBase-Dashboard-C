@@ -22,7 +22,7 @@ typedef struct
     char birth_date[10];
     char gender;
     char car_class[50];
-    char licence_plate[10];
+    char license_plate[10];
     char city[20];
     char acc_creation[10];
     char status[10];
