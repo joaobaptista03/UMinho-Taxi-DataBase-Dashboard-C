@@ -17,7 +17,7 @@
  */
 typedef struct
 {
-    int id;
+    char id[15];
     char name[100];
     char birth_date[10];
     char gender;
@@ -53,7 +53,7 @@ typedef struct
  */
 typedef struct
 {
-    int id;
+    char id[15];
     char date[10];
     char driver[100];
     char user[100];
