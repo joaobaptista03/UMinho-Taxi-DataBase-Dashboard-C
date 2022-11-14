@@ -9,7 +9,7 @@
 
 int age(char date[]) {
 
-    int act_day = 09;
+    int act_day = 9;
     int act_month = 10;
     int act_year = 2022;
 

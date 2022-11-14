@@ -7,7 +7,7 @@
 #include "../include/outputs.h"
 
 void handle_outputs(int counter, char *output) {
-    char filename[25];
+    char filename[50];
     sprintf(filename, "../Resultados/command%i_output.txt", counter);
     
     FILE *new_output;

@@ -15,14 +15,17 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides) {
     char temp_tip[5];               // Gorjeta temporária, que posteriormente será transformado de STRING para FLOAT
     char temp[1000];                // String temporária que irá armazenar cada linha dos Ficheiros CSV
 
+    int i = 0;
     while(fgets(temp, 1000, drivers)) {
         Driver temp_d;
         sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
-            temp_d.id, temp_d.name, temp_d.birth_date, temp_gender, temp_d.car_class, temp_d.licence_plate, temp_d.city, temp_d.acc_creation, temp_d.status);
+            temp_d.id, temp_d.name, temp_d.birth_date, temp_gender, temp_d.car_class, temp_d.license_plate, temp_d.city, temp_d.acc_creation, temp_d.status);
             
             temp_d.gender = temp_gender[0];
-
-        // inserir temp no catálogo de drivers
+        
+        
+        i++;
+        
     }
     while(fgets(temp, 1000, users)) {
         User temp_u;
