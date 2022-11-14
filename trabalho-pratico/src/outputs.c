@@ -4,6 +4,8 @@
  * 
  */
 
+#include "../include/outputs.h"
+
 void handle_outputs(int counter, char *output) {
     char filename[25];
     sprintf(filename, "command%i_output.txt", counter);
