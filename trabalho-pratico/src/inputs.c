@@ -22,5 +22,6 @@ void handle_inputs(FILE *inputs) {
         if (input[0] == '8') query8(input + 2, input + 4);
         if (input[0] == '9') query9(input + 2, input + 13);
         */
+       counter++;                                                       // Incrementar nº de inputs
     }
 }
