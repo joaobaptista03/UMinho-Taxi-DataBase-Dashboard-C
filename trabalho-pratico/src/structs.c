@@ -6,7 +6,7 @@
 
 #include "../include/structs.h"
 
-void inserir_dados() {
+void inserir_dados(FILE *drivers, FILE *users, FILE *rides) {
 
     // Variáveis temporárias que serão usadas para o While Fgets
     char temp_id[20];               // ID temporário, que posteriormente será transformado de STRING para INT

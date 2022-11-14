@@ -4,7 +4,13 @@
  * 
  */
 
-#include "../include/main.h"
+#include <stdio.h>
+#include <string.h>
+#include <glib.h>
+
+#include "../include/structs.h"
+#include "../include/query1.h"
+#include "../include/age_time.h"
 
 int main(int argc, char *argv[]) {
 
@@ -13,12 +19,16 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
-    drivers = fopen(strcat(argv[1], "drivers.csv"), "r");
-    users = fopen(strcat(argv[1], "users.csv"), "r");
-    rides = fopen(strcat(argv[1], "rides.csv"), "r");
-    inputs = fopen(argv[2], "r");
+    FILE *drivers;
+        drivers = fopen(strcat(argv[1], "drivers.csv"), "r");
+    FILE *users;
+        users = fopen(strcat(argv[1], "users.csv"), "r");
+    FILE *rides;
+        rides = fopen(strcat(argv[1], "rides.csv"), "r");
+    FILE *inputs;
+        inputs = fopen(argv[2], "r");
 
-    //inserir_dados();                                                  // Inserir dados nos catálogos
+    //inserir_dados(drivers, users, rides);                             // Inserir dados nos catálogos
     
     char input[100];                                                    // String para qual cada linha de input irá ser copiada
     while(fgets(input, 100, inputs)) {                                  // Loop While que irá fazer certas coisas (em cada loop) a cada linha do ficheiros de inputs

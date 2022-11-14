@@ -8,7 +8,7 @@
 #ifndef QUERY1_H
 #define QUERY1_H
 
-#include "main.h"
+#include <string.h>
 #include "randomfuncs.h"
 
 
