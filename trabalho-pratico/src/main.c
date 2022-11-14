@@ -15,37 +15,36 @@
 int main(int argc, char *argv[]) {
 
     if (argc != 3) {
-        printf("Número de argumentos inválido.");
+        printf("Número de argumentos inválido (%i).\n", argc);
         return -1;
     }
 
     FILE *drivers;
-        drivers = fopen(strcat(argv[1], "drivers.csv"), "r");
+        char *driverspath;
+        driverspath = (char *) malloc(1000 * sizeof(char));
+        strcpy(driverspath, argv[1]);
+        strcat(driverspath, "drivers.csv");
+        drivers = fopen(driverspath, "r");
+        free(driverspath);
     FILE *users;
-        users = fopen(strcat(argv[1], "users.csv"), "r");
+        char *userspath;
+        userspath = (char *) malloc(1000 * sizeof(char));
+        strcpy(userspath, argv[1]);
+        strcat(userspath, "users.csv");
+        users = fopen(userspath, "r");
+        free(userspath);
     FILE *rides;
-        rides = fopen(strcat(argv[1], "rides.csv"), "r");
+        char *ridespath;
+        ridespath = (char *) malloc(1000 * sizeof(char));
+        strcpy(ridespath, argv[1]);
+        strcat(ridespath, "rides.csv");
+        rides = fopen(ridespath, "r");
+        free(ridespath);
     FILE *inputs;
         inputs = fopen(argv[2], "r");
 
     //inserir_dados(drivers, users, rides);                             // Inserir dados nos catálogos
-    
-    char input[100];                                                    // String para qual cada linha de input irá ser copiada
-    while(fgets(input, 100, inputs)) {                                  // Loop While que irá fazer certas coisas (em cada loop) a cada linha do ficheiros de inputs
-        if (strchr(input, '\n')) *strchr(input, '\n') = '\0';           // Trocar '\n' por '\0' na string input
-        /*
-        if (input[0] == '1') query1(input + 2);                         // Chamar a query1 se for o caso
-        if (input[0] == '2') query2(input + 2);
-        if (input[0] == '3') query3(input + 2);
-        if (input[0] == '4') query4(input + 2);
-        if (input[0] == '5') query5(input + 2, input + 13);
-        if (input[0] == '6') query6(input + 2); // Tem de fazer parsing porque o tamanho da city varia
-        if (input[0] == '7') query7(input + 2); // Tem de fazer parsing porque o tamanho da city varia
-        if (input[0] == '8') query8(input + 2, input + 4);
-        if (input[0] == '9') query9(input + 2, input + 13);
-        */
-    }
-    
+
     fclose(drivers);
     fclose(rides);
     fclose(users);
