@@ -6,12 +6,15 @@
  */
 
 #include "../include/query1.h"
+#include "../include/outputs.h"
 
-void query1 (char* id) {
+void query1 (int counter, char* id) {
         if (isDriver(id, strlen(id))) {
-            // procura o id no catálogo de drivers e faz cenas 
+            // procura o id no catálogo de drivers e faz a query
+            // handle_outputs(counter, output);
                 }
         else {
             // procura o id no catálogo de users e faz cenas 
+            // handle_outputs(counter, output);
         }
 }
