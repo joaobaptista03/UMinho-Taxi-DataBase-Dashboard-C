@@ -4,6 +4,10 @@
  * 
  */
 
+#include "../include/inputs.h"
+#include "../include/query1.h"
+
+void handle_inputs(FILE *inputs) {
     char input[100];                                                    // String para qual cada linha de input irá ser copiada
     while(fgets(input, 100, inputs)) {                                  // Loop While que irá fazer certas coisas (em cada loop) a cada linha do ficheiros de inputs
         if (strchr(input, '\n')) *strchr(input, '\n') = '\0';           // Trocar '\n' por '\0' na string input
@@ -19,3 +23,4 @@
         if (input[0] == '9') query9(input + 2, input + 13);
         */
     }
+}

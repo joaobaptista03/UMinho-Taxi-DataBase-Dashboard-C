@@ -9,8 +9,7 @@
 #include <glib.h>
 
 #include "../include/structs.h"
-#include "../include/query1.h"
-#include "../include/age_time.h"
+#include "../include/inputs.h"
 
 int main(int argc, char *argv[]) {
 
@@ -44,6 +43,8 @@ int main(int argc, char *argv[]) {
         inputs = fopen(argv[2], "r");
 
     //inserir_dados(drivers, users, rides);                             // Inserir dados nos catálogos
+
+    //handle_inputs(FILE *inputs);                                      // Tratamento dos inputs
 
     fclose(drivers);
     fclose(rides);
