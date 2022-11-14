@@ -6,7 +6,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <glib.h>
 
 #include "../include/structs.h"
 #include "../include/inputs.h"
