@@ -1,4 +1,4 @@
-Trabalho de LI3 realizado por:
+Membros do Grupo 24:
 
 Nome - Aluno - GitHub User
 
