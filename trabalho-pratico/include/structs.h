@@ -60,7 +60,7 @@ typedef struct
     char city[20];
     int distance;
     int score_driver;
-    float tip;
+    double tip;
     char comment[100];
 
 } Ride;
