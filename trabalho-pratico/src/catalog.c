@@ -9,10 +9,7 @@
 
 void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
 
-    // Variáveis temporárias que serão usadas para o While Fgets
-    char temp_gender[5];            // Gender temporário, que posteriormente será transformado de STRING para CHAR
     char temp[1000];                // String temporária que irá armazenar cada linha dos Ficheiros CSV
-
 
     // Criar catálogo dos Drivers
     Driver *drivers_cat;
@@ -21,9 +18,7 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
     while(fgets(temp, 1000, drivers)) {
         Driver temp_d;
         sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
-            temp_d.id, temp_d.name, temp_d.birth_date, temp_gender, temp_d.car_class, temp_d.license_plate, temp_d.city, temp_d.acc_creation, temp_d.status);
-            
-            temp_d.gender = temp_gender[0];
+            temp_d.id, temp_d.name, temp_d.birth_date, temp_d.gender, temp_d.car_class, temp_d.license_plate, temp_d.city, temp_d.acc_creation, temp_d.status);
 
         drivers_cat[i] = temp_d;
         i++;
@@ -36,9 +31,7 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
     while(fgets(temp, 1000, users)) {
         User temp_u;
         sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
-            temp_u.user, temp_u.name, temp_gender, temp_u.birth_date, temp_u.acc_creation, temp_u.pay_method, temp_u.status);
-
-            temp_u.gender = temp_gender[0];
+            temp_u.user, temp_u.name, temp_u.gender, temp_u.birth_date, temp_u.acc_creation, temp_u.pay_method, temp_u.status);
 
         users_cat[i] = temp_u;
         i++;
