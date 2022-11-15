@@ -5,8 +5,6 @@
  */
 
 #include "../include/inputs.h"
-#include "../include/catalog.h"
-#include "../include/query1.h"
 
 void handle_inputs(Driver *drivers_cat, User *users_cat, Ride *rides_cat, FILE *inputs) {
     int counter = 1;                                                    // Contador do input em que está

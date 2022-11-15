@@ -11,6 +11,9 @@
 #include <string.h>
 #include <stdio.h>
 
+#include "../include/catalog.h"
+#include "../include/query1.h"
+
 /**
  *
  * Este é o header da função que faz o tratamento dos inputs e redireciona-os para as query's correspondentes.
