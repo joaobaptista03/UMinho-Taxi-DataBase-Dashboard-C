@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
     FILE *inputs;
         inputs = fopen(argv[2], "r");
 
-    system("mkdir Resultados");
+    system("mkdir Resultados");                                               // Criar diretório para os Resultados
 
     inserir_dados(drivers, users, rides, inputs);                             // Inserir dados nos catálogos
 
