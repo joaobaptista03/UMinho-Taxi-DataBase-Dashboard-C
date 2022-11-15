@@ -1,32 +1,35 @@
 /**
- * @file structs.c
+ * @file catalog.c
  * Este ficheiro contém o contrúdo das funções relacionadas com as structs.
  * 
  */
 
-#include "../include/structs.h"
+#include "../include/catalog.h"
+#include "../include/inputs.h"
 
-void inserir_dados(FILE *drivers, FILE *users, FILE *rides) {
+void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
 
     // Variáveis temporárias que serão usadas para o While Fgets
     char temp_gender[5];            // Gender temporário, que posteriormente será transformado de STRING para CHAR
-    char temp_distance[10];         // Distância temporária, que posteriormente será transformado de STRING para INT
-    char temp_score_driver[5];      // Avaliação do Condutor temporária, que posteriormente será transformado de STRING para INT
-    char temp_tip[5];               // Gorjeta temporária, que posteriormente será transformado de STRING para FLOAT
     char temp[1000];                // String temporária que irá armazenar cada linha dos Ficheiros CSV
 
-    int i = 0;
+    Driver *drivers_cat;
+    drivers_cat = malloc(10001*sizeof(Driver));
+    int i = 1;
     while(fgets(temp, 1000, drivers)) {
         Driver temp_d;
         sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
             temp_d.id, temp_d.name, temp_d.birth_date, temp_gender, temp_d.car_class, temp_d.license_plate, temp_d.city, temp_d.acc_creation, temp_d.status);
             
             temp_d.gender = temp_gender[0];
-        
-        
+
+        drivers_cat[i] = temp_d;
         i++;
-        
     }
+
+    User *users_cat;
+    users_cat = malloc(100001*sizeof(User));
+    i = 1;
     while(fgets(temp, 1000, users)) {
         User temp_u;
         sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
@@ -34,17 +37,22 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides) {
 
             temp_u.gender = temp_gender[0];
 
-        // inserir temp no catálogo de users
+        users_cat[i] = temp_u;
+        i++;
     }
+
+    Ride *rides_cat;
+    rides_cat = malloc(1000001*sizeof(Ride));
+    i = 1;
     while(fgets(temp, 1000, rides)) {
         Ride temp_r;
-        sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
-            temp_r.id, temp_r.date, temp_r.driver, temp_r.user, temp_r.city, temp_distance, temp_score_driver, temp_tip, temp_r.comment);
-            
-            temp_r.distance = atoi(temp_distance);
-            temp_r.score_driver = atoi(temp_score_driver);
-            temp_r.tip = atof(temp_tip);
-
-        // inserir temp no catálogo de rides
+        sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
+            temp_r.id, temp_r.date, temp_r.driver, temp_r.user, temp_r.city, temp_r.distance, temp_r.score_user, temp_r.score_driver, temp_r.tip, temp_r.comment);
+        
+        rides_cat[i] = temp_r;
+        i++;
+        strcpy(temp_r.comment, "");
     }
+
+    //handle_inputs(inputs);                                      // Tratamento dos inputs
 }

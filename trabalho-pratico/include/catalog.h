@@ -1,11 +1,11 @@
 /**
- * @file structs.h
+ * @file catalog.h
  * Este ficheiro contém as structs do Projeto.
  * 
  */
 
-#ifndef STRUCTS_H
-#define STRUCTS_H
+#ifndef CATALOG_H
+#define CATALOG_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,12 +19,12 @@ typedef struct
 {
     char id[15];
     char name[100];
-    char birth_date[10];
+    char birth_date[11];
     char gender;
     char car_class[50];
     char license_plate[10];
     char city[20];
-    char acc_creation[10];
+    char acc_creation[11];
     char status[10];
 
 } Driver;
@@ -39,8 +39,8 @@ typedef struct
     char user[30];
     char name[100];
     char gender;
-    char birth_date[10];
-    char acc_creation[10];
+    char birth_date[11];
+    char acc_creation[11];
     char pay_method[20];
     char status[10];
 
@@ -54,13 +54,14 @@ typedef struct
 typedef struct
 {
     char id[15];
-    char date[10];
+    char date[11];
     char driver[100];
     char user[100];
     char city[20];
-    int distance;
-    int score_driver;
-    double tip;
+    char distance[5];
+    char score_user[2];
+    char score_driver[2];
+    char tip[10];
     char comment[100];
 
 } Ride;
@@ -71,6 +72,6 @@ typedef struct
  * Este é o header da função que insere os dados dos drivers, users e rides nos catálogos respetivos.
  * 
  */
-void inserir_dados();
+void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs);
 
 #endif

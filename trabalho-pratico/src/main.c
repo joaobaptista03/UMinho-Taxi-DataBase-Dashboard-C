@@ -7,8 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "../include/structs.h"
-#include "../include/inputs.h"
+#include "../include/catalog.h"
 
 int main(int argc, char *argv[]) {
 
@@ -41,9 +40,7 @@ int main(int argc, char *argv[]) {
     FILE *inputs;
         inputs = fopen(argv[2], "r");
 
-    //inserir_dados(drivers, users, rides);                             // Inserir dados nos catálogos
-
-    //handle_inputs(FILE *inputs);                                      // Tratamento dos inputs
+    inserir_dados(drivers, users, rides, inputs);                             // Inserir dados nos catálogos
 
     fclose(drivers);
     fclose(rides);
