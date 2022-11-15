@@ -13,6 +13,8 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
     char temp_gender[5];            // Gender temporário, que posteriormente será transformado de STRING para CHAR
     char temp[1000];                // String temporária que irá armazenar cada linha dos Ficheiros CSV
 
+
+    // Criar catálogo dos Drivers
     Driver *drivers_cat;
     drivers_cat = malloc(10001*sizeof(Driver));
     int i = 1;
@@ -27,6 +29,7 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
         i++;
     }
 
+    // Criar catálogo dos Users
     User *users_cat;
     users_cat = malloc(100001*sizeof(User));
     i = 1;
@@ -41,6 +44,7 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
         i++;
     }
 
+    // Criar catálogo das Rides
     Ride *rides_cat;
     rides_cat = malloc(1000001*sizeof(Ride));
     i = 1;
@@ -54,5 +58,22 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
         strcpy(temp_r.comment, "");
     }
 
-    //handle_inputs(inputs);                                      // Tratamento dos inputs
+
+    // Criar cópias dos catálogos para encapsulamento
+    Driver *new_drivers_cat;
+        new_drivers_cat = malloc(10001*sizeof(Driver));
+        for (i = 1; i <= 10000; i++) new_drivers_cat[i] = drivers_cat[i];
+    User *new_users_cat;
+        new_users_cat = malloc(100001*sizeof(Driver));
+        for (i = 1; i <= 100000; i++) new_users_cat[i] = users_cat[i];
+    Ride *new_rides_cat;
+        new_rides_cat = malloc(1000001*sizeof(Driver));
+        for (i = 1; i <= 1000000; i++) new_rides_cat[i] = rides_cat[i];
+
+    // Libertar memória dos catálogos originais
+    free(drivers_cat);
+    free(users_cat);
+    free(rides_cat);
+
+    handle_inputs(new_drivers_cat, new_users_cat, new_rides_cat, inputs);
 }
