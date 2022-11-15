@@ -8,8 +8,8 @@
 
 void handle_outputs(int counter, char *output) {
     char filename[50];
-    sprintf(filename, "../Resultados/command%i_output.txt", counter);
-    
+    sprintf(filename, "Resultados/command%i_output.txt", counter);
+
     FILE *new_output;
         new_output = fopen(filename, "w");
     fprintf(new_output, "%s", output);

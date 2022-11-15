@@ -10,12 +10,14 @@
 
 #include <string.h>
 #include "randomfuncs.h"
+#include "outputs.h"
+#include "age_time.h"
 
 /**
  *
  * Este é o header da função que executa a Query 1, dado um ID em forma de string, e um contador para dizer em que linha está.
  * 
  */
-void query1 (int counter, char* id);
+void query1 (int counter, Driver *new_drivers_cat, User *new_users_cat, Ride *new_rides_cat, char *id);
 
 #endif

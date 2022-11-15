@@ -51,21 +51,23 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
         strcpy(temp_r.comment, "");
     }
 
+    /*
     // Criar cópias dos catálogos para encapsulamento
     Driver *new_drivers_cat;
         new_drivers_cat = malloc(10001*sizeof(Driver));
-        for (i = 1; i <= 10000; i++) new_drivers_cat[i] = drivers_cat[i];
+        for (int j = 1; j <= 10000; j++) new_drivers_cat[j] = drivers_cat[j];
     User *new_users_cat;
         new_users_cat = malloc(100001*sizeof(Driver));
         for (i = 1; i <= 100000; i++) new_users_cat[i] = users_cat[i];
     Ride *new_rides_cat;
         new_rides_cat = malloc(1000001*sizeof(Driver));
         for (i = 1; i <= 1000000; i++) new_rides_cat[i] = rides_cat[i];
+    */
 
     // Libertar memória dos catálogos originais (Não é preciso???)
     //free(drivers_cat);
     //free(users_cat);
     //free(rides_cat);
 
-    handle_inputs(new_drivers_cat, new_users_cat, new_rides_cat, inputs);
+    handle_inputs(drivers_cat, users_cat, rides_cat, inputs);
 }
