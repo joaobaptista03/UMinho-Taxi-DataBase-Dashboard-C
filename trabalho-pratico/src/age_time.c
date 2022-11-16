@@ -7,11 +7,11 @@
 
 #include "../include/age_time.h"
 
-int age(char date[]) {
+#define TODAY_YEAR 2022
+#define TODAY_MONTH 10
+#define TODAY_DAY 9
 
-    int act_day = 9;
-    int act_month = 10;
-    int act_year = 2022;
+int age(char date[]) {
 
     int day = (date[0]-48)*10 + date[1]-48;
     int month = (date[3]-48)*10 + date[4]-48;
@@ -19,10 +19,10 @@ int age(char date[]) {
 
     int alr_bday = 1;
 
-    if (act_month > month) alr_bday = 0;
-    else if (act_month == month) {
-        if (act_day > day) alr_bday = 0;
+    if (TODAY_MONTH > month) alr_bday = 0;
+    else if (TODAY_MONTH == month) {
+        if (TODAY_DAY > day) alr_bday = 0;
     }
 
-    return act_year - year - alr_bday;
+    return TODAY_YEAR - year - alr_bday;
 }
