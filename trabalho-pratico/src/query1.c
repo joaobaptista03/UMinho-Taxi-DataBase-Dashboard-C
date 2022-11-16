@@ -9,8 +9,22 @@
 
 void query1 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat, char *id) {
         if (isDriver(id, strlen(id))) {
+
             int id_driver = atoi(id);                           // Converter string id do input para int
+
+            // Se o driver não existir
+            if ((id_driver > 10000 || id_driver < 1)) {
+                handle_outputs(counter, "");
+                return;
+            }
+
             Driver q1_d = drivers_cat[id_driver];               // Ir buscar o driver pretendido pelo ID ao Catálogo
+
+            // Se o Driver estiver inativo
+            if (strcmp(q1_d.status, "inactive") == 0) {
+                handle_outputs(counter, "");
+                return;
+            }
 
             // Calcula a taxa base e a taxa por distância de acordo com a classe do carro
             float taxa_base;
@@ -51,8 +65,21 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
         else {                                                      // Se não for Driver / Se for User
 
             User q1_u;                                              // Definição do User pretendido
+            strcpy(q1_u.gender, "N");
             for (int i = 1; i <= 100000; i++) {                     // Procura no catálogo dos users as informações do User pretendido
                 if (strcmp(users_cat[i].user, id) == 0) q1_u = users_cat[i];
+            }
+
+            // Se o user não existir
+            if (strcmp(q1_u.gender, "N") == 0) {
+                handle_outputs(counter, "");
+                return;
+            }
+
+            // Se o user for inactive
+            if (strcmp(q1_u.status, "inactive") == 0) {
+                handle_outputs(counter, "");
+                return;
             }
            
             int taxa_dist, taxa_base;

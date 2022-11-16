@@ -1,7 +1,7 @@
 /**
  * @file query2.c
  * 
- * Este ficheiro contém o conteúdo das funções relacionadas com as Query 1.
+ * Este ficheiro contém o conteúdo das funções relacionadas com as Query 2.
  * 
  */
 
