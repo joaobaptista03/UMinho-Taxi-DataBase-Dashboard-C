@@ -65,6 +65,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
                 if (strcmp(rides_cat[i].user, id) == 0) {
                     total_avaliacoes += atoi(rides_cat[i].score_user);
                     num_viagens++;
+                    // Calcula a taxa base e a taxa por distância de acordo com a classe do carro do Driver dessa Ride
                     if (strcmp(drivers_cat[atoi(rides_cat[i].driver)].car_class, "basic") == 0) taxa_base = 3.25;
                         else if (strcmp(drivers_cat[atoi(rides_cat[i].driver)].car_class, "green") == 0) taxa_base = 4;
                         else if (strcmp(drivers_cat[atoi(rides_cat[i].driver)].car_class, "premium") == 0) taxa_base = 5.2;
@@ -74,6 +75,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
                     tot_gasto += atoi(rides_cat[i].distance) * taxa_dist + taxa_base;
                 }
             }
+            
             // Se o número de viagens for 0, o divisor será 0, logo iria dar erro. Logo, a avaliação média é imediatamente 0
             if (num_viagens != 0) av_media = (double) total_avaliacoes / (double) num_viagens;
             else av_media = 0;
