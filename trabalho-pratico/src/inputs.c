@@ -28,15 +28,15 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, Ride *rides_cat, FILE *
         char new_input[100];
         strcpy(new_input, input);                                       // Encapsulamento
         if (new_input[0] == '1') query1(counter, drivers_cat, users_cat, rides_cat, new_input + 2);                // Chamar a query1 se for o caso
+        if (new_input[0] == '2') query2(counter, drivers_cat, users_cat, rides_cat, new_input + 2);
         /*
-        if (input[0] == '2') query2(counter, new_drivers_cat, new_users_cat, new_rides_cat, new_input + 2);
-        if (input[0] == '3') query3(counter, new_drivers_cat, new_users_cat, new_rides_cat, new_input + 2);
-        if (input[0] == '4') query4(counter, new_drivers_cat, new_users_cat, new_rides_cat, new_input + 2);
-        if (input[0] == '5') query5(counter, new_drivers_cat, new_users_cat, new_rides_cat, new_input + 2, input + 13);
-        if (input[0] == '6') query6(counter, new_drivers_cat, new_users_cat, new_rides_cat, new_input + 2); // Tem de fazer parsing porque o tamanho da city varia
-        if (input[0] == '7') query7(counter, new_drivers_cat, new_users_cat, new_rides_cat, new_input + 2); // Tem de fazer parsing porque o tamanho da city varia
-        if (input[0] == '8') query8(counter, new_drivers_cat, new_users_cat, new_rides_cat, new_input + 2, input + 4);
-        if (input[0] == '9') query9(counter, new_drivers_cat, new_users_cat, new_rides_cat, new_input + 2, input + 13);
+        if (new_input[0] == '3') query3(counter, drivers_cat, users_cat, rides_cat, new_input + 2);
+        if (new_input[0] == '4') query4(counter, drivers_cat, users_cat, rides_cat, new_input + 2);
+        if (new_input[0] == '5') query5(counter, drivers_cat, users_cat, rides_cat, new_input + 2, input + 13);
+        if (new_input[0] == '6') query6(counter, drivers_cat, users_cat, rides_cat, new_input + 2); // Tem de fazer parsing porque o tamanho da city varia
+        if (new_input[0] == '7') query7(counter, drivers_cat, users_cat, rides_cat, new_input + 2); // Tem de fazer parsing porque o tamanho da city varia
+        if (new_input[0] == '8') query8(counter, drivers_cat, users_cat, rides_cat, new_input + 2, input + 4);
+        if (new_input[0] == '9') query9(counter, drivers_cat, users_cat, rides_cat, new_input + 2, input + 13);
         */
        counter++;                                                       // Incrementar nº de inputs
     }

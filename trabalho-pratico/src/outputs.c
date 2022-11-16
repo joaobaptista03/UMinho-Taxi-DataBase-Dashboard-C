@@ -11,6 +11,6 @@ void handle_outputs(int counter, char *output) {
     sprintf(filename, "Resultados/command%i_output.txt", counter);
 
     FILE *new_output;
-        new_output = fopen(filename, "w");
+        new_output = fopen(filename, "a");
     fprintf(new_output, "%s", output);
 }

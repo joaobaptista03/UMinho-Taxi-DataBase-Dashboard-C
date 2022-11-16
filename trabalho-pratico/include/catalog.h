@@ -15,8 +15,7 @@
  * Esta é a Struct que define o que é um Driver, e contém todas as informações dele. Será inserida no catálogo das Drivers.
  * 
  */
-typedef struct
-{
+typedef struct {
     char id[15];
     char name[100];
     char birth_date[11];
@@ -34,8 +33,7 @@ typedef struct
  * Esta é a Struct que define o que é um User, e contém todas as informações dele. Será inserida no catálogo dos Users.
  * 
  */
-typedef struct
-{
+typedef struct {
     char user[30];
     char name[100];
     char gender[2];
@@ -51,8 +49,7 @@ typedef struct
  * Esta é a Struct que define o que é uma Ride, e contém todas as informações dela. Será inserida no catálogo das Rides.
  * 
  */
-typedef struct
-{
+typedef struct {
     char id[15];
     char date[11];
     char driver[100];

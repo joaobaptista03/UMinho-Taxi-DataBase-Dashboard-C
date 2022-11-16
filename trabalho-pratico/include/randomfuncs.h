@@ -17,5 +17,11 @@
  */
 int isDriver(char str[], int N);
 
+/**
+ *
+ * Este é o header da função que dada uma string de doubles e o tamanho da mesma, calcula o maior valor (a partir do índice 1 apenas).
+ * 
+ */
+int larger_double(double *doubles, int N);
 
 #endif

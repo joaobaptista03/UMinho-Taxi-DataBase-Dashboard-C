@@ -13,3 +13,14 @@ int isDriver(char str[], int N) {
     }
     return 1;
 }
+
+int larger_double(double *doubles, int N) {
+    double r = 0; int ind;
+    for (int i = 1; i < N; i++) {
+        if (doubles[i] > r) {
+            r = doubles[i];
+            ind = i;
+        }
+    }
+    return ind;
+}
