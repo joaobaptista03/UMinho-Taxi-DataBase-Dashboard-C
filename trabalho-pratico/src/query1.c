@@ -46,7 +46,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
                 if (strcmp(rides_cat[i].driver, id) == 0) {
                     total_avaliacoes += atoi(rides_cat[i].score_driver);
                     num_viagens++;
-                    tot_auferido += atoi(rides_cat[i].distance) * taxa_dist + taxa_base;
+                    tot_auferido += atoi(rides_cat[i].distance) * taxa_dist + taxa_base + atof(rides_cat[i].tip);
                 }
             }
             // Se o número de viagens for 0, o divisor será 0, logo iria dar erro. Logo, a avaliação média é imediatamente 0
@@ -99,7 +99,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
                     if (strcmp(drivers_cat[atoi(rides_cat[i].driver)].car_class, "basic") == 0) taxa_dist = 0.62;
                         else if (strcmp(drivers_cat[atoi(rides_cat[i].driver)].car_class, "green") == 0) taxa_dist = 0.79;
                         else if (strcmp(drivers_cat[atoi(rides_cat[i].driver)].car_class, "premium") == 0) taxa_dist = 0.94;
-                    tot_gasto += atoi(rides_cat[i].distance) * taxa_dist + taxa_base;
+                    tot_gasto += atoi(rides_cat[i].distance) * taxa_dist + taxa_base + atof(rides_cat[i].tip);
                 }
             }
             
