@@ -55,9 +55,9 @@ typedef struct {
     char driver[100];
     char user[100];
     char city[20];
-    char distance[5];
-    char score_user[2];
-    char score_driver[2];
+    char distance[10];
+    char score_user[5];
+    char score_driver[5];
     char tip[10];
     char comment[100];
 

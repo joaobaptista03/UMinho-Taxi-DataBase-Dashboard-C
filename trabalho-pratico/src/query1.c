@@ -48,7 +48,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
             // for loop que percorre o catálogo das Rides, e se cada ride for do Driver pretendido, faz os devidos cálculos
             for (int i = 1; i <= 1000000; i++) {
                 if (strcmp(rides_cat[i].driver, id) == 0) {
-                    total_avaliacoes += atoi(rides_cat[i].score_driver);
+                    total_avaliacoes += atof(rides_cat[i].score_driver);
                     num_viagens++;
                     tot_auferido += atof(rides_cat[i].distance) * taxa_dist + taxa_base + atof(rides_cat[i].tip);
                 }
@@ -86,7 +86,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
                 return;
             }
            
-            int taxa_dist, taxa_base;
+            float taxa_dist, taxa_base;
             char avaliacao_media[15]; int total_avaliacoes = 0; double av_media = 0;
             char numero_viagens[10]; int num_viagens = 0;
             char total_gasto[15]; double tot_gasto = 0;
@@ -94,7 +94,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
             // for loop que percorre o catálogo das Rides, e se cada ride for do User pretendido, faz os devidos cálculos
             for (int i = 1; i <= 1000000; i++) {
                 if (strcmp(rides_cat[i].user, id) == 0) {
-                    total_avaliacoes += atoi(rides_cat[i].score_user);
+                    total_avaliacoes += atof(rides_cat[i].score_user);
                     num_viagens++;
                     // Calcula a taxa base e a taxa por distância de acordo com a classe do carro do Driver dessa Ride
                     char class[10];
