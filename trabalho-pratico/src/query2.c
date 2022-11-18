@@ -16,7 +16,6 @@ void query2 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
     int num_viagens[10001] = {0};
     char recent_ride[10001][11];
     double av_med[10001] = {0}, av_med_cpy[10001] = {0};
-    char av_med_str[10001][15];
 
     for (int i = 1; i <= 10000; i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
     puts("Q2 - Array recent_ride Inicializada");
@@ -29,8 +28,8 @@ void query2 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
             if (most_recent(rides_cat[i].date, recent_ride[ind_driver]) == 1) strcpy(recent_ride[ind_driver], rides_cat[i].date);
         }
     }
-    for (int i = 1; i <= 10000; i++) sprintf(av_med_str[i], "%.3f", tot_avaliacoes[i] / num_viagens[i]);  // Calcular a avaliação média para cada Driver armazenando na array av_med
-    for (int i = 1; i <= 10000; i++) av_med[i] = atof(av_med_str[i]);
+
+    for (int i = 1; i <= 10000; i++) av_med[i] = tot_avaliacoes[i] / num_viagens[i];  // Calcular a avaliação média para cada Driver armazenando na array av_med
     puts("Q2 - Arrays Preenchidas");
 
     int id_maiores[N];                                                                // Array que irá armazenar os ID's ordenados por ordem decrescente de maior av_med
