@@ -12,10 +12,11 @@ void query2 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
 
     // Criar todas as arrays temporárias necessárias à função 
-    double tot_avaliacoes[10001] = {0};
-    int num_viagens[10001] = {0};
+    double *tot_avaliacoes; tot_avaliacoes = malloc(10001 * sizeof(double));
+    int *num_viagens; num_viagens = calloc(10001, sizeof(int));
     char recent_ride[10001][11];
-    double av_med[10001] = {0}, av_med_cpy[10001] = {0};
+    double *av_med; av_med = calloc(10001, sizeof(double));
+    double *av_med_cpy; av_med_cpy = calloc(10001, sizeof(double));
 
     for (int i = 1; i <= 10000; i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
     puts("Q2 - Array recent_ride Inicializada");
@@ -47,16 +48,8 @@ void query2 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
     for (int i = 0; i < N-1; i++) {
         if (av_med[id_maiores[i]] == av_med[id_maiores[i+1]]) {
             int rec_ride = most_recent(recent_ride[id_maiores[i]], recent_ride[id_maiores[i+1]]);
-            if (rec_ride == 2) {
-                int temp = id_maiores[i];
-                id_maiores[i] = id_maiores[i+1];
-                id_maiores[i+1] = temp;
-            }
-            else if (rec_ride == 3 && id_maiores[i] > id_maiores[i+1]) {
-                int temp_id = id_maiores[i];
-                id_maiores[i] = id_maiores[i+1];
-                id_maiores[i+1] = temp_id;
-            }
+            if (rec_ride == 2) swap(id_maiores, i, i+1);
+            else if (rec_ride == 3 && id_maiores[i] > id_maiores[i+1]) swap(id_maiores, i, i+1);
         }
     }
     puts("Q2 - Desempate feito");
@@ -66,5 +59,12 @@ void query2 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
         sprintf(output, "%s;%s;%.3f\n", drivers_cat[id_maiores[i]].id, drivers_cat[id_maiores[i]].name, av_med[id_maiores[i]]);
         handle_outputs(counter, output);
     }
+
+    free(tot_avaliacoes);
+    free(num_viagens);
+    free(av_med);
+    free(av_med_cpy);
+
+
     printf("Fim da Q2 (linha de input %i)\n", counter);
 }

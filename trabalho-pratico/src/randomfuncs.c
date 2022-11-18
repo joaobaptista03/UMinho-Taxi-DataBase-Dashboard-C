@@ -59,3 +59,9 @@ double arred3(double x) {
     temp[5] = '\0';
     return atof(temp);
 }
+
+void swap(int *x, int i, int j) {
+    int temp = x[i];
+    x[i] = x[j];
+    x[i+1] = temp;
+}

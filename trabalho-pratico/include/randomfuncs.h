@@ -48,4 +48,11 @@ int most_recent(char *date1, char *date2);
  */
 double arred3(double x);
 
+/**
+ *
+ * Este é o header da função que dada uma array de int's e dois índices, troca-os.
+ * 
+ */
+void swap(int *x, int i, int j);
+
 #endif
