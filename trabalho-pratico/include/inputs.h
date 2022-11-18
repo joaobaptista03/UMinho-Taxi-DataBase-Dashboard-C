@@ -14,6 +14,7 @@
 #include "../include/catalog.h"
 #include "../include/query1.h"
 #include "../include/query2.h"
+#include "../include/query3.h"
 
 /**
  *

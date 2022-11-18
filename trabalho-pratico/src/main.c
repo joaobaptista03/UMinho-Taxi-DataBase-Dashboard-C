@@ -50,13 +50,13 @@ int main(int argc, char *argv[]) {
     inserir_dados(drivers, users, rides, inputs);                             // Inserir dados nos catálogos
 
     fclose(drivers);
-        if (drivers != NULL) puts("Ficheiro dos Drivers aberto");
+        if (drivers != NULL) puts("Ficheiro dos Drivers fechado");
     fclose(rides);
-        if (rides != NULL) puts("Ficheiro dos Rides aberto");
+        if (rides != NULL) puts("Ficheiro dos Rides fechado");
     fclose(users);
-        if (users != NULL) puts("Ficheiro dos Users aberto");
+        if (users != NULL) puts("Ficheiro dos Users fechado");
     fclose(inputs);
-        if (inputs != NULL) puts("Ficheiro dos Inputs aberto");
+        if (inputs != NULL) puts("Ficheiro dos Inputs fechado");
     
     return 0;
 }
