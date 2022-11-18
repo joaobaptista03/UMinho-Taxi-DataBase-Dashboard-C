@@ -14,9 +14,13 @@ void query2 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
     // Criar todas as arrays temporárias necessárias à função 
     double *tot_avaliacoes; tot_avaliacoes = malloc(10001 * sizeof(double));
     int *num_viagens; num_viagens = calloc(10001, sizeof(int));
-    char recent_ride[10001][11];
     double *av_med; av_med = calloc(10001, sizeof(double));
     double *av_med_cpy; av_med_cpy = calloc(10001, sizeof(double));
+
+    char **recent_ride;                                                                   // Criar array de strings dinâmicamente
+    recent_ride = malloc(10001 * sizeof(char*));
+    for (int i = 0; i < 10001; i++)
+        recent_ride[i] = malloc((11+1) * sizeof(char));
 
     for (int i = 1; i <= 10000; i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
     puts("Q2 - Array recent_ride Inicializada");
@@ -62,6 +66,7 @@ void query2 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
 
     free(tot_avaliacoes);
     free(num_viagens);
+    free(recent_ride);
     free(av_med);
     free(av_med_cpy);
 

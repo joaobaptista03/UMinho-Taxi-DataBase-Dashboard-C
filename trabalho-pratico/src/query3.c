@@ -14,24 +14,34 @@ void query3 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
     int *tot_distancia; tot_distancia = calloc(100001, sizeof(int));
     int *tot_distancia_cpy; tot_distancia_cpy = calloc(100001, sizeof(int));
     int *user_maioresID; user_maioresID = calloc(N, sizeof(int));
-    char recent_ride[100001][11];
     int userLine = -1;
+
+    char **recent_ride;                                                                 // Criar array de strings dinâmicamente
+    recent_ride = malloc(100001 * sizeof(char*));
+    for (int i = 0; i <= 100000; i++)
+        recent_ride[i] = malloc(11 * sizeof(char));
 
     for (int i = 1; i <= 100000; i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
     puts("Q3 - Array recent_ride Inicializada");
 
     for (int i = 1; i <= 1000000; i++) {                                              // Percorrer o catálogo das Rides
+puts("1");
             char *status; status = malloc(10 * sizeof(char));
+puts("2");
             for (int j = 1; j <= 100000 && userLine == -1; j++) {                                            // Percorrer o catálogo dos Users
                 if (strcmp(users_cat[j].user, rides_cat[i].user) == 0) {
                     strcpy(status, users_cat[j].status);
                     userLine = j;
                 }
             }
+puts("3");
             if (most_recent(rides_cat[i].date, recent_ride[userLine]) == 1) strcpy(recent_ride[userLine], rides_cat[i].date);
+puts("4");
             if (strcmp(status, "active") == 0) tot_distancia[userLine] += atoi(rides_cat[i].distance);      // Verificar se o User está ativo
+puts("5");
             userLine = -1;
             free(status);
+puts("6");
     }
     puts("Q3 - tot_distancia preenchida");
 
@@ -63,6 +73,7 @@ void query3 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
     free(tot_distancia);
     free(tot_distancia_cpy);
     free(user_maioresID);
+    free(recent_ride);
 
     printf("Fim da Q3 (linha de input %i)\n", counter);
 }

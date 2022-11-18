@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
         char *userspath;
         userspath = (char *) malloc(1000 * sizeof(char));
         strcpy(userspath, argv[1]);
-        strcat(userspath, "users.csv");
+        strcat(userspath, "/users.csv");
         users = fopen(userspath, "r");
         free(userspath);
         if (users != NULL) puts("Ficheiro dos Users aberto");
@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
         char *ridespath;
         ridespath = (char *) malloc(1000 * sizeof(char));
         strcpy(ridespath, argv[1]);
-        strcat(ridespath, "rides.csv");
+        strcat(ridespath, "/rides.csv");
         rides = fopen(ridespath, "r");
         free(ridespath);
         if (rides != NULL) puts("Ficheiro das Rides aberto");
