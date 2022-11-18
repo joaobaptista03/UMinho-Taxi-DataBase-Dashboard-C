@@ -25,6 +25,17 @@ int larger_double(double *doubles, int N) {
     return ind;
 }
 
+int larger_int(int *ints, int N) {
+    int r = 0; int ind;
+    for (int i = 1; i < N; i++) {
+        if (ints[i] > r) {
+            r = ints[i];
+            ind = i;
+        }
+    }
+    return ind;
+}
+
 int most_recent(char *date1, char *date2) {
     int year1 = date1[6]*1000 + date1[7]*100 + date1[8]*10 + date1[9];
     int year2 = date2[6]*1000 + date2[7]*100 + date2[8]*10 + date2[9];

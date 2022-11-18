@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
         char *driverspath;
         driverspath = (char *) malloc(1000 * sizeof(char));
         strcpy(driverspath, argv[1]);
-        strcat(driverspath, "drivers.csv");
+        strcat(driverspath, "/drivers.csv");
         drivers = fopen(driverspath, "r");
         free(driverspath);
         if (drivers != NULL) puts("Ficheiro dos Drivers aberto");
