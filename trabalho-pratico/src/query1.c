@@ -8,6 +8,7 @@
 #include "../include/query1.h"
 
 void query1 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat, char *id) {
+    printf("A executar Q1 (linha de input %i)", counter);
         if (isDriver(id, strlen(id))) {
 
             int id_driver = atoi(id);                           // Converter string id do input para int
@@ -128,4 +129,5 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
             sprintf(output, "%s;%s;%i;%s;%s;%s\n", q1_u.name, q1_u.gender, age(q1_u.birth_date), avaliacao_media, numero_viagens, total_gasto);
             handle_outputs(counter, output);
         }
+    printf("Fim da Q1 (linha de input %i)", counter);
 }

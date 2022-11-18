@@ -24,3 +24,27 @@ int larger_double(double *doubles, int N) {
     }
     return ind;
 }
+
+int most_recent(char *date1, char *date2) {
+    int year1 = date1[6]*1000 + date1[7]*100 + date1[8]*10 + date1[9];
+    int year2 = date2[6]*1000 + date2[7]*100 + date2[8]*10 + date2[9];
+    int month1 = date1[3]*10 + date1[4];
+    int month2 = date2[3]*10 + date2[4];
+    int day1 = date1[0]*10 + date1[1];
+    int day2 = date2[0]*10 + date2[1];
+    if (year1 > year2) return 1;
+    if (year1 < year2) return 2;
+    if (month1 > month2) return 1;
+    if (month1 < month2) return 2;
+    if (day1 > day2) return 1;
+    if (day1 < day2) return 2;
+    return 3;
+}
+
+double arred3(double x) {
+    char temp[15];
+    sprintf(temp, "%f", x);
+    if (temp[5] >= 5) temp[4]++;
+    temp[5] = '\0';
+    return atof(temp);
+}

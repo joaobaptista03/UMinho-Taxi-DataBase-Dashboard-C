@@ -23,6 +23,7 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
         drivers_cat[i] = temp_d;
         i++;
     }
+    puts("Catálogo dos Drivers preenchido");
 
     // Criar catálogo dos Users
     User *users_cat;
@@ -36,6 +37,7 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
         users_cat[i] = temp_u;
         i++;
     }
+    puts("Catálogo dos Users preenchido");
 
     // Criar catálogo das Rides
     Ride *rides_cat;
@@ -50,26 +52,7 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
         i++;
         strcpy(temp_r.comment, "");
     }
-
-    /*
-    // Criar cópias dos catálogos para encapsulamento (NÃO FUNCIONA MAS NÃO É NECESSÁRIO)
-    Driver *new_drivers_cat;
-        new_drivers_cat = malloc(10001 * sizeof(Driver));
-        memcpy(new_drivers_cat, drivers_cat, 10001 * sizeof(Driver));
-    User *new_users_cat;
-        new_users_cat = malloc(100001*sizeof(Driver));
-        for (i = 1; i <= 100000; i++) new_users_cat[i] = users_cat[i];
-    Ride *new_rides_cat;
-        new_rides_cat = malloc(1000001*sizeof(Driver));
-        for (i = 1; i <= 1000000; i++) new_rides_cat[i] = rides_cat[i];
-    */
-
-    /*
-    // Libertar memória dos catálogos originais (NÃO FUNCIONA MAS NÃO É NECESSÁRIO)
-    free(drivers_cat);
-    free(users_cat);
-    free(rides_cat);
-    */
+    puts("Catálogo das Rides preenchido");
 
     handle_inputs(drivers_cat, users_cat, rides_cat, inputs);
 }

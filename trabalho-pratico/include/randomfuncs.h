@@ -9,6 +9,9 @@
 #define RANDOM_FUNCS_H
 
 #include <ctype.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
 
 /**
  *
@@ -23,5 +26,19 @@ int isDriver(char str[], int N);
  * 
  */
 int larger_double(double *doubles, int N);
+
+/**
+ *
+ * Este é o header da função que dadas 2 datas, retorna 1 se a primeira data for mais recente e 2 se a segunda data for mais recente.
+ * 
+ */
+int most_recent(char *date1, char *date2);
+
+/**
+ *
+ * Este é o header da função que dado um double com 1 dígito antes da vírgula, retorna o mesmo double arredondado a 3 casas.
+ * 
+ */
+double arred3(double x);
 
 #endif
