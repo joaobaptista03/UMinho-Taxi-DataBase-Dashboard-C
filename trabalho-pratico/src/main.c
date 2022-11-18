@@ -25,6 +25,7 @@ int main(int argc, char *argv[]) {
         drivers = fopen(driverspath, "r");
         free(driverspath);
         if (drivers != NULL) puts("Ficheiro dos Drivers aberto");
+        else puts("Erro na abertura do ficheiro dos Drivers");
     FILE *users;
         char *userspath;
         userspath = (char *) malloc(1000 * sizeof(char));
@@ -33,6 +34,7 @@ int main(int argc, char *argv[]) {
         users = fopen(userspath, "r");
         free(userspath);
         if (users != NULL) puts("Ficheiro dos Users aberto");
+        else puts("Erro na abertura do ficheiro dos Users");
     FILE *rides;
         char *ridespath;
         ridespath = (char *) malloc(1000 * sizeof(char));
@@ -41,6 +43,7 @@ int main(int argc, char *argv[]) {
         rides = fopen(ridespath, "r");
         free(ridespath);
         if (rides != NULL) puts("Ficheiro das Rides aberto");
+        else puts("Erro na abertura do ficheiro das Rides");
     FILE *inputs;
         inputs = fopen(argv[2], "r");
         if (inputs != NULL) puts("Ficheiro dos Inputs aberto");
