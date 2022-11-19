@@ -25,24 +25,19 @@ void query3 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
     puts("Q3 - Array recent_ride Inicializada");
 
     for (int i = 1; i <= 1000000; i++) {                                              // Percorrer o catálogo das Rides
-puts("1");
             char *status; status = malloc(10 * sizeof(char));
-puts("2");
             for (int j = 1; j <= 100000 && userLine == -1; j++) {                                            // Percorrer o catálogo dos Users
                 if (strcmp(users_cat[j].user, rides_cat[i].user) == 0) {
                     strcpy(status, users_cat[j].status);
                     userLine = j;
                 }
             }
-puts("3");
             if (most_recent(rides_cat[i].date, recent_ride[userLine]) == 1) strcpy(recent_ride[userLine], rides_cat[i].date);
-puts("4");
             if (strcmp(status, "active") == 0) tot_distancia[userLine] += atoi(rides_cat[i].distance);      // Verificar se o User está ativo
-puts("5");
             userLine = -1;
             free(status);
-puts("6");
     }
+
     puts("Q3 - tot_distancia preenchida");
 
     for (int i = 1; i <= 100000; i++) tot_distancia_cpy[i] = tot_distancia[i];                       // Clonar tot_distancia para ser usado no for loop
