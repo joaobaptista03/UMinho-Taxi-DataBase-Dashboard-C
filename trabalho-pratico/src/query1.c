@@ -88,9 +88,9 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
             }
            
             float taxa_dist, taxa_base;
-            char avaliacao_media[15]; int total_avaliacoes = 0; double av_media = 0;
-            char numero_viagens[10]; int num_viagens = 0;
-            char total_gasto[15]; double tot_gasto = 0;
+            int total_avaliacoes = 0; double av_media = 0;
+            int num_viagens = 0;
+            double tot_gasto = 0;
 
             // for loop que percorre o catálogo das Rides, e se cada ride for do User pretendido, faz os devidos cálculos
             for (int i = 1; i <= 1000000; i++) {
