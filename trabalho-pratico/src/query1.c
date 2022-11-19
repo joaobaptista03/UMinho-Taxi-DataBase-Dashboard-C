@@ -70,10 +70,9 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
         else {                                                      // Se não for Driver / Se for User
 
             User q1_u;                                              // Definição do User pretendido
-            q1_u = users_cat[atoi(g_hash_table_lookup(users_hash, id))];
-
-            // Se o user não existir
-            if (q1_u = NULL) {
+            
+            if (g_hash_table_lookup(users_hash, id) != NULL) q1_u = users_cat[atoi(g_hash_table_lookup(users_hash, id))];
+            else {
                 handle_outputs(counter, "");
                 return;
             }
