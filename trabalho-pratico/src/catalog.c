@@ -9,7 +9,7 @@
 
 void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
 
-    char temp[1000];                // String temporária que irá armazenar cada linha dos Ficheiros CSV
+    char *temp; temp = malloc(1000 * sizeof(char));                                // String temporária que irá armazenar cada linha dos Ficheiros CSV
 
     // Criar catálogo dos Drivers
     Driver *drivers_cat;
@@ -57,4 +57,6 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
     puts("Catálogo das Rides preenchido");
 
     handle_inputs(drivers_cat, users_cat, users_hash, rides_cat, inputs);
+
+    free(temp);
 }

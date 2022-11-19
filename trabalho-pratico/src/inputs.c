@@ -15,7 +15,7 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash,
         char new_input[100];
         strcpy(new_input, input);                                       // Encapsulamento
         if (new_input[0] == '1') query1(counter, drivers_cat, users_cat, users_hash, rides_cat, new_input + 2);                // Chamar a query1 se for o caso
-        if (new_input[0] == '2') query2(counter, drivers_cat, users_cat, rides_cat, new_input + 2);                // Chamar a query2 se for o caso
+        if (new_input[0] == '2') query2(counter, drivers_cat, users_cat, rides_cat, new_input + 2);                            // Chamar a query2 se for o caso
         if (new_input[0] == '3') query3(counter, drivers_cat, users_cat, users_hash, rides_cat, new_input + 2);                // Chamar a query3 se for o caso
         /*
         if (new_input[0] == '4') query4(counter, drivers_cat, users_cat, rides_cat, new_input + 2);
@@ -29,6 +29,10 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash,
     }
 
     g_hash_table_destroy(users_hash);
+
+    free(drivers_cat);
+    free(users_cat);
+    free(rides_cat);
 
     puts("Fim do Programa");
 }
