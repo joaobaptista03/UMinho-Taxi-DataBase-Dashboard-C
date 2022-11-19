@@ -28,7 +28,7 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
     User *users_cat;
     users_cat = malloc(100001*sizeof(User));
 
-    GHashTable *users_hash = g_hash_table_new(g_str_hash, g_str_equal);
+    GHashTable *users_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 
     for(int i = 1; fgets(temp, 1000, users); i++) {
         User temp_u;
