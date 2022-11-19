@@ -14,42 +14,39 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
     // Criar catálogo dos Drivers
     Driver *drivers_cat;
     drivers_cat = malloc(10001*sizeof(Driver));
-    int i = 1;
-    while(fgets(temp, 1000, drivers)) {
+
+    for(int i = 1; fgets(temp, 1000, drivers); i++) {
         Driver temp_d;
         sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
             temp_d.id, temp_d.name, temp_d.birth_date, temp_d.gender, temp_d.car_class, temp_d.license_plate, temp_d.city, temp_d.acc_creation, temp_d.status);
 
         drivers_cat[i] = temp_d;
-        i++;
     }
     puts("Catálogo dos Drivers preenchido");
 
     // Criar catálogo dos Users
     User *users_cat;
     users_cat = malloc(100001*sizeof(User));
-    i = 1;
-    while(fgets(temp, 1000, users)) {
+
+    for(int i = 1; fgets(temp, 1000, users); i++) {
         User temp_u;
         sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
             temp_u.user, temp_u.name, temp_u.gender, temp_u.birth_date, temp_u.acc_creation, temp_u.pay_method, temp_u.status);
 
         users_cat[i] = temp_u;
-        i++;
     }
     puts("Catálogo dos Users preenchido");
 
     // Criar catálogo das Rides
     Ride *rides_cat;
     rides_cat = malloc(1000001*sizeof(Ride));
-    i = 1;
-    while(fgets(temp, 1000, rides)) {
+
+    for(int i = 1; fgets(temp, 1000, rides); i++) {
         Ride temp_r;
         sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
             temp_r.id, temp_r.date, temp_r.driver, temp_r.user, temp_r.city, temp_r.distance, temp_r.score_user, temp_r.score_driver, temp_r.tip, temp_r.comment);
         
         rides_cat[i] = temp_r;
-        i++;
         strcpy(temp_r.comment, "");
     }
     puts("Catálogo das Rides preenchido");
