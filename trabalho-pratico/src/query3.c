@@ -35,8 +35,6 @@ void query3 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
             free(status);
     }
 
-    //printf("%i\n",tot_distancia[87439]);
-
     puts("Q3 - tot_distancia preenchida");
 
     for (int i = 1; i <= 100000; i++) tot_distancia_cpy[i] = tot_distancia[i];                       // Clonar tot_distancia para ser usado no for loop
