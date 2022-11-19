@@ -28,12 +28,17 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
     User *users_cat;
     users_cat = malloc(100001*sizeof(User));
 
+    GHashTable *users_hash = g_hash_table_new(g_str_hash, g_str_equal);
+
     for(int i = 1; fgets(temp, 1000, users); i++) {
         User temp_u;
         sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
             temp_u.user, temp_u.name, temp_u.gender, temp_u.birth_date, temp_u.acc_creation, temp_u.pay_method, temp_u.status);
 
         users_cat[i] = temp_u;
+
+        g_hash_table_insert(users_hash, g_strdup(temp_u.user), g_strdup_printf("%i", i));
+
     }
     puts("Catálogo dos Users preenchido");
 
@@ -47,6 +52,7 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
             temp_r.id, temp_r.date, temp_r.driver, temp_r.user, temp_r.city, temp_r.distance, temp_r.score_user, temp_r.score_driver, temp_r.tip, temp_r.comment);
         
         rides_cat[i] = temp_r;
+
         strcpy(temp_r.comment, "");
     }
     puts("Catálogo das Rides preenchido");
