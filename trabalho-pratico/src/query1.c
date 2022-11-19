@@ -42,9 +42,9 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
                 taxa_dist = 0.94;
             }
 
-            char avaliacao_media[15]; int total_avaliacoes = 0; double av_media = 0;
-            char numero_viagens[10]; int num_viagens = 0;
-            char total_auferido[15]; double tot_auferido = 0;
+            int total_avaliacoes = 0; double av_media = 0;
+            int num_viagens = 0;
+            double tot_auferido = 0;
 
             // for loop que percorre o catálogo das Rides, e se cada ride for do Driver pretendido, faz os devidos cálculos
             for (int i = 1; i <= 1000000; i++) {
@@ -58,13 +58,8 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
             if (num_viagens != 0) av_media = (double) total_avaliacoes / (double) num_viagens;
             else av_media = 0;
 
-            // Colocar nas respetivas strings os valores devidos, para posteriormente juntar tudo na string output
-            sprintf(avaliacao_media, "%.3f", av_media);
-            sprintf(numero_viagens, "%i", num_viagens);
-            sprintf(total_auferido, "%.3f", tot_auferido);
-
             char output[150];
-            sprintf(output, "%s;%s;%i;%s;%s;%s\n", q1_d.name, q1_d.gender, age(q1_d.birth_date), avaliacao_media, numero_viagens, total_auferido);
+            sprintf(output, "%s;%s;%i;%.3f;%i;%.3f\n", q1_d.name, q1_d.gender, age(q1_d.birth_date), av_media, num_viagens, tot_auferido);
             handle_outputs(counter, output);
         }
         else {                                                      // Se não for Driver / Se for User
