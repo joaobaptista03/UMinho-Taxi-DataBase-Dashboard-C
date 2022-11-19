@@ -14,7 +14,7 @@ void query3 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
     int *tot_distancia; tot_distancia = calloc(100001, sizeof(int));
     int *tot_distancia_cpy; tot_distancia_cpy = calloc(100001, sizeof(int));
     int *user_maioresID; user_maioresID = calloc(N, sizeof(int));
-    int userLine = -1;
+    int userLine;
 
     char **recent_ride;                                                                 // Criar array de strings dinâmicamente
     recent_ride = malloc(100001 * sizeof(char*));
@@ -25,18 +25,17 @@ void query3 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
     puts("Q3 - Array recent_ride Inicializada");
 
     for (int i = 1; i <= 1000000; i++) {                                              // Percorrer o catálogo das Rides
-            char *status; status = malloc(10 * sizeof(char));
-            for (int j = 1; j <= 100000 && userLine == -1; j++) {                                            // Percorrer o catálogo dos Users
-                if (strcmp(users_cat[j].user, rides_cat[i].user) == 0) {
-                    strcpy(status, users_cat[j].status);
-                    userLine = j;
-                }
-            }
+            userLine = atoi(g_hash_table_lookup(users_hash, rides_cat[i].user));
+
+            char *status = strdup(users_cat[userLine].status);
+
             if (most_recent(rides_cat[i].date, recent_ride[userLine]) == 1) strcpy(recent_ride[userLine], rides_cat[i].date);
             if (strcmp(status, "active") == 0) tot_distancia[userLine] += atoi(rides_cat[i].distance);      // Verificar se o User está ativo
-            userLine = -1;
+
             free(status);
     }
+
+    //printf("%i\n",tot_distancia[87439]);
 
     puts("Q3 - tot_distancia preenchida");
 

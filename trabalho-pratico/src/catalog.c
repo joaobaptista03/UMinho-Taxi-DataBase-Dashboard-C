@@ -38,7 +38,6 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
         users_cat[i] = temp_u;
 
         g_hash_table_insert(users_hash, g_strdup(temp_u.user), g_strdup_printf("%i", i));
-
     }
     puts("Catálogo dos Users preenchido");
 

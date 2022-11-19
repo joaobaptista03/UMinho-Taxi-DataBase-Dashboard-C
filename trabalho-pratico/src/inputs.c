@@ -27,5 +27,8 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash,
         */
        counter++;                                                       // Incrementar nº de inputs
     }
+
+    g_hash_table_destroy(users_hash);
+
     puts("Fim do Programa");
 }
