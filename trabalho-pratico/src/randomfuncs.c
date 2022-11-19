@@ -52,6 +52,45 @@ int most_recent(char *date1, char *date2) {
     return 3;
 }
 
+int larger_date_ind (char **dates, int N) {
+    int r = 0;
+    for (int i = 1; i < N; i++) {
+        int year_r = dates[r][6]*1000 + dates[r][7]*100 + dates[r][8]*10 + dates[r][9];
+        int year = dates[i][6]*1000 + dates[i][7]*100 + dates[i][8]*10 + dates[i][9];
+        if (year_r == year) {
+            int month_r = dates[r][3]*10 + dates[r][4];
+            int month = dates[i][3]*10 + dates[i][4];
+            if (month_r == month) {
+                int day_r = dates[r][1]*10 + dates[r][2];
+                int day = dates[i][1]*10 + dates[i][2];
+                if (day > day_r) r = i;
+            }
+            else if (month > month_r) r = i; 
+        }
+        else if (year > year_r) r = i;
+    }
+    return r;
+}
+
+void most_recent_arr(char **dates, int N) {
+    
+    char **dates_dup = strdup(dates);
+    char **dates_dup2 = strdup(dates);
+
+    int sorted[N];
+
+    for(int i = 0; i < N; i++) {
+        int larger = larger_date_ind(dates_dup, N);
+        sorted[i] = larger;
+        dates_dup[larger] = 0;
+    }
+
+    for(int i = 0; i < N; i++) strcpy(dates[i], dates_dup2[sorted[i]]);
+
+    free(dates_dup);
+    free(dates_dup2);
+}
+
 double arred3(double x) {
     char temp[15];
     sprintf(temp, "%f", x);

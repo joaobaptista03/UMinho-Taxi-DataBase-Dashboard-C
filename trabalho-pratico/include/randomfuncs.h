@@ -43,6 +43,20 @@ int most_recent(char *date1, char *date2);
 
 /**
  *
+ * Este é o header da função que dada uma array de datas(strings), e o tamanho dela, devolve o índice da maior data na array.
+ * 
+ */
+int larger_date_ind (char **dates, int N);
+
+/**
+ *
+ * Este é o header da função que dada uma array de datas(strings), e o tamanho dela, ordena-a por ordem decrescente da mais recente.
+ * 
+ */
+void most_recent_arr(char **dates, int N);
+
+/**
+ *
  * Este é o header da função que dado um double com 1 dígito antes da vírgula, retorna o mesmo double arredondado a 3 casas.
  * 
  */
