@@ -21,6 +21,6 @@
  * Este é o header da função que faz o tratamento dos inputs e redireciona-os para as query's correspondentes.
  * 
  */
-void handle_inputs(Driver *drivers_cat, User *users_cat, Ride *rides_cat, FILE *inputs);
+void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash, Ride *rides_cat, FILE *inputs);
 
 #endif

@@ -57,5 +57,5 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
     }
     puts("Catálogo das Rides preenchido");
 
-    handle_inputs(drivers_cat, users_cat, rides_cat, inputs);
+    handle_inputs(drivers_cat, users_cat, users_hash, rides_cat, inputs);
 }

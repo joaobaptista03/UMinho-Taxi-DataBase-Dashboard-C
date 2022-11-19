@@ -6,7 +6,7 @@
 
 #include "../include/inputs.h"
 
-void handle_inputs(Driver *drivers_cat, User *users_cat, Ride *rides_cat, FILE *inputs) {
+void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash, Ride *rides_cat, FILE *inputs) {
     
     int counter = 1;                                                    // Contador do input em que está
     char input[100];                                                    // String para qual cada linha de input irá ser copiada
@@ -14,9 +14,9 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, Ride *rides_cat, FILE *
         if (strchr(input, '\n')) *(strchr(input, '\n') - 1) = '\0';     // Trocar '\n' por '\0' na string input
         char new_input[100];
         strcpy(new_input, input);                                       // Encapsulamento
-        if (new_input[0] == '1') query1(counter, drivers_cat, users_cat, rides_cat, new_input + 2);                // Chamar a query1 se for o caso
+        if (new_input[0] == '1') query1(counter, drivers_cat, users_cat, users_hash, rides_cat, new_input + 2);                // Chamar a query1 se for o caso
         if (new_input[0] == '2') query2(counter, drivers_cat, users_cat, rides_cat, new_input + 2);                // Chamar a query2 se for o caso
-        if (new_input[0] == '3') query3(counter, drivers_cat, users_cat, rides_cat, new_input + 2);                // Chamar a query3 se for o caso
+        if (new_input[0] == '3') query3(counter, drivers_cat, users_cat, users_hash, rides_cat, new_input + 2);                // Chamar a query3 se for o caso
         /*
         if (new_input[0] == '4') query4(counter, drivers_cat, users_cat, rides_cat, new_input + 2);
         if (new_input[0] == '5') query5(counter, drivers_cat, users_cat, rides_cat, new_input + 2, input + 13);

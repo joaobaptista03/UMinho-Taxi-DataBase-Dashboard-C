@@ -7,7 +7,7 @@
 
 #include "../include/query3.h"
 
-void query3 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat, char *N_arg) {
+void query3 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *users_hash, Ride *rides_cat, char *N_arg) {
     printf("A executar Q3 (linha de input %i)\n", counter);
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
 
