@@ -120,13 +120,8 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
             if (num_viagens != 0) av_media = (double) total_avaliacoes / (double) num_viagens;
             else av_media = 0;
 
-            // Colocar nas respetivas strings os valores devidos, para posteriormente juntar tudo na string output
-            sprintf(avaliacao_media, "%.3f", av_media);
-            sprintf(numero_viagens, "%i", num_viagens);
-            sprintf(total_gasto, "%.3f", tot_gasto);
-
             char output[150];
-            sprintf(output, "%s;%s;%i;%s;%s;%s\n", q1_u.name, q1_u.gender, age(q1_u.birth_date), avaliacao_media, numero_viagens, total_gasto);
+            sprintf(output, "%s;%s;%i;%.3f;%i;%.3f\n", q1_u.name, q1_u.gender, age(q1_u.birth_date), av_media, num_viagens, tot_gasto);
             handle_outputs(counter, output);
         }
     printf("Fim da Q1 (linha de input %i)\n", counter);
