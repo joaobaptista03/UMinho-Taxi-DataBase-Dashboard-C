@@ -65,7 +65,7 @@ void query3 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
     free(tot_distancia);
     free(tot_distancia_cpy);
     free(user_maioresID);
-    free(recent_ride);
+    for (int i = 0; i <= 100000; i++) free (recent_ride[i]);
 
     printf("Fim da Q3 (linha de input %i)\n", counter);
 }
