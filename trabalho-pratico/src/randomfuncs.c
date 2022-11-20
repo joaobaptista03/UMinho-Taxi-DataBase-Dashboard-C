@@ -15,8 +15,8 @@ int isDriver(char str[], int N) {
 }
 
 int larger_double(double *doubles, int N) {
-    double r = 0; int ind = 1;
-    for (int i = 2; i < N; i++) {
+    double r = 0; int ind;
+    for (int i = 1; i < N; i++) {
         if (doubles[i] > r) {
             r = doubles[i];
             ind = i;

@@ -13,17 +13,17 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
 
     // Criar todas as arrays temporárias necessárias à função 
-    double *tot_avaliacoes; tot_avaliacoes = malloc(10001 * sizeof(double));
+    double *tot_avaliacoes; tot_avaliacoes = calloc(10001, sizeof(double));
     int *num_viagens; num_viagens = calloc(10001, sizeof(int));
     double *av_med; av_med = calloc(10001, sizeof(double));
     double *av_med_cpy; av_med_cpy = calloc(10001, sizeof(double));
 
     char **recent_ride;                                                                   // Criar array de strings dinâmicamente
     recent_ride = malloc(10001 * sizeof(char*));
-    for (int i = 0; i <= 10000; i++)
+    for (int i = 0; i < 10001; i++)
         recent_ride[i] = malloc((11+1) * sizeof(char));
 
-    for (int i = 1; i <= 10000; i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
+    for (int i = 0; i <= 10000; i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
     puts("Q2 - Array recent_ride Inicializada");
 
     for (int i = 1; i <= 1000000; i++) {                                                  // Percorrer o catálogo das rides
@@ -35,14 +35,16 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
         }
     }
 
-    for (int i = 1; i <= 10000; i++) av_med[i] = tot_avaliacoes[i] / num_viagens[i];  // Calcular a avaliação média para cada Driver armazenando na array av_med
+    for (int i = 1; i <= 10000; i++) {                                                    // Calcular a avaliação média para cada Driver armazenando na array av_med
+        if (num_viagens[i] != 0) av_med[i] = tot_avaliacoes[i] / num_viagens[i];
+        else av_med[i] = 0;
+    }
     puts("Q2 - Arrays Preenchidas");
-
-    int id_maiores[N];                                                                // Array que irá armazenar os ID's ordenados por ordem decrescente de maior av_med
 
     for (int i = 1; i <= 10000; i++) av_med_cpy[i] = av_med[i];                       // Clonar a array de avaliações médias para ser usado no for loop
     puts("Q2 - av_med clonada");
 
+    int *id_maiores; id_maiores = calloc(N, sizeof(int));                           // Array que irá armazenar os ID's ordenados por ordem decrescente de maior av_med
     for (int i = 0; i < N; i++) {                                                     // For loop que irá preencher id_maiores
         int larg_av_ind = larger_double(av_med_cpy, 10001);
         id_maiores[i] = larg_av_ind;
@@ -59,7 +61,7 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     }
     puts("Q2 - Desempate feito");
 
-    for (int i = N-1; i >= 0; i--) {               // For loop que irá criar a string de output e passá-la para a handle_outputs
+    for (int i = N-1; i >= 0; i--) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
         char *output; output = malloc(500 * sizeof(char));
         sprintf(output, "%s;%s;%.3f\n", drivers_cat[id_maiores[i]].id, drivers_cat[id_maiores[i]].name, av_med[id_maiores[i]]);
         handle_outputs(counter, output);
@@ -72,7 +74,7 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     free(av_med_cpy);
     for(int i = 0; i <= 10000; i++) free(recent_ride[i]);
     free(recent_ride);
-
+    free(id_maiores);
 
     printf("Fim da Q2 (linha de input %i)\n", counter);
 }
