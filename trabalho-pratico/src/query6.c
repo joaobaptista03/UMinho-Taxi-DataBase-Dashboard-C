@@ -47,6 +47,9 @@ void query6 (int counter, Ride *rides_cat, char *input) {
     handle_outputs(counter,output);
 
     free(output);
+    free(city);
+    free(data1);
+    free(data2);
 
 
     printf("Fim da Q6 (linha de input %i)\n", counter);
