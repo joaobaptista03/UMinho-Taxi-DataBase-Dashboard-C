@@ -29,7 +29,6 @@ void query6 (int counter, Ride *rides_cat, char *input) {
         if ((most_recent(rides_cat[i].date, data1) == 1 || most_recent(rides_cat[i].date, data1) == 3)
         &&  (most_recent(rides_cat[i].date, data2) == 2 || most_recent(rides_cat[i].date, data2) == 3)
         && strcmp(rides_cat[i].city, city) == 0) {
-            puts("1");
             contagem++;
             distance += atoi(rides_cat[i].distance);
         }
