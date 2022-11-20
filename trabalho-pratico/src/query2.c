@@ -59,17 +59,18 @@ void query2 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
     }
     puts("Q2 - Desempate feito");
 
-    for (int i = N-1; i >= 0; i--) {                                                  // For loop que irá criar a string de output e passá-la para a handle_outputs
-        char output[500];
+    for (int i = N-1; i >= 0; i--) {               // For loop que irá criar a string de output e passá-la para a handle_outputs
+        char *output; output = malloc(500 * sizeof(char));
         sprintf(output, "%s;%s;%.3f\n", drivers_cat[id_maiores[i]].id, drivers_cat[id_maiores[i]].name, av_med[id_maiores[i]]);
         handle_outputs(counter, output);
+        free(output);
     }
 
     free(tot_avaliacoes);
     free(num_viagens);
     free(av_med);
     free(av_med_cpy);
-    for (int i = 0; i <= 100000; i++) free (recent_ride[i]);
+    for (int i = 0; i <= 10000; i++) free (recent_ride[i]);
 
 
     printf("Fim da Q2 (linha de input %i)\n", counter);

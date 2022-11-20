@@ -9,6 +9,7 @@
 
 void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *users_hash, Ride *rides_cat, char *id) {
     printf("A executar Q1 (linha de input %i)\n", counter);
+
         if (isDriver(id, strlen(id))) {
 
             int id_driver = atoi(id);                           // Converter string id do input para int
@@ -16,6 +17,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
             // Se o driver não existir
             if ((id_driver > 10000 || id_driver < 1)) {
                 handle_outputs(counter, "");
+                printf("Fim da Q1 (linha de input %i)\n", counter);
                 return;
             }
 
@@ -24,6 +26,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
             // Se o Driver estiver inativo
             if (strcmp(q1_d.status, "inactive") == 0) {
                 handle_outputs(counter, "");
+                printf("Fim da Q1 (linha de input %i)\n", counter);
                 return;
             }
 
@@ -68,6 +71,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
             
             if (g_hash_table_lookup(users_hash, id) != NULL) q1_u = users_cat[atoi(g_hash_table_lookup(users_hash, id))];
             else {
+                printf("Fim da Q1 (linha de input %i)\n", counter);
                 handle_outputs(counter, "");
                 return;
             }
@@ -75,6 +79,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
             // Se o user for inactive
             if (strcmp(q1_u.status, "inactive") == 0) {
                 handle_outputs(counter, "");
+                printf("Fim da Q1 (linha de input %i)\n", counter);
                 return;
             }
            
@@ -110,7 +115,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
             // Se o número de viagens for 0, o divisor será 0, logo iria dar erro. Logo, a avaliação média é imediatamente 0
             if (num_viagens != 0) av_media = (double) total_avaliacoes / (double) num_viagens;
             else av_media = 0;
-
+            
             char output[150];
             sprintf(output, "%s;%s;%i;%.3f;%i;%.3f\n", q1_u.name, q1_u.gender, age(q1_u.birth_date), av_media, num_viagens, tot_gasto);
             handle_outputs(counter, output);
