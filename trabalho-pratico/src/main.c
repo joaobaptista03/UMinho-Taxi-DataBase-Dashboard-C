@@ -49,6 +49,7 @@ int main(int argc, char *argv[]) {
         if (inputs != NULL) puts("Ficheiro dos Inputs aberto");
 
     system("mkdir Resultados");                                               // Criar diretório para os Resultados
+    system("gcc --version");
 
     inserir_dados(drivers, users, rides, inputs);                             // Inserir dados nos catálogos
 
