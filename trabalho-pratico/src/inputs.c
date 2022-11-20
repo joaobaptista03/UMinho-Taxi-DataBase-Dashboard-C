@@ -7,6 +7,17 @@
 #include "../include/inputs.h"
 
 void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash, Ride *rides_cat, FILE *inputs) {
+
+    Driver *drivers_cat_dup; drivers_cat_dup = malloc(10001*sizeof(Driver));
+        for(int i = 1; i <= 10000; i++) drivers_cat_dup[i] = drivers_cat[i];
+    User *users_cat_dup; users_cat_dup = malloc(100001*sizeof(User));
+        for(int i = 1; i <= 100000; i++) users_cat_dup[i] = users_cat[i];
+    Ride *rides_cat_dup; rides_cat_dup = malloc(1000001*sizeof(Ride));
+        for(int i = 1; i <= 1000000; i++) rides_cat_dup[i] = rides_cat[i];
+
+    free(drivers_cat);
+    free(users_cat);
+    free(rides_cat);
     
     int counter = 1;                                                    // Contador do input em que está
     char input[100];                                                    // String para qual cada linha de input irá ser copiada
@@ -14,25 +25,25 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash,
         if (strchr(input, '\n')) *(strchr(input, '\n') - 1) = '\0';     // Trocar '\n' por '\0' na string input
         char new_input[100];
         strcpy(new_input, input);                                       // Encapsulamento
-        if (new_input[0] == '1') query1(counter, drivers_cat, users_cat, users_hash, rides_cat, new_input + 2);                // Chamar a query1 se for o caso
-        if (new_input[0] == '2') query2(counter, drivers_cat, users_cat, rides_cat, new_input + 2);                            // Chamar a query2 se for o caso
-        if (new_input[0] == '3') query3(counter, drivers_cat, users_cat, users_hash, rides_cat, new_input + 2);                // Chamar a query3 se for o caso
+        if (new_input[0] == '1') query1(counter, drivers_cat_dup, users_cat_dup, users_hash, rides_cat_dup, new_input + 2);                // Chamar a query1 se for o caso
+        if (new_input[0] == '2') query2(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2);                            // Chamar a query2 se for o caso
+        if (new_input[0] == '3') query3(counter, drivers_cat_dup, users_cat_dup, users_hash, rides_cat_dup, new_input + 2);                // Chamar a query3 se for o caso
         /*
-        if (new_input[0] == '4') query4(counter, drivers_cat, users_cat, rides_cat, new_input + 2);
-        if (new_input[0] == '5') query5(counter, drivers_cat, users_cat, rides_cat, new_input + 2, input + 13);
-        if (new_input[0] == '6') query6(counter, drivers_cat, users_cat, rides_cat, new_input + 2); // Tem de fazer parsing porque o tamanho da city varia
-        if (new_input[0] == '7') query7(counter, drivers_cat, users_cat, rides_cat, new_input + 2); // Tem de fazer parsing porque o tamanho da city varia
-        if (new_input[0] == '8') query8(counter, drivers_cat, users_cat, rides_cat, new_input + 2, input + 4);
-        if (new_input[0] == '9') query9(counter, drivers_cat, users_cat, rides_cat, new_input + 2, input + 13);
+        if (new_input[0] == '4') query4(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2);
+        if (new_input[0] == '5') query5(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2, input + 13);
+        if (new_input[0] == '6') query6(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2); // Tem de fazer parsing porque o tamanho da city varia
+        if (new_input[0] == '7') query7(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2); // Tem de fazer parsing porque o tamanho da city varia
+        if (new_input[0] == '8') query8(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2, input + 4);
+        if (new_input[0] == '9') query9(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2, input + 13);
         */
        counter++;                                                       // Incrementar nº de inputs
     }
 
     g_hash_table_destroy(users_hash);
 
-    free(drivers_cat);
-    free(users_cat);
-    free(rides_cat);
+    free(drivers_cat_dup);
+    free(users_cat_dup);
+    free(rides_cat_dup);
 
     puts("Fim do Programa");
 }

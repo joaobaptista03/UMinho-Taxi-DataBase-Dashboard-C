@@ -12,8 +12,7 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
     char *temp; temp = malloc(1000 * sizeof(char));                                // String temporária que irá armazenar cada linha dos Ficheiros CSV
 
     // Criar catálogo dos Drivers
-    Driver *drivers_cat;
-    drivers_cat = malloc(10001*sizeof(Driver));
+    Driver *drivers_cat; drivers_cat = malloc(10001*sizeof(Driver));
 
     for(int i = 1; fgets(temp, 1000, drivers); i++) {
         Driver temp_d;
@@ -25,8 +24,7 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
     puts("Catálogo dos Drivers preenchido");
 
     // Criar catálogo dos Users
-    User *users_cat;
-    users_cat = malloc(100001*sizeof(User));
+    User *users_cat; users_cat = malloc(100001*sizeof(User));
 
     GHashTable *users_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 
@@ -42,8 +40,7 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
     puts("Catálogo dos Users preenchido");
 
     // Criar catálogo das Rides
-    Ride *rides_cat;
-    rides_cat = malloc(1000001*sizeof(Ride));
+    Ride *rides_cat; rides_cat = malloc(1000001*sizeof(Ride));
 
     for(int i = 1; fgets(temp, 1000, rides); i++) {
         Ride temp_r;
@@ -56,7 +53,18 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
     }
     puts("Catálogo das Rides preenchido");
 
-    handle_inputs(drivers_cat, users_cat, users_hash, rides_cat, inputs);
+    Driver *drivers_cat_dup; drivers_cat_dup = malloc(10001*sizeof(Driver));
+        for(int i = 1; i <= 10000; i++) drivers_cat_dup[i] = drivers_cat[i];
+    User *users_cat_dup; users_cat_dup = malloc(100001*sizeof(User));
+        for(int i = 1; i <= 100000; i++) users_cat_dup[i] = users_cat[i];
+    Ride *rides_cat_dup; rides_cat_dup = malloc(1000001*sizeof(Ride));
+        for(int i = 1; i <= 1000000; i++) rides_cat_dup[i] = rides_cat[i];
+
+    free(drivers_cat);
+    free(users_cat);
+    free(rides_cat);
+
+    handle_inputs(drivers_cat_dup, users_cat_dup, users_hash, rides_cat_dup, inputs);
 
     free(temp);
 }
