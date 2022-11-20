@@ -1,21 +1,21 @@
 /**
- * @file query4.c
+ * @file query5.c
  * 
- * Este ficheiro contém o conteúdo das funções relacionadas com as Query 4.
+ * Este ficheiro contém o conteúdo das funções relacionadas com as Query 5.
  * 
  */
 
-#include "../include/query4.h"
+#include "../include/query5.h"
 
-void query4 (int counter, Driver *drivers_cat, Ride *rides_cat, char *cidade) {
-    printf("A executar Q4 (linha de input %i)\n", counter);
-
+void query5 (int counter, Driver *drivers_cat, Ride *rides_cat, char *data1, char* data2) {
+    
     double preco = 0;
     int contagem = 0;
 
-    for (int i = 1; i <= 1000000; i++) {
-        if (strcmp(rides_cat[i].city, cidade) == 0) {
-            int distance = atoi(rides_cat[i].distance);
+    for(int i = 1; i <= 1000000; i++) {
+        
+        if (most_recent(rides_cat[i].date, data1) == 1 && most_recent(rides_cat[i].date, data2) == 2) {
+
             char *class; class = malloc(10 * sizeof(char));
             strcpy(class, drivers_cat[atoi(rides_cat[i].driver)].car_class);
 
@@ -32,11 +32,11 @@ void query4 (int counter, Driver *drivers_cat, Ride *rides_cat, char *cidade) {
                 taxa_base = 5.2;
                 taxa_dist = 0.94;
             }
-
-            preco += taxa_dist * distance + taxa_base;
             contagem++;
+            preco += taxa_dist * atoi(rides_cat[i].distance) + taxa_base;
 
             free(class);
+
         }
     }
 
@@ -44,7 +44,7 @@ void query4 (int counter, Driver *drivers_cat, Ride *rides_cat, char *cidade) {
     
     if (contagem == 0) {
         handle_outputs(counter, "");
-        printf("Fim da Q4 (linha de input %i)\n", counter);
+        printf("Fim da Q5 (linha de input %i)\n", counter);
         return;
     }
     
@@ -54,5 +54,5 @@ void query4 (int counter, Driver *drivers_cat, Ride *rides_cat, char *cidade) {
 
     free(output);
 
-    printf("Fim da Q4 (linha de input %i)\n", counter);
+    printf("Fim da Q5 (linha de input %i)\n", counter);
 }
