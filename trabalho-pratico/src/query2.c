@@ -70,7 +70,8 @@ void query2 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
     free(num_viagens);
     free(av_med);
     free(av_med_cpy);
-    for (int i = 0; i <= 10000; i++) free (recent_ride[i]);
+    for(int i = 0; i <= 10000; i++) free(recent_ride[i]);
+    free(recent_ride);
 
 
     printf("Fim da Q2 (linha de input %i)\n", counter);
