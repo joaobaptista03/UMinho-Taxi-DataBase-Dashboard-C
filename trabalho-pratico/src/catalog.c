@@ -60,11 +60,18 @@ void inserir_dados(FILE *drivers, FILE *users, FILE *rides, FILE *inputs) {
     Ride *rides_cat_dup; rides_cat_dup = malloc(1000001*sizeof(Ride));
         for(int i = 1; i <= 1000000; i++) rides_cat_dup[i] = rides_cat[i];
 
+    GHashTable *users_hash_dup = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+    void new_hash(gpointer key, gpointer value, gpointer u_data) {
+        g_hash_table_insert(users_hash_dup, g_strdup(key), g_strdup(value));
+    }
+    g_hash_table_foreach(users_hash, new_hash, NULL);
+    g_hash_table_destroy(users_hash);
+
     free(drivers_cat);
     free(users_cat);
     free(rides_cat);
 
-    handle_inputs(drivers_cat_dup, users_cat_dup, users_hash, rides_cat_dup, inputs);
+    handle_inputs(drivers_cat_dup, users_cat_dup, users_hash_dup, rides_cat_dup, inputs);
 
     free(temp);
 }

@@ -18,6 +18,13 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash,
     free(drivers_cat);
     free(users_cat);
     free(rides_cat);
+
+    GHashTable *users_hash_dup = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+    void new_hash(gpointer key, gpointer value, gpointer u_data) {
+        g_hash_table_insert(users_hash_dup, g_strdup(key), g_strdup(value));
+    }
+    g_hash_table_foreach(users_hash, new_hash, NULL);
+    g_hash_table_destroy(users_hash);
     
     int counter = 1;                                                    // Contador do input em que está
     char input[100];                                                    // String para qual cada linha de input irá ser copiada
@@ -25,9 +32,9 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash,
         if (strchr(input, '\n')) *(strchr(input, '\n') - 1) = '\0';     // Trocar '\n' por '\0' na string input
         char new_input[100];
         strcpy(new_input, input);                                       // Encapsulamento
-        if (new_input[0] == '1') query1(counter, drivers_cat_dup, users_cat_dup, users_hash, rides_cat_dup, new_input + 2);                // Chamar a query1 se for o caso
+        if (new_input[0] == '1') query1(counter, drivers_cat_dup, users_cat_dup, users_hash_dup, rides_cat_dup, new_input + 2);                // Chamar a query1 se for o caso
         if (new_input[0] == '2') query2(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2);                            // Chamar a query2 se for o caso
-        if (new_input[0] == '3') query3(counter, drivers_cat_dup, users_cat_dup, users_hash, rides_cat_dup, new_input + 2);                // Chamar a query3 se for o caso
+        if (new_input[0] == '3') query3(counter, drivers_cat_dup, users_cat_dup, users_hash_dup, rides_cat_dup, new_input + 2);                // Chamar a query3 se for o caso
         /*
         if (new_input[0] == '4') query4(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2);
         if (new_input[0] == '5') query5(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2, input + 13);
@@ -39,7 +46,7 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash,
        counter++;                                                       // Incrementar nº de inputs
     }
 
-    g_hash_table_destroy(users_hash);
+    g_hash_table_destroy(users_hash_dup);
 
     free(drivers_cat_dup);
     free(users_cat_dup);
