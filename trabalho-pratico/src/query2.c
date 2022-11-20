@@ -20,7 +20,7 @@ void query2 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat,
 
     char **recent_ride;                                                                   // Criar array de strings dinâmicamente
     recent_ride = malloc(10001 * sizeof(char*));
-    for (int i = 0; i < 10001; i++)
+    for (int i = 0; i <= 10000; i++)
         recent_ride[i] = malloc((11+1) * sizeof(char));
 
     for (int i = 1; i <= 10000; i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
