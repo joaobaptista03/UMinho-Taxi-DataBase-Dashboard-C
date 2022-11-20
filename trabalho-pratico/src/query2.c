@@ -7,7 +7,7 @@
 
 #include "../include/query2.h"
 
-void query2 (int counter, Driver *drivers_cat, User *users_cat, Ride *rides_cat, char *N_arg) {
+void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     printf("A executar Q2 (linha de input %i)\n", counter);
 
     int N = atoi(N_arg);                                                      // Converter argumento N string para int

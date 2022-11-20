@@ -33,10 +33,10 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash,
         char *new_input; new_input = malloc(100 * sizeof(char)); 
         strcpy(new_input, input);                                       // Encapsulamento
         if (new_input[0] == '1') query1(counter, drivers_cat_dup, users_cat_dup, users_hash_dup, rides_cat_dup, new_input + 2);                // Chamar a query1 se for o caso
-        if (new_input[0] == '2') query2(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2);                            // Chamar a query2 se for o caso
-        if (new_input[0] == '3') query3(counter, drivers_cat_dup, users_cat_dup, users_hash_dup, rides_cat_dup, new_input + 2);                // Chamar a query3 se for o caso
+        if (new_input[0] == '2') query2(counter, drivers_cat_dup, rides_cat_dup, new_input + 2);                            // Chamar a query2 se for o caso
+        if (new_input[0] == '3') query3(counter, users_cat_dup, users_hash_dup, rides_cat_dup, new_input + 2);                // Chamar a query3 se for o caso
+        if (new_input[0] == '4') query4(counter, drivers_cat_dup, rides_cat_dup, new_input + 2);
         /*
-        if (new_input[0] == '4') query4(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2);
         if (new_input[0] == '5') query5(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2, input + 13);
         if (new_input[0] == '6') query6(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2); // Tem de fazer parsing porque o tamanho da city varia
         if (new_input[0] == '7') query7(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, new_input + 2); // Tem de fazer parsing porque o tamanho da city varia

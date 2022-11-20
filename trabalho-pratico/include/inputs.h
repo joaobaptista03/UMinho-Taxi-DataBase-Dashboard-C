@@ -15,6 +15,7 @@
 #include "../include/query1.h"
 #include "../include/query2.h"
 #include "../include/query3.h"
+#include "../include/query4.h"
 
 /**
  *
