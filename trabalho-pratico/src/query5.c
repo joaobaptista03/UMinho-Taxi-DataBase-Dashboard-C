@@ -10,7 +10,7 @@
 void query5 (int counter, Driver *drivers_cat, Ride *rides_cat, char *data1, char* data2) {
     printf("A executar Q5 (linha de input %i)\n", counter);
 
-    data[10] = '\0';
+    data1[10] = '\0';
     
     double preco = 0;
     int contagem = 0;
