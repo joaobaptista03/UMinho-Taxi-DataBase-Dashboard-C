@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS= -Wall -Iincludes -Ipath/to/glib/include `pkg-config --cflags glib-2.0`
+CFLAGS= -Wall -Iincludes -g -Ipath/to/glib/include `pkg-config --cflags glib-2.0`
 LDFLAGS= `pkg-config --libs glib-2.0` -lm
 
 all: main

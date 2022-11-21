@@ -90,6 +90,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
             
             handle_outputs(counter, "");
             printf("Fim da Q1 (O User não existe) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
+            return;
         }
 
         // Se o user for inactive
