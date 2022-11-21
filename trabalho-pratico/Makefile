@@ -4,10 +4,11 @@ LDFLAGS= `pkg-config --libs glib-2.0` -lm
 
 all: main
 
-main: src/main.o src/query1.o src/query2.o src/query3.o src/query4.o src/query5.o src/query6.o src/randomfuncs.o src/age_time.o src/catalog.o src/inputs.o src/outputs.o
+main: src/main.o src/files.o src/query1.o src/query2.o src/query3.o src/query4.o src/query5.o src/query6.o src/randomfuncs.o src/age_time.o src/catalog.o src/inputs.o src/outputs.o
 	$(CC) $^ $(LDFLAGS) $(CFLAGS) -o programa-principal
 
 src/main.o : src/main.c
+src/files.o : src/files.c
 src/query1.o : src/query1.c
 src/query2.o : src/query2.c
 src/query3.o : src/query3.c
