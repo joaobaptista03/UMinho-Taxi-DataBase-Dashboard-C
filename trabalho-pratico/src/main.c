@@ -54,6 +54,7 @@ int main(int argc, char *argv[]) {
         if (inputs != NULL) puts("Ficheiro dos Inputs aberto");
 
     system("mkdir Resultados");                                               // Criar diretório para os Resultados
+    puts("");
     system("gcc --version");
 
     inserir_dados(drivers, users, rides, inputs);                             // Inserir dados nos catálogos
@@ -65,12 +66,12 @@ int main(int argc, char *argv[]) {
     fclose(users);
         if (users != NULL) puts("Ficheiro dos Users fechado");
     fclose(inputs);
-        if (inputs != NULL) puts("Ficheiro dos Inputs fechado");
+        if (inputs != NULL) puts("Ficheiro dos Inputs fechado\n");
 
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Programa Terminado (%f)\n", cpu_time_used );
+    printf("Programa Terminado (%f segundos)\n", cpu_time_used );
     
     return 0;
 }
