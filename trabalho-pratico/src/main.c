@@ -55,7 +55,6 @@ int main(int argc, char *argv[]) {
 
     system("mkdir Resultados");                                               // Criar diretório para os Resultados
     puts("");
-    system("gcc --version");
 
     inserir_dados(drivers, users, rides, inputs);                             // Inserir dados nos catálogos
 
