@@ -8,7 +8,7 @@
 #include "../include/query4.h"
 
 void query4 (int counter, Driver *drivers_cat, Ride *rides_cat, char *cidade) {
-    printf("A executar Q4 (linha de input %i)\n", counter);
+    printf("\nA executar Q4 (linha de input %i)\n", counter);
 
     // Medição de tempo
     clock_t start, end;
@@ -66,5 +66,5 @@ void query4 (int counter, Driver *drivers_cat, Ride *rides_cat, char *cidade) {
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Fim da Q4 - %f segundos (linha de input %i)\n\n", cpu_time_used, counter);
+    printf("Fim da Q4 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
 }

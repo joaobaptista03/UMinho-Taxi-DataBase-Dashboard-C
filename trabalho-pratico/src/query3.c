@@ -8,7 +8,7 @@
 #include "../include/query3.h"
 
 void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_cat, char *N_arg) {
-    printf("A executar Q3 (linha de input %i)\n", counter);
+    printf("\nA executar Q3 (linha de input %i)\n", counter);
 
     // Medição de tempo
     clock_t start, end;
@@ -28,7 +28,6 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
         recent_ride[i] = malloc(11 * sizeof(char));
 
     for (int i = 1; i <= 100000; i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
-    puts("Q3 - Array recent_ride Inicializada");
 
     for (int i = 1; i <= 1000000; i++) {                                              // Percorrer o catálogo das Rides
             userLine = atoi(g_hash_table_lookup(users_hash, rides_cat[i].user));
@@ -41,17 +40,13 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
             free(status);
     }
 
-    puts("Q3 - tot_distancia preenchida");
-
     for (int i = 1; i <= 100000; i++) tot_distancia_cpy[i] = tot_distancia[i];                       // Clonar tot_distancia para ser usado no for loop
-    puts("Q3 - tot_distancia clonada");
 
     for (int i = 0; i < N; i++) {                                                     // For loop que irá preencher user_maiores
         int larg_totDist_user = larger_int(tot_distancia_cpy, 100001);
         user_maioresID[i] = larg_totDist_user;
         tot_distancia_cpy[larg_totDist_user] = 0;
     }
-    puts("Q3 - user_maioresID preenchida");
 
     for (int i = 0; i < N-1; i++) {
         if (tot_distancia[user_maioresID[i]] == tot_distancia[user_maioresID[i+1]]) {
@@ -60,7 +55,6 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
             else if (rec_ride == 3 && strcmp(users_cat[i].user, users_cat[i+1].user) > 0) swap(user_maioresID, i, i+1);
         }
     }
-    puts("Q3 - Desempate feito");
 
     for (int i = N-1; i >= 0; i--) {                                                  // For loop que irá criar a string de output e passá-la para a handle_outputs
         char output[500];
@@ -77,5 +71,5 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Fim da Q3 - %f segundos (linha de input %i)\n\n", cpu_time_used, counter);
+    printf("Fim da Q3 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
 }

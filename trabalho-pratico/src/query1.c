@@ -26,7 +26,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
             cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
             
             handle_outputs(counter, "");
-            printf("Fim da Q1 (O Driver não existe) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
+            printf("Fim da Q1 (O Driver não existe) - %f segundos (linha de input %i)\n", cpu_time_used, counter);
             return;
         }
 
@@ -39,7 +39,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
             cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
             
             handle_outputs(counter, "");
-            printf("Fim da Q1 (O Driver está inativo) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
+            printf("Fim da Q1 (O Driver está inativo) - %f segundos (linha de input %i)\n", cpu_time_used, counter);
             return;
         }
 
@@ -89,7 +89,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
             cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
             
             handle_outputs(counter, "");
-            printf("Fim da Q1 (O User não existe) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
+            printf("Fim da Q1 (O User não existe) - %f segundos (linha de input %i)\n", cpu_time_used, counter);
             return;
         }
 
@@ -100,7 +100,7 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
             cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
             
             handle_outputs(counter, "");
-            printf("Fim da Q1 (O User está inativo) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
+            printf("Fim da Q1 (O User está inativo) - %f segundos (linha de input %i)\n", cpu_time_used, counter);
             return;
         }
         
@@ -145,5 +145,5 @@ void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *user
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Fim da Q1 - %f segundos (linha de input %i)\n\n", cpu_time_used, counter);
+    printf("Fim da Q1 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
 }

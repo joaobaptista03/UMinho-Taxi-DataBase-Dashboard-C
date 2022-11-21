@@ -40,12 +40,12 @@ void open_files(char *csv_path, char *inputs_path) {
 
     FILE *inputs;
         inputs = fopen(inputs_path, "r");
-        if (inputs != NULL) puts("Ficheiro dos Inputs aberto");
+        if (inputs != NULL) puts("Ficheiro dos Inputs aberto\n");
 
     inserir_dados(drivers, users, rides, inputs);                             // Inserir dados nos catálogos
 
     fclose(drivers);
-        if (drivers != NULL) puts("Ficheiro dos Drivers fechado");
+        if (drivers != NULL) puts("\nFicheiro dos Drivers fechado");
     fclose(rides);
         if (rides != NULL) puts("Ficheiro dos Rides fechado");
     fclose(users);

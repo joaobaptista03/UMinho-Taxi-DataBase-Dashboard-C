@@ -8,7 +8,7 @@
 #include "../include/query6.h"
 
 void query6 (int counter, Ride *rides_cat, char *input) {
-    printf("A executar Q6 (linha de input %i)\n", counter);
+    printf("\nA executar Q6 (linha de input %i)\n", counter);
 
     // Medição de tempo
     clock_t start, end;
@@ -63,5 +63,5 @@ void query6 (int counter, Ride *rides_cat, char *input) {
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Fim da Q6 - %f segundos (linha de input %i)\n\n", cpu_time_used, counter);
+    printf("Fim da Q6 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
 }

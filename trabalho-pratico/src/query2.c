@@ -8,7 +8,7 @@
 #include "../include/query2.h"
 
 void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
-    printf("A executar Q2 (linha de input %i)\n", counter);
+    printf("\nA executar Q2 (linha de input %i)\n", counter);
 
     // Medição de tempo
     clock_t start, end;
@@ -29,7 +29,6 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
         recent_ride[i] = malloc((11+1) * sizeof(char));
 
     for (int i = 0; i <= 10000; i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
-    puts("Q2 - Array recent_ride Inicializada");
 
     for (int i = 1; i <= 1000000; i++) {                                                  // Percorrer o catálogo das rides
         if (strcmp(drivers_cat[atoi(rides_cat[i].driver)].status, "active") == 0) {       // Verificar se o Driver está ativo
@@ -44,10 +43,8 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
         if (num_viagens[i] != 0) av_med[i] = tot_avaliacoes[i] / num_viagens[i];
         else av_med[i] = 0;
     }
-    puts("Q2 - Arrays Preenchidas");
 
     for (int i = 1; i <= 10000; i++) av_med_cpy[i] = av_med[i];                       // Clonar a array de avaliações médias para ser usado no for loop
-    puts("Q2 - av_med clonada");
 
     int *id_maiores; id_maiores = calloc(N, sizeof(int));                           // Array que irá armazenar os ID's ordenados por ordem decrescente de maior av_med
     for (int i = 0; i < N; i++) {                                                     // For loop que irá preencher id_maiores
@@ -55,7 +52,6 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
         id_maiores[i] = larg_av_ind;
         av_med_cpy[larg_av_ind] = 0;
     }
-    puts("Q2 - id_maiores preenchida");
 
     for (int i = 0; i < N-1; i++) {
         if (av_med[id_maiores[i]] == av_med[id_maiores[i+1]]) {
@@ -64,7 +60,6 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
             else if (rec_ride == 3 && id_maiores[i] > id_maiores[i+1]) swap(id_maiores, i, i+1);
         }
     }
-    puts("Q2 - Desempate feito");
 
     for (int i = N-1; i >= 0; i--) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
         char *output; output = malloc(500 * sizeof(char));
