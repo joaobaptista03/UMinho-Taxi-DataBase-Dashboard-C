@@ -8,17 +8,18 @@
 
 void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash, Ride *rides_cat, FILE *inputs) {
 
+    // Encapsulamento Catálogos
     Driver *drivers_cat_dup; drivers_cat_dup = malloc(10001*sizeof(Driver));
         for(int i = 1; i <= 10000; i++) drivers_cat_dup[i] = drivers_cat[i];
+    free(drivers_cat);
     User *users_cat_dup; users_cat_dup = malloc(100001*sizeof(User));
         for(int i = 1; i <= 100000; i++) users_cat_dup[i] = users_cat[i];
+    free(users_cat);
     Ride *rides_cat_dup; rides_cat_dup = malloc(1000001*sizeof(Ride));
         for(int i = 1; i <= 1000000; i++) rides_cat_dup[i] = rides_cat[i];
-
-    free(drivers_cat);
-    free(users_cat);
     free(rides_cat);
 
+    // Encapsulamento Hash Table
     GHashTable *users_hash_dup = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
     void new_hash(gpointer key, gpointer value, gpointer u_data) {
         g_hash_table_insert(users_hash_dup, g_strdup(key), g_strdup(value));
@@ -26,6 +27,7 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash,
     g_hash_table_foreach(users_hash, new_hash, NULL);
     g_hash_table_destroy(users_hash);
 
+    // Início Inputs
     int counter = 1;                                                    // Contador do input em que está
     char *input; input = malloc(100 * sizeof(char));                    // String para qual cada linha de input irá ser copiada
     while(fgets(input, 100, inputs)) {                                  // Loop While que irá fazer certas coisas (em cada loop) a cada linha do ficheiros de inputs  
