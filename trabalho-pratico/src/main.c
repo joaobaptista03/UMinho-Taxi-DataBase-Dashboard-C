@@ -9,10 +9,7 @@
 #include <string.h>
 #include <time.h>
 
-#include "../include/file_drivers.h"
-#include "../include/file_users.h"
-#include "../include/file_rides.h"
-#include "../include/file_inputs.h"
+#include "../include/files.h"
 #include "../include/catalog.h"
 
 int main(int argc, char *argv[]) {
@@ -32,10 +29,10 @@ int main(int argc, char *argv[]) {
     double cpu_time_used;
     start = clock();
 
-    FILE *drivers = open_file_drivers(argv[1]);
-    FILE *users = open_file_users(argv[1]);
-    FILE *rides = open_file_rides(argv[1]);
-    FILE *inputs = open_file_inputs(argv[2]);
+    FILE *drivers = open_files(argv[1], "/drivers.csv");
+    FILE *users = open_files(argv[1], "/users.csv");
+    FILE *rides = open_files(argv[1], "/rides.csv");
+    FILE *inputs = open_files(argv[2], "");
 
     inserir_dados(drivers, users, rides, inputs);
 
