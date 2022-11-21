@@ -9,6 +9,12 @@
 
 void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_cat, char *N_arg) {
     printf("A executar Q3 (linha de input %i)\n", counter);
+
+    // Medição de tempo
+    clock_t start, end;
+    double cpu_time_used;
+    start = clock();
+
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
 
     int *tot_distancia; tot_distancia = calloc(100001, sizeof(int));
@@ -68,5 +74,8 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
     for (int i = 0; i <= 100000; i++) free(recent_ride[i]);
     free(recent_ride);
 
-    printf("Fim da Q3 (linha de input %i)\n", counter);
+    // Medição de tempo
+    end = clock();
+    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("Fim da Q3 - %f segundos (linha de input %i)\n\n", cpu_time_used, counter);
 }

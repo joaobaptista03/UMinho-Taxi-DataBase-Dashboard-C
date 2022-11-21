@@ -9,6 +9,11 @@
 
 void query6 (int counter, Ride *rides_cat, char *input) {
     printf("A executar Q6 (linha de input %i)\n", counter);
+
+    // Medição de tempo
+    clock_t start, end;
+    double cpu_time_used;
+    start = clock();
     
     int i;
     char *city; city = malloc(20 * sizeof(char));
@@ -37,8 +42,12 @@ void query6 (int counter, Ride *rides_cat, char *input) {
     char *output; output = malloc(100 * sizeof(char));
     
     if (contagem == 0) {
+        // Medição de tempo
+        end = clock();
+        cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        
         handle_outputs(counter, "");
-        printf("Fim da Q6 (linha de input %i)\n", counter);
+        printf("Fim da Q6 (Sem viagens) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
         return;
     }
     
@@ -51,6 +60,8 @@ void query6 (int counter, Ride *rides_cat, char *input) {
     free(data1);
     free(data2);
 
-
-    printf("Fim da Q6 (linha de input %i)\n", counter);
+    // Medição de tempo
+    end = clock();
+    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("Fim da Q6 - %f segundos (linha de input %i)\n\n", cpu_time_used, counter);
 }

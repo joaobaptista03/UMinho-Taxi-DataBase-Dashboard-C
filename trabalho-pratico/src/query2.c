@@ -10,6 +10,11 @@
 void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     printf("A executar Q2 (linha de input %i)\n", counter);
 
+    // Medição de tempo
+    clock_t start, end;
+    double cpu_time_used;
+    start = clock();
+
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
 
     // Criar todas as arrays temporárias necessárias à função 
@@ -76,5 +81,8 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     free(recent_ride);
     free(id_maiores);
 
-    printf("Fim da Q2 (linha de input %i)\n", counter);
+    // Medição de tempo
+    end = clock();
+    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("Fim da Q2 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
 }
