@@ -19,12 +19,12 @@
 typedef struct {
     char id[15];
     char name[100];
-    char birth_date[11];
-    char gender[2];
+    char birth_date[15];
+    char gender[5];
     char car_class[10];
     char license_plate[10];
     char city[20];
-    char acc_creation[11];
+    char acc_creation[15];
     char status[10];
 
 } Driver;
@@ -37,9 +37,9 @@ typedef struct {
 typedef struct {
     char user[100];
     char name[100];
-    char gender[2];
-    char birth_date[11];
-    char acc_creation[11];
+    char gender[5];
+    char birth_date[15];
+    char acc_creation[15];
     char pay_method[20];
     char status[10];
 
@@ -52,8 +52,8 @@ typedef struct {
  */
 typedef struct {
     char id[15];
-    char date[11];
-    char driver[100];
+    char date[15];
+    char driver[15];
     char user[100];
     char city[20];
     char distance[10];
