@@ -53,6 +53,4 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash,
     free(drivers_cat_dup);
     free(users_cat_dup);
     free(rides_cat_dup);
-
-    puts("Fim do Programa");
 }

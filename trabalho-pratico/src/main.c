@@ -17,6 +17,11 @@ int main(int argc, char *argv[]) {
     }
     else puts("Número de argumentos válido! (3)");
 
+    // Medição de tempo
+    clock_t start, end;
+    double cpu_time_used;
+    start = clock();
+
     FILE *drivers;
         char *driverspath;
         driverspath = (char *) malloc(1000 * sizeof(char));
@@ -61,6 +66,11 @@ int main(int argc, char *argv[]) {
         if (users != NULL) puts("Ficheiro dos Users fechado");
     fclose(inputs);
         if (inputs != NULL) puts("Ficheiro dos Inputs fechado");
+
+    // Medição de tempo
+    end = clock();
+    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("Programa Terminado (%f)\n", cpu_time_used );
     
     return 0;
 }
