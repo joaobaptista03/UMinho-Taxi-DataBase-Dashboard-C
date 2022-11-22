@@ -47,6 +47,7 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash,
        counter++;                                                       // Incrementar nº de inputs
     }
 
+    free(input);
     free(drivers_cat_dup);
     free(users_cat_dup);
     free(rides_cat_dup);
