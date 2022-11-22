@@ -4,11 +4,6 @@
  * 
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-
 #include "../include/files.h"
 #include "../include/cat_drivers.h"
 #include "../include/cat_users.h"

@@ -9,6 +9,10 @@
 #define QUERY1_H
 
 #include <string.h>
+
+#include "cat_drivers.h"
+#include "cat_users.h"
+#include "cat_rides.h"
 #include "randomfuncs.h"
 #include "outputs.h"
 #include "age_time.h"

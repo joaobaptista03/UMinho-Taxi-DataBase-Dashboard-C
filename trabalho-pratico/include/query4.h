@@ -8,6 +8,7 @@
 #ifndef QUERY4_H
 #define QUERY4_H
 
+#include "cat_drivers.h"
 #include "cat_rides.h"
 #include "outputs.h"
 

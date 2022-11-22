@@ -8,7 +8,7 @@
 #ifndef OUTPUTS_H
 #define OUTPUTS_H
 
-#include "inputs.h"
+#include <stdio.h>
 
 /**
  *
