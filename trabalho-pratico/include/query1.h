@@ -19,7 +19,7 @@
 
 /**
  *
- * Este é o header da função que executa a Query 1, dado um ID em forma de string, e um contador para dizer em que linha está.
+ * Este é o header da função que decide se irá executar a Q1 no caso dos Drivers, ou Users com os respetivos argumentos necessários.
  * 
  */
 void query1 (int counter, Driver *new_drivers_cat, User *new_users_cat, GHashTable *users_hash, Ride *new_rides_cat, char *id);
