@@ -11,7 +11,10 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "../include/catalog.h"
+#include "../include/cat_drivers.h"
+#include "../include/cat_users.h"
+#include "../include/cat_rides.h"
+
 #include "../include/query1.h"
 #include "../include/query2.h"
 #include "../include/query3.h"

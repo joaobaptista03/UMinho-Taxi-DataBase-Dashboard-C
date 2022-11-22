@@ -10,7 +10,10 @@
 #include <time.h>
 
 #include "../include/files.h"
-#include "../include/catalog.h"
+#include "../include/cat_drivers.h"
+#include "../include/cat_users.h"
+#include "../include/cat_rides.h"
+#include "../include/inputs.h"
 
 int main(int argc, char *argv[]) {
 
@@ -32,14 +35,11 @@ int main(int argc, char *argv[]) {
     FILE *drivers = open_files(argv[1], "/drivers.csv");
     FILE *users = open_files(argv[1], "/users.csv");
     FILE *rides = open_files(argv[1], "/rides.csv");
-    FILE *inputs = open_files(argv[2], "");
+    FILE *inputs; inputs = fopen(argv[2], "r");
 
-    inserir_dados(drivers, users, rides, inputs);
-
-    // Medição de tempo
-    end = clock();
-    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Programa Terminado (%f segundos)\n\n", cpu_time_used );
+    Driver *drivers_cat = inserir_drivers(drivers);
+    return_struct users_struct = inserir_users(users);
+    Ride* rides_cat = inserir_rides(rides);
 
     fclose(drivers);
         if (drivers != NULL) puts("\nFicheiro dos Drivers fechado");
@@ -47,6 +47,14 @@ int main(int argc, char *argv[]) {
         if (rides != NULL) puts("Ficheiro dos Rides fechado");
     fclose(users);
         if (users != NULL) puts("Ficheiro dos Users fechado");
+
+    handle_inputs(drivers_cat, users_struct.userscat, users_struct.usershash, rides_cat, inputs);
+
+    // Medição de tempo
+    end = clock();
+    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("Programa Terminado (%f segundos)\n\n", cpu_time_used );
+
     fclose(inputs);
         if (inputs != NULL) puts("Ficheiro dos Inputs fechado\n");
     

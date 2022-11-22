@@ -8,7 +8,8 @@
 #ifndef QUERY2_H
 #define QUERY2_H
 
-#include "catalog.h"
+#include "cat_drivers.h"
+#include "cat_rides.h"
 #include "randomfuncs.h"
 #include "outputs.h"
 

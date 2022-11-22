@@ -8,7 +8,7 @@
 #ifndef QUERY6_H
 #define QUERY6_H
 
-#include "catalog.h"
+#include "cat_rides.h"
 #include "outputs.h"
 #include "randomfuncs.h"
 

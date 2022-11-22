@@ -8,7 +8,7 @@
 #ifndef QUERY4_H
 #define QUERY4_H
 
-#include "catalog.h"
+#include "cat_rides.h"
 #include "outputs.h"
 
 /**

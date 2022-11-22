@@ -8,7 +8,8 @@
 #ifndef QUERY3_H
 #define QUERY3_H
 
-#include "catalog.h"
+#include "cat_users.h"
+#include "cat_rides.h"
 #include "randomfuncs.h"
 #include "outputs.h"
 
