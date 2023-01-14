@@ -19,7 +19,7 @@ void query1_user (int counter, Driver *drivers_cat, User *users_cat, GHashTable 
     }
 
     // Se o user for inactive
-    if (strcmp(q1_u.status, "inactive") == 0) {
+    if (stricmp(q1_u.status, "inactive") == 0) {
         handle_outputs(counter, "");
         return;
     }
@@ -31,21 +31,21 @@ void query1_user (int counter, Driver *drivers_cat, User *users_cat, GHashTable 
 
     // for loop que percorre o catálogo das Rides, e se cada ride for do User pretendido, faz os devidos cálculos
     for (int i = 1; i <= 1000000; i++) {
-        if (strcmp(rides_cat[i].user, id) == 0) {
+        if (stricmp(rides_cat[i].user, id) == 0) {
             total_avaliacoes += atof(rides_cat[i].score_user);
             num_viagens++;
             // Calcula a taxa base e a taxa por distância de acordo com a classe do carro do Driver dessa Ride
             char class[10];
             strcpy(class, drivers_cat[atoi(rides_cat[i].driver)].car_class);
-            if (strcmp(class, "basic") == 0) {
+            if (stricmp(class, "basic") == 0) {
                 taxa_base = 3.25;
                 taxa_dist = 0.62;
             }
-            else if (strcmp(class, "green") == 0) {
+            else if (stricmp(class, "green") == 0) {
                     taxa_base = 4;
                     taxa_dist = 0.79;
             }
-            else if (strcmp(class, "premium") == 0) {
+            else if (stricmp(class, "premium") == 0) {
                     taxa_base = 5.2;
                     taxa_dist = 0.94;
             }

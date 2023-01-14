@@ -32,7 +32,7 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     for (int i = 0; i <= 10000; i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
 
     for (int i = 1; i <= 1000000; i++) {                                                  // Percorrer o catálogo das rides
-        if (strcmp(drivers_cat[atoi(rides_cat[i].driver)].status, "active") == 0) {       // Verificar se o Driver está ativo
+        if (stricmp(drivers_cat[atoi(rides_cat[i].driver)].status, "active") == 0) {       // Verificar se o Driver está ativo
             ind_driver = atoi(rides_cat[i].driver);                                       // Calcular índice do driver pretendido
             tot_avaliacoes[ind_driver] += atof(rides_cat[i].score_driver);                // Aumentar o total de avaliações do driver pretendido
             num_viagens[ind_driver]++;                                                    // Incrementar o número de viagens do driver pretendido

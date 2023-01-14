@@ -21,22 +21,22 @@ void query1_driver (int counter, Driver *drivers_cat, Ride *rides_cat, char *id)
     Driver q1_d = drivers_cat[id_driver];               // Ir buscar o driver pretendido pelo ID ao Catálogo
 
     // Se o Driver estiver inativo
-    if (strcmp(q1_d.status, "inactive") == 0) {
+    if (stricmp(q1_d.status, "inactive") == 0) {
         handle_outputs(counter, "");
         return;
     }
 
     // Calcula a taxa base e a taxa por distância de acordo com a classe do carro
     float taxa_base, taxa_dist;
-    if (strcmp(q1_d.car_class, "basic") == 0) {
+    if (stricmp(q1_d.car_class, "basic") == 0) {
         taxa_base = 3.25;
         taxa_dist = 0.62;
     }
-    else if (strcmp(q1_d.car_class, "green") == 0) {
+    else if (stricmp(q1_d.car_class, "green") == 0) {
         taxa_base = 4;
         taxa_dist = 0.79;
     }
-    else if (strcmp(q1_d.car_class, "premium") == 0) {
+    else if (stricmp(q1_d.car_class, "premium") == 0) {
         taxa_base = 5.2;
         taxa_dist = 0.94;
     }
@@ -47,7 +47,7 @@ void query1_driver (int counter, Driver *drivers_cat, Ride *rides_cat, char *id)
 
     // for loop que percorre o catálogo das Rides, e se cada ride for do Driver pretendido, faz os devidos cálculos
     for (int i = 1; i <= 1000000; i++) {
-        if (strcmp(rides_cat[i].driver, id) == 0) {
+        if (stricmp(rides_cat[i].driver, id) == 0) {
             total_avaliacoes += atof(rides_cat[i].score_driver);
             num_viagens++;
             tot_auferido += atof(rides_cat[i].distance) * taxa_dist + taxa_base + atof(rides_cat[i].tip);

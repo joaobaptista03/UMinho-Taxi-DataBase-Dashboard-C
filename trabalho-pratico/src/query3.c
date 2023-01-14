@@ -36,7 +36,7 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
             status = strdup(users_cat[userLine].status);
 
             if (most_recent(rides_cat[i].date, recent_ride[userLine]) == 1) strcpy(recent_ride[userLine], rides_cat[i].date);
-            if (strcmp(status, "active") == 0) tot_distancia[userLine] += atoi(rides_cat[i].distance);      // Verificar se o User está ativo
+            if (stricmp(status, "active") == 0) tot_distancia[userLine] += atoi(rides_cat[i].distance);      // Verificar se o User está ativo
 
             free(status);
     }
@@ -53,7 +53,7 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
         if (tot_distancia[user_maioresID[i]] == tot_distancia[user_maioresID[i+1]]) {
             int rec_ride = most_recent(recent_ride[user_maioresID[i]], recent_ride[user_maioresID[i+1]]);
             if (rec_ride == 2) swap(user_maioresID, i, i+1);
-            else if (rec_ride == 3 && strcmp(users_cat[i].user, users_cat[i+1].user) > 0) swap(user_maioresID, i, i+1);
+            else if (rec_ride == 3 && stricmp(users_cat[i].user, users_cat[i+1].user) > 0) swap(user_maioresID, i, i+1);
         }
     }
 
