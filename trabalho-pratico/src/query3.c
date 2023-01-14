@@ -16,6 +16,7 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
     start = clock();
 
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
+    char *status;
 
     int *tot_distancia; tot_distancia = calloc(100001, sizeof(int));
     int *tot_distancia_cpy; tot_distancia_cpy = calloc(100001, sizeof(int));
@@ -32,7 +33,7 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
     for (int i = 1; i <= 1000000; i++) {                                              // Percorrer o catálogo das Rides
             userLine = atoi(g_hash_table_lookup(users_hash, rides_cat[i].user));
 
-            char *status = strdup(users_cat[userLine].status);
+            status = strdup(users_cat[userLine].status);
 
             if (most_recent(rides_cat[i].date, recent_ride[userLine]) == 1) strcpy(recent_ride[userLine], rides_cat[i].date);
             if (strcmp(status, "active") == 0) tot_distancia[userLine] += atoi(rides_cat[i].distance);      // Verificar se o User está ativo

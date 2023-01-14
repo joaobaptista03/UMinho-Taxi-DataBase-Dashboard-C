@@ -16,6 +16,7 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     start = clock();
 
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
+    int ind_driver;
 
     // Criar todas as arrays temporárias necessárias à função 
     double *tot_avaliacoes; tot_avaliacoes = calloc(10001, sizeof(double));
@@ -32,7 +33,7 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
 
     for (int i = 1; i <= 1000000; i++) {                                                  // Percorrer o catálogo das rides
         if (strcmp(drivers_cat[atoi(rides_cat[i].driver)].status, "active") == 0) {       // Verificar se o Driver está ativo
-            int ind_driver = atoi(rides_cat[i].driver);                                   // Calcular índice do driver pretendido
+            ind_driver = atoi(rides_cat[i].driver);                                       // Calcular índice do driver pretendido
             tot_avaliacoes[ind_driver] += atof(rides_cat[i].score_driver);                // Aumentar o total de avaliações do driver pretendido
             num_viagens[ind_driver]++;                                                    // Incrementar o número de viagens do driver pretendido
             if (most_recent(rides_cat[i].date, recent_ride[ind_driver]) == 1) strcpy(recent_ride[ind_driver], rides_cat[i].date);

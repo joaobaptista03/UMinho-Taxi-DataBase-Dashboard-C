@@ -10,7 +10,6 @@
 #include "../include/query1.h"
 
 void query1 (int counter, Driver *drivers_cat, User *users_cat, GHashTable *users_hash, Ride *rides_cat, char *id) {
-    printf("\nA executar Q1 (linha de input %i)\n", counter);
 
     // Medição de tempo
     clock_t start, end;
