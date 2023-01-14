@@ -15,8 +15,8 @@ FILE* open_files(char *path, char *filename) {
         strcat(filepath, filename);
         file = fopen(filepath, "r");
         free(filepath);
-        if (file != NULL) puts("Ficheiro 1 aberto");
-        else puts("Erro na abertura do ficheiro dos Users");
+        if (file != NULL) puts("Ficheiro aberto");
+        else puts("Erro na abertura do ficheiro");
 
     return file;
 }
