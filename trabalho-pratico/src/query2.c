@@ -19,19 +19,19 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     int ind_driver;
 
     // Criar todas as arrays temporárias necessárias à função 
-    double *tot_avaliacoes; tot_avaliacoes = calloc(10001, sizeof(double));
-    int *num_viagens; num_viagens = calloc(10001, sizeof(int));
-    double *av_med; av_med = calloc(10001, sizeof(double));
-    double *av_med_cpy; av_med_cpy = calloc(10001, sizeof(double));
+    double *tot_avaliacoes; tot_avaliacoes = calloc((1 + atoi(drivers_cat[0].id)), sizeof(double));
+    int *num_viagens; num_viagens = calloc((1 + atoi(drivers_cat[0].id)), sizeof(int));
+    double *av_med; av_med = calloc((1 + atoi(drivers_cat[0].id)), sizeof(double));
+    double *av_med_cpy; av_med_cpy = calloc((1 + atoi(drivers_cat[0].id)), sizeof(double));
 
     char **recent_ride;                                                                   // Criar array de strings dinâmicamente
-    recent_ride = malloc(10001 * sizeof(char*));
-    for (int i = 0; i < 10001; i++)
+    recent_ride = malloc((1 + atoi(drivers_cat[0].id)) * sizeof(char*));
+    for (int i = 0; i < (1 + atoi(drivers_cat[0].id)); i++)
         recent_ride[i] = malloc((11+1) * sizeof(char));
 
-    for (int i = 0; i <= 10000; i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
+    for (int i = 0; i <= atoi(drivers_cat[0].id); i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
 
-    for (int i = 1; i <= 1000000; i++) {                                                  // Percorrer o catálogo das rides
+    for (int i = 1; i <= atoi(rides_cat[0].id); i++) {                                                  // Percorrer o catálogo das rides
         if (stricmp(drivers_cat[atoi(rides_cat[i].driver)].status, "active") == 0) {       // Verificar se o Driver está ativo
             ind_driver = atoi(rides_cat[i].driver);                                       // Calcular índice do driver pretendido
             tot_avaliacoes[ind_driver] += atof(rides_cat[i].score_driver);                // Aumentar o total de avaliações do driver pretendido
@@ -40,16 +40,16 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
         }
     }
 
-    for (int i = 1; i <= 10000; i++) {                                                    // Calcular a avaliação média para cada Driver armazenando na array av_med
+    for (int i = 1; i <= atoi(drivers_cat[0].id); i++) {                                                    // Calcular a avaliação média para cada Driver armazenando na array av_med
         if (num_viagens[i] != 0) av_med[i] = tot_avaliacoes[i] / num_viagens[i];
         else av_med[i] = 0;
     }
 
-    for (int i = 1; i <= 10000; i++) av_med_cpy[i] = av_med[i];                       // Clonar a array de avaliações médias para ser usado no for loop
+    for (int i = 1; i <= atoi(drivers_cat[0].id); i++) av_med_cpy[i] = av_med[i];                       // Clonar a array de avaliações médias para ser usado no for loop
 
     int *id_maiores; id_maiores = calloc(N, sizeof(int));                           // Array que irá armazenar os ID's ordenados por ordem decrescente de maior av_med
     for (int i = 0; i < N; i++) {                                                     // For loop que irá preencher id_maiores
-        int larg_av_ind = larger_double(av_med_cpy, 10001);
+        int larg_av_ind = larger_double(av_med_cpy, (1 + atoi(drivers_cat[0].id)));
         id_maiores[i] = larg_av_ind;
         av_med_cpy[larg_av_ind] = 0;
     }
@@ -73,7 +73,7 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     free(num_viagens);
     free(av_med);
     free(av_med_cpy);
-    for(int i = 0; i <= 10000; i++) free(recent_ride[i]);
+    for(int i = 0; i <= atoi(drivers_cat[0].id); i++) free(recent_ride[i]);
     free(recent_ride);
     free(id_maiores);
 

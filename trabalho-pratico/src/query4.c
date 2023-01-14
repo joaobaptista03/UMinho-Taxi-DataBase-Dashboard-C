@@ -18,7 +18,7 @@ void query4 (int counter, Driver *drivers_cat, Ride *rides_cat, char *cidade) {
     double preco = 0;
     int contagem = 0;
 
-    for (int i = 1; i <= 1000000; i++) {
+    for (int i = 1; i <= atoi(rides_cat[0].user); i++) {
         if (stricmp(rides_cat[i].city, cidade) == 0) {
             int distance = atoi(rides_cat[i].distance);
             char *class; class = malloc(10 * sizeof(char));

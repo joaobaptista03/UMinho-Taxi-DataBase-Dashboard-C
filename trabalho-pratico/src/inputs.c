@@ -9,14 +9,14 @@
 void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash, Ride *rides_cat, FILE *inputs) {
 
     // Encapsulamento Catálogos
-    Driver *drivers_cat_dup; drivers_cat_dup = malloc(10001*sizeof(Driver));
-        for(int i = 1; i <= 10000; i++) drivers_cat_dup[i] = drivers_cat[i];
+    Driver *drivers_cat_dup; drivers_cat_dup = malloc((1 + atoi(drivers_cat[0].id))*sizeof(Driver));
+        for(int i = 0; i <= atoi(drivers_cat[0].id); i++) drivers_cat_dup[i] = drivers_cat[i];
     free(drivers_cat);
-    User *users_cat_dup; users_cat_dup = malloc(100001*sizeof(User));
-        for(int i = 1; i <= 100000; i++) users_cat_dup[i] = users_cat[i];
+    User *users_cat_dup; users_cat_dup = malloc((1 + atoi(users_cat[0].user))*sizeof(User));
+        for(int i = 0; i <= atoi(users_cat[0].user); i++) users_cat_dup[i] = users_cat[i];
     free(users_cat);
-    Ride *rides_cat_dup; rides_cat_dup = malloc(1000001*sizeof(Ride));
-        for(int i = 1; i <= 1000000; i++) rides_cat_dup[i] = rides_cat[i];
+    Ride *rides_cat_dup; rides_cat_dup = malloc((1 + atoi(rides_cat[0].id))*sizeof(Ride));
+        for(int i = 0; i <= atoi(rides_cat[0].id); i++) rides_cat_dup[i] = rides_cat[i];
     free(rides_cat);
 
     // Encapsulamento Hash Table

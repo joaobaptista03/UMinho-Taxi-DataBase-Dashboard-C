@@ -13,7 +13,7 @@ void query1_driver (int counter, Driver *drivers_cat, Ride *rides_cat, char *id)
         int id_driver = atoi(id);                           // Converter string id do input para int
 
     // Se o driver não existir
-    if ((id_driver > 10000 || id_driver < 1)) {
+    if ((id_driver > atoi(drivers_cat[0].id) || id_driver < 1)) {
         handle_outputs(counter, "");
         return;
     }
@@ -46,7 +46,7 @@ void query1_driver (int counter, Driver *drivers_cat, Ride *rides_cat, char *id)
     double tot_auferido = 0;
 
     // for loop que percorre o catálogo das Rides, e se cada ride for do Driver pretendido, faz os devidos cálculos
-    for (int i = 1; i <= 1000000; i++) {
+    for (int i = 1; i <= atoi(rides_cat[0].id); i++) {
         if (stricmp(rides_cat[i].driver, id) == 0) {
             total_avaliacoes += atof(rides_cat[i].score_driver);
             num_viagens++;

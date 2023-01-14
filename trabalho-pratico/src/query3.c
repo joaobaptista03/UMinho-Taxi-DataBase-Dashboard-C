@@ -18,19 +18,19 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
     char *status;
 
-    int *tot_distancia; tot_distancia = calloc(100001, sizeof(int));
-    int *tot_distancia_cpy; tot_distancia_cpy = calloc(100001, sizeof(int));
+    int *tot_distancia; tot_distancia = calloc((1 + atoi(users_cat[0].user)), sizeof(int));
+    int *tot_distancia_cpy; tot_distancia_cpy = calloc((1 + atoi(users_cat[0].user)), sizeof(int));
     int *user_maioresID; user_maioresID = calloc(N, sizeof(int));
     int userLine;
 
     char **recent_ride;                                                                 // Criar array de strings dinâmicamente
-    recent_ride = malloc(100001 * sizeof(char*));
-    for (int i = 0; i <= 100000; i++)
+    recent_ride = malloc((atoi(users_cat[0].user)  + 1)* sizeof(char*));
+    for (int i = 0; i <= atoi(users_cat[0].user); i++)
         recent_ride[i] = malloc(11 * sizeof(char));
 
-    for (int i = 1; i <= 100000; i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
+    for (int i = 1; i <= atoi(users_cat[0].user); i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
 
-    for (int i = 1; i <= 1000000; i++) {                                              // Percorrer o catálogo das Rides
+    for (int i = 1; i <= atoi(rides_cat[0].id); i++) {                                              // Percorrer o catálogo das Rides
             userLine = atoi(g_hash_table_lookup(users_hash, rides_cat[i].user));
 
             status = strdup(users_cat[userLine].status);
@@ -41,10 +41,10 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
             free(status);
     }
 
-    for (int i = 1; i <= 100000; i++) tot_distancia_cpy[i] = tot_distancia[i];                       // Clonar tot_distancia para ser usado no for loop
+    for (int i = 1; i <= atoi(users_cat[0].user); i++) tot_distancia_cpy[i] = tot_distancia[i];                       // Clonar tot_distancia para ser usado no for loop
 
     for (int i = 0; i < N; i++) {                                                     // For loop que irá preencher user_maiores
-        int larg_totDist_user = larger_int(tot_distancia_cpy, 100001);
+        int larg_totDist_user = larger_int(tot_distancia_cpy, (1 + atoi(users_cat[0].user)));
         user_maioresID[i] = larg_totDist_user;
         tot_distancia_cpy[larg_totDist_user] = 0;
     }
@@ -66,7 +66,7 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
     free(tot_distancia);
     free(tot_distancia_cpy);
     free(user_maioresID);
-    for (int i = 0; i <= 100000; i++) free(recent_ride[i]);
+    for (int i = 0; i <= atoi(users_cat[0].user); i++) free(recent_ride[i]);
     free(recent_ride);
 
     // Medição de tempo

@@ -30,7 +30,7 @@ void query1_user (int counter, Driver *drivers_cat, User *users_cat, GHashTable 
     double tot_gasto = 0;
 
     // for loop que percorre o catálogo das Rides, e se cada ride for do User pretendido, faz os devidos cálculos
-    for (int i = 1; i <= 1000000; i++) {
+    for (int i = 1; i <= atoi(rides_cat[0].id); i++) {
         if (stricmp(rides_cat[i].user, id) == 0) {
             total_avaliacoes += atof(rides_cat[i].score_user);
             num_viagens++;
