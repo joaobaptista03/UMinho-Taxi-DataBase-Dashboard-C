@@ -55,4 +55,11 @@ double arred3(double x);
  */
 void swap(int *x, int i, int j);
 
+/**
+ *
+ * Este é o header da função similar à strcmp, porém não é sensível a maiúsculas.
+ * 
+ */
+int stricmp(char const *a, char const *b);
+
 #endif

@@ -17,7 +17,7 @@ return_struct inserir_users(FILE *users) {
     char *temp; temp = malloc(1000 * sizeof(char));                                // String temporária que irá armazenar cada linha dos Ficheiros CSV
     for(int i = 0; fgets(temp, 1000, users); i++) {
         if (i != 0) {
-            users_cat = realloc(users_cat, (nr_users+1) * sizeof(User)):
+            users_cat = realloc(users_cat, (nr_users+1) * sizeof(User));
 
             User temp_u;
             sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
@@ -29,7 +29,7 @@ return_struct inserir_users(FILE *users) {
         }
     }
 
-    sprintf(users_cat[0].user, "%d". nr_drivers);
+    sprintf(users_cat[0].user, "%d", nr_users);
     strcpy(users_cat[0].name, "");
     strcpy(users_cat[0].gender, "");
     strcpy(users_cat[0].birth_date, "");

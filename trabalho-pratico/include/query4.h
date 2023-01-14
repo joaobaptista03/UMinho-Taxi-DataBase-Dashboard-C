@@ -11,6 +11,7 @@
 #include "cat_drivers.h"
 #include "cat_rides.h"
 #include "outputs.h"
+#include "randomfuncs.h"
 
 /**
  *

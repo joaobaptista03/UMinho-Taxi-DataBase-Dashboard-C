@@ -15,7 +15,7 @@ Ride* inserir_rides(FILE *rides) {
     char *temp; temp = malloc(1000 * sizeof(char));                                // String temporária que irá armazenar cada linha dos Ficheiros CSV
     for(int i = 0; fgets(temp, 1000, rides); i++) {
         if (i != 0) {
-            rides_cat = realloc(rides_cat, (nr_rides+1) * sizeof(Ride)):
+            rides_cat = realloc(rides_cat, (nr_rides+1) * sizeof(Ride));
 
             Ride temp_r;
             sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
@@ -27,7 +27,7 @@ Ride* inserir_rides(FILE *rides) {
         }
     }
 
-    sprintf(rides_cat[0].id, "%d". nr_rides);
+    sprintf(rides_cat[0].id, "%d", nr_rides);
     strcpy(rides_cat[0].date, "");
     strcpy(rides_cat[0].driver, "");
     strcpy(rides_cat[0].user, "");
@@ -40,7 +40,7 @@ Ride* inserir_rides(FILE *rides) {
 
     puts("Catálogo das Rides preenchido");
 
-    Ride *rides_cat_dup; rides_cat_dup = malloc((rides_cat[0].id + 1)*sizeof(Ride));
+    Ride *rides_cat_dup; rides_cat_dup = malloc(atoi(rides_cat[0].id + 1)*sizeof(Ride));
         for(int i = 0; i <= atoi(rides_cat[0].id); i++) rides_cat_dup[i] = rides_cat[i];
     free(rides_cat);
     

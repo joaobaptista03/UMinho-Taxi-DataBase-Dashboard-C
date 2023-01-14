@@ -65,3 +65,11 @@ void swap(int *x, int i, int j) {
     x[i] = x[j];
     x[i+1] = temp;
 }
+
+int stricmp(char const *a, char const *b) {
+    for (;; a++, b++) {
+        int d = tolower((unsigned char)*a) - tolower((unsigned char)*b);
+        if (d != 0 || !*a)
+            return d;
+    }
+}
