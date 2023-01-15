@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 
         system("mkdir Resultados");                                               // Criar diretório para os Resultados
         puts("\nDiretório Resultados criado\n");        
-        puts("\nNúmero de argumentos válido! (3)");
+        puts("Número de argumentos válido! (3)\n");
         batch (argv);
     }
 
