@@ -13,4 +13,5 @@ void handle_outputs(int counter, char *output) {
     FILE *new_output;
         new_output = fopen(filename, "a");
     fprintf(new_output, "%s", output);
+    fclose(new_output);
 }
