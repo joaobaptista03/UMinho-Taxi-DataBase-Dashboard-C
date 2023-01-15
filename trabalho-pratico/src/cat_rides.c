@@ -15,6 +15,7 @@ Ride* inserir_rides(FILE *rides) {
     char *temp; temp = malloc(1000 * sizeof(char));                                // String temporária que irá armazenar cada linha dos Ficheiros CSV
     for(int i = 0; fgets(temp, 1000, rides); i++) {
         if (i != 0) {
+            nr_rides++;
             rides_cat = realloc(rides_cat, (nr_rides+1) * sizeof(Ride));
 
             Ride temp_r;

@@ -16,6 +16,7 @@ return_struct inserir_users(FILE *users) {
 
     char *temp; temp = malloc(1000 * sizeof(char));                                // String temporária que irá armazenar cada linha dos Ficheiros CSV
     for(int i = 0; fgets(temp, 1000, users); i++) {
+        nr_users++;
         if (i != 0) {
             users_cat = realloc(users_cat, (nr_users+1) * sizeof(User));
 

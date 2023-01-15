@@ -15,13 +15,14 @@ Driver* inserir_drivers(FILE *drivers) {
     char *temp; temp = malloc(1000 * sizeof(char));             // String temporária que irá armazenar cada linha dos Ficheiros CSV
     for(int i = 0; fgets(temp, 1000, drivers); i++) {
         if (i != 0) {
+            nr_drivers++;
             drivers_cat = realloc(drivers_cat, (nr_drivers+1) * sizeof(Driver));
 
             Driver temp_d;
             sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
                 temp_d.id, temp_d.name, temp_d.birth_date, temp_d.gender, temp_d.car_class, temp_d.license_plate, temp_d.city, temp_d.acc_creation, temp_d.status);
 
-            drivers_cat[i] = temp_d;    
+            drivers_cat[i] = temp_d;
         }
     }
 
