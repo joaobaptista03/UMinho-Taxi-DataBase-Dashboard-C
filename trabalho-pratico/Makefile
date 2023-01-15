@@ -4,11 +4,12 @@ LDFLAGS= `pkg-config --libs glib-2.0` -lm
 
 all: main
 
-main: src/main.o src/batch.o src/files.o src/query1.o src/query1_driver.o src/query1_user.o src/query2.o src/query3.o src/query4.o src/query5.o src/query6.o src/randomfuncs.o src/age_time.o src/cat_drivers.o src/cat_users.o src/cat_rides.o src/inputs.o src/outputs.o
+main: src/main.o src/batch.o src/interactive.o src/files.o src/query1.o src/query1_driver.o src/query1_user.o src/query2.o src/query3.o src/query4.o src/query5.o src/query6.o src/randomfuncs.o src/age_time.o src/cat_drivers.o src/cat_users.o src/cat_rides.o src/inputs.o src/outputs.o
 	$(CC) $^ $(LDFLAGS) $(CFLAGS) -o programa-principal
 
 src/main.o : src/main.c
 src/batch.o : src/batch.c
+src/interactive.o : src/interactive.c
 src/files.o : src/files.c
 src/query1_driver.o : src/query1_driver.c
 src/query1_user.o : src/query1_user.c
