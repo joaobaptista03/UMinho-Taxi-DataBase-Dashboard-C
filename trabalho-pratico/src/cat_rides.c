@@ -7,7 +7,7 @@
 #include "../include/cat_rides.h"
 
 Ride* inserir_rides(FILE *rides) {
-    int nr_rides = 0;
+    int nr_rides = 0, cap_malloc = 1;
 
     // Criar catálogo das Rides
     Ride *rides_cat; rides_cat = malloc(sizeof(Ride));
@@ -16,7 +16,10 @@ Ride* inserir_rides(FILE *rides) {
     for(int i = 0; fgets(temp, 1000, rides); i++) {
         if (i != 0) {
             nr_rides++;
-            rides_cat = realloc(rides_cat, (nr_rides+1) * sizeof(Ride));
+            if (cap_malloc == nr_rides) {
+                rides_cat = realloc(rides_cat, 2 * cap_malloc * sizeof(Ride));
+                cap_malloc *= 2;
+            }
 
             Ride temp_r;
             sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
