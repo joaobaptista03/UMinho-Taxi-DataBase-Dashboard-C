@@ -5,6 +5,7 @@
  */
 
 #include "../include/batch.h"
+#include "../include/interactive.h"
 
 int main(int argc, char *argv[]) {
 
@@ -13,6 +14,8 @@ int main(int argc, char *argv[]) {
     if (argc == 1) {
         // Medição de tempo
         start = clock();
+
+        interactive();
     }
 
     else if (argc == 3) {
