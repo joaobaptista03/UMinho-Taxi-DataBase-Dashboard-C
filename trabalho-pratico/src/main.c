@@ -20,10 +20,9 @@ int main(int argc, char *argv[]) {
         start = clock();
 
         system("mkdir Resultados");                                               // Criar diretório para os Resultados
-        puts("Diretório Resultados criado\n");        
-
-        batch (argv);
+        puts("\nDiretório Resultados criado\n");        
         puts("\nNúmero de argumentos válido! (3)");
+        batch (argv);
     }
 
     else {
