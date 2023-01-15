@@ -41,10 +41,10 @@ Ride* inserir_rides(FILE *rides) {
 
     puts("Catálogo das Rides preenchido");
 
-    Ride *rides_cat_dup; rides_cat_dup = malloc(atoi(rides_cat[0].id + 1)*sizeof(Ride));
+    Ride *rides_cat_dup; rides_cat_dup = malloc((atoi(rides_cat[0].id) + 1) * sizeof(Ride));
         for(int i = 0; i <= atoi(rides_cat[0].id); i++) rides_cat_dup[i] = rides_cat[i];
+
     free(rides_cat);
-    
     free(temp);
 
     return rides_cat_dup;
