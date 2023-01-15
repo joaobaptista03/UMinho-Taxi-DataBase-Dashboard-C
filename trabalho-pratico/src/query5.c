@@ -47,8 +47,6 @@ void query5 (int counter, Driver *drivers_cat, Ride *rides_cat, char *data1, cha
 
         }
     }
-
-    char *output; output = malloc(100 * sizeof(char));
     
     if (contagem == 0) {
         // Medição de tempo
@@ -60,6 +58,7 @@ void query5 (int counter, Driver *drivers_cat, Ride *rides_cat, char *data1, cha
         return;
     }
     
+    char *output; output = malloc(100 * sizeof(char));
     double resultado = preco/contagem;
     sprintf(output, "%.3f\n", resultado);
     handle_outputs(counter,output);

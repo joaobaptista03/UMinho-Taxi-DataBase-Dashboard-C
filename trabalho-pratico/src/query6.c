@@ -38,19 +38,22 @@ void query6 (int counter, Ride *rides_cat, char *input) {
             distance += atoi(rides_cat[i].distance);
         }
     }
-
-    char *output; output = malloc(100 * sizeof(char));
     
     if (contagem == 0) {
         // Medição de tempo
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+
+        free(city);
+        free(data1);
+        free(data2);
         
         handle_outputs(counter, "");
         printf("Fim da Q6 (Sem viagens) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
         return;
     }
-    
+
+    char *output; output = malloc(100 * sizeof(char));
     double resultado = (double) distance/contagem;
     sprintf(output, "%.3f\n", resultado);
     handle_outputs(counter,output);
