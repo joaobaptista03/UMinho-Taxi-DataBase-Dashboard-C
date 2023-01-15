@@ -7,7 +7,7 @@
 #include "../include/cat_drivers.h"
 
 Driver* inserir_drivers(FILE *drivers) {
-    int nr_drivers = 0;
+    int nr_drivers = 0, cap_malloc = 1;
 
     // Criar catálogo dos Drivers
     Driver *drivers_cat; drivers_cat = malloc(sizeof(Driver));
@@ -16,7 +16,10 @@ Driver* inserir_drivers(FILE *drivers) {
     for(int i = 0; fgets(temp, 1000, drivers); i++) {
         if (i != 0) {
             nr_drivers++;
-            drivers_cat = realloc(drivers_cat, (nr_drivers+1) * sizeof(Driver));
+            if (cap_malloc == nr_drivers) {
+                drivers_cat = realloc(drivers_cat, 2 * cap_malloc * sizeof(Driver));
+                cap_malloc *= 2;
+            }
 
             Driver temp_d;
             sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
