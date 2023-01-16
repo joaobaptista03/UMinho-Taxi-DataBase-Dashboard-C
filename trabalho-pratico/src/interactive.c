@@ -37,6 +37,8 @@ void interactive () {
     fclose(users);
         if (users != NULL) puts("Ficheiro dos Users fechado");
 
+    puts("\nAgora, insere os input's 1 a 1 da seguinte forma: <query> <arg1> <arg2> <arg3>. Exemplo: 1 anTonioFaARIA10\n");
+
     char *input; input = malloc(100 * sizeof(char));
     while ((scanf("%s", input)) && (stricmp(input, "EXIT") != 0)) {
 
