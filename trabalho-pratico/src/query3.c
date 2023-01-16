@@ -57,7 +57,7 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
         }
     }
 
-    for (int i = N-1; i >= 0; i--) {                                                  // For loop que irá criar a string de output e passá-la para a handle_outputs
+    for (int i = 0; i < N; i++) {                                                  // For loop que irá criar a string de output e passá-la para a handle_outputs
         char output[500];
         sprintf(output, "%s;%s;%i\n", users_cat[user_maioresID[i]].user, users_cat[user_maioresID[i]].name, tot_distancia[user_maioresID[i]]);
         handle_outputs(counter, output);
