@@ -20,7 +20,7 @@ void query5 (int counter, Driver *drivers_cat, Ride *rides_cat, char *data1, cha
     double preco = 0;
     int contagem = 0;
 
-    for(int i = 1; i <= atoi(rides_cat[0].user); i++) {
+    for(int i = 1; i <= atoi(rides_cat[0].id); i++) {
         
         if (most_recent(rides_cat[i].date, data1) == 1 && most_recent(rides_cat[i].date, data2) == 2) {
 
