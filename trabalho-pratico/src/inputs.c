@@ -18,7 +18,6 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash,
     Ride *rides_cat_dup; rides_cat_dup = malloc((1 + atoi(rides_cat[0].id))*sizeof(Ride));
         for(int i = 0; i <= atoi(rides_cat[0].id); i++) rides_cat_dup[i] = rides_cat[i];
     free(rides_cat);
-
     // Encapsulamento Hash Table
     GHashTable *users_hash_dup = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
     void new_hash(gpointer key, gpointer value, gpointer u_data) {
@@ -34,22 +33,22 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash,
         if (strchr(input, '\n')) *(strchr(input, '\n')) = '\0';     // Trocar '\n' por '\0' na string input
         
         if (input[0] == '1') query1(counter, drivers_cat_dup, users_cat_dup, users_hash_dup, rides_cat_dup, input + 2);
-        if (input[0] == '2') query2(counter, drivers_cat_dup, rides_cat_dup, input + 2);
-        if (input[0] == '3') query3(counter, users_cat_dup, users_hash_dup, rides_cat_dup, input + 2);
-        if (input[0] == '4') query4(counter, drivers_cat_dup, rides_cat_dup, input + 2);
-        if (input[0] == '5') query5(counter, drivers_cat_dup, rides_cat_dup, input + 2, input + 13);
-        if (input[0] == '6') query6(counter, rides_cat_dup, input + 2);                 
+        else if (input[0] == '2') query2(counter, drivers_cat_dup, rides_cat_dup, input + 2);
+        else if (input[0] == '3') query3(counter, users_cat_dup, users_hash_dup, rides_cat_dup, input + 2);
+        else if (input[0] == '4') query4(counter, drivers_cat_dup, rides_cat_dup, input + 2);
+        else if (input[0] == '5') query5(counter, drivers_cat_dup, rides_cat_dup, input + 2, input + 13);
+        else if (input[0] == '6') query6(counter, rides_cat_dup, input + 2);                 
         /*
-        if (input[0] == '7') query7(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, input + 2); // Tem de fazer parsing porque o tamanho da city varia
-        if (input[0] == '8') query8(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, input + 2, input + 4);
-        if (input[0] == '9') query9(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, input + 2, input + 13);
+        else if (input[0] == '7') query7(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, input + 2); // Tem de fazer parsing porque o tamanho da city varia
+        else if (input[0] == '8') query8(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, input + 2, input + 4);
+        else if (input[0] == '9') query9(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, input + 2, input + 13);
         */
        counter++;                                                       // Incrementar nº de inputs
     }
 
     free(input);
-    free(drivers_cat_dup);
-    free(users_cat_dup);
-    free(rides_cat_dup);
-    g_hash_table_destroy(users_hash_dup);
+    free(drivers_cat);
+    free(users_cat);
+    free(rides_cat);
+    g_hash_table_destroy(users_hash);
 }

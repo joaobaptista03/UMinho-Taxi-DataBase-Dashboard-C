@@ -16,6 +16,13 @@
 #include "../include/files.h"
 #include "../include/randomfuncs.h"
 
+#include "../include/query1.h"
+#include "../include/query2.h"
+#include "../include/query3.h"
+#include "../include/query4.h"
+#include "../include/query5.h"
+#include "../include/query6.h"
+
 void interactive ();
 
 #endif

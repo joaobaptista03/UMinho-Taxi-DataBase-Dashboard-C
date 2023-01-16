@@ -1,5 +1,5 @@
 /**
- * @file query5.c
+ * @file query6.c
  * 
  * Este ficheiro contém o conteúdo das funções relacionadas com as Query 6.
  * 
@@ -48,6 +48,7 @@ void query6 (int counter, Ride *rides_cat, char *input) {
         free(data1);
         free(data2);
         
+        puts("Não há viagens!");
         handle_outputs(counter, "");
         printf("Fim da Q6 (Sem viagens) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
         return;
@@ -56,6 +57,7 @@ void query6 (int counter, Ride *rides_cat, char *input) {
     char *output; output = malloc(100 * sizeof(char));
     double resultado = (double) distance/contagem;
     sprintf(output, "%.3f\n", resultado);
+    puts(output);
     handle_outputs(counter,output);
 
     free(output);

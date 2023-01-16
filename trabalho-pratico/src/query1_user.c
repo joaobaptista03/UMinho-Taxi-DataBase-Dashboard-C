@@ -11,7 +11,7 @@ void query1_user (int counter, Driver *drivers_cat, User *users_cat, GHashTable 
     printf("\nA executar Q1 (linha de input %i)\n", counter);
 
     User q1_u;                                              // Definição do User pretendido
-    
+
     if (g_hash_table_lookup(users_hash, id) != NULL) q1_u = users_cat[atoi(g_hash_table_lookup(users_hash, id))];
     else {
         handle_outputs(counter, "");
@@ -59,5 +59,6 @@ void query1_user (int counter, Driver *drivers_cat, User *users_cat, GHashTable 
     
     char output[150];
     sprintf(output, "%s;%s;%i;%.3f;%i;%.3f\n", q1_u.name, q1_u.gender, age(q1_u.birth_date), av_media, num_viagens, tot_gasto);
+    puts(output);
     handle_outputs(counter, output);
 }

@@ -10,14 +10,14 @@
 void query1_driver (int counter, Driver *drivers_cat, Ride *rides_cat, char *id) {
     printf("\nA executar Q1 (linha de input %i)\n", counter);
 
-        int id_driver = atoi(id);                           // Converter string id do input para int
+    int id_driver = atoi(id);                           // Converter string id do input para int
 
     // Se o driver não existir
     if ((id_driver > atoi(drivers_cat[0].id) || id_driver < 1)) {
         handle_outputs(counter, "");
         return;
     }
-
+    
     Driver q1_d = drivers_cat[id_driver];               // Ir buscar o driver pretendido pelo ID ao Catálogo
 
     // Se o Driver estiver inativo
@@ -59,5 +59,6 @@ void query1_driver (int counter, Driver *drivers_cat, Ride *rides_cat, char *id)
 
     char output[150];
     sprintf(output, "%s;%s;%i;%.3f;%i;%.3f\n", q1_d.name, q1_d.gender, age(q1_d.birth_date), av_media, num_viagens, tot_auferido);
+    puts(output);
     handle_outputs(counter, output);
 }

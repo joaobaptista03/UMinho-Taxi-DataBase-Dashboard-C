@@ -65,6 +65,7 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     for (int i = 0; i < N; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
         char *output; output = malloc(500 * sizeof(char));
         sprintf(output, "%s;%s;%.3f\n", drivers_cat[id_maiores[i]].id, drivers_cat[id_maiores[i]].name, av_med[id_maiores[i]]);
+        puts(output);
         handle_outputs(counter, output);
         free(output);
     }

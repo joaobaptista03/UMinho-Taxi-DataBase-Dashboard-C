@@ -50,6 +50,7 @@ void query4 (int counter, Driver *drivers_cat, Ride *rides_cat, char *cidade) {
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
         
+        puts("Não há viagens!");
         handle_outputs(counter, "");
         printf("Fim da Q4 (Sem viagens) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
         return;
@@ -58,6 +59,7 @@ void query4 (int counter, Driver *drivers_cat, Ride *rides_cat, char *cidade) {
     char *output; output = malloc(100 * sizeof(char));
     double resultado = preco/contagem;
     sprintf(output, "%.3f\n", resultado);
+    puts(output);
     handle_outputs(counter,output);
 
     free(output);
