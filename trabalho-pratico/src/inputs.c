@@ -47,8 +47,8 @@ void handle_inputs(Driver *drivers_cat, User *users_cat, GHashTable *users_hash,
     }
 
     free(input);
-    free(drivers_cat);
-    free(users_cat);
-    free(rides_cat);
-    g_hash_table_destroy(users_hash);
+    free(drivers_cat_dup);
+    free(users_cat_dup);
+    free(rides_cat_dup);
+    g_hash_table_destroy(users_hash_dup);
 }
