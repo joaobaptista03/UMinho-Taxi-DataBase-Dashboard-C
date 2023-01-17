@@ -8,7 +8,7 @@
 #include "../include/query2.h"
 
 void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
-    printf("\nA executar Q2 (linha de input %i)\n", counter);
+    printf("\nA executar Q2 (linha de input %i)\n\n", counter);
 
     // Medição de tempo
     clock_t start, end;
@@ -62,10 +62,11 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
         }
     }
 
+    puts("Forma do Resultado: id;nome;avaliacao_media");
     for (int i = 0; i < N; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
         char *output; output = malloc(500 * sizeof(char));
         sprintf(output, "%s;%s;%.3f\n", drivers_cat[id_maiores[i]].id, drivers_cat[id_maiores[i]].name, av_med[id_maiores[i]]);
-        puts(output);
+        printf("%s",output);
         handle_outputs(counter, output);
         free(output);
     }
@@ -81,5 +82,5 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Fim da Q2 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
+    printf("\nFim da Q2 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
 }

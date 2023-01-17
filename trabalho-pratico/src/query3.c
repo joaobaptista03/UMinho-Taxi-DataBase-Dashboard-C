@@ -57,10 +57,11 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
         }
     }
 
+    puts("\nForma do Resultado: username;nome;distancia_total");
     for (int i = 0; i < N; i++) {                                                  // For loop que irá criar a string de output e passá-la para a handle_outputs
         char output[500];
         sprintf(output, "%s;%s;%i\n", users_cat[user_maioresID[i]].user, users_cat[user_maioresID[i]].name, tot_distancia[user_maioresID[i]]);
-        puts(output);
+        printf("%s",output);
         handle_outputs(counter, output);
     }
 
@@ -73,5 +74,5 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Fim da Q3 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
+    printf("\nFim da Q3 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
 }
