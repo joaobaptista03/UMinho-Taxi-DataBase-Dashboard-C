@@ -45,7 +45,7 @@ Ride* inserir_rides(FILE *rides) {
                 strcpy(rides_cat[i].date, "00/00/0000");
                 strcpy(rides_cat[i].driver, "000000000000");
                 strcpy(rides_cat[i].user, "");
-                strcpy(rides_cat[i].city, "eee");
+                strcpy(rides_cat[i].city, "");
                 strcpy(rides_cat[i].distance, "0");
                 strcpy(rides_cat[i].score_user, "0");
                 strcpy(rides_cat[i].score_driver, "0");
