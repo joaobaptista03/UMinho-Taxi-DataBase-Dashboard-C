@@ -22,7 +22,8 @@ void query5 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
 
     for(int i = 1; i <= atoi(rides_cat[0].id); i++) {
         
-        if (most_recent(rides_cat[i].date, data1) == 1 && most_recent(rides_cat[i].date, data2) == 2) {
+        if ((most_recent(rides_cat[i].date, data1) == 1 || most_recent(rides_cat[i].date, data1) == 3)
+        &&  (most_recent(rides_cat[i].date, data2) == 2 || most_recent(rides_cat[i].date, data2) == 3)) {
 
             char *class; class = malloc(10 * sizeof(char));
             strcpy(class, drivers_cat[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))].car_class);
