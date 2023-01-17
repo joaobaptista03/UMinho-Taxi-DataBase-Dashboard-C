@@ -10,6 +10,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <glib.h>
+#include <stdbool.h>
+#include "randomfuncs.h"
+#include "age_time.h"
 
 /**
  *
@@ -30,6 +33,12 @@ typedef struct {
 
 } Ride;
 
+/**
+ *
+ * Este é o header da função que verifica se uma Ride é válido.
+ * 
+ */
+bool isRvalid(Ride ride1);
 
 /**
  *

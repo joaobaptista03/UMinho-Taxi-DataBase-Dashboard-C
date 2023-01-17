@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 
 /**
  *
@@ -61,5 +62,19 @@ void swap(int *x, int i, int j);
  * 
  */
 int stricmp(char const *a, char const *b);
+
+/**
+ *
+ * Este é o header da função que verifica se uma dada string é um inteiro.
+ * 
+ */
+bool isInt (char *string);
+
+/**
+ *
+ * Este é o header da função que verifica se uma dada string é um float.
+ * 
+ */
+bool isFloat (char *string);
 
 #endif

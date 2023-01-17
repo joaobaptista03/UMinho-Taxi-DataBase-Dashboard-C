@@ -10,6 +10,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <glib.h>
+#include <stdbool.h>
+#include "age_time.h"
+#include "randomfuncs.h"
 
 /**
  *
@@ -36,6 +39,13 @@ typedef struct {
     User* userscat;
     GHashTable* usershash;
 } return_struct;
+
+/**
+ *
+ * Este é o header da função que verifica se um User é válido.
+ * 
+ */
+bool isUvalid(User user1);
 
 /**
  *

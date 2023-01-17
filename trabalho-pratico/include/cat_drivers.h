@@ -10,6 +10,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <glib.h>
+#include <stdbool.h>
+#include "age_time.h"
+#include "randomfuncs.h"
 
 /**
  *
@@ -28,6 +31,13 @@ typedef struct {
     char status[10];
 
 } Driver;
+
+/**
+ *
+ * Este é o header da função que verifica se um Driver é válido.
+ * 
+ */
+bool isDvalid(Driver driver1);
 
 /**
  *

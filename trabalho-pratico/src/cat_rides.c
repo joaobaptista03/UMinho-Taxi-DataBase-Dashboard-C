@@ -6,6 +6,20 @@
 
 #include "../include/cat_rides.h"
 
+bool isRvalid (Ride ride1) {
+    return (
+        (strlen(ride1.id) > 0) &&
+        (isDate(ride1.date)) &&
+        (strlen(ride1.driver) > 0) &&
+        (strlen(ride1.user) > 0) &&
+        (strlen(ride1.city) > 0) &&
+        (isInt(ride1.distance)) && (atoi(ride1.distance) > 0) &&
+        isFloat(ride1.score_user) &&
+        isFloat(ride1.score_driver) &&
+        isFloat(ride1.tip)
+    );
+}
+
 Ride* inserir_rides(FILE *rides) {
     int nr_rides = 0, cap_malloc = 1;
 
@@ -25,7 +39,19 @@ Ride* inserir_rides(FILE *rides) {
             sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
                 temp_r.id, temp_r.date, temp_r.driver, temp_r.user, temp_r.city, temp_r.distance, temp_r.score_user, temp_r.score_driver, temp_r.tip, temp_r.comment);
             
-            rides_cat[i] = temp_r;
+            if (isRvalid(temp_r)) rides_cat[i] = temp_r;
+            else {
+                strcpy(rides_cat[i].id, "");
+                strcpy(rides_cat[i].date, "00/00/0000");
+                strcpy(rides_cat[i].driver, "000000000000");
+                strcpy(rides_cat[i].user, "");
+                strcpy(rides_cat[i].city, "");
+                strcpy(rides_cat[i].distance, "0");
+                strcpy(rides_cat[i].score_user, "0");
+                strcpy(rides_cat[i].score_driver, "0");
+                strcpy(rides_cat[i].tip, "0");
+                strcpy(rides_cat[i].comment, "");
+            }
 
             strcpy(temp_r.comment, "");
         }

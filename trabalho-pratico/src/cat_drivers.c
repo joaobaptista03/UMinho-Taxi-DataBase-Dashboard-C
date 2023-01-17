@@ -6,6 +6,20 @@
 
 #include "../include/cat_drivers.h"
 
+bool isDvalid(Driver driver1) {
+    return (
+        (strlen(driver1.id) > 0) &&
+        (strlen(driver1.name) > 0) &&
+        (strlen(driver1.gender) == 1) &&
+        (isDate(driver1.birth_date)) &&
+        ((stricmp(driver1.car_class, "premium") == 0) || (stricmp(driver1.car_class, "basic") == 0) || (stricmp(driver1.car_class, "green") == 0)) &&
+        (strlen(driver1.license_plate) > 0) &&
+        (strlen(driver1.city) > 0) &&
+        (isDate(driver1.acc_creation)) &&
+        ((stricmp(driver1.status,"active") == 0) || (stricmp(driver1.status,"inactive") == 0))
+    );
+}
+
 Driver* inserir_drivers(FILE *drivers) {
     int nr_drivers = 0, cap_malloc = 1;
 
@@ -25,7 +39,18 @@ Driver* inserir_drivers(FILE *drivers) {
             sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
                 temp_d.id, temp_d.name, temp_d.birth_date, temp_d.gender, temp_d.car_class, temp_d.license_plate, temp_d.city, temp_d.acc_creation, temp_d.status);
 
-            drivers_cat[i] = temp_d;
+            if (isDvalid(temp_d)) drivers_cat[i] = temp_d;
+            else {
+                    strcpy(drivers_cat[i].id, "0");
+                    strcpy(drivers_cat[i].name, "");
+                    strcpy(drivers_cat[i].birth_date, "00/00/0000");
+                    strcpy(drivers_cat[i].gender, "");
+                    strcpy(drivers_cat[i].car_class, "");
+                    strcpy(drivers_cat[i].license_plate, "");
+                    strcpy(drivers_cat[i].city, "");
+                    strcpy(drivers_cat[i].acc_creation, "00/00/0000");
+                    strcpy(drivers_cat[i].status, "inactive");
+            }
         }
     }
 

@@ -73,3 +73,19 @@ int stricmp(char const *a, char const *b) {
             return d;
     }
 }
+
+bool isInt (char *string) {
+    for(int i = 0; i < strlen(string); i++) {
+        if (!isdigit(string[i])) return false;
+    }
+    return true;
+}
+
+bool isFloat (char *string) {
+    int nr_points = 0;
+    for(int i = 0; i < strlen(string); i++) {
+        if (((!isdigit(string[i])) && ((string[i] != '.'))) && (nr_points == 1) ) return false;
+        if (string[i] == '.') nr_points++;
+    }
+    return true;
+}

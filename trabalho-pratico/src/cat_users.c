@@ -6,6 +6,18 @@
 
 #include "../include/cat_users.h"
 
+bool isUvalid(User user1) {
+    return (
+        (strlen(user1.user) > 0) &&
+        (strlen(user1.name) > 0) &&
+        (strlen(user1.gender) == 1) &&
+        (isDate(user1.birth_date)) &&
+        (isDate(user1.acc_creation)) &&
+        (strlen(user1.pay_method) > 0) &&
+        ((stricmp(user1.status,"active") == 0) || (stricmp(user1.status,"inactive") == 0))
+    );
+}
+
 return_struct inserir_users(FILE *users) {
     int nr_users = 0, cap_malloc = 1;;
 
@@ -27,9 +39,19 @@ return_struct inserir_users(FILE *users) {
             sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
                 temp_u.user, temp_u.name, temp_u.gender, temp_u.birth_date, temp_u.acc_creation, temp_u.pay_method, temp_u.status);
 
-            users_cat[i] = temp_u;
-
-            g_hash_table_insert(users_hash, g_strdup(temp_u.user), g_strdup_printf("%i", i));
+            if (isUvalid(temp_u)) {
+                users_cat[i] = temp_u;
+                g_hash_table_insert(users_hash, g_strdup(temp_u.user), g_strdup_printf("%i", i));
+            }
+            else {
+                strcpy(users_cat[i].user, "");
+                strcpy(users_cat[i].name, "");
+                strcpy(users_cat[i].gender, "");
+                strcpy(users_cat[i].birth_date, "00/00/0000");
+                strcpy(users_cat[i].acc_creation, "00/00/0000");
+                strcpy(users_cat[i].pay_method, "");
+                strcpy(users_cat[i].status, "inactive");
+            }
         }
     }
 

@@ -9,6 +9,16 @@
 #define AGE_TIME_H
 
 #include <time.h>
+#include <string.h>
+#include <stdbool.h>
+#include <ctype.h>
+
+/**
+ *
+ * Este é o header da função que verifica se uma string é uma data.
+ * 
+ */
+bool isDate(char *date);
 
 /**
  *
