@@ -18,7 +18,7 @@ bool isUvalid(User user1) {
     );
 }
 
-return_struct inserir_users(FILE *users) {
+user_struct inserir_users(FILE *users) {
     int nr_users = 0, cap_malloc = 1;;
 
     // Criar catálogo dos Users
@@ -78,6 +78,6 @@ return_struct inserir_users(FILE *users) {
 
     free(temp);
 
-    return_struct r = {users_cat_dup, users_hash_dup};
+    user_struct r = {users_cat_dup, users_hash_dup};
     return r;
 }

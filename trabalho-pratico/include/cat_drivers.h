@@ -34,6 +34,16 @@ typedef struct {
 
 /**
  *
+ * Esta é a Struct que vai ser dada return no fim da função insere_driver.
+ * 
+ */
+typedef struct {
+    Driver* driverscat;
+    GHashTable* drivershash;
+} driver_struct;
+
+/**
+ *
  * Este é o header da função que verifica se um Driver é válido.
  * 
  */
@@ -44,6 +54,6 @@ bool isDvalid(Driver driver1);
  * Este é o header da função que insere os dados dos Drivers no catálogo.
  * 
  */
-Driver* inserir_drivers(FILE *drivers);
+driver_struct inserir_drivers(FILE *drivers);
 
 #endif

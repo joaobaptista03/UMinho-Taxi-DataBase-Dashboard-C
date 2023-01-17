@@ -7,7 +7,7 @@
 
 #include "../include/query5.h"
 
-void query5 (int counter, Driver *drivers_cat, Ride *rides_cat, char *data1, char* data2) {
+void query5 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *data1, char* data2) {
     printf("\nA executar Q5 (linha de input %i)\n", counter);
 
     // Medição de tempo
@@ -25,7 +25,7 @@ void query5 (int counter, Driver *drivers_cat, Ride *rides_cat, char *data1, cha
         if (most_recent(rides_cat[i].date, data1) == 1 && most_recent(rides_cat[i].date, data2) == 2) {
 
             char *class; class = malloc(10 * sizeof(char));
-            strcpy(class, drivers_cat[atoi(rides_cat[i].driver)].car_class);
+            strcpy(class, drivers_cat[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))].car_class);
 
             float taxa_base, taxa_dist;
             if (stricmp(class, "basic") == 0) {

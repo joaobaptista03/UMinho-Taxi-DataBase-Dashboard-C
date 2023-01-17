@@ -7,7 +7,7 @@
 
 #include "../include/query4.h"
 
-void query4 (int counter, Driver *drivers_cat, Ride *rides_cat, char *cidade) {
+void query4 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *cidade) {
     printf("\nA executar Q4 (linha de input %i)\n", counter);
 
     // Medição de tempo
@@ -22,7 +22,7 @@ void query4 (int counter, Driver *drivers_cat, Ride *rides_cat, char *cidade) {
         if (stricmp(rides_cat[i].city, cidade) == 0) {
             int distance = atoi(rides_cat[i].distance);
             char *class; class = malloc(10 * sizeof(char));
-            strcpy(class, drivers_cat[atoi(rides_cat[i].driver)].car_class);
+            strcpy(class, drivers_cat[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))].car_class);
 
             float taxa_base, taxa_dist;
             if (stricmp(class, "basic") == 0) {

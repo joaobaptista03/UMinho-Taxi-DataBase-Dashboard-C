@@ -20,11 +20,12 @@ bool isDvalid(Driver driver1) {
     );
 }
 
-Driver* inserir_drivers(FILE *drivers) {
+driver_struct inserir_drivers(FILE *drivers) {
     int nr_drivers = 0, cap_malloc = 1;
 
     // Criar catálogo dos Drivers
     Driver *drivers_cat; drivers_cat = malloc(sizeof(Driver));
+    GHashTable *drivers_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 
     char *temp; temp = malloc(1000 * sizeof(char));             // String temporária que irá armazenar cada linha dos Ficheiros CSV
     for(int i = 0; fgets(temp, 1000, drivers); i++) {
@@ -39,7 +40,10 @@ Driver* inserir_drivers(FILE *drivers) {
             sscanf(temp, "%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^;];%[^\n]", 
                 temp_d.id, temp_d.name, temp_d.birth_date, temp_d.gender, temp_d.car_class, temp_d.license_plate, temp_d.city, temp_d.acc_creation, temp_d.status);
 
-            if (isDvalid(temp_d)) drivers_cat[i] = temp_d;
+            if (isDvalid(temp_d)) {
+                drivers_cat[i] = temp_d;
+                g_hash_table_insert(drivers_hash, g_strdup(temp_d.id), g_strdup_printf("%i", i));
+            }
             else {
                     strcpy(drivers_cat[i].id, "0");
                     strcpy(drivers_cat[i].name, "");
@@ -51,6 +55,7 @@ Driver* inserir_drivers(FILE *drivers) {
                     strcpy(drivers_cat[i].acc_creation, "00/00/0000");
                     strcpy(drivers_cat[i].status, "inactive");
             }
+            
         }
     }
 
@@ -68,9 +73,18 @@ Driver* inserir_drivers(FILE *drivers) {
 
     Driver *drivers_cat_dup; drivers_cat_dup = malloc((1 + atoi(drivers_cat[0].id))*sizeof(Driver));
         for(int i = 0; i <= atoi(drivers_cat[0].id); i++) drivers_cat_dup[i] = drivers_cat[i];
-
     free(drivers_cat);
+
+    GHashTable *drivers_hash_dup = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+    void new_hash(gpointer key, gpointer value, gpointer u_data) {
+        g_hash_table_insert(drivers_hash_dup, g_strdup(key), g_strdup(value));
+    }
+    g_hash_table_foreach(drivers_hash, new_hash, NULL);
+    g_hash_table_destroy(drivers_hash);
+
     free(temp);
 
-    return drivers_cat_dup;
+    driver_struct r = {drivers_cat_dup, drivers_hash_dup};
+
+    return r;
 }

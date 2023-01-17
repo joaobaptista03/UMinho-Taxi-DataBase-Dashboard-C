@@ -38,7 +38,7 @@ typedef struct {
 typedef struct {
     User* userscat;
     GHashTable* usershash;
-} return_struct;
+} user_struct;
 
 /**
  *
@@ -52,6 +52,6 @@ bool isUvalid(User user1);
  * Este é o header da função que insere os dados dos drivers, users e rides nos catálogos respetivos.
  * 
  */
-return_struct inserir_users(FILE *users);
+user_struct inserir_users(FILE *users);
 
 #endif

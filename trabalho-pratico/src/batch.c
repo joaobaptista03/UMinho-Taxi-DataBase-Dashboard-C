@@ -13,8 +13,8 @@ void batch (char **argv) {
     FILE *rides = open_files(argv[1], "/rides.csv");
     FILE *inputs; inputs = fopen(argv[2], "r");
 
-    Driver *drivers_cat = inserir_drivers(drivers);
-    return_struct users_struct = inserir_users(users);
+    driver_struct drivers_struct = inserir_drivers(drivers);
+    user_struct users_struct = inserir_users(users);
     Ride* rides_cat = inserir_rides(rides);
 
     fclose(drivers);
@@ -24,7 +24,7 @@ void batch (char **argv) {
     fclose(users);
         if (users != NULL) puts("Ficheiro dos Users fechado");
 
-    handle_inputs(drivers_cat, users_struct.userscat, users_struct.usershash, rides_cat, inputs);
+    handle_inputs(drivers_struct.driverscat, drivers_struct.drivershash, users_struct.userscat, users_struct.usershash, rides_cat, inputs);
 
     fclose(inputs);
         if (inputs != NULL) puts("Ficheiro dos Inputs fechado\n");

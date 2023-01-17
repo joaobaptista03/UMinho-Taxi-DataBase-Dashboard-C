@@ -7,7 +7,7 @@
 
 #include "../include/query1_user.h"
 
-void query1_user (int counter, Driver *drivers_cat, User *users_cat, GHashTable *users_hash, Ride *rides_cat, char *id) {
+void query1_user (int counter, Driver *drivers_cat, GHashTable *drivers_hash, User *users_cat, GHashTable *users_hash, Ride *rides_cat, char *id) {
     printf("\nA executar Q1 (linha de input %i)\n", counter);
 
     User q1_u;                                              // Definição do User pretendido
@@ -38,7 +38,7 @@ void query1_user (int counter, Driver *drivers_cat, User *users_cat, GHashTable 
             num_viagens++;
             // Calcula a taxa base e a taxa por distância de acordo com a classe do carro do Driver dessa Ride
             char class[10];
-            strcpy(class, drivers_cat[atoi(rides_cat[i].driver)].car_class);
+            strcpy(class, drivers_cat[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))].car_class);
             if (stricmp(class, "basic") == 0) {
                 taxa_base = 3.25;
                 taxa_dist = 0.62;

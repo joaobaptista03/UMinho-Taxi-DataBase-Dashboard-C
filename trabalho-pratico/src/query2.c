@@ -7,7 +7,7 @@
 
 #include "../include/query2.h"
 
-void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
+void query2 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *N_arg) {
     printf("\nA executar Q2 (linha de input %i)\n\n", counter);
 
     // Medição de tempo
@@ -16,7 +16,6 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     start = clock();
 
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
-    int ind_driver;
 
     // Criar todas as arrays temporárias necessárias à função 
     double *tot_avaliacoes; tot_avaliacoes = calloc((1 + atoi(drivers_cat[0].id)), sizeof(double));
@@ -32,11 +31,10 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     for (int i = 0; i <= atoi(drivers_cat[0].id); i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
 
     for (int i = 1; i <= atoi(rides_cat[0].id); i++) {                                                  // Percorrer o catálogo das rides
-        if (stricmp(drivers_cat[atoi(rides_cat[i].driver)].status, "active") == 0) {       // Verificar se o Driver está ativo
-            ind_driver = atoi(rides_cat[i].driver);                                       // Calcular índice do driver pretendido
-            tot_avaliacoes[ind_driver] += atof(rides_cat[i].score_driver);                // Aumentar o total de avaliações do driver pretendido
-            num_viagens[ind_driver]++;                                                    // Incrementar o número de viagens do driver pretendido
-            if (most_recent(rides_cat[i].date, recent_ride[ind_driver]) == 1) strcpy(recent_ride[ind_driver], rides_cat[i].date);
+        if (stricmp(drivers_cat[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))].status, "active") == 0) {       // Verificar se o Driver está ativo
+            tot_avaliacoes[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))] += atof(rides_cat[i].score_driver);                // Aumentar o total de avaliações do driver pretendido
+            num_viagens[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))]++;                                                    // Incrementar o número de viagens do driver pretendido
+            if (most_recent(rides_cat[i].date, recent_ride[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))]) == 1) strcpy(recent_ride[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))], rides_cat[i].date);
         }
     }
 
@@ -50,7 +48,7 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     int *id_maiores; id_maiores = calloc(N, sizeof(int));                           // Array que irá armazenar os ID's ordenados por ordem decrescente de maior av_med
     for (int i = 0; i < N; i++) {                                                     // For loop que irá preencher id_maiores
         int larg_av_ind = larger_double(av_med_cpy, (1 + atoi(drivers_cat[0].id)));
-        id_maiores[i] = larg_av_ind;
+        id_maiores[i] = atoi(drivers_cat[larg_av_ind].id);
         av_med_cpy[larg_av_ind] = 0;
     }
 
@@ -65,7 +63,8 @@ void query2 (int counter, Driver *drivers_cat, Ride *rides_cat, char *N_arg) {
     puts("Forma do Resultado: id;nome;avaliacao_media");
     for (int i = 0; i < N; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
         char *output; output = malloc(500 * sizeof(char));
-        sprintf(output, "%s;%s;%.3f\n", drivers_cat[id_maiores[i]].id, drivers_cat[id_maiores[i]].name, av_med[id_maiores[i]]);
+        char id_i[30]; sprintf(id_i, "%012d", id_maiores[i]);
+        sprintf(output, "%s;%s;%.3f\n", drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id_i))].id, drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id_i))].name, av_med[id_maiores[i]]);
         printf("%s",output);
         handle_outputs(counter, output);
         free(output);

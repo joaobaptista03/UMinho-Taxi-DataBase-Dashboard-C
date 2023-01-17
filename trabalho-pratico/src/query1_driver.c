@@ -7,10 +7,10 @@
 
 #include "../include/query1_driver.h"
 
-void query1_driver (int counter, Driver *drivers_cat, Ride *rides_cat, char *id) {
+void query1_driver (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *id) {
     printf("\nA executar Q1 (linha de input %i)\n", counter);
 
-    int id_driver = atoi(id);                           // Converter string id do input para int
+    int id_driver = atoi(id);
 
     // Se o driver não existir
     if ((id_driver > atoi(drivers_cat[0].id) || id_driver < 1)) {
@@ -19,7 +19,7 @@ void query1_driver (int counter, Driver *drivers_cat, Ride *rides_cat, char *id)
         return;
     }
     
-    Driver q1_d = drivers_cat[id_driver];               // Ir buscar o driver pretendido pelo ID ao Catálogo
+    Driver q1_d = drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))];               // Ir buscar o driver pretendido pelo ID ao Catálogo
 
     // Se o Driver estiver inativo
     if (stricmp(q1_d.status, "inactive") == 0) {
