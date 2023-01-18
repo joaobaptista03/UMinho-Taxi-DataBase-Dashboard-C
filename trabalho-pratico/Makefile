@@ -4,7 +4,7 @@ LDFLAGS= `pkg-config --libs glib-2.0` -lm
 
 all: main
 
-main: src/main.o src/batch.o src/interactive.o src/files.o src/query1.o src/query1_driver.o src/query1_user.o src/query2.o src/query3.o src/query4.o src/query5.o src/query6.o src/randomfuncs.o src/age_time.o src/cat_drivers.o src/cat_users.o src/cat_rides.o src/inputs.o src/outputs.o
+main: src/main.o src/batch.o src/interactive.o src/files.o src/query1.o src/query1_driver.o src/query1_user.o src/query2.o src/query3.o src/query4.o src/query5.o src/query6.o src/randomfuncs.o src/age_time.o src/cat_drivers.o src/cat_users.o src/cat_rides.o src/inputs_batch.o src/inputs_interactive.o src/outputs.o
 	$(CC) $^ $(LDFLAGS) $(CFLAGS) -o programa-principal
 
 src/main.o : src/main.c
@@ -24,7 +24,8 @@ src/age_time.o : src/age_time.c
 src/cat_drivers.o : src/cat_drivers.c
 src/cat_users.o : src/cat_users.c
 src/cat_rides.o : src/cat_rides.c
-src/inputs.o : src/inputs.c
+src/inputs_batch.o : src/inputs_batch.c
+src/inputs_interactive.o : src/inputs_interactive.c
 src/outputs.o : src/outputs.c
 
 clean:

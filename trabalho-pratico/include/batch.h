@@ -12,7 +12,7 @@
 #include "../include/cat_users.h"
 #include "../include/cat_rides.h"
 #include "../include/files.h"
-#include "../include/inputs.h"
+#include "../include/inputs_batch.h"
 
 void batch (char **argv);
 
