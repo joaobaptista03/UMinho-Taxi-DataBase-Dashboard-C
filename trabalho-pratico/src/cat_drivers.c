@@ -21,16 +21,26 @@ bool isDvalid(Driver driver1) {
 }
 
 driver_struct inserir_drivers(FILE *drivers) {
-    int nr_drivers = 0, cap_malloc = 1;
+    int nr_drivers = 1, cap_malloc = 1;
 
     // Criar catálogo dos Drivers
     Driver *drivers_cat; drivers_cat = malloc(sizeof(Driver));
     GHashTable *drivers_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 
+    Driver generic_d;
+            strcpy(generic_d.id, "");
+            strcpy(generic_d.name, "");
+            strcpy(generic_d.birth_date, "");
+            strcpy(generic_d.gender, "");
+            strcpy(generic_d.car_class, "");
+            strcpy(generic_d.license_plate, "");
+            strcpy(generic_d.city, "");
+            strcpy(generic_d.acc_creation, "");
+            strcpy(generic_d.status, "");
+
     char *temp; temp = malloc(1000 * sizeof(char));             // String temporária que irá armazenar cada linha dos Ficheiros CSV
     for(int i = 0; fgets(temp, 1000, drivers); i++) {
         if (i != 0) {
-            nr_drivers++;
             if (cap_malloc == nr_drivers) {
                 drivers_cat = realloc(drivers_cat, 2 * cap_malloc * sizeof(Driver));
                 cap_malloc *= 2;
@@ -43,23 +53,15 @@ driver_struct inserir_drivers(FILE *drivers) {
             if (isDvalid(temp_d)) {
                 drivers_cat[i] = temp_d;
                 g_hash_table_insert(drivers_hash, g_strdup(temp_d.id), g_strdup_printf("%i", i));
+                nr_drivers++;
             }
-            else {
-                    strcpy(drivers_cat[i].id, "0");
-                    strcpy(drivers_cat[i].name, "");
-                    strcpy(drivers_cat[i].birth_date, "00/00/0000");
-                    strcpy(drivers_cat[i].gender, "");
-                    strcpy(drivers_cat[i].car_class, "");
-                    strcpy(drivers_cat[i].license_plate, "");
-                    strcpy(drivers_cat[i].city, "");
-                    strcpy(drivers_cat[i].acc_creation, "00/00/0000");
-                    strcpy(drivers_cat[i].status, "inactive");
-            }
-            
+            else i--;
+
+            temp_d = generic_d;
         }
     }
 
-    sprintf(drivers_cat[0].id, "%d", nr_drivers);
+    sprintf(drivers_cat[0].id, "%d", nr_drivers - 1);
     strcpy(drivers_cat[0].name, "");
     strcpy(drivers_cat[0].birth_date, "");
     strcpy(drivers_cat[0].gender, "");

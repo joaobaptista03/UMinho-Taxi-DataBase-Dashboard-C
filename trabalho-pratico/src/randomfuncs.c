@@ -75,6 +75,7 @@ int stricmp(char const *a, char const *b) {
 }
 
 bool isInt (char *string) {
+    if (strlen(string) == 0) return false;
     for(int i = 0; i < strlen(string); i++) {
         if (!isdigit(string[i])) return false;
     }
@@ -82,10 +83,14 @@ bool isInt (char *string) {
 }
 
 bool isFloat (char *string) {
+    if (strlen(string) == 0) return false;
     int nr_points = 0;
     for(int i = 0; i < strlen(string); i++) {
-        if (((!isdigit(string[i])) && ((string[i] != '.'))) && (nr_points == 1) ) return false;
-        if (string[i] == '.') nr_points++;
+        if (string[i] == '.') {
+            if (nr_points == 1) return false;
+            nr_points++;
+        }
+        if (!isdigit(string[i]) && (string[i] != '.')) return false;
     }
     return true;
 }

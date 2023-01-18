@@ -19,17 +19,24 @@ bool isUvalid(User user1) {
 }
 
 user_struct inserir_users(FILE *users) {
-    int nr_users = 0, cap_malloc = 1;;
+    int nr_users = 1, cap_malloc = 1;;
 
     // Criar catálogo dos Users
     User *users_cat; users_cat = malloc(sizeof(User));
+
+    User generic_u;
+            strcpy(generic_u.user, "");
+            strcpy(generic_u.gender, "");
+            strcpy(generic_u.birth_date, "");
+            strcpy(generic_u.acc_creation, "");
+            strcpy(generic_u.pay_method, "");
+            strcpy(generic_u.status, "");
 
     GHashTable *users_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 
     char *temp; temp = malloc(1000 * sizeof(char));                                // String temporária que irá armazenar cada linha dos Ficheiros CSV
     for(int i = 0; fgets(temp, 1000, users); i++) {
         if (i != 0) {
-            nr_users++;
             if (cap_malloc == nr_users) {
                 users_cat = realloc(users_cat, 2 * cap_malloc * sizeof(User));
                 cap_malloc *= 2;
@@ -42,20 +49,16 @@ user_struct inserir_users(FILE *users) {
             if (isUvalid(temp_u)) {
                 users_cat[i] = temp_u;
                 g_hash_table_insert(users_hash, g_strdup(temp_u.user), g_strdup_printf("%i", i));
+                nr_users++;
             }
-            else {
-                strcpy(users_cat[i].user, "");
-                strcpy(users_cat[i].name, "");
-                strcpy(users_cat[i].gender, "");
-                strcpy(users_cat[i].birth_date, "00/00/0000");
-                strcpy(users_cat[i].acc_creation, "00/00/0000");
-                strcpy(users_cat[i].pay_method, "");
-                strcpy(users_cat[i].status, "inactive");
-            }
+            else i--;
+
+            temp_u = generic_u;
+
         }
     }
 
-    sprintf(users_cat[0].user, "%d", nr_users);
+    sprintf(users_cat[0].user, "%d", nr_users - 1);
     strcpy(users_cat[0].name, "");
     strcpy(users_cat[0].gender, "");
     strcpy(users_cat[0].birth_date, "");

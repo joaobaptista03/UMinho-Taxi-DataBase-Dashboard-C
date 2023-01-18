@@ -16,8 +16,8 @@ bool isDate(char *date) {
         (strlen(date) == 10) &&
         isdigit(date[0]) && isdigit(date[1]) && isdigit(date[3]) && isdigit(date[4]) && isdigit(date[6]) && isdigit(date[7]) && isdigit(date[8]) && isdigit(date[9]) &&
         (date[2] == '/') && (date[5] == '/') &&
-        (((date[0]-48)*10 + date[1]-48) <= 31) && (((date[0]-48)*10 + date[1]-48) >= 0) &&
-        (((date[3]-48)*10 + date[4]-48) <= 12) && (((date[0]-48)*10 + date[1]-48) >= 0)
+        (((date[3]-48)*10 + date[4]-48) <= 12) && (((date[0]-48)*10 + date[1]-48) >= 1) &&
+        (((date[0]-48)*10 + date[1]-48) <= 31) && (((date[0]-48)*10 + date[1]-48) >= 1)
     );
 }
 

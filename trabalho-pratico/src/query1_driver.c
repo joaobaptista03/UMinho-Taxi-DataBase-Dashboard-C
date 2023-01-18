@@ -10,10 +10,8 @@
 void query1_driver (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *id) {
     printf("\nA executar Q1 (linha de input %i)\n", counter);
 
-    int id_driver = atoi(id);
-
     // Se o driver não existir
-    if ((id_driver > atoi(drivers_cat[0].id) || id_driver < 1)) {
+    if (g_hash_table_lookup(drivers_hash, id) == NULL) {
         puts("\nResultado: Driver não existe!\n");
         handle_outputs(counter, "");
         return;

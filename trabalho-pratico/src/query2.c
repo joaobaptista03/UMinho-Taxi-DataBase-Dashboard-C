@@ -53,8 +53,12 @@ void query2 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
     }
 
     for (int i = 0; i < N-1; i++) {
-        if (av_med[id_maiores[i]] == av_med[id_maiores[i+1]]) {
-            int rec_ride = most_recent(recent_ride[id_maiores[i]], recent_ride[id_maiores[i+1]]);
+        char maior[15];
+        char maior1[15];
+        sprintf(maior, "%012d", id_maiores[i]);
+        sprintf(maior1, "%012d", id_maiores[i+1]);
+        if (av_med[atoi(g_hash_table_lookup(drivers_hash, maior))] == av_med[atoi(g_hash_table_lookup(drivers_hash, maior1))]) {
+            int rec_ride = most_recent(recent_ride[atoi(g_hash_table_lookup(drivers_hash, maior))], recent_ride[atoi(g_hash_table_lookup(drivers_hash, maior1))]);
             if (rec_ride == 2) swap(id_maiores, i, i+1);
             else if (rec_ride == 3 && id_maiores[i] > id_maiores[i+1]) swap(id_maiores, i, i+1);
         }
@@ -64,7 +68,7 @@ void query2 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
     for (int i = 0; i < N; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
         char *output; output = malloc(500 * sizeof(char));
         char id_i[30]; sprintf(id_i, "%012d", id_maiores[i]);
-        sprintf(output, "%s;%s;%.3f\n", drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id_i))].id, drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id_i))].name, av_med[id_maiores[i]]);
+        sprintf(output, "%s;%s;%.3f\n", drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id_i))].id, drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id_i))].name, av_med[atoi(g_hash_table_lookup(drivers_hash, id_i))]);
         printf("%s",output);
         handle_outputs(counter, output);
         free(output);
