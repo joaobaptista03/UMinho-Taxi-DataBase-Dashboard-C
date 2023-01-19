@@ -24,8 +24,6 @@ void query7 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
     double *av_med_cpy; av_med_cpy = calloc((1 + atoi(drivers_cat[0].id)), sizeof(double));
 
 
-    for (int i = 0; i <= atoi(drivers_cat[0].id); i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
-
     for (int i = 1; i <= atoi(rides_cat[0].id); i++) {                                                  // Percorrer o catálogo das rides
         if ((stricmp(drivers_cat[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))].status, "active") == 0) && (stricmp(rides_cat[i].city, cidade) == 0)) {       // Verificar se o Driver está ativo
             tot_avaliacoes[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))] += atof(rides_cat[i].score_driver);                // Aumentar o total de avaliações do driver pretendido
