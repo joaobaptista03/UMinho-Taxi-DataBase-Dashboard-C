@@ -7,7 +7,7 @@
 
 #include "../include/query7.h"
 
-void query7 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *N_arg, char *cidade) {
+void query7 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *input) {
     printf("\nA executar Q7 (linha de input %i)\n\n", counter);
 
     // Medição de tempo
@@ -15,7 +15,19 @@ void query7 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
     double cpu_time_used;
     start = clock();
 
-    int N = atoi(N_arg);                                                      // Converter argumento N string para int
+    int i;
+    char *N_s; N_s= malloc(20 * sizeof(char));
+    for (i = 0; input[i] != ' '; i++) N_s[i] = input[i]; 
+    N_s[i] = '\0';
+
+    
+    int c = 1;    
+    for (int m = i + 1; isalpha(input[m]); m++) c++;
+    char *cidade; cidade = malloc(20 * sizeof(char));
+    memcpy(cidade, input + 1 + i, c); cidade[c] = '\0';
+     
+    
+    int N = atoi(N_s);                                                      // Converter argumento N string para int
 
     // Criar todas as arrays temporárias necessárias à função 
     double *tot_avaliacoes; tot_avaliacoes = calloc((1 + atoi(drivers_cat[0].id)), sizeof(double));
