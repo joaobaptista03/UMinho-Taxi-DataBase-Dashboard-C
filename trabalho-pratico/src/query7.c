@@ -16,7 +16,7 @@ void query7 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
     start = clock();
 
     int i;
-    char *N_s; N_s= malloc(20 * sizeof(char));
+    char N_s[20];
     for (i = 0; input[i] != ' '; i++) N_s[i] = input[i]; 
     N_s[i] = '\0';
 
@@ -72,6 +72,7 @@ void query7 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
     free(av_med);
     free(av_med_cpy);
     free(id_maiores);
+    free(cidade);
 
     // Medição de tempo
     end = clock();
