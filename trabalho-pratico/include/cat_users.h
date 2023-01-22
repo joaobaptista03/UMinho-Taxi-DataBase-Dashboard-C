@@ -20,13 +20,13 @@
  * 
  */
 typedef struct {
-    char user[100];
-    char name[100];
-    char gender[5];
-    char birth_date[15];
-    char acc_creation[15];
-    char pay_method[20];
-    char status[10];
+    char user[30];
+    char name[30];
+    char gender[2];
+    char birth_date[11];
+    char acc_creation[11];
+    char pay_method[10];
+    char status[9];
 
 } User;
 
