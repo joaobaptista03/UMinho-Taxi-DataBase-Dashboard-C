@@ -7,7 +7,7 @@
 
 #include "../include/query6.h"
 
-void query6 (int counter, Ride *rides_cat, char *input) {
+void query6 (int counter, Ride *rides_cat, char *input, int mode) {
     printf("\nA executar Q6 (linha de input %i)\n", counter);
 
     // Medição de tempo
@@ -48,7 +48,7 @@ void query6 (int counter, Ride *rides_cat, char *input) {
         free(data1);
         free(data2);
         
-        printf("\nNão há viagens!\n\n");
+        if (mode == 1) printf("\nNão há viagens!\n\n");
         handle_outputs(counter, "");
         printf("Fim da Q6 (Sem viagens) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
         return;
@@ -57,8 +57,8 @@ void query6 (int counter, Ride *rides_cat, char *input) {
     char *output; output = malloc(100 * sizeof(char));
     double resultado = (double) distance/contagem;
     sprintf(output, "%.3f\n", resultado);
-    puts("\nForma do Resultado: distancia_media");
-    printf("Resultado: %s\n",output);
+    if (mode == 1) puts("\nForma do Resultado: distancia_media");
+    if (mode == 1) printf("Resultado: %s\n",output);
     handle_outputs(counter,output);
 
     free(output);

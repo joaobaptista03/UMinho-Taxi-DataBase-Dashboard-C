@@ -27,5 +27,5 @@ void batch (char **argv) {
     handle_inputs(drivers_struct.driverscat, drivers_struct.drivershash, users_struct.userscat, users_struct.usershash, rides_cat, inputs);
 
     fclose(inputs);
-        if (inputs != NULL) puts("Ficheiro dos Inputs fechado\n");
+        if (inputs != NULL) puts("\nFicheiro dos Inputs fechado\n");
 }

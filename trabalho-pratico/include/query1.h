@@ -22,6 +22,6 @@
  * Este é o header da função que decide se irá executar a Q1 no caso dos Drivers, ou Users com os respetivos argumentos necessários.
  * 
  */
-void query1 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, User *new_users_cat, GHashTable *users_hash, Ride *new_rides_cat, char *id);
+void query1 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, User *new_users_cat, GHashTable *users_hash, Ride *new_rides_cat, char *id, int mode);
 
 #endif

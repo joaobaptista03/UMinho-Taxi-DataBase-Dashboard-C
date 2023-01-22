@@ -7,8 +7,9 @@
 
 #include "../include/query3.h"
 
-void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_cat, char *N_arg) {
-    printf("\nA executar Q3 (linha de input %i)\n", counter);
+void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_cat, char *N_arg, int mode) {
+    printf("\nA executar Q3 (linha de input %i)", counter);
+    if (mode == 1) printf("\n");
 
     // Medição de tempo
     clock_t start, end;
@@ -57,11 +58,11 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
         }
     }
 
-    puts("\nForma do Resultado: username;nome;distancia_total");
+    if (mode == 1) puts("\nForma do Resultado: username;nome;distancia_total");
     for (int i = 0; i < N; i++) {                                                  // For loop que irá criar a string de output e passá-la para a handle_outputs
         char output[500];
         sprintf(output, "%s;%s;%i\n", users_cat[user_maioresID[i]].user, users_cat[user_maioresID[i]].name, tot_distancia[user_maioresID[i]]);
-        printf("%s",output);
+        if (mode == 1) printf("%s",output);
         handle_outputs(counter, output);
     }
 

@@ -7,21 +7,21 @@
 
 #include "../include/query1_user.h"
 
-void query1_user (int counter, Driver *drivers_cat, GHashTable *drivers_hash, User *users_cat, GHashTable *users_hash, Ride *rides_cat, char *id) {
+void query1_user (int counter, Driver *drivers_cat, GHashTable *drivers_hash, User *users_cat, GHashTable *users_hash, Ride *rides_cat, char *id, int mode) {
     printf("\nA executar Q1 (linha de input %i)\n", counter);
 
     User q1_u;                                              // Definição do User pretendido
 
     if (g_hash_table_lookup(users_hash, id) != NULL) q1_u = users_cat[atoi(g_hash_table_lookup(users_hash, id))];
     else {
-        puts("\nResultado: User não existe!\n");
+        if (mode == 1) puts("\nResultado: User não existe!\n");
         handle_outputs(counter, "");
         return;
     }
 
     // Se o user for inactive
     if (stricmp(q1_u.status, "inactive") == 0) {
-        puts("\nResultado: User inativo!\n");
+        if (mode == 1) puts("\nResultado: User inativo!\n");
         handle_outputs(counter, "");
         return;
     }
@@ -61,7 +61,7 @@ void query1_user (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Us
     
     char output[150];
     sprintf(output, "%s;%s;%i;%.3f;%i;%.3f\n", q1_u.name, q1_u.gender, age(q1_u.birth_date), av_media, num_viagens, tot_gasto);
-    puts("\nForma do Resultado: nome;genero;idade;avaliacao_media;numero_viagens;total_gasto");
-    printf("Resultado: %s\n",output);
+    if (mode == 1) puts("\nForma do Resultado: nome;genero;idade;avaliacao_media;numero_viagens;total_gasto");
+    if (mode == 1) printf("Resultado: %s\n",output);
     handle_outputs(counter, output);
 }

@@ -7,12 +7,12 @@
 
 #include "../include/query1_driver.h"
 
-void query1_driver (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *id) {
+void query1_driver (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *id, int mode) {
     printf("\nA executar Q1 (linha de input %i)\n", counter);
 
     // Se o driver não existir
     if (g_hash_table_lookup(drivers_hash, id) == NULL) {
-        puts("\nResultado: Driver não existe!\n");
+        if (mode == 1) puts("\nResultado: Driver não existe!\n");
         handle_outputs(counter, "");
         return;
     }
@@ -21,7 +21,7 @@ void query1_driver (int counter, Driver *drivers_cat, GHashTable *drivers_hash, 
 
     // Se o Driver estiver inativo
     if (stricmp(q1_d.status, "inactive") == 0) {
-        puts("\nResultado: Driver inativo!\n");
+        if (mode == 1) puts("\nResultado: Driver inativo!\n");
         handle_outputs(counter, "");
         return;
     }
@@ -59,7 +59,7 @@ void query1_driver (int counter, Driver *drivers_cat, GHashTable *drivers_hash, 
 
     char output[150];
     sprintf(output, "%s;%s;%i;%.3f;%i;%.3f\n", q1_d.name, q1_d.gender, age(q1_d.birth_date), av_media, num_viagens, tot_auferido);
-    puts("\nForma do Resultado: nome;genero;idade;avaliacao_media;numero_viagens;total_auferido");
-    printf("Resultado: %s\n",output);
+    if (mode == 1) puts("\nForma do Resultado: nome;genero;idade;avaliacao_media;numero_viagens;total_auferido");
+    if (mode == 1) printf("Resultado: %s\n",output);
     handle_outputs(counter, output);
 }

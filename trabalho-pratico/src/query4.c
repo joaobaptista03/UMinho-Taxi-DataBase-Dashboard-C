@@ -7,7 +7,7 @@
 
 #include "../include/query4.h"
 
-void query4 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *cidade) {
+void query4 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *cidade, int mode) {
     printf("\nA executar Q4 (linha de input %i)\n", counter);
 
     // Medição de tempo
@@ -50,7 +50,7 @@ void query4 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
         
-        puts("\nResultado: Não há viagens!\n");
+        if (mode == 1) puts("\nResultado: Não há viagens!\n");
         handle_outputs(counter, "");
         printf("Fim da Q4 (Sem viagens) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
         return;
@@ -60,8 +60,8 @@ void query4 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
     double resultado = preco/contagem;
     sprintf(output, "%.3f\n", resultado);
     
-    printf("\nForma do Resultado: preco_medio");
-    printf("\nResultado: %s\n",output);
+    if (mode == 1) printf("\nForma do Resultado: preco_medio");
+    if (mode == 1) printf("\nResultado: %s\n",output);
     
     handle_outputs(counter,output);
 

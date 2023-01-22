@@ -22,6 +22,6 @@
  * Este é o header da função que executa a Query 1, caso seja Driver
  * 
  */
-void query1_user (int counter, Driver *drivers_cat, GHashTable *drivers_hash, User *users_cat, GHashTable *users_hash, Ride *rides_cat, char *id);
+void query1_user (int counter, Driver *drivers_cat, GHashTable *drivers_hash, User *users_cat, GHashTable *users_hash, Ride *rides_cat, char *id, int mode);
 
 #endif

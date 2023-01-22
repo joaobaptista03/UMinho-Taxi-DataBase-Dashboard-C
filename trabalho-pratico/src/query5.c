@@ -7,7 +7,7 @@
 
 #include "../include/query5.h"
 
-void query5 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *data1, char* data2) {
+void query5 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *data1, char* data2, int mode) {
     printf("\nA executar Q5 (linha de input %i)\n", counter);
 
     // Medição de tempo
@@ -54,7 +54,7 @@ void query5 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
         
-        printf("\nNão há viagens!\n\n");
+        if (mode == 1) printf("\nNão há viagens!\n\n");
         handle_outputs(counter, "");
         printf("Fim da Q5 (Sem viagens) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
         return;
@@ -63,8 +63,8 @@ void query5 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
     char *output; output = malloc(100 * sizeof(char));
     double resultado = preco/contagem;
     sprintf(output, "%.3f\n", resultado);
-    printf("\nForma do Resultado: preco_medio\n");
-    printf("Resultado: %s\n",output);
+    if (mode == 1) printf("\nForma do Resultado: preco_medio\n");
+    if (mode == 1) printf("Resultado: %s\n",output);
     handle_outputs(counter,output);
 
     free(output);

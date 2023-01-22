@@ -18,6 +18,6 @@
  * Este é o header da função que executa a Query 4, dado um ID em forma de string, e um contador para dizer em que linha está.
  * 
  */
-void query4 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *cidade);
+void query4 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *cidade, int mode);
 
 #endif
