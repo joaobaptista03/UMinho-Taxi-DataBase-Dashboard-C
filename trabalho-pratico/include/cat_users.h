@@ -20,7 +20,7 @@
  * 
  */
 typedef struct {
-    char user[100];
+    char user[50];
     char name[100];
     char gender[5];
     char birth_date[15];

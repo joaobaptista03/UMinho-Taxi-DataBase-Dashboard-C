@@ -15,19 +15,12 @@ void query7 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
     double cpu_time_used;
     start = clock();
 
-    int i;
-    char N_s[20];
-    for (i = 0; input[i] != ' '; i++) N_s[i] = input[i]; 
-    N_s[i] = '\0';
-
+    int N = atoi(input);                                                      // Converter argumento N string para int
     
-    int c = 1;    
-    for (int m = i + 1; isalpha(input[m]); m++) c++;
-    char *cidade; cidade = malloc(20 * sizeof(char));
-    memcpy(cidade, input + 1 + i, c); cidade[c] = '\0';
-     
-    
-    int N = atoi(N_s);                                                      // Converter argumento N string para int
+    char *cidaded;
+    cidaded = strstr(input, " ");
+    char cidade[20];
+    strcpy(cidade, cidaded + 1);
 
     // Criar todas as arrays temporárias necessárias à função 
     double *tot_avaliacoes; tot_avaliacoes = calloc((1 + atoi(drivers_cat[0].id)), sizeof(double));
@@ -72,7 +65,6 @@ void query7 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
     free(av_med);
     free(av_med_cpy);
     free(id_maiores);
-    free(cidade);
 
     // Medição de tempo
     end = clock();
