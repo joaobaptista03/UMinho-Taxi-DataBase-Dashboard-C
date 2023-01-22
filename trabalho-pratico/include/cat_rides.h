@@ -20,16 +20,16 @@
  * 
  */
 typedef struct {
-    char id[13];
-    char date[11];
-    char driver[11];
-    char user[30];
-    char city[10];
+    char id[15];
+    char date[15];
+    char driver[15];
+    char user[100];
+    char city[20];
     char distance[10];
     char score_user[5];
     char score_driver[5];
-    char tip[6];
-    char comment[20];
+    char tip[10];
+    char comment[100];
 
 } Ride;
 
