@@ -23,6 +23,7 @@
 #include "../include/query6.h"
 #include "../include/query7.h"
 #include "../include/query8.h"
+#include "../include/query9.h"
 
 /**
  *
