@@ -19,7 +19,7 @@
  * Este é o header da função que executa a Query 8, dado um ID em forma de string, e um contador para dizer em que linha está.
  * 
  */
-void query8 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *new_rides_cat, char *input, int mode);
+void query8 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, User *users_cat, GHashTable *users_hash, Ride *rides_cat, char *input, int mode);
 
 
 #endif
