@@ -46,8 +46,8 @@ void handle_input(Driver *drivers_cat, GHashTable *drivers_hash, User *users_cat
         else if (input[0] == '5') query5(counter, drivers_cat_dup, drivers_hash_dup, rides_cat_dup, input + 2, input + 13, 1);
         else if (input[0] == '6') query6(counter, rides_cat_dup, input + 2, 1);
         else if (input[0] == '7') query7(counter, drivers_cat_dup, drivers_hash_dup, rides_cat_dup, input + 2, 1);                             // Tem de fazer parsing porque o tamanho da city varia
+        else if (input[0] == '8') query8(counter, drivers_cat_dup, drivers_hash_dup, users_cat_dup, users_hash_dup, rides_cat_dup, input + 2, 1);
         /*
-        if (input[0] == '8') query8(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, input + 2, input + 4);
         if (input[0] == '9') query9(counter, drivers_cat_dup, users_cat_dup, rides_cat_dup, input + 2, input + 13);
         */
         counter++;
