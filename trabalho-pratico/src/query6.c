@@ -54,7 +54,7 @@ void query6 (int counter, Ride *rides_cat, char *input, int mode) {
         return;
     }
 
-    char *output; output = malloc(100 * sizeof(char));
+    char *output; output = malloc(70 * sizeof(char));
     double resultado = (double) distance/contagem;
     sprintf(output, "%.3f\n", resultado);
     if (mode == 1) puts("\nForma do Resultado: distancia_media");
