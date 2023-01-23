@@ -10,6 +10,7 @@
 
 #include "cat_drivers.h"
 #include "cat_rides.h"
+#include "cat_users.h"
 #include "randomfuncs.h"
 #include "outputs.h"
 
