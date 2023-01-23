@@ -56,7 +56,7 @@ void query4 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
         return;
     }
     
-    char *output; output = malloc(100 * sizeof(char));
+    char *output; output = malloc(70 * sizeof(char));
     double resultado = preco/contagem;
     sprintf(output, "%.3f\n", resultado);
     

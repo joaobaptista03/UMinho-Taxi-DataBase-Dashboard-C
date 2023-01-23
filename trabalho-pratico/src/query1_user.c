@@ -59,7 +59,7 @@ void query1_user (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Us
     if (num_viagens != 0) av_media = (double) total_avaliacoes / (double) num_viagens;
     else av_media = 0;
     
-    char output[150];
+    char output[70];
     sprintf(output, "%s;%s;%i;%.3f;%i;%.3f\n", q1_u.name, q1_u.gender, age(q1_u.birth_date), av_media, num_viagens, tot_gasto);
     if (mode == 1) puts("\nForma do Resultado: nome;genero;idade;avaliacao_media;numero_viagens;total_gasto");
     if (mode == 1) printf("Resultado: %s\n",output);
