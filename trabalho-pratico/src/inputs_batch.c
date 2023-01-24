@@ -12,7 +12,7 @@ void handle_inputs(Driver *drivers_cat, GHashTable *drivers_hash, User *users_ca
     int counter = 1;                                                    // Contador do input em que está
     char *input; input = malloc(100 * sizeof(char));                    // String para qual cada linha de input irá ser copiada
     while(fgets(input, 100, inputs)) {                                  // Loop While que irá fazer certas coisas (em cada loop) a cada linha do ficheiros de inputs  
-        if (strchr(input, '\n')) *(strchr(input, '\n') - 1) = '\0';     // Trocar '\n' por '\0' na string input
+        if (strchr(input, '\n')) *(strchr(input, '\n')) = '\0';     // Trocar '\n' por '\0' na string input
         
         if (input[0] == '1') query1(counter, drivers_cat, drivers_hash, users_cat, users_hash, rides_cat, input + 2, 0);
         else if (input[0] == '2') query2(counter, drivers_cat, drivers_hash, rides_cat, input + 2, 0);
