@@ -7,7 +7,7 @@
 
 #include "../include/query5.h"
 
-void query5 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *data1, char* data2, int mode) {
+void query5 (int counter, Ride *rides_cat, char *data1, char* data2, int mode) {
     printf("\nA executar Q5 (linha de input %i)\n", counter);
 
     // Medição de tempo

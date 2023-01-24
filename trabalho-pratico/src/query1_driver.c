@@ -7,7 +7,7 @@
 
 #include "../include/query1_driver.h"
 
-void query1_driver (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *id, int mode) {
+void query1_driver (int counter, Ride *rides_cat, char *id, int mode) {
     printf("\nA executar Q1 (linha de input %i)\n", counter);
 
     // Se o driver não existir

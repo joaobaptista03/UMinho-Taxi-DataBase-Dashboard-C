@@ -41,6 +41,54 @@ bool isDvalid(Driver driver1) {
     );
 }
 
+int get_n_drivers() {
+    return g_hash_table_size(drivers_hash);
+}
+
+bool is_driver (char *id) {
+    return g_hash_table_contains(drivers_hash, id);
+}
+
+int get_driver_i(char *id) {
+    return atoi(g_hash_table_lookup(drivers_hash, id));
+}
+
+char* get_driver_id(int indice) {
+    return drivers_cat[indice].id;
+}
+
+char* get_driver_name(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].name;
+}
+
+char* get_driver_birth_date(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].birth_date;
+}
+
+char* get_driver_gender(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].gender;
+}
+
+char* get_driver_car_class(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].car_class;
+}
+
+char* get_driver_license_plate(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].license_plate;
+}
+
+char* get_driver_city(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].city;
+}
+
+char* get_driver_acc_creation(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].acc_creation;
+}
+
+char* get_driver_status(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].status;
+}
+
 driver_struct inserir_drivers(FILE *drivers) {
     int nr_drivers = 1, cap_malloc = 1;
 
@@ -99,56 +147,4 @@ driver_struct inserir_drivers(FILE *drivers) {
     driver_struct r = {drivers_cat, drivers_hash};
 
     return r;
-}
-
-int get_n_drivers() {
-    return g_hash_table_size(drivers_hash);
-}
-
-bool is_driver (char *id) {
-    return g_hash_table_contains(drivers_hash, id);
-}
-
-int get_driver_i(char *id) {
-    return atoi(g_hash_table_lookup(drivers_hash, id));
-}
-
-char* get_driver_id(int indice) {
-    return drivers_cat[indice].id;
-}
-
-char* get_driver_name(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].name;
-}
-
-char* get_driver_birth_date(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].birth_date;
-}
-
-char* get_driver_gender(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].gender;
-}
-
-char* get_driver_car_class(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].car_class;
-}
-
-char* get_driver_license_plate(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].license_plate;
-}
-
-char* get_driver_city(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].city;
-}
-
-char* get_driver_acc_creation(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].acc_creation;
-}
-
-char* get_driver_status(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].status;
-}
-
-size_t get_driver_size() {
-    return sizeof(Driver);
 }

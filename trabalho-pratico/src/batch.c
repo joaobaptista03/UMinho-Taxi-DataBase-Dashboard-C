@@ -12,6 +12,11 @@ struct driver_struct {
     GHashTable* drivershash;
 };
 
+struct user_struct {
+    User* userscat;
+    GHashTable* usershash;
+};
+
 void batch (char **argv) {
     FILE *drivers = open_files(argv[1], "/drivers.csv");
     FILE *users = open_files(argv[1], "/users.csv");

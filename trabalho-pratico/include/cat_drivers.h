@@ -114,13 +114,6 @@ char* get_driver_status(char *id);
 
 /**
  *
- * Esta é a função que retornará o size de um Driver.
- * 
- */
-size_t get_driver_size();
-
-/**
- *
  * Este é o header da função que verifica se um Driver é válido.
  * 
  */

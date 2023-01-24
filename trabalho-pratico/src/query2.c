@@ -7,7 +7,7 @@
 
 #include "../include/query2.h"
 
-void query2 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *N_arg, int mode) {
+void query2 (int counter, Ride *rides_cat, char *N_arg, int mode) {
     printf("\nA executar Q2 (linha de input %i)\n", counter);
     if (mode == 1) printf("\n");
 
@@ -58,8 +58,8 @@ void query2 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
         char maior1[15];
         sprintf(maior, "%012d", id_maiores[i]);
         sprintf(maior1, "%012d", id_maiores[i+1]);
-        if (av_med[atoi(g_hash_table_lookup(drivers_hash, maior))] == av_med[atoi(g_hash_table_lookup(drivers_hash, maior1))]) {
-            int rec_ride = most_recent(recent_ride[atoi(g_hash_table_lookup(drivers_hash, maior))], recent_ride[atoi(g_hash_table_lookup(drivers_hash, maior1))]);
+        if (av_med[get_driver_i(maior)] == av_med[get_driver_i(maior1)]) {
+            int rec_ride = most_recent(recent_ride[get_driver_i(maior)], recent_ride[get_driver_i(maior1)]);
             if (rec_ride == 2) swap(id_maiores, i, i+1);
             else if (rec_ride == 3 && id_maiores[i] > id_maiores[i+1]) swap(id_maiores, i, i+1);
         }

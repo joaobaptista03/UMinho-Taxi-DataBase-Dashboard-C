@@ -7,7 +7,7 @@
 
 #include "../include/query4.h"
 
-void query4 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *cidade, int mode) {
+void query4 (int counter, Ride *rides_cat, char *cidade, int mode) {
     printf("\nA executar Q4 (linha de input %i)\n", counter);
 
     // Medição de tempo

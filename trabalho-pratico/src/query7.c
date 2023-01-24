@@ -7,7 +7,7 @@
 
 #include "../include/query7.h"
 
-void query7 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *rides_cat, char *input, int mode) {
+void query7 (int counter, Ride *rides_cat, char *input, int mode) {
     printf("\nA executar Q7 (linha de input %i)\n", counter);
     if (mode == 1) printf("\n");
 

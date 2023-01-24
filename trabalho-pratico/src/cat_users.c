@@ -6,6 +6,25 @@
 
 #include "../include/cat_users.h"
 
+struct User {
+    char user[50];
+    char name[30];
+    char gender[2];
+    char birth_date[11];
+    char acc_creation[11];
+    char pay_method[20];
+    char status[9];
+
+};
+
+struct user_struct {
+    User* userscat;
+    GHashTable* usershash;
+};
+
+GHashTable *users_hash;
+User *users_cat;
+
 bool isUvalid(User user1) {
     return (
         (strlen(user1.user) > 0) &&
@@ -18,11 +37,51 @@ bool isUvalid(User user1) {
     );
 }
 
+int get_nr_users() {
+    return g_hash_table_size(users_hash);
+}
+
+bool is_user (char *user) {
+    return g_hash_table_contains(users_hash, user);
+}
+
+int get_user_i(char *user) {
+    return atoi(g_hash_table_lookup(users_hash, user));
+}
+
+char* get_user_username(int indice) {
+    return users_cat[indice].user;
+}
+
+char* get_user_name(char *user) {
+    return users_cat[atoi(g_hash_table_lookup(users_hash, user))].name;
+}
+
+char* get_user_gender(char *user) {
+    return users_cat[atoi(g_hash_table_lookup(users_hash, user))].gender;
+}
+
+char* get_user_birth_date(char *user) {
+    return users_cat[atoi(g_hash_table_lookup(users_hash, user))].birth_date;
+}
+
+char* get_user_acc_creation(char *user) {
+    return users_cat[atoi(g_hash_table_lookup(users_hash, user))].acc_creation;
+}
+
+char* get_user_pay_method(char *user) {
+    return users_cat[atoi(g_hash_table_lookup(users_hash, user))].pay_method;
+}
+
+char* get_user_status(char *user) {
+    return users_cat[atoi(g_hash_table_lookup(users_hash, user))].status;
+}
+
 user_struct inserir_users(FILE *users) {
     int nr_users = 1, cap_malloc = 1;;
 
     // Criar catálogo dos Users
-    User *users_cat; users_cat = malloc(sizeof(User));
+    users_cat = malloc(sizeof(User));
 
     User generic_u;
             strcpy(generic_u.user, "");
@@ -32,7 +91,7 @@ user_struct inserir_users(FILE *users) {
             strcpy(generic_u.pay_method, "");
             strcpy(generic_u.status, "");
 
-    GHashTable *users_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+    users_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 
     char *temp; temp = malloc(1000 * sizeof(char));                                // String temporária que irá armazenar cada linha dos Ficheiros CSV
     for(int i = 0; fgets(temp, 1000, users); i++) {
@@ -58,7 +117,7 @@ user_struct inserir_users(FILE *users) {
         }
     }
 
-    sprintf(users_cat[0].user, "%d", nr_users - 1);
+    strcpy(users_cat[0].user, "");
     strcpy(users_cat[0].name, "");
     strcpy(users_cat[0].gender, "");
     strcpy(users_cat[0].birth_date, "");
@@ -67,20 +126,8 @@ user_struct inserir_users(FILE *users) {
     strcpy(users_cat[0].status, "");
 
     puts("Catálogo dos Users preenchido");
-
-    User *users_cat_dup; users_cat_dup = malloc((1 + atoi(users_cat[0].user))*sizeof(User));
-        for(int i = 0; i <= atoi(users_cat[0].user); i++) users_cat_dup[i] = users_cat[i];
-    free(users_cat);
-
-    GHashTable *users_hash_dup = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
-    void new_hash(gpointer key, gpointer value, gpointer u_data) {
-        g_hash_table_insert(users_hash_dup, g_strdup(key), g_strdup(value));
-    }
-    g_hash_table_foreach(users_hash, new_hash, NULL);
-    g_hash_table_destroy(users_hash);
-
+    
     free(temp);
-
-    user_struct r = {users_cat_dup, users_hash_dup};
+    user_struct r = {users_cat, users_hash};
     return r;
 }

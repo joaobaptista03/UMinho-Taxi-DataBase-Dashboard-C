@@ -12,6 +12,11 @@ struct driver_struct {
     GHashTable* drivershash;
 };
 
+struct user_struct {
+    User* userscat;
+    GHashTable* usershash;
+};
+
 void interactive () {
 
     puts("Bem-vindo ao modo Interativo! Para continuar, coloque o caminho do diretório dos ficheiros CSV.\n");
