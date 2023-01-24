@@ -7,7 +7,7 @@
 
 #include "../include/query7.h"
 
-void query7 (int counter, Ride *rides_cat, char *input, int mode) {
+void query7 (int counter, char *input, int mode) {
     printf("\nA executar Q7 (linha de input %i)\n", counter);
     if (mode == 1) printf("\n");
 
@@ -30,10 +30,10 @@ void query7 (int counter, Ride *rides_cat, char *input, int mode) {
     double *av_med_cpy; av_med_cpy = calloc((1 + get_n_drivers()), sizeof(double));
 
 
-    for (int i = 1; i <= atoi(rides_cat[0].id); i++) {                                                  // Percorrer o catálogo das rides
-        if ((stricmp(get_driver_status(rides_cat[i].driver), "active") == 0) && (stricmp(rides_cat[i].city, cidade) == 0)) {       // Verificar se o Driver está ativo
-            tot_avaliacoes[get_driver_i(rides_cat[i].driver)] += atof(rides_cat[i].score_driver);                // Aumentar o total de avaliações do driver pretendido
-            num_viagens[get_driver_i(rides_cat[i].driver)]++;                                                    // Incrementar o número de viagens do driver pretendido
+    for (int i = 1; i <= get_nr_rides(); i++) {                                                  // Percorrer o catálogo das rides
+        if ((stricmp(get_driver_status(get_ride_driver(i)), "active") == 0) && (stricmp(get_ride_city(i), cidade) == 0)) {       // Verificar se o Driver está ativo
+            tot_avaliacoes[get_driver_i(get_ride_driver(i))] += atof(get_ride_score_driver(i));                // Aumentar o total de avaliações do driver pretendido
+            num_viagens[get_driver_i(get_ride_driver(i))]++;                                                    // Incrementar o número de viagens do driver pretendido
         }
     }
 

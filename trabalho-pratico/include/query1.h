@@ -22,6 +22,6 @@
  * Este é o header da função que decide se irá executar a Q1 no caso dos Drivers, ou Users com os respetivos argumentos necessários.
  * 
  */
-void query1 (int counter, Ride *rides_cat, char *id, int mode);
+void query1 (int counter, char *id, int mode);
 
 #endif

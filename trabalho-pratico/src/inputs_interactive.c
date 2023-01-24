@@ -6,7 +6,7 @@
 
 #include "../include/inputs_batch.h"
 
-void handle_input(Driver *drivers_cat, GHashTable *drivers_hash, User *users_cat, GHashTable *users_hash, Ride *rides_cat) {
+void handle_input() {
 
     int counter = 1;
 
@@ -14,25 +14,19 @@ void handle_input(Driver *drivers_cat, GHashTable *drivers_hash, User *users_cat
     while ((fgets(input, 100, stdin)) && (stricmp(input, "EXIT\n") != 0)) {
         if (strchr(input, '\n')) *(strchr(input, '\n')) = '\0';                                                                // Trocar '\n' por '\0' na string input
         
-        if (input[0] == '1') query1(counter, rides_cat, input + 2, 1);
-        else if (input[0] == '2') query2(counter, rides_cat, input + 2, 1);
-        else if (input[0] == '3') query3(counter, rides_cat, input + 2, 1);
-        else if (input[0] == '4') query4(counter, rides_cat, input + 2, 1);
-        else if (input[0] == '5') query5(counter, rides_cat, input + 2, input + 13, 1);
-        else if (input[0] == '6') query6(counter, rides_cat, input + 2, 1);
-        else if (input[0] == '7') query7(counter, rides_cat, input + 2, 1);                             // Tem de fazer parsing porque o tamanho da city varia
-        else if (input[0] == '8') query8(counter, rides_cat, input + 2, 1);
-        else if (input[0] == '9') query9(counter, rides_cat, input + 2, input + 13, 1);
+        if (input[0] == '1') query1(counter, input + 2, 1);
+        else if (input[0] == '2') query2(counter, input + 2, 1);
+        else if (input[0] == '3') query3(counter, input + 2, 1);
+        else if (input[0] == '4') query4(counter, input + 2, 1);
+        else if (input[0] == '5') query5(counter, input + 2, input + 13, 1);
+        else if (input[0] == '6') query6(counter, input + 2, 1);
+        else if (input[0] == '7') query7(counter, input + 2, 1);                             // Tem de fazer parsing porque o tamanho da city varia
+        else if (input[0] == '8') query8(counter, input + 2, 1);
+        else if (input[0] == '9') query9(counter, input + 2, input + 13, 1);
         counter++;
         puts("--------------------------------------------");
     }
 
     free(input);
-    free(drivers_cat);
-    free(users_cat);
-    free(rides_cat);
-    g_hash_table_destroy(users_hash);
-    g_hash_table_destroy(drivers_hash);
-
 }
 

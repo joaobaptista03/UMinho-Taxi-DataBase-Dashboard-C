@@ -7,7 +7,7 @@
 
 #include "../include/query5.h"
 
-void query5 (int counter, Ride *rides_cat, char *data1, char* data2, int mode) {
+void query5 (int counter, char *data1, char* data2, int mode) {
     printf("\nA executar Q5 (linha de input %i)\n", counter);
 
     // Medição de tempo
@@ -20,13 +20,13 @@ void query5 (int counter, Ride *rides_cat, char *data1, char* data2, int mode) {
     double preco = 0;
     int contagem = 0;
 
-    for(int i = 1; i <= atoi(rides_cat[0].id); i++) {
+    for(int i = 1; i <= get_nr_rides(); i++) {
         
-        if ((most_recent(rides_cat[i].date, data1) == 1 || most_recent(rides_cat[i].date, data1) == 3)
-        &&  (most_recent(rides_cat[i].date, data2) == 2 || most_recent(rides_cat[i].date, data2) == 3)) {
+        if ((most_recent(get_ride_date(i), data1) == 1 || most_recent(get_ride_date(i), data1) == 3)
+        &&  (most_recent(get_ride_date(i), data2) == 2 || most_recent(get_ride_date(i), data2) == 3)) {
 
             char *class; class = malloc(10 * sizeof(char));
-            strcpy(class, get_driver_car_class(rides_cat[i].driver));
+            strcpy(class, get_driver_car_class(get_ride_driver(i)));
 
             float taxa_base, taxa_dist;
             if (stricmp(class, "basic") == 0) {
@@ -42,7 +42,7 @@ void query5 (int counter, Ride *rides_cat, char *data1, char* data2, int mode) {
                 taxa_dist = 0.94;
             }
             contagem++;
-            preco += taxa_dist * atoi(rides_cat[i].distance) + taxa_base;
+            preco += taxa_dist * atoi(get_ride_distance(i)) + taxa_base;
 
             free(class);
 

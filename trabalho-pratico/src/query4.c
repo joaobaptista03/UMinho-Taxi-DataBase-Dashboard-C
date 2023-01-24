@@ -7,7 +7,7 @@
 
 #include "../include/query4.h"
 
-void query4 (int counter, Ride *rides_cat, char *cidade, int mode) {
+void query4 (int counter, char *cidade, int mode) {
     printf("\nA executar Q4 (linha de input %i)\n", counter);
 
     // Medição de tempo
@@ -18,11 +18,11 @@ void query4 (int counter, Ride *rides_cat, char *cidade, int mode) {
     double preco = 0;
     int contagem = 0;
 
-    for (int i = 1; i <= atoi(rides_cat[0].id); i++) {
-        if (stricmp(rides_cat[i].city, cidade) == 0) {
-            int distance = atoi(rides_cat[i].distance);
+    for (int i = 1; i <= get_nr_rides(); i++) {
+        if (stricmp(get_ride_city(i), cidade) == 0) {
+            int distance = atoi(get_ride_distance(i));
             char *class; class = malloc(10 * sizeof(char));
-            strcpy(class, get_driver_car_class(rides_cat[i].driver));
+            strcpy(class, get_driver_car_class(get_ride_driver(i)));
 
             float taxa_base, taxa_dist;
             if (stricmp(class, "basic") == 0) {

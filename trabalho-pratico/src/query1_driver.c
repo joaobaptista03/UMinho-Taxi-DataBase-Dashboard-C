@@ -7,7 +7,7 @@
 
 #include "../include/query1_driver.h"
 
-void query1_driver (int counter, Ride *rides_cat, char *id, int mode) {
+void query1_driver (int counter, char *id, int mode) {
     printf("\nA executar Q1 (linha de input %i)\n", counter);
 
     // Se o driver não existir
@@ -44,11 +44,11 @@ void query1_driver (int counter, Ride *rides_cat, char *id, int mode) {
     double tot_auferido = 0;
 
     // for loop que percorre o catálogo das Rides, e se cada ride for do Driver pretendido, faz os devidos cálculos
-    for (int i = 1; i <= atoi(rides_cat[0].id); i++) {
-        if (stricmp(rides_cat[i].driver, id) == 0) {
-            total_avaliacoes += atof(rides_cat[i].score_driver);
+    for (int i = 1; i <= get_nr_rides(); i++) {
+        if (stricmp(get_ride_driver(i), id) == 0) {
+            total_avaliacoes += atof(get_ride_score_driver(i));
             num_viagens++;
-            tot_auferido += atof(rides_cat[i].distance) * taxa_dist + taxa_base + atof(rides_cat[i].tip);
+            tot_auferido += atof(get_ride_distance(i)) * taxa_dist + taxa_base + atof(get_ride_tip(i));
         }
     }
     // Se o número de viagens for 0, o divisor será 0, logo iria dar erro. Logo, a avaliação média é imediatamente 0

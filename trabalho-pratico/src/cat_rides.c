@@ -6,6 +6,58 @@
 
 #include "../include/cat_rides.h"
 
+struct Ride {
+    char id[13];
+    char date[11];
+    char driver[13];
+    char user[50];
+    char city[10];
+    char distance[10];
+    char score_user[5];
+    char score_driver[5];
+    char tip[6];
+    char comment[100];
+
+};
+
+Ride *rides_cat;
+
+int get_nr_rides() {
+    return atoi(rides_cat[0].id);
+}
+
+char *get_ride_date(int indice) {
+    return rides_cat[indice].date;
+}
+
+char *get_ride_driver(int indice) {
+    return rides_cat[indice].driver;
+}
+
+char *get_ride_user(int indice) {
+    return rides_cat[indice].user;
+}
+
+char *get_ride_city(int indice) {
+    return rides_cat[indice].city;
+}
+
+char *get_ride_distance(int indice) {
+    return rides_cat[indice].distance;
+}
+
+char *get_ride_score_user(int indice) {
+    return rides_cat[indice].score_user;
+}
+
+char *get_ride_score_driver(int indice) {
+    return rides_cat[indice].score_driver;
+}
+
+char *get_ride_tip(int indice) {
+    return rides_cat[indice].tip;
+}
+
 bool isRvalid (Ride ride1) {
     return (
         (strlen(ride1.id) > 0) &&
@@ -24,7 +76,7 @@ Ride* inserir_rides(FILE *rides) {
     int nr_rides = 1, cap_malloc = 1;
 
     // Criar catálogo das Rides
-    Ride *rides_cat; rides_cat = malloc(sizeof(Ride));
+    rides_cat = malloc(sizeof(Ride));
 
     Ride generic_r;
             strcpy(generic_r.id, "");
@@ -73,11 +125,7 @@ Ride* inserir_rides(FILE *rides) {
 
     puts("Catálogo das Rides preenchido");
 
-    Ride *rides_cat_dup; rides_cat_dup = malloc((atoi(rides_cat[0].id) + 1) * sizeof(Ride));
-        for(int i = 0; i <= atoi(rides_cat[0].id); i++) rides_cat_dup[i] = rides_cat[i];
-
-    free(rides_cat);
     free(temp);
 
-    return rides_cat_dup;
+    return rides_cat;
 }

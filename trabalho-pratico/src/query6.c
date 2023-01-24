@@ -7,7 +7,7 @@
 
 #include "../include/query6.h"
 
-void query6 (int counter, Ride *rides_cat, char *input, int mode) {
+void query6 (int counter, char *input, int mode) {
     printf("\nA executar Q6 (linha de input %i)\n", counter);
 
     // Medição de tempo
@@ -29,13 +29,13 @@ void query6 (int counter, Ride *rides_cat, char *input, int mode) {
     int distance = 0;
     int contagem = 0;
 
-    for(int i = 1; i <= atoi(rides_cat[0].id); i++) {
+    for(int i = 1; i <= get_nr_rides(); i++) {
         
-        if ((most_recent(rides_cat[i].date, data1) == 1 || most_recent(rides_cat[i].date, data1) == 3)
-        &&  (most_recent(rides_cat[i].date, data2) == 2 || most_recent(rides_cat[i].date, data2) == 3)
-        && stricmp(rides_cat[i].city, city) == 0) {
+        if ((most_recent(get_ride_date(i), data1) == 1 || most_recent(get_ride_date(i), data1) == 3)
+        &&  (most_recent(get_ride_date(i), data2) == 2 || most_recent(get_ride_date(i), data2) == 3)
+        && stricmp(get_ride_city(i), city) == 0) {
             contagem++;
-            distance += atoi(rides_cat[i].distance);
+            distance += atoi(get_ride_distance(i));
         }
     }
     

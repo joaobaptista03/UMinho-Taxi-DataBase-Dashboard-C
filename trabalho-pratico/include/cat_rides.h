@@ -19,19 +19,70 @@
  * Esta é a Struct que define o que é uma Ride, e contém todas as informações dela. Será inserida no catálogo das Rides.
  * 
  */
-typedef struct {
-    char id[13];
-    char date[11];
-    char driver[13];
-    char user[50];
-    char city[10];
-    char distance[10];
-    char score_user[5];
-    char score_driver[5];
-    char tip[6];
-    char comment[100];
+typedef struct Ride Ride;
 
-} Ride;
+/**
+ *
+ * Este é o header da função que retornará o número de Rides.
+ * 
+ */
+int get_nr_rides();
+
+/**
+ *
+ * Este é o header da função que retornará a data da Ride.
+ * 
+ */
+char *get_ride_date(int indice);
+
+/**
+ *
+ * Este é o header da função que retornará o Driver da Ride.
+ * 
+ */
+char *get_ride_driver(int indice);
+
+/**
+ *
+ * Este é o header da função que retornará o User da Ride.
+ * 
+ */
+char *get_ride_user(int indice);
+
+/**
+ *
+ * Este é o header da função que retornará a cidade da Ride.
+ * 
+ */
+char *get_ride_city(int indice);
+
+/**
+ *
+ * Este é o header da função que retornará a distância da Ride.
+ * 
+ */
+char *get_ride_distance(int indice);
+
+/**
+ *
+ * Este é o header da função que retornará o Score User da Ride.
+ * 
+ */
+char *get_ride_score_user(int indice);
+
+/**
+ *
+ * Este é o header da função que retornará o o Score Driver da Ride.
+ * 
+ */
+char *get_ride_score_driver(int indice);
+
+/**
+ *
+ * Este é o header da função que retornará a tip da Ride.
+ * 
+ */
+char *get_ride_tip(int indice);
 
 /**
  *

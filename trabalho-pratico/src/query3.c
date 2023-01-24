@@ -7,7 +7,7 @@
 
 #include "../include/query3.h"
 
-void query3 (int counter, Ride *rides_cat, char *N_arg, int mode) {
+void query3 (int counter, char *N_arg, int mode) {
     printf("\nA executar Q3 (linha de input %i)", counter);
     if (mode == 1) printf("\n");
 
@@ -30,11 +30,11 @@ void query3 (int counter, Ride *rides_cat, char *N_arg, int mode) {
 
     for (int i = 1; i <= get_nr_users(); i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
 
-    for (int i = 1; i <= atoi(rides_cat[0].id); i++) {                                              // Percorrer o catálogo das Rides
-            userLine = get_user_i(rides_cat[i].user);
+    for (int i = 1; i <= get_nr_rides(); i++) {                                              // Percorrer o catálogo das Rides
+            userLine = get_user_i(get_ride_user(i));
 
-            if (most_recent(rides_cat[i].date, recent_ride[userLine]) == 1) strcpy(recent_ride[userLine], rides_cat[i].date);
-            if (stricmp(get_user_status(rides_cat[i].user), "active") == 0) tot_distancia[userLine] += atoi(rides_cat[i].distance);      // Verificar se o User está ativo
+            if (most_recent(get_ride_date(i), recent_ride[userLine]) == 1) strcpy(recent_ride[userLine], get_ride_date(i));
+            if (stricmp(get_user_status(get_ride_user(i)), "active") == 0) tot_distancia[userLine] += atoi(get_ride_distance(i));      // Verificar se o User está ativo
     }
 
     for (int i = 1; i <= get_nr_users(); i++) tot_distancia_cpy[i] = tot_distancia[i];                       // Clonar tot_distancia para ser usado no for loop

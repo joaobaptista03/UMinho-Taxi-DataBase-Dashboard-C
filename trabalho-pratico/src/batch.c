@@ -34,8 +34,14 @@ void batch (char **argv) {
     fclose(users);
         if (users != NULL) puts("Ficheiro dos Users fechado");
 
-    handle_inputs(drivers_struct.driverscat, drivers_struct.drivershash, users_struct.userscat, users_struct.usershash, rides_cat, inputs);
+    handle_inputs(inputs);
 
+    free(drivers_struct.driverscat);
+    free(users_struct.userscat);
+    free(rides_cat);
+    g_hash_table_destroy(users_struct.usershash);
+    g_hash_table_destroy(drivers_struct.drivershash);
+    
     fclose(inputs);
         if (inputs != NULL) puts("\nFicheiro dos Inputs fechado\n");
 }

@@ -46,5 +46,11 @@ void interactive () {
 
     puts("\nAgora, insere os input's 1 a 1 da seguinte forma: <query> <arg1> <arg2> <arg3>. Exemplo: 1 anTonioFaARIA10\n");
 
-    handle_input(drivers_struct.driverscat, drivers_struct.drivershash, users_struct.userscat, users_struct.usershash, rides_cat);
+    handle_input();
+
+    free(drivers_struct.driverscat);
+    free(users_struct.userscat);
+    free(rides_cat);
+    g_hash_table_destroy(users_struct.usershash);
+    g_hash_table_destroy(drivers_struct.drivershash);
 }

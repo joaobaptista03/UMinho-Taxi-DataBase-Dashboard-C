@@ -7,7 +7,7 @@
 
 #include "../include/query2.h"
 
-void query2 (int counter, Ride *rides_cat, char *N_arg, int mode) {
+void query2 (int counter, char *N_arg, int mode) {
     printf("\nA executar Q2 (linha de input %i)\n", counter);
     if (mode == 1) printf("\n");
 
@@ -31,11 +31,11 @@ void query2 (int counter, Ride *rides_cat, char *N_arg, int mode) {
 
     for (int i = 0; i <= get_n_drivers(); i++) strcpy(recent_ride[i], "00/00/0000");                // Inicializar a array
 
-    for (int i = 1; i <= atoi(rides_cat[0].id); i++) {                                                  // Percorrer o catálogo das rides
-        if (stricmp(get_driver_status(rides_cat[i].driver), "active") == 0) {       // Verificar se o Driver está ativo
-            tot_avaliacoes[get_driver_i(rides_cat[i].driver)] += atof(rides_cat[i].score_driver);                // Aumentar o total de avaliações do driver pretendido
-            num_viagens[get_driver_i(rides_cat[i].driver)]++;                                                    // Incrementar o número de viagens do driver pretendido
-            if (most_recent(rides_cat[i].date, recent_ride[get_driver_i(rides_cat[i].driver)]) == 1) strcpy(recent_ride[get_driver_i(rides_cat[i].driver)], rides_cat[i].date);
+    for (int i = 1; i <= get_nr_rides(); i++) {                                                  // Percorrer o catálogo das rides
+        if (stricmp(get_driver_status(get_ride_driver(i)), "active") == 0) {       // Verificar se o Driver está ativo
+            tot_avaliacoes[get_driver_i(get_ride_driver(i))] += atof(get_ride_score_driver(i));                // Aumentar o total de avaliações do driver pretendido
+            num_viagens[get_driver_i(get_ride_driver(i))]++;                                                    // Incrementar o número de viagens do driver pretendido
+            if (most_recent(get_ride_date(i), recent_ride[get_driver_i(get_ride_driver(i))]) == 1) strcpy(recent_ride[get_driver_i(get_ride_driver(i))], get_ride_date(i));
         }
     }
 

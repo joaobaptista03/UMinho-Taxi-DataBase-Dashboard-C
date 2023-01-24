@@ -9,15 +9,15 @@
 #include "../include/query1_user.h"
 #include "../include/query1.h"
 
-void query1 (int counter, Ride *rides_cat, char *id, int mode) {
+void query1 (int counter, char *id, int mode) {
 
     // Medição de tempo
     clock_t start, end;
     double cpu_time_used;
     start = clock();
 
-    if (isDriver(id, strlen(id))) query1_driver(counter, rides_cat, id, mode);
-    else query1_user(counter, rides_cat, id, mode);
+    if (isDriver(id, strlen(id))) query1_driver(counter, id, mode);
+    else query1_user(counter, id, mode);
 
     // Medição de tempo
     end = clock();
