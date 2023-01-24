@@ -24,30 +24,30 @@ void query7 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
     strcpy(cidade, cidaded + 1);
 
     // Criar todas as arrays temporárias necessárias à função 
-    double *tot_avaliacoes; tot_avaliacoes = calloc((1 + atoi(drivers_cat[0].id)), sizeof(double));
-    int *num_viagens; num_viagens = calloc((1 + atoi(drivers_cat[0].id)), sizeof(int));
-    double *av_med; av_med = calloc((1 + atoi(drivers_cat[0].id)), sizeof(double));
-    double *av_med_cpy; av_med_cpy = calloc((1 + atoi(drivers_cat[0].id)), sizeof(double));
+    double *tot_avaliacoes; tot_avaliacoes = calloc((1 + get_n_drivers()), sizeof(double));
+    int *num_viagens; num_viagens = calloc((1 + get_n_drivers()), sizeof(int));
+    double *av_med; av_med = calloc((1 + get_n_drivers()), sizeof(double));
+    double *av_med_cpy; av_med_cpy = calloc((1 + get_n_drivers()), sizeof(double));
 
 
     for (int i = 1; i <= atoi(rides_cat[0].id); i++) {                                                  // Percorrer o catálogo das rides
-        if ((stricmp(drivers_cat[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))].status, "active") == 0) && (stricmp(rides_cat[i].city, cidade) == 0)) {       // Verificar se o Driver está ativo
-            tot_avaliacoes[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))] += atof(rides_cat[i].score_driver);                // Aumentar o total de avaliações do driver pretendido
-            num_viagens[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))]++;                                                    // Incrementar o número de viagens do driver pretendido
+        if ((stricmp(get_driver_status(rides_cat[i].driver), "active") == 0) && (stricmp(rides_cat[i].city, cidade) == 0)) {       // Verificar se o Driver está ativo
+            tot_avaliacoes[get_driver_i(rides_cat[i].driver)] += atof(rides_cat[i].score_driver);                // Aumentar o total de avaliações do driver pretendido
+            num_viagens[get_driver_i(rides_cat[i].driver)]++;                                                    // Incrementar o número de viagens do driver pretendido
         }
     }
 
-    for (int i = 1; i <= atoi(drivers_cat[0].id); i++) {                                                    // Calcular a avaliação média para cada Driver armazenando na array av_med
+    for (int i = 1; i <= get_n_drivers(); i++) {                                                    // Calcular a avaliação média para cada Driver armazenando na array av_med
         if (num_viagens[i] != 0) av_med[i] = tot_avaliacoes[i] / num_viagens[i];
         else av_med[i] = 0;
     }
 
-    for (int i = 1; i <= atoi(drivers_cat[0].id); i++) av_med_cpy[i] = av_med[i];                       // Clonar a array de avaliações médias para ser usado no for loop
+    for (int i = 1; i <= get_n_drivers(); i++) av_med_cpy[i] = av_med[i];                       // Clonar a array de avaliações médias para ser usado no for loop
 
     int *id_maiores; id_maiores = calloc(N, sizeof(int));                           // Array que irá armazenar os ID's ordenados por ordem decrescente de maior av_med
     for (int i = 0; i < N; i++) {                                                     // For loop que irá preencher id_maiores
-        int larg_av_ind = larger_double(av_med_cpy, (1 + atoi(drivers_cat[0].id)));
-        id_maiores[i] = atoi(drivers_cat[larg_av_ind].id);
+        int larg_av_ind = larger_double(av_med_cpy, (1 + get_n_drivers()));
+        id_maiores[i] = atoi(get_driver_id(larg_av_ind));
         av_med_cpy[larg_av_ind] = 0;
     }
 
@@ -55,7 +55,7 @@ void query7 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
     for (int i = 0; i < N; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
         char *output; output = malloc(70 * sizeof(char));
         char id_i[30]; sprintf(id_i, "%012d", id_maiores[i]);
-        sprintf(output, "%s;%s;%.3f\n", drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id_i))].id, drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id_i))].name, av_med[id_maiores[i]]);
+        sprintf(output, "%s;%s;%.3f\n", id_i, get_driver_name(id_i), av_med[get_driver_i(id_i)]);
         if (mode == 1) printf("%s",output);
         handle_outputs(counter, output);
         free(output);

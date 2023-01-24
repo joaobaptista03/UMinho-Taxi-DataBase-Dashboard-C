@@ -26,7 +26,7 @@ void query5 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
         &&  (most_recent(rides_cat[i].date, data2) == 2 || most_recent(rides_cat[i].date, data2) == 3)) {
 
             char *class; class = malloc(10 * sizeof(char));
-            strcpy(class, drivers_cat[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))].car_class);
+            strcpy(class, get_driver_car_class(rides_cat[i].driver));
 
             float taxa_base, taxa_dist;
             if (stricmp(class, "basic") == 0) {

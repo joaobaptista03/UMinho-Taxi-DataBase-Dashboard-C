@@ -38,7 +38,7 @@ void query1_user (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Us
             num_viagens++;
             // Calcula a taxa base e a taxa por distância de acordo com a classe do carro do Driver dessa Ride
             char class[10];
-            strcpy(class, drivers_cat[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))].car_class);
+            strcpy(class, get_driver_car_class(rides_cat[i].driver));
             if (stricmp(class, "basic") == 0) {
                 taxa_base = 3.25;
                 taxa_dist = 0.62;

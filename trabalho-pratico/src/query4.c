@@ -22,7 +22,7 @@ void query4 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
         if (stricmp(rides_cat[i].city, cidade) == 0) {
             int distance = atoi(rides_cat[i].distance);
             char *class; class = malloc(10 * sizeof(char));
-            strcpy(class, drivers_cat[atoi(g_hash_table_lookup(drivers_hash, rides_cat[i].driver))].car_class);
+            strcpy(class, get_driver_car_class(rides_cat[i].driver));
 
             float taxa_base, taxa_dist;
             if (stricmp(class, "basic") == 0) {

@@ -7,6 +7,11 @@
 
 #include "../include/batch.h"
 
+struct driver_struct {
+    Driver* driverscat;
+    GHashTable* drivershash;
+};
+
 void batch (char **argv) {
     FILE *drivers = open_files(argv[1], "/drivers.csv");
     FILE *users = open_files(argv[1], "/users.csv");

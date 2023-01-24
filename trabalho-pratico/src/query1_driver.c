@@ -11,16 +11,14 @@ void query1_driver (int counter, Driver *drivers_cat, GHashTable *drivers_hash, 
     printf("\nA executar Q1 (linha de input %i)\n", counter);
 
     // Se o driver não existir
-    if (g_hash_table_lookup(drivers_hash, id) == NULL) {
+    if (!is_driver(id)) {
         if (mode == 1) puts("\nResultado: Driver não existe!\n");
         handle_outputs(counter, "");
         return;
     }
-    
-    Driver q1_d = drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))];               // Ir buscar o driver pretendido pelo ID ao Catálogo
 
     // Se o Driver estiver inativo
-    if (stricmp(q1_d.status, "inactive") == 0) {
+    if (stricmp(get_driver_status(id), "inactive") == 0) {
         if (mode == 1) puts("\nResultado: Driver inativo!\n");
         handle_outputs(counter, "");
         return;
@@ -28,15 +26,15 @@ void query1_driver (int counter, Driver *drivers_cat, GHashTable *drivers_hash, 
 
     // Calcula a taxa base e a taxa por distância de acordo com a classe do carro
     float taxa_base, taxa_dist;
-    if (stricmp(q1_d.car_class, "basic") == 0) {
+    if (stricmp(get_driver_car_class(id), "basic") == 0) {
         taxa_base = 3.25;
         taxa_dist = 0.62;
     }
-    else if (stricmp(q1_d.car_class, "green") == 0) {
+    else if (stricmp(get_driver_car_class(id), "green") == 0) {
         taxa_base = 4;
         taxa_dist = 0.79;
     }
-    else if (stricmp(q1_d.car_class, "premium") == 0) {
+    else if (stricmp(get_driver_car_class(id), "premium") == 0) {
         taxa_base = 5.2;
         taxa_dist = 0.94;
     }
@@ -58,7 +56,7 @@ void query1_driver (int counter, Driver *drivers_cat, GHashTable *drivers_hash, 
     else av_media = 0;
 
     char output[70];
-    sprintf(output, "%s;%s;%i;%.3f;%i;%.3f\n", q1_d.name, q1_d.gender, age(q1_d.birth_date), av_media, num_viagens, tot_auferido);
+    sprintf(output, "%s;%s;%i;%.3f;%i;%.3f\n", get_driver_name(id), get_driver_gender(id), age(get_driver_birth_date(id)), av_media, num_viagens, tot_auferido);
     if (mode == 1) puts("\nForma do Resultado: nome;genero;idade;avaliacao_media;numero_viagens;total_auferido");
     if (mode == 1) printf("Resultado: %s\n",output);
     handle_outputs(counter, output);

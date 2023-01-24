@@ -19,28 +19,105 @@
  * Esta é a Struct que define o que é um Driver, e contém todas as informações dele. Será inserida no catálogo das Drivers.
  * 
  */
-typedef struct {
-    char id[13];
-    char name[30];
-    char birth_date[11];
-    char gender[2];
-    char car_class[8];
-    char license_plate[9];
-    char city[10];
-    char acc_creation[11];
-    char status[9];
-
-} Driver;
+typedef struct Driver Driver;
 
 /**
  *
  * Esta é a Struct que vai ser dada return no fim da função insere_driver.
  * 
  */
-typedef struct {
-    Driver* driverscat;
-    GHashTable* drivershash;
-} driver_struct;
+typedef struct driver_struct driver_struct;
+
+/**
+ *
+ * Esta é a função que retornará o número de drivers, dado o catálogo dos Drivers.
+ * 
+ */
+int get_n_drivers();
+
+/**
+ *
+ * Esta é a função que dirá se o ID existe ou não.
+ * 
+ */
+bool is_driver (char *id);
+
+/**
+ *
+ * Esta é a função que retornará o índice do Driver.
+ * 
+ */
+int get_driver_i(char *id);
+
+/**
+ *
+ * Esta é a função que retornará o id do Driver.
+ * 
+ */
+char* get_driver_id(int indice);
+
+/**
+ *
+ * Esta é a função que retornará o nome do Driver.
+ * 
+ */
+char* get_driver_name(char *id);
+
+/**
+ *
+ * Esta é a função que retornará a data de nascimento do Driver.
+ * 
+ */
+char* get_driver_birth_date(char *id);
+
+/**
+ *
+ * Esta é a função que retornará o género do Driver.
+ * 
+ */
+char* get_driver_gender(char *id);
+
+/**
+ *
+ * Esta é a função que retornará a classe do carro do Driver.
+ * 
+ */
+char* get_driver_car_class(char *id);
+
+/**
+ *
+ * Esta é a função que retornará a matrícula do carro do Driver.
+ * 
+ */
+char* get_driver_license_plate(char *id);
+
+/**
+ *
+ * Esta é a função que retornará a cidade do Driver.
+ * 
+ */
+char* get_driver_city(char *id);
+
+/**
+ *
+ * Esta é a função que retornará a data de criação da conta do Driver.
+ * 
+ */
+char* get_driver_acc_creation(char *id);
+
+/**
+ *
+ * Esta é a função que retornará o estado do Driver.
+ * 
+ */
+char* get_driver_status(char *id);
+
+/**
+ *
+ * Esta é a função que retornará o size de um Driver.
+ * 
+ */
+size_t get_driver_size();
 
 /**
  *

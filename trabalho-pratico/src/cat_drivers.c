@@ -6,6 +6,27 @@
 
 #include "../include/cat_drivers.h"
 
+struct Driver {
+    char id[13];
+    char name[30];
+    char birth_date[11];
+    char gender[2];
+    char car_class[8];
+    char license_plate[9];
+    char city[10];
+    char acc_creation[11];
+    char status[9];
+
+};
+
+struct driver_struct {
+    Driver* driverscat;
+    GHashTable* drivershash;
+};
+
+GHashTable *drivers_hash;
+Driver *drivers_cat;
+
 bool isDvalid(Driver driver1) {
     return (
         (strlen(driver1.id) > 0) &&
@@ -24,8 +45,8 @@ driver_struct inserir_drivers(FILE *drivers) {
     int nr_drivers = 1, cap_malloc = 1;
 
     // Criar catálogo dos Drivers
-    Driver *drivers_cat; drivers_cat = malloc(sizeof(Driver));
-    GHashTable *drivers_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+    drivers_cat = malloc(sizeof(Driver));
+    drivers_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 
     Driver generic_d;
             strcpy(generic_d.id, "");
@@ -61,7 +82,7 @@ driver_struct inserir_drivers(FILE *drivers) {
         }
     }
 
-    sprintf(drivers_cat[0].id, "%d", nr_drivers - 1);
+    sprintf(drivers_cat[0].id, "");
     strcpy(drivers_cat[0].name, "");
     strcpy(drivers_cat[0].birth_date, "");
     strcpy(drivers_cat[0].gender, "");
@@ -73,20 +94,61 @@ driver_struct inserir_drivers(FILE *drivers) {
 
     puts("Catálogo dos Drivers preenchido");
 
-    Driver *drivers_cat_dup; drivers_cat_dup = malloc((1 + atoi(drivers_cat[0].id))*sizeof(Driver));
-        for(int i = 0; i <= atoi(drivers_cat[0].id); i++) drivers_cat_dup[i] = drivers_cat[i];
-    free(drivers_cat);
-
-    GHashTable *drivers_hash_dup = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
-    void new_hash(gpointer key, gpointer value, gpointer u_data) {
-        g_hash_table_insert(drivers_hash_dup, g_strdup(key), g_strdup(value));
-    }
-    g_hash_table_foreach(drivers_hash, new_hash, NULL);
-    g_hash_table_destroy(drivers_hash);
-
     free(temp);
 
-    driver_struct r = {drivers_cat_dup, drivers_hash_dup};
+    driver_struct r = {drivers_cat, drivers_hash};
 
     return r;
+}
+
+int get_n_drivers() {
+    return g_hash_table_size(drivers_hash);
+}
+
+bool is_driver (char *id) {
+    return g_hash_table_contains(drivers_hash, id);
+}
+
+int get_driver_i(char *id) {
+    return atoi(g_hash_table_lookup(drivers_hash, id));
+}
+
+char* get_driver_id(int indice) {
+    return drivers_cat[indice].id;
+}
+
+char* get_driver_name(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].name;
+}
+
+char* get_driver_birth_date(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].birth_date;
+}
+
+char* get_driver_gender(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].gender;
+}
+
+char* get_driver_car_class(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].car_class;
+}
+
+char* get_driver_license_plate(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].license_plate;
+}
+
+char* get_driver_city(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].city;
+}
+
+char* get_driver_acc_creation(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].acc_creation;
+}
+
+char* get_driver_status(char *id) {
+    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].status;
+}
+
+size_t get_driver_size() {
+    return sizeof(Driver);
 }
