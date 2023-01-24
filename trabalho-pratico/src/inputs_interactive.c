@@ -27,8 +27,6 @@ void handle_input(Driver *drivers_cat, GHashTable *drivers_hash, User *users_cat
         puts("--------------------------------------------");
     }
 
-    system("rm -r Resultados");   
-
     free(input);
     free(drivers_cat);
     free(users_cat);

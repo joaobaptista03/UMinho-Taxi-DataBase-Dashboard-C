@@ -46,7 +46,7 @@ void query8 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, User *u
         char *output; output = malloc(150 * sizeof(char));
         sprintf(output, "%s;%s;%s;%s\n", ridesr[i].driver, get_driver_name(ridesr[i].driver), users_cat[atoi(g_hash_table_lookup(users_hash, ridesr[i].user))].user,users_cat[atoi(g_hash_table_lookup(users_hash, ridesr[i].user))].name);
         if (mode == 1) printf("%s",output);
-        handle_outputs(counter, output);
+        if (mode == 0) handle_outputs(counter, output);
         free(output);
     }
 

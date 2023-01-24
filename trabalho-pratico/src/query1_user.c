@@ -15,14 +15,14 @@ void query1_user (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Us
     if (g_hash_table_lookup(users_hash, id) != NULL) q1_u = users_cat[atoi(g_hash_table_lookup(users_hash, id))];
     else {
         if (mode == 1) puts("\nResultado: User não existe!\n");
-        handle_outputs(counter, "");
+        if (mode == 0) handle_outputs(counter, "");
         return;
     }
 
     // Se o user for inactive
     if (stricmp(q1_u.status, "inactive") == 0) {
         if (mode == 1) puts("\nResultado: User inativo!\n");
-        handle_outputs(counter, "");
+        if (mode == 0) handle_outputs(counter, "");
         return;
     }
     
@@ -63,5 +63,5 @@ void query1_user (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Us
     sprintf(output, "%s;%s;%i;%.3f;%i;%.3f\n", q1_u.name, q1_u.gender, age(q1_u.birth_date), av_media, num_viagens, tot_gasto);
     if (mode == 1) puts("\nForma do Resultado: nome;genero;idade;avaliacao_media;numero_viagens;total_gasto");
     if (mode == 1) printf("Resultado: %s\n",output);
-    handle_outputs(counter, output);
+    if (mode == 0) handle_outputs(counter, output);
 }

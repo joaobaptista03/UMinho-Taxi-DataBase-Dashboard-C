@@ -55,7 +55,7 @@ void query5 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
         
         if (mode == 1) printf("\nNão há viagens!\n\n");
-        handle_outputs(counter, "");
+        if (mode == 0) handle_outputs(counter, "");
         printf("Fim da Q5 (Sem viagens) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
         return;
     }
@@ -65,7 +65,7 @@ void query5 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
     sprintf(output, "%.3f\n", resultado);
     if (mode == 1) printf("\nForma do Resultado: preco_medio\n");
     if (mode == 1) printf("Resultado: %s\n",output);
-    handle_outputs(counter,output);
+    if (mode == 0) handle_outputs(counter,output);
 
     free(output);
 

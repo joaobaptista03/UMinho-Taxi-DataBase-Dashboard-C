@@ -63,7 +63,7 @@ void query3 (int counter, User *users_cat, GHashTable *users_hash, Ride *rides_c
         char output[70];
         sprintf(output, "%s;%s;%i\n", users_cat[user_maioresID[i]].user, users_cat[user_maioresID[i]].name, tot_distancia[user_maioresID[i]]);
         if (mode == 1) printf("%s",output);
-        handle_outputs(counter, output);
+        if (mode == 0) handle_outputs(counter, output);
     }
 
     free(tot_distancia);

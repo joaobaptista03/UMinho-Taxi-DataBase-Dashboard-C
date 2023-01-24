@@ -71,7 +71,7 @@ void query2 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
         char id_i[30]; sprintf(id_i, "%012d", id_maiores[i]);
         sprintf(output, "%s;%s;%.3f\n", id_i, get_driver_name(id_i), av_med[get_driver_i(id_i)]);
         if (mode == 1) printf("%s",output);
-        handle_outputs(counter, output);
+        if (mode == 0) handle_outputs(counter, output);
         free(output);
     }
 

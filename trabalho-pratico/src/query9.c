@@ -41,7 +41,7 @@ void query9 (int counter, Ride *rides_cat,  char *data1, char* data2, int mode) 
         char *output; output = malloc(70 * sizeof(char));
         sprintf(output, "%s;%s;%s;%s;%s\n", ridesd[i].id, ridesd[i].date, ridesd[i].distance, ridesd[i].city, ridesd[i].tip);
         if (mode == 1) printf("%s",output);
-        handle_outputs(counter, output);
+        if (mode == 0) handle_outputs(counter, output);
         free(output);
     }
 

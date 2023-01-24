@@ -13,9 +13,7 @@ int main(int argc, char *argv[]) {
 
     if (argc == 1) {
         // Medição de tempo
-        start = clock();
-        system("mkdir Resultados");                                               // Criar diretório para os Resultados
-        puts("\nDiretório Resultados criado\n");        
+        start = clock();  
         puts("Número de argumentos válido! (3)\n");
         interactive();
     }
