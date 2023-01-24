@@ -14,9 +14,9 @@ bool isRvalid (Ride ride1) {
         (strlen(ride1.user) > 0) &&
         (strlen(ride1.city) > 0) &&
         (isInt(ride1.distance)) && (atoi(ride1.distance) > 0) &&
-        isFloat(ride1.score_user) && (atof(ride1.score_user) >= 0) &&
-        isFloat(ride1.score_driver) && (atof(ride1.score_driver) >= 0) &&
-        isFloat(ride1.tip) && (atof(ride1.tip) >= 0)
+        (isInt(ride1.score_user)) && (atoi(ride1.score_user) > 0) &&
+        (isInt(ride1.score_driver)) && (atoi(ride1.score_driver) > 0) &&
+        (isFloat(ride1.tip)) && (atof(ride1.tip) >= 0)
     );
 }
 
