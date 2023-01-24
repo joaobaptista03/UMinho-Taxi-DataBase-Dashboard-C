@@ -56,7 +56,7 @@ void query4 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
         return;
     }
     
-    char *output; output = malloc(70 * sizeof(char));
+    char output[150];
     double resultado = preco/contagem;
     sprintf(output, "%.3f\n", resultado);
     
@@ -64,8 +64,6 @@ void query4 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
     if (mode == 1) printf("\nResultado: %s\n",output);
     
     if (mode == 0) handle_outputs(counter,output);
-
-    free(output);
 
     // Medição de tempo
     end = clock();

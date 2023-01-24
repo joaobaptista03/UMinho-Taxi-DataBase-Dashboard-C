@@ -54,14 +54,13 @@ void query6 (int counter, Ride *rides_cat, char *input, int mode) {
         return;
     }
 
-    char *output; output = malloc(70 * sizeof(char));
+    char output[150];
     double resultado = (double) distance/contagem;
     sprintf(output, "%.3f\n", resultado);
     if (mode == 1) puts("\nForma do Resultado: distancia_media");
     if (mode == 1) printf("Resultado: %s\n",output);
     if (mode == 0) handle_outputs(counter,output);
 
-    free(output);
     free(city);
     free(data1);
     free(data2);

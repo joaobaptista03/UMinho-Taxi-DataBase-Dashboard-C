@@ -55,7 +55,7 @@ void query1_driver (int counter, Driver *drivers_cat, GHashTable *drivers_hash, 
     if (num_viagens != 0) av_media = (double) total_avaliacoes / (double) num_viagens;
     else av_media = 0;
 
-    char output[70];
+    char output[150];
     sprintf(output, "%s;%s;%i;%.3f;%i;%.3f\n", get_driver_name(id), get_driver_gender(id), age(get_driver_birth_date(id)), av_media, num_viagens, tot_auferido);
     if (mode == 1) puts("\nForma do Resultado: nome;genero;idade;avaliacao_media;numero_viagens;total_auferido");
     if (mode == 1) printf("Resultado: %s\n",output);

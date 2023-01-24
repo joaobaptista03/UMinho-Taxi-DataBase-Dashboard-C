@@ -82,7 +82,7 @@ driver_struct inserir_drivers(FILE *drivers) {
         }
     }
 
-    sprintf(drivers_cat[0].id, "");
+    strcpy(drivers_cat[0].id, "");
     strcpy(drivers_cat[0].name, "");
     strcpy(drivers_cat[0].birth_date, "");
     strcpy(drivers_cat[0].gender, "");

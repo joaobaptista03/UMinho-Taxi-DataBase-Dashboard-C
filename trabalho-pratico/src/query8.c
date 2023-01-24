@@ -43,11 +43,10 @@ void query8 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, User *u
 
     if (mode == 1) puts("Forma do Resultado: id_condutor;nome_condutor;username_utilizador;nome_utilizador");
     for (int i = 0; i < rides_n; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
-        char *output; output = malloc(150 * sizeof(char));
+        char output[150];
         sprintf(output, "%s;%s;%s;%s\n", ridesr[i].driver, get_driver_name(ridesr[i].driver), users_cat[atoi(g_hash_table_lookup(users_hash, ridesr[i].user))].user,users_cat[atoi(g_hash_table_lookup(users_hash, ridesr[i].user))].name);
         if (mode == 1) printf("%s",output);
         if (mode == 0) handle_outputs(counter, output);
-        free(output);
     }
 
     free(ridesr);

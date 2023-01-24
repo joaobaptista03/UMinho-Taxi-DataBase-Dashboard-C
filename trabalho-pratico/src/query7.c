@@ -53,12 +53,11 @@ void query7 (int counter, Driver *drivers_cat, GHashTable *drivers_hash, Ride *r
 
     if (mode == 1) puts("Forma do Resultado: id;nome;avaliacao_media");
     for (int i = 0; i < N; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
-        char *output; output = malloc(70 * sizeof(char));
+        char output[150];
         char id_i[30]; sprintf(id_i, "%012d", id_maiores[i]);
         sprintf(output, "%s;%s;%.3f\n", id_i, get_driver_name(id_i), av_med[get_driver_i(id_i)]);
         if (mode == 1) printf("%s",output);
         if (mode == 0) handle_outputs(counter, output);
-        free(output);
     }
 
     free(tot_avaliacoes);
