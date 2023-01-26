@@ -29,7 +29,6 @@ void query7 (int counter, char *input, int mode) {
     double *av_med; av_med = calloc((1 + get_n_drivers()), sizeof(double));
     double *av_med_cpy; av_med_cpy = calloc((1 + get_n_drivers()), sizeof(double));
 
-
     for (int i = 1; i <= get_nr_rides(); i++) {                                                  // Percorrer o catálogo das rides
         if ((stricmp(get_driver_status(get_ride_driver(i)), "active") == 0) && (stricmp(get_ride_city(i), cidade) == 0)) {       // Verificar se o Driver está ativo
             tot_avaliacoes[get_driver_i(get_ride_driver(i))] += atof(get_ride_score_driver(i));                // Aumentar o total de avaliações do driver pretendido
@@ -45,8 +44,16 @@ void query7 (int counter, char *input, int mode) {
     for (int i = 1; i <= get_n_drivers(); i++) av_med_cpy[i] = av_med[i];                       // Clonar a array de avaliações médias para ser usado no for loop
 
     int *id_maiores; id_maiores = calloc(N, sizeof(int));                           // Array que irá armazenar os ID's ordenados por ordem decrescente de maior av_med
+
     for (int i = 0; i < N; i++) {                                                     // For loop que irá preencher id_maiores
         int larg_av_ind = larger_double(av_med_cpy, (1 + get_n_drivers()));
+
+        if (larg_av_ind == -1) {
+            if (mode == 1) puts("\nResultado: Não existem Rides suficientes!\n");
+            if (mode == 0) handle_outputs(counter, "");
+            return;
+        }
+
         id_maiores[i] = atoi(get_driver_id(larg_av_ind));
         av_med_cpy[larg_av_ind] = 0;
     }
