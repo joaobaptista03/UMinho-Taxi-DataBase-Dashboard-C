@@ -19,6 +19,11 @@ void query2 (int counter, char *N_arg, int mode) {
     */
 
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
+    if (N == 0) {
+        if (mode == 1) puts("\nResultado: N = 0\n");
+        if (mode == 0) handle_outputs(counter, "");
+        return;
+    }
 
     // Criar todas as arrays temporárias necessárias à função 
     double *tot_avaliacoes; tot_avaliacoes = calloc((1 + get_n_drivers()), sizeof(double));
