@@ -26,6 +26,10 @@ int get_nr_rides() {
     return atoi(rides_cat[0].id);
 }
 
+char *get_ride_id(int indice) {
+    return rides_cat[indice].id;
+}
+
 char *get_ride_date(int indice) {
     return rides_cat[indice].date;
 }

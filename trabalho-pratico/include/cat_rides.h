@@ -30,6 +30,13 @@ int get_nr_rides();
 
 /**
  *
+ * Este é o header da função que retornará o ID da Ride.
+ * 
+ */
+char *get_ride_id(int indice);
+
+/**
+ *
  * Este é o header da função que retornará a data da Ride.
  * 
  */
