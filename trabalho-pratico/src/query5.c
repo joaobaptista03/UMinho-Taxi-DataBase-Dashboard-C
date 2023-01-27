@@ -8,12 +8,14 @@
 #include "../include/query5.h"
 
 void query5 (int counter, char *data1, char* data2, int mode) {
-    printf("\nA executar Q5 (linha de input %i)\n", counter);
+    //printf("\nA executar Q5 (linha de input %i)\n", counter);
 
+    /*
     // Medição de tempo
     clock_t start, end;
     double cpu_time_used;
     start = clock();
+    */
 
     data1[10] = '\0';
     
@@ -50,13 +52,15 @@ void query5 (int counter, char *data1, char* data2, int mode) {
     }
     
     if (contagem == 0) {
+        /*
         // Medição de tempo
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        */
         
         if (mode == 1) printf("\nNão há viagens!\n\n");
         if (mode == 0) handle_outputs(counter, "");
-        printf("Fim da Q5 (Sem viagens) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
+        //printf("Fim da Q5 (Sem viagens) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
         return;
     }
     
@@ -67,8 +71,10 @@ void query5 (int counter, char *data1, char* data2, int mode) {
     if (mode == 1) printf("Resultado: %s\n",output);
     if (mode == 0) handle_outputs(counter,output);
 
+    /*
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     printf("Fim da Q5 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
+    */
 }

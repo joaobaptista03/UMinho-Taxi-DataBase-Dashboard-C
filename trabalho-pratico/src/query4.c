@@ -8,12 +8,14 @@
 #include "../include/query4.h"
 
 void query4 (int counter, char *cidade, int mode) {
-    printf("\nA executar Q4 (linha de input %i)\n", counter);
+    //printf("\nA executar Q4 (linha de input %i)\n", counter);
 
+    /*
     // Medição de tempo
     clock_t start, end;
     double cpu_time_used;
     start = clock();
+    */
 
     double preco = 0;
     int contagem = 0;
@@ -46,13 +48,15 @@ void query4 (int counter, char *cidade, int mode) {
     }
     
     if (contagem == 0) {
+        /*
         // Medição de tempo
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        */
         
         if (mode == 1) puts("\nResultado: Não há viagens!\n");
         if (mode == 0) handle_outputs(counter, "");
-        printf("Fim da Q4 (Sem viagens) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
+        //printf("Fim da Q4 (Sem viagens) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
         return;
     }
     
@@ -65,8 +69,10 @@ void query4 (int counter, char *cidade, int mode) {
     
     if (mode == 0) handle_outputs(counter,output);
 
+    /*
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     printf("Fim da Q4 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
+    */
 }

@@ -8,12 +8,13 @@
 #include "../include/query6.h"
 
 void query6 (int counter, char *input, int mode) {
-    printf("\nA executar Q6 (linha de input %i)\n", counter);
-
+    //printf("\nA executar Q6 (linha de input %i)\n", counter);
+    /*
     // Medição de tempo
     clock_t start, end;
     double cpu_time_used;
     start = clock();
+    */
     
     int i;
     char *city; city = malloc(20 * sizeof(char));
@@ -40,9 +41,11 @@ void query6 (int counter, char *input, int mode) {
     }
     
     if (contagem == 0) {
+        /*
         // Medição de tempo
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        */
 
         free(city);
         free(data1);
@@ -50,7 +53,7 @@ void query6 (int counter, char *input, int mode) {
         
         if (mode == 1) printf("\nNão há viagens!\n\n");
         if (mode == 0) handle_outputs(counter, "");
-        printf("Fim da Q6 (Sem viagens) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
+        //printf("Fim da Q6 (Sem viagens) - %f segundos(linha de input %i)\n", cpu_time_used, counter);
         return;
     }
 
@@ -65,8 +68,10 @@ void query6 (int counter, char *input, int mode) {
     free(data1);
     free(data2);
 
+    /*
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     printf("Fim da Q6 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
+    */
 }

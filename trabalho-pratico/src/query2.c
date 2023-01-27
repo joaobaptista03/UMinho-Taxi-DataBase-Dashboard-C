@@ -8,13 +8,15 @@
 #include "../include/query2.h"
 
 void query2 (int counter, char *N_arg, int mode) {
-    printf("\nA executar Q2 (linha de input %i)\n", counter);
+    //printf("\nA executar Q2 (linha de input %i)\n", counter);
     if (mode == 1) printf("\n");
 
+    /*
     // Medição de tempo
     clock_t start, end;
     double cpu_time_used;
     start = clock();
+    */
 
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
 
@@ -81,10 +83,12 @@ void query2 (int counter, char *N_arg, int mode) {
     for(int i = 0; i <= get_n_drivers(); i++) free(recent_ride[i]);
     free(recent_ride);
     free(id_maiores);
-
+    
+    /*
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     if (mode == 1) printf("\n");
     printf("Fim da Q2 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
+    */
 }
