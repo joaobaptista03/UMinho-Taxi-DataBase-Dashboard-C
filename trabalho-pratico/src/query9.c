@@ -41,7 +41,7 @@ void query9 (int counter, char *data1, char* data2, int mode) {
     if (mode == 1) puts("Forma do Resultado: id_viagem;data_viagem;distancia;cidade;valor_gorjeta");
     for (int i = 0; i < contadord - 1; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
         char output[150];
-        sprintf(output, "%012d;%s;%s;%s;%s\n", get_ride_id(ridesd[i]), get_ride_date(ridesd[i]), get_ride_distance(ridesd[i]), get_ride_city(ridesd[i]), get_ride_tip(ridesd[i]));
+        sprintf(output, "%s;%s;%s;%s;%s00\n", get_ride_id(ridesd[i]), get_ride_date(ridesd[i]), get_ride_distance(ridesd[i]), get_ride_city(ridesd[i]), get_ride_tip(ridesd[i]));
         if (mode == 1) printf("%s",output);
         if (mode == 0) handle_outputs(counter, output);
     }
