@@ -8,7 +8,6 @@
 #include "../include/query1_driver.h"
 
 void query1_driver (int counter, char *id, int mode) {
-    //printf("\nA executar Q1 (linha de input %i)\n", counter);
 
     // Se o driver não existir
     if (!is_driver(id)) {

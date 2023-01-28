@@ -8,15 +8,11 @@
 #include "../include/query7.h"
 
 void query7 (int counter, char *input, int mode) {
-    //printf("\nA executar Q7 (linha de input %i)\n", counter);
-    if (mode == 1) printf("\n");
 
-    /*
     // Medição de tempo
     clock_t start, end;
     double cpu_time_used;
     start = clock();
-    */
 
     int N = atoi(input);                                                      // Converter argumento N string para int
     
@@ -60,7 +56,7 @@ void query7 (int counter, char *input, int mode) {
         av_med_cpy[larg_av_ind] = 0;
     }
 
-    if (mode == 1) puts("Forma do Resultado: id;nome;avaliacao_media");
+    if (mode == 1) puts("\nForma do Resultado: id;nome;avaliacao_media");
     for (int i = 0; i < N; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
         char output[150];
         char id_i[30]; sprintf(id_i, "%012d", id_maiores[i]);
@@ -75,11 +71,9 @@ void query7 (int counter, char *input, int mode) {
     free(av_med_cpy);
     free(id_maiores);
 
-    /*
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     if (mode == 1) printf("\n");
-    printf("Fim da Q7 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
-    */
+    if (mode == 1) printf("Fim da Q7 - %f segundos (input nº %i)\n", cpu_time_used, counter);
 }

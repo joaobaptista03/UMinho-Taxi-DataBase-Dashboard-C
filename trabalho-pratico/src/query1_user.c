@@ -8,7 +8,6 @@
 #include "../include/query1_user.h"
 
 void query1_user (int counter, char *id, int mode) {
-    //printf("\nA executar Q1 (linha de input %i)\n", counter);
 
     if (!is_user(id)) {
         if (mode == 1) puts("\nResultado: User não existe!\n");

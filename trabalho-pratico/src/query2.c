@@ -8,15 +8,11 @@
 #include "../include/query2.h"
 
 void query2 (int counter, char *N_arg, int mode) {
-    //printf("\nA executar Q2 (linha de input %i)\n", counter);
-    if (mode == 1) printf("\n");
 
-    /*
     // Medição de tempo
     clock_t start, end;
     double cpu_time_used;
     start = clock();
-    */
 
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
     if (N == 0) {
@@ -72,7 +68,7 @@ void query2 (int counter, char *N_arg, int mode) {
         }
     }
 
-    if (mode == 1) puts("Forma do Resultado: id;nome;avaliacao_media");
+    if (mode == 1) puts("\nForma do Resultado: id;nome;avaliacao_media");
     for (int i = 0; i < N; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
         char output[150];
         char id_i[30]; sprintf(id_i, "%012d", id_maiores[i]);
@@ -89,11 +85,9 @@ void query2 (int counter, char *N_arg, int mode) {
     free(recent_ride);
     free(id_maiores);
     
-    /*
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     if (mode == 1) printf("\n");
-    printf("Fim da Q2 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
-    */
+    if (mode == 1) printf("Fim da Q2 - %f segundos (input nº %i)\n", cpu_time_used, counter);
 }

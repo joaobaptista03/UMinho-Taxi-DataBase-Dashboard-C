@@ -8,15 +8,11 @@
 #include "../include/query9.h"
 
 void query9 (int counter, char *data1, char* data2, int mode) {
-    //printf("\nA executar Q9 (linha de input %i)\n", counter);
-    if (mode == 1) printf("\n");
 
-    /*
     // Medição de tempo
     clock_t start, end;
     double cpu_time_used;
     start = clock();
-    */
     
     int *ridesd = malloc(2 * sizeof(int));
     int capd = 2;
@@ -38,7 +34,7 @@ void query9 (int counter, char *data1, char* data2, int mode) {
         }
     }
 
-    if (mode == 1) puts("Forma do Resultado: id_viagem;data_viagem;distancia;cidade;valor_gorjeta");
+    if (mode == 1) puts("\nForma do Resultado: id_viagem;data_viagem;distancia;cidade;valor_gorjeta");
     for (int i = 0; i < contadord - 1; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
         char output[150];
         sprintf(output, "%s;%s;%s;%s;%s00\n", get_ride_id(ridesd[i]), get_ride_date(ridesd[i]), get_ride_distance(ridesd[i]), get_ride_city(ridesd[i]), get_ride_tip(ridesd[i]));
@@ -48,11 +44,9 @@ void query9 (int counter, char *data1, char* data2, int mode) {
 
     free(ridesd);
 
-    /*
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     if (mode == 1) printf("\n");
-    printf("Fim da Q9 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
-    */
+    if (mode == 1) printf("Fim da Q9 - %f segundos (input nº %i)\n", cpu_time_used, counter);
 }

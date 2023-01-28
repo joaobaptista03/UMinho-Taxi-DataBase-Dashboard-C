@@ -8,15 +8,11 @@
 #include "../include/query3.h"
 
 void query3 (int counter, char *N_arg, int mode) {
-    //printf("\nA executar Q3 (linha de input %i)", counter);
-    if (mode == 1) printf("\n");
 
-    /*
     // Medição de tempo
     clock_t start, end;
     double cpu_time_used;
     start = clock();
-    */
     
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
 
@@ -69,10 +65,8 @@ void query3 (int counter, char *N_arg, int mode) {
     for (int i = 0; i <= get_nr_users(); i++) free(recent_ride[i]);
     free(recent_ride);
 
-    /*
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("\nFim da Q3 - %f segundos (linha de input %i)\n", cpu_time_used, counter);
-    */
+    if (mode == 1) printf("\nFim da Q3 - %f segundos (input nº %i)\n", cpu_time_used, counter);
 }
