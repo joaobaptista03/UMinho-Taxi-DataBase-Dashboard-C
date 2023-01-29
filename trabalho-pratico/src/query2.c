@@ -89,5 +89,5 @@ void query2 (int counter, char *N_arg, int mode) {
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     if (mode == 1) printf("\n");
-    if (mode == 1) printf("Fim da Q2 - %f segundos (input nº %i)\n", cpu_time_used, counter);
+    if ((mode == 1) || (mode == 3)) printf("Fim da Q2 - %f segundos (input nº %i)\n", cpu_time_used, counter);
 }

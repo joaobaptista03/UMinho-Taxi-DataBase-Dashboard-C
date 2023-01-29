@@ -53,5 +53,5 @@ void query8 (int counter, char *input, int mode) {
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     if (mode == 1) printf("\n");
-    if (mode == 1) printf("Fim da Q8 - %f segundos (input nº %i)\n", cpu_time_used, counter);
+    if ((mode == 1) || (mode == 3)) printf("Fim da Q8 - %f segundos (input nº %i)\n", cpu_time_used, counter);
 }
