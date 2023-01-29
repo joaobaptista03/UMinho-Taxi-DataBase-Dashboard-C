@@ -21,6 +21,14 @@
 #include "query9.h"
 
 void q1_test(int counter, char *id);
+void q2_test(int counter, char *id);
+void q3_test(int counter, char *id);
+void q4_test(int counter, char *id);
+void q5_test(int counter, char *id);
+void q6_test(int counter, char *id);
+void q7_test(int counter, char *id);
+void q8_test(int counter, char *id);
+void q9_test(int counter, char *id);
 
 int main();
 
