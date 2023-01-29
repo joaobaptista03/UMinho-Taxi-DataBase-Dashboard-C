@@ -44,7 +44,7 @@ void query8 (int counter, char *input, int mode) {
         char output[150];
         sprintf(output, "%s;%s;%s;%s\n", get_ride_driver(ridesr[i]), get_driver_name(get_ride_driver(ridesr[i])), get_ride_user(ridesr[i]), get_user_name(get_ride_user(ridesr[i])));
         if (mode == 1) printf("%s",output);
-        if (mode == 0) handle_outputs(counter, output);
+        if ((mode == 0) || (mode == 3)) handle_outputs(counter, output);
     }
 
     free(ridesr);

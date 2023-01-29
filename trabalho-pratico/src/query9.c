@@ -39,7 +39,7 @@ void query9 (int counter, char *data1, char* data2, int mode) {
         char output[150];
         sprintf(output, "%s;%s;%s;%s;%s00\n", get_ride_id(ridesd[i]), get_ride_date(ridesd[i]), get_ride_distance(ridesd[i]), get_ride_city(ridesd[i]), get_ride_tip(ridesd[i]));
         if (mode == 1) printf("%s",output);
-        if (mode == 0) handle_outputs(counter, output);
+        if ((mode == 0) || (mode == 3)) handle_outputs(counter, output);
     }
 
     free(ridesd);

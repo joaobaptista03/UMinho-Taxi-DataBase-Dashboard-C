@@ -53,7 +53,7 @@ void query7 (int counter, char *input, int mode) {
             if ((mode == 1) || (mode == 3)) printf("Fim da Q7 (Sem Rides Suficientes) - %f segundos (input nº %i)\n", cpu_time_used, counter);
 
 
-            if (mode == 0) handle_outputs(counter, "");
+            if ((mode == 0) || (mode == 3)) handle_outputs(counter, "");
             return;
         }
 
@@ -67,7 +67,7 @@ void query7 (int counter, char *input, int mode) {
         char id_i[30]; sprintf(id_i, "%012d", id_maiores[i]);
         sprintf(output, "%s;%s;%.3f\n", id_i, get_driver_name(id_i), av_med[get_driver_i(id_i)]);
         if (mode == 1) printf("%s",output);
-        if (mode == 0) handle_outputs(counter, output);
+        if ((mode == 0) || (mode == 3)) handle_outputs(counter, output);
     }
 
     free(tot_avaliacoes);

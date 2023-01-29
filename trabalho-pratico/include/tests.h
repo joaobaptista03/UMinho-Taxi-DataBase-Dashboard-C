@@ -20,6 +20,8 @@
 #include "query8.h"
 #include "query9.h"
 
+void q1_test(int counter, char *id);
+
 int main();
 
 #endif

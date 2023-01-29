@@ -56,7 +56,7 @@ void query3 (int counter, char *N_arg, int mode) {
         char output[150];
         sprintf(output, "%s;%s;%i\n", get_user_username(user_maioresID[i]), get_user_name(get_user_username(user_maioresID[i])), tot_distancia[user_maioresID[i]]);
         if (mode == 1) printf("%s",output);
-        if (mode == 0) handle_outputs(counter, output);
+        if ((mode == 0) || (mode == 3)) handle_outputs(counter, output);
     }
 
     free(tot_distancia);

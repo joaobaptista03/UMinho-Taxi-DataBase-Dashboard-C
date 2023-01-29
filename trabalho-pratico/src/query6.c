@@ -48,7 +48,7 @@ void query6 (int counter, char *input, int mode) {
         free(data2);
         
         if (mode == 1) printf("\nNão há viagens!\n\n");
-        if (mode == 0) handle_outputs(counter, "");
+        if ((mode == 0) || (mode == 3)) handle_outputs(counter, "");
         if ((mode == 1) || (mode == 3)) printf("Fim da Q6 (Sem viagens) - %f segundos(input nº %i)\n", cpu_time_used, counter);
         return;
     }
@@ -58,7 +58,7 @@ void query6 (int counter, char *input, int mode) {
     sprintf(output, "%.3f\n", resultado);
     if (mode == 1) puts("\nForma do Resultado: distancia_media");
     if (mode == 1) printf("Resultado: %s\n",output);
-    if (mode == 0) handle_outputs(counter,output);
+    if ((mode == 0) || (mode == 3)) handle_outputs(counter,output);
 
     free(city);
     free(data1);

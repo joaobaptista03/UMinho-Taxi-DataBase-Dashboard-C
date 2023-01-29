@@ -1,0 +1,100 @@
+REsteves70;Raquel Esteves;228
+Anita-PetPinto38;Anita-Petra Pinto;228
+ConMelo;Constança Melo;219
+LiMarques;Lia Marques;215
+VFerreira100;Vera Ferreira;210
+CarminhNeves;Carminho Neves;209
+Mafalda-Azevedo112;Mafalda-Ariana Azevedo;199
+JosRodrigues46;José Rodrigues;197
+MélanRibeiro;Mélanie Ribeiro;195
+JoeSilva;Joel Silva;195
+DavMorais121;David Morais;194
+ESimões;Ema Simões;192
+IrinVicente73;Irina Vicente;191
+CaMiranda92;Carlota Miranda;190
+CarolinPereira;Carolina de Pereira;188
+DanieNeto;Daniel Neto;188
+FabiaPires-Morais;Fabiana Pires-Morais;187
+JaimOliveira;Jaime Oliveira;187
+TAlmeida;Tiago Almeida;186
+FAlves;Filipe Alves;185
+AndLima47;André do Lima;185
+Ema-ViAraújo;Ema-Vitória Araújo;185
+RiHenriques42;Rita Henriques;184
+CHenriques-Fonseca21;Carminho Henriques-Fonseca;184
+HuTeixeira;Hugo Teixeira;184
+PeLeal;Petra Leal;184
+JorgFonseca101;Jorge Fonseca;184
+JaiAssunção;Jaime Assunção;183
+LarAbreu-Leite;Larissa Abreu-Leite;182
+IsmGaspar;Ismael Gaspar;182
+SebastFaria70;Sebastião Faria;182
+LetíGonçalves68;Letícia Gonçalves;181
+SamuCarvalho;Samuel Carvalho;181
+YNunes;Yasmin Nunes;181
+ToPinheiro;Tomé Pinheiro;180
+MEsteves22;Marcos Esteves;179
+DiVaz108;Dinis Vaz;179
+LuAssunção41;Luís Assunção;178
+VictóMonteiro110;Victória Monteiro;176
+RafaeCoelho30;Rafaela do Coelho;176
+NoaCarvalho6;Noah Carvalho;176
+MaGuerreiro;Madalena Guerreiro;176
+MargarJesus99;Margarida Jesus;175
+MiguMacedo31;Miguel Macedo;175
+ToMaia-Silva;Tomé Maia-Silva;175
+LiMachado;Lia Machado;175
+BernardAraújo137;Bernardo Araújo;175
+ÂnFreitas;Ângelo Freitas;175
+AlFonseca111;Alice Fonseca;174
+GonçalFaria-Maia6;Gonçalo Faria-Maia;174
+NádiDomingues;Nádia Domingues;174
+HelenVieira129;Helena Vieira;174
+BárPinho;Bárbara do Pinho;173
+KyarGaspar133;Kyara Gaspar;173
+VicentSantos;Vicente Santos;173
+CláudVieira;Cláudio Vieira;173
+EnSoares142;Enzo do Soares;173
+KéMiranda140;Kévim do Miranda;173
+RGomes;Rui Gomes;173
+RenaGarcia20;Renato da Garcia;173
+SCampos136;Simão Campos;172
+HugLima;Hugo de Lima;172
+IgoMendes116;Igor Mendes;172
+LeoNunes-Machado;Leonardo Nunes-Machado;172
+XaviMatias98;Xavier Matias;172
+JoFreitas-Simões41;Joel Freitas-Simões;172
+LuCampos-Henriques;Luísa Campos-Henriques;172
+VitóMelo37;Vitória Melo;172
+LauFreitas;Laura do Freitas;171
+MiguGonçalves71;Miguel Gonçalves;171
+FredMachado-Mota;Frederico Machado-Mota;171
+HugMatos;Hugo Matos;171
+WiAndrade-Pereira11;Wilson Andrade-Pereira;171
+CaCruz;Catarina Cruz;171
+FranAntunes;Francisco Antunes;171
+SofMendes;Sofia Mendes;171
+CarminTorres87;Carminho Torres;171
+AdrMota114;Adriana Mota;171
+VSousa57;Valentim Sousa;170
+VictóLeal140;Victória Leal;170
+PetPinho2;Petra Pinho;170
+ÁMorais-Rodrigues;Álvaro Morais-Rodrigues;170
+IriCorreia28;Irina Correia;170
+IvaMiranda;Ivan Miranda;169
+LAnjos133;Luca Anjos;169
+CamilNascimento;Camila Nascimento;169
+AnGarcia-Castro;Andreia Garcia-Castro;169
+PLeal;Pilar Leal;169
+AlexaMarques72;Alexandre Marques;169
+AlSantos64;Alexandra Santos;169
+GuReis24;Gustavo do Reis;168
+TBaptista;Tomás Baptista;168
+JúliaBranco36;Júlia-Núria Branco;168
+MBranco64;Marco Branco;168
+ÍriGaspar;Íris Gaspar;168
+ArtPinho;Artur Pinho;168
+MiguRodrigues92;Miguel Rodrigues;168
+CamiBorges136;Camila Borges;168
+HMendes58;Hugo do Mendes;168
+MélaniLoureiro;Mélanie Loureiro;168

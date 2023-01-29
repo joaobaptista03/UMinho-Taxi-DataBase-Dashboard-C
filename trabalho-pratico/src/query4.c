@@ -50,7 +50,7 @@ void query4 (int counter, char *cidade, int mode) {
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
         
         if (mode == 1) puts("\nResultado: Não há viagens!\n");
-        if (mode == 0) handle_outputs(counter, "");
+        if ((mode == 0) || (mode == 3)) handle_outputs(counter, "");
         if ((mode == 1) || (mode == 3)) printf("Fim da Q4 (Sem viagens) - %f segundos(input nº %i)\n", cpu_time_used, counter);
         return;
     }
@@ -62,7 +62,7 @@ void query4 (int counter, char *cidade, int mode) {
     if (mode == 1) printf("\nForma do Resultado: preco_medio");
     if (mode == 1) printf("\nResultado: %s\n",output);
     
-    if (mode == 0) handle_outputs(counter,output);
+    if ((mode == 0) || (mode == 3)) handle_outputs(counter,output);
 
     // Medição de tempo
     end = clock();

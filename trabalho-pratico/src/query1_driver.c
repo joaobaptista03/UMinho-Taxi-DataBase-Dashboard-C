@@ -8,18 +8,17 @@
 #include "../include/query1_driver.h"
 
 void query1_driver (int counter, char *id, int mode) {
-
     // Se o driver não existir
     if (!is_driver(id)) {
         if (mode == 1) puts("\nResultado: Driver não existe!\n");
-        if (mode == 0) handle_outputs(counter, "");
+        if ((mode == 0) || (mode == 3)) handle_outputs(counter, "");
         return;
     }
 
     // Se o Driver estiver inativo
     if (stricmp(get_driver_status(id), "inactive") == 0) {
         if (mode == 1) puts("\nResultado: Driver inativo!\n");
-        if (mode == 0) handle_outputs(counter, "");
+        if ((mode == 0) || (mode == 3)) handle_outputs(counter, "");
         return;
     }
 
@@ -58,5 +57,5 @@ void query1_driver (int counter, char *id, int mode) {
     sprintf(output, "%s;%s;%i;%.3f;%i;%.3f\n", get_driver_name(id), get_driver_gender(id), age(get_driver_birth_date(id)), av_media, num_viagens, tot_auferido);
     if (mode == 1) puts("\nForma do Resultado: nome;genero;idade;avaliacao_media;numero_viagens;total_auferido");
     if (mode == 1) printf("Resultado: %s\n",output);
-    if (mode == 0) handle_outputs(counter, output);
+    if ((mode == 0) || (mode == 3)) handle_outputs(counter, output);
 }

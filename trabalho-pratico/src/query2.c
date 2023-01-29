@@ -17,7 +17,7 @@ void query2 (int counter, char *N_arg, int mode) {
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
     if (N == 0) {
         if (mode == 1) puts("\nResultado: N = 0\n");
-        if (mode == 0) handle_outputs(counter, "");
+        if ((mode == 0) || (mode == 3)) handle_outputs(counter, "");
         return;
     }
 
@@ -74,7 +74,7 @@ void query2 (int counter, char *N_arg, int mode) {
         char id_i[30]; sprintf(id_i, "%012d", id_maiores[i]);
         sprintf(output, "%s;%s;%.3f\n", id_i, get_driver_name(id_i), av_med[get_driver_i(id_i)]);
         if (mode == 1) printf("%s",output);
-        if (mode == 0) handle_outputs(counter, output);
+        if ((mode == 0) || (mode == 3)) handle_outputs(counter, output);
     }
 
     free(tot_avaliacoes);

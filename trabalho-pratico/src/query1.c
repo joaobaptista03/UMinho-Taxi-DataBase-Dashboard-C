@@ -15,7 +15,7 @@ void query1 (int counter, char *id, int mode) {
     clock_t start, end;
     double cpu_time_used;
     start = clock();
-    
+
     if (isDriver(id, strlen(id))) query1_driver(counter, id, mode);
     else query1_user(counter, id, mode);
 
