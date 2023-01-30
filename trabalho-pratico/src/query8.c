@@ -38,10 +38,19 @@ void query8 (int counter, char *input, int mode) {
 
         }
     }
+    if (mode == 1) puts("\nForma do Resultado: id_condutor;nome_condutor;username_utilizador;nome_utilizador");
+
+    if (rides_n == 0) {
+        if (mode == 1) puts("\nResultado: Não existe nenhuma viagem.\n");
+        end = clock();
+        cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        if ((mode == 1) || (mode == 3)) printf("Fim da Q8 - %f segundos (input nº %i)\n", cpu_time_used, counter);
+        if ((mode == 0) || (mode == 3)) handle_outputs(counter, "");
+        return;
+    }
 
     qsort(ridesr, rides_n, sizeof(int), first_ride);
 
-    if (mode == 1) puts("\nForma do Resultado: id_condutor;nome_condutor;username_utilizador;nome_utilizador");
     for (int i = 0; i < rides_n; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
         char output[150];
         sprintf(output, "%s;%s;%s;%s\n", get_ride_driver(ridesr[i]), get_driver_name(get_ride_driver(ridesr[i])), get_ride_user(ridesr[i]), get_user_name(get_ride_user(ridesr[i])));
