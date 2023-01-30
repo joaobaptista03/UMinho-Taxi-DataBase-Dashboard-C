@@ -7,6 +7,9 @@
 
 #include "../include/query2.h"
 
+char **recent_ride;                                                                   // Criar array de strings dinâmicamente
+
+
 void query2 (int counter, char *N_arg, int mode) {
 
     // Medição de tempo
@@ -30,7 +33,6 @@ void query2 (int counter, char *N_arg, int mode) {
     double *av_med; av_med = calloc((1 + get_n_drivers()), sizeof(double));
     double *av_med_cpy; av_med_cpy = calloc((1 + get_n_drivers()), sizeof(double));
 
-    char **recent_ride;                                                                   // Criar array de strings dinâmicamente
     recent_ride = malloc((1 + get_n_drivers()) * sizeof(char*));
     for (int i = 0; i < (1 + get_n_drivers()); i++)
         recent_ride[i] = malloc((11+1) * sizeof(char));
@@ -53,22 +55,32 @@ void query2 (int counter, char *N_arg, int mode) {
     for (int i = 1; i <= get_n_drivers(); i++) av_med_cpy[i] = av_med[i];                       // Clonar a array de avaliações médias para ser usado no for loop
 
     int *id_maiores; id_maiores = calloc(N, sizeof(int));                           // Array que irá armazenar os ID's ordenados por ordem decrescente de maior av_med
-    for (int i = 0; i < N; i++) {                                                     // For loop que irá preencher id_maiores
+    for (int i = 0; i < N-1; i++) {                                                     // For loop que irá preencher id_maiores
         int larg_av_ind = larger_double(av_med_cpy, (1 + get_n_drivers()));
         id_maiores[i] = atoi(get_driver_id(larg_av_ind));
         av_med_cpy[larg_av_ind] = 0;
     }
 
-    for (int i = 0; i < N-1; i++) {
-        char maior[15];
-        char maior1[15];
-        sprintf(maior, "%012d", id_maiores[i]);
-        sprintf(maior1, "%012d", id_maiores[i+1]);
-        if (av_med[get_driver_i(maior)] == av_med[get_driver_i(maior1)]) {
-            int rec_ride = most_recent(recent_ride[get_driver_i(maior)], recent_ride[get_driver_i(maior1)]);
-            if (rec_ride == 2) swap(id_maiores, i, i+1);
-            else if (rec_ride == 3 && id_maiores[i] > id_maiores[i+1]) swap(id_maiores, i, i+1);
+    int last_av_i = larger_double(av_med_cpy, (1 + get_n_drivers()));
+    int aux_av_i = last_av_i;
+    double last_av = av_med_cpy[last_av_i];
+    int cap = N, nr_maiores = N-1;
+
+    for(; av_med_cpy[aux_av_i] == last_av; nr_maiores++) {
+        if (nr_maiores + 1 > cap) {
+            id_maiores = realloc(id_maiores, (cap + 5) * sizeof(int));
+            cap += 5;
         }
+        id_maiores[nr_maiores] = atoi(get_driver_id(aux_av_i));
+        av_med_cpy[aux_av_i] = 0;
+        aux_av_i = larger_double(av_med_cpy, (1 + get_n_drivers()));
+    }
+
+    int curr_elem;
+    for (int i = 0; i < nr_maiores - 1; i += curr_elem) {
+        char id_temp[13]; sprintf(id_temp, "%012d", id_maiores[i]);
+        curr_elem = av_elem(id_maiores, nr_maiores, av_med, av_med[get_driver_i(id_temp)]);
+        if (curr_elem != 1) qsort(id_maiores + i, curr_elem, sizeof(int), first_driver);
     }
 
     if (mode == 1) puts("\nForma do Resultado: id;nome;avaliacao_media");
@@ -93,4 +105,8 @@ void query2 (int counter, char *N_arg, int mode) {
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     if (mode == 1) printf("\n");
     if ((mode == 1) || (mode == 3)) printf("Fim da Q2 - %f segundos (input nº %i)\n", cpu_time_used, counter);
+}
+
+char* get_recdate_driver(char *id) {
+    return recent_ride[get_driver_i(id)];
 }

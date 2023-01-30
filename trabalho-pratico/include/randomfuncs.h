@@ -14,6 +14,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "cat_drivers.h"
+#include "cat_users.h"
+#include "cat_rides.h"
+#include "query2.h"
+#include "query3.h"
+
 /**
  *
  * Este é o header da função que dada uma string, verifica se a string é um dígito, e se for, é porque é driver, caso contrário é user.
@@ -83,5 +89,33 @@ bool isFloat (char *string);
  * 
  */
 bool compare (FILE *file1, FILE *file2);
+
+/**
+ *
+ * Este é o header da função que devolve o número de id's que contém avaliação média igual a av.
+ * 
+ */
+int av_elem (int *id_maiores, int nr_maiores, double *av_med, double av);
+
+/**
+ *
+ * Este é o header da função que devolve o número de id's que contém distância total igual a dist_total.
+ * 
+ */
+int dist_elem (int *user_maioresID, int nr_maiores, int *tot_distancia, int dist_total);
+
+/**
+ *
+ * Este é o header da função que decide qual dos drivers deve aparecer primeiro.
+ * 
+ */
+int first_driver(const void *i1, const void *i2);
+
+/**
+ *
+ * Este é o header da função que decide qual dos Users deve aparecer primeiro.
+ * 
+ */
+int first_user(const void *i1, const void *i2);
 
 #endif

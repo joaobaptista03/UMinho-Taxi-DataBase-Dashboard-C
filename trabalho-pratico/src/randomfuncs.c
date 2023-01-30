@@ -102,3 +102,53 @@ bool compare (FILE *file1, FILE *file2) {
     }
     return true;
 }
+
+int av_elem (int *id_maiores, int nr_maiores, double *av_med, double av) {
+    int r = 0;
+    for (int i = 0; i < nr_maiores; i++) {
+        char id[13]; sprintf(id, "%012d", id_maiores[i]);
+        if (av_med[get_driver_i(id)] == av) {
+            r++;
+        }
+    }
+    return r;
+}
+
+int dist_elem (int *user_maioresID, int nr_maiores, int *tot_distancia, int dist_total) {
+    int r = 0;
+    for (int i = 0; i < nr_maiores; i++) {
+        if (tot_distancia[user_maioresID[i]] == dist_total) {
+            r++;
+        }
+    }
+    return r;
+}
+
+int first_driver(const void *i1, const void *i2) {
+    int *a = (int*)i1;
+    int *b = (int*)i2;
+
+    char id1[13]; sprintf(id1, "%012d", *a);
+    char id2[13]; sprintf(id2, "%012d", *b);
+
+    int mostrecent = most_recent(get_recdate_driver(id1), get_recdate_driver(id2));
+    if (mostrecent == 1) return -1;
+    else if (mostrecent == 2) return 1;
+    else if (mostrecent == 3) {
+        if (atoi(id1) - atoi(id2) < 0) return -1;
+    }
+    return 1;
+}
+
+int first_user(const void *i1, const void *i2) {
+    int *a = (int*)i1;
+    int *b = (int*)i2;
+
+    int mostrecent = most_recent(get_recdate_user(*a), get_recdate_user(*b));
+    if (mostrecent == 1) return -1;
+    else if (mostrecent == 2) return 1;
+    else if (mostrecent == 3) {
+        if (strcmp(get_user_username(*a), get_user_username(*b)) > 0) return 1;
+    }
+    return -1;
+}

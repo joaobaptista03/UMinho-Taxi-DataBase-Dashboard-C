@@ -20,5 +20,11 @@
  */
 void query2 (int counter, char *N_arg, int mode);
 
+/**
+ *
+ * Este é o header da função que retorna um pointer para a string da data mais recent de um dado Driver.
+ * 
+ */
+char *get_recdate_driver (char *id);
 
 #endif
