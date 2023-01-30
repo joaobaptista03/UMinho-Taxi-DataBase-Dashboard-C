@@ -15,7 +15,15 @@ void query7 (int counter, char *input, int mode) {
     start = clock();
 
     int N = atoi(input);                                                      // Converter argumento N string para int
-    
+    if (N == 0) {
+        if (mode == 1) puts("\nResultado: N = 0\n");
+        end = clock();
+        cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        if ((mode == 1) || (mode == 3)) printf("Fim da Q7 - %f segundos (input nº %i)\n", cpu_time_used, counter);
+        if ((mode == 0) || (mode == 3)) handle_outputs(counter, "");
+        return;
+    }
+
     char *cidaded;
     cidaded = strstr(input, " ");
     char cidade[20];
