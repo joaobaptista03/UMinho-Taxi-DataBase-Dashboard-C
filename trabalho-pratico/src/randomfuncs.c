@@ -26,7 +26,7 @@ int larger_double(double *doubles, int N) {
 }
 
 int larger_int(int *ints, int N) {
-    int r = 0; int ind;
+    int r = 0; int ind = -1;
     for (int i = 1; i < N; i++) {
         if (ints[i] > r) {
             r = ints[i];

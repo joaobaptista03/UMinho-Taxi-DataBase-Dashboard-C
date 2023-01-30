@@ -40,6 +40,16 @@ void query3 (int counter, char *N_arg, int mode) {
 
     for (int i = 0; i < N-1; i++) {                                                     // For loop que irá preencher user_maiores
         int larg_totDist_user = larger_int(tot_distancia_cpy, (1 + get_nr_users()));
+
+        if (larg_totDist_user == -1) {
+            end = clock();
+            cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+            if (mode == 1) puts("\nResultado: Não existem Rides suficientes!\n");
+            if ((mode == 1) || (mode == 3)) printf("Fim da Q3 (Sem Rides Suficientes) - %f segundos (input nº %i)\n", cpu_time_used, counter);
+            if ((mode == 0) || (mode == 3)) handle_outputs(counter, "");
+            return;
+        }
+
         user_maioresID[i] = larg_totDist_user;
         tot_distancia_cpy[larg_totDist_user] = 0;
     }
