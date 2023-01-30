@@ -17,6 +17,14 @@ void query3 (int counter, char *N_arg, int mode) {
     start = clock();
     
     int N = atoi(N_arg);                                                      // Converter argumento N string para int
+    if (N == 0) {
+        if (mode == 1) puts("\nResultado: N = 0\n");
+        end = clock();
+        cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        if ((mode == 1) || (mode == 3)) printf("Fim da Q3 - %f segundos (input nº %i)\n", cpu_time_used, counter);
+        if ((mode == 0) || (mode == 3)) handle_outputs(counter, "");
+        return;
+    }
 
     int *tot_distancia; tot_distancia = calloc((1 + get_nr_users()), sizeof(int));
     int *tot_distancia_cpy; tot_distancia_cpy = calloc((1 + get_nr_users()), sizeof(int));
