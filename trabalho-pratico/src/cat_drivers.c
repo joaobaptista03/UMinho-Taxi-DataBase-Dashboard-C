@@ -8,7 +8,7 @@
 
 struct Driver {
     char id[13];
-    char name[30];
+    char name[40];
     char birth_date[11];
     char gender[2];
     char car_class[8];

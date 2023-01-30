@@ -8,7 +8,7 @@
 
 struct User {
     char user[50];
-    char name[30];
+    char name[40];
     char gender[2];
     char birth_date[11];
     char acc_creation[11];
