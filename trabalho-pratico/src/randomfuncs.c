@@ -94,3 +94,11 @@ bool isFloat (char *string) {
     }
     return true;
 }
+
+bool compare (FILE *file1, FILE *file2) {
+    char input1[100], input2[100];
+    while (fgets(input1, 100, file1) && fgets(input2, 100, file2)) {
+        if (strcmp(input1, input2) != 0) return false;
+    }
+    return true;
+}

@@ -77,4 +77,11 @@ bool isInt (char *string);
  */
 bool isFloat (char *string);
 
+/**
+ *
+ * Este é o header da função que verifica se dois dados ficheiros são iguais.
+ * 
+ */
+bool compare (FILE *file1, FILE *file2);
+
 #endif
