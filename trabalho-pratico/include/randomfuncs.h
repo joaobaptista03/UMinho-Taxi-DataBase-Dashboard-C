@@ -120,9 +120,16 @@ int first_user(const void *i1, const void *i2);
 
 /**
  *
- * Este é o header da função que decide qual dos drivers deve aparecer primeiro (Q7).
+ * Este é o header da função que decide qual dos Drivers deve aparecer primeiro (Q7).
  * 
  */
 int first_driver7(const void *i1, const void *i2);
+
+/**
+ *
+ * Este é o header da função que decide qual das Rides deve aparecer primeiro (Q8).
+ * 
+ */
+int first_ride(const void *i1, const void *i2);
 
 #endif

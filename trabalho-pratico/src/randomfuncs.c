@@ -163,3 +163,17 @@ int first_driver7(const void *i1, const void *i2) {
     if (atoi(id1) - atoi(id2) < 0) return 1;
     return -1;
 }
+
+int first_ride(const void *i1, const void *i2) {
+    int *a = (int*)i1;
+    int *b = (int*)i2;
+
+    int mostrecent_d = most_recent(get_driver_acc_creation(get_ride_driver(*a)), get_driver_acc_creation(get_ride_driver(*b)));
+    int mostrecent_u = most_recent(get_user_acc_creation(get_ride_user(*a)), get_user_acc_creation(get_ride_user(*b)));
+
+    if (mostrecent_d == 1) return 1;
+    if (mostrecent_d == 2) return -1;
+    if (mostrecent_u == 1) return 1;
+    if (mostrecent_u == 2) return -1;
+    return (*a - *b);
+}

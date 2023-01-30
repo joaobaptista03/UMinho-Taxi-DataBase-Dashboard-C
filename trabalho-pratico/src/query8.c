@@ -39,6 +39,8 @@ void query8 (int counter, char *input, int mode) {
         }
     }
 
+    qsort(ridesr, rides_n, sizeof(int), first_ride);
+
     if (mode == 1) puts("\nForma do Resultado: id_condutor;nome_condutor;username_utilizador;nome_utilizador");
     for (int i = 0; i < rides_n; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
         char output[150];

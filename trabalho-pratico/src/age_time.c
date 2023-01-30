@@ -31,7 +31,7 @@ int age(char date[]) {
 
     if (TODAY_MONTH > month) alr_bday = 0;
     else if (TODAY_MONTH == month) {
-        if (TODAY_DAY > day) alr_bday = 0;
+        if (TODAY_DAY >= day) alr_bday = 0;
     }
 
     return TODAY_YEAR - year - alr_bday;
