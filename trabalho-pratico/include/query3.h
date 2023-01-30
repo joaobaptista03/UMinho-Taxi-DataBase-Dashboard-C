@@ -20,5 +20,11 @@
  */
 void query3 (int counter, char *N_arg, int mode);
 
+/**
+ *
+ * Este é o header da função que retorna um pointer para a string da data mais recent de um dado User.
+ * 
+ */
+char* get_recdate_user (int i);
 
 #endif
