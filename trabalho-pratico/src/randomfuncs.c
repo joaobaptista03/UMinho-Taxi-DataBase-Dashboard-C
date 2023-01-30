@@ -152,3 +152,14 @@ int first_user(const void *i1, const void *i2) {
     }
     return -1;
 }
+
+int first_driver7(const void *i1, const void *i2) {
+    int *a = (int*)i1;
+    int *b = (int*)i2;
+
+    char id1[13]; sprintf(id1, "%012d", *a);
+    char id2[13]; sprintf(id2, "%012d", *b);
+
+    if (atoi(id1) - atoi(id2) < 0) return 1;
+    return -1;
+}

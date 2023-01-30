@@ -57,6 +57,16 @@ void query2 (int counter, char *N_arg, int mode) {
     int *id_maiores; id_maiores = calloc(N, sizeof(int));                           // Array que irá armazenar os ID's ordenados por ordem decrescente de maior av_med
     for (int i = 0; i < N-1; i++) {                                                     // For loop que irá preencher id_maiores
         int larg_av_ind = larger_double(av_med_cpy, (1 + get_n_drivers()));
+
+        if (larg_av_ind == -1) {
+            end = clock();
+            cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+            if (mode == 1) puts("\nResultado: Não existem Rides suficientes!\n");
+            if ((mode == 1) || (mode == 3)) printf("Fim da Q2 (Sem Rides Suficientes) - %f segundos (input nº %i)\n", cpu_time_used, counter);
+            if ((mode == 0) || (mode == 3)) handle_outputs(counter, "");
+            return;
+        }
+
         id_maiores[i] = atoi(get_driver_id(larg_av_ind));
         av_med_cpy[larg_av_ind] = 0;
     }
