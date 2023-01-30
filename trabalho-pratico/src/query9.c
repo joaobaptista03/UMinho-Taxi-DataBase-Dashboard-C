@@ -17,25 +17,25 @@ void query9 (int counter, char *data1, char* data2, int mode) {
     int *ridesd = malloc(2 * sizeof(int));
     int capd = 2;
     int rides_d = 0;
-    int contadord = 0;
 
      for (int i = 1; i <= get_nr_rides(); i++) {                                                  // Percorrer o catálogo das rides
          if (
-             (most_recent(get_ride_date(i), data1) == 1 || most_recent(get_ride_date(i), data1) == 3)
-         &&  (most_recent(get_ride_date(i), data2) == 2 || most_recent(get_ride_date(i), data2) == 3)) {
-              rides_d++;
-              if (rides_d > capd) {
+             (most_recent(get_ride_date(i), data1) == 1 || most_recent(get_ride_date(i), data1) == 3) &&
+             (most_recent(get_ride_date(i), data2) == 2 || most_recent(get_ride_date(i), data2) == 3) && 
+             (atof((get_ride_tip(i))) > 0)) {
+              if (rides_d + 1 > capd) {
                   ridesd = realloc(ridesd, 2 * capd * sizeof(int));
                   capd *= 2;
               }
-              ridesd[contadord] = i;
-              contadord++; 
-
+              ridesd[rides_d] = i;
+              rides_d++;
         }
     }
 
+    qsort(ridesd, rides_d, sizeof(int), first_ride9);
+
     if (mode == 1) puts("\nForma do Resultado: id_viagem;data_viagem;distancia;cidade;valor_gorjeta");
-    for (int i = 0; i < contadord - 1; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
+    for (int i = 0; i < rides_d; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
         char output[150];
         sprintf(output, "%s;%s;%s;%s;%s00\n", get_ride_id(ridesd[i]), get_ride_date(ridesd[i]), get_ride_distance(ridesd[i]), get_ride_city(ridesd[i]), get_ride_tip(ridesd[i]));
         if (mode == 1) printf("%s",output);

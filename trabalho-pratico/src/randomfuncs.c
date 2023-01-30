@@ -177,3 +177,17 @@ int first_ride(const void *i1, const void *i2) {
     if (mostrecent_u == 2) return -1;
     return (*a - *b);
 }
+
+int first_ride9(const void *i1, const void *i2) {
+    int *a = (int*)i1;
+    int *b = (int*)i2;
+
+    if (atoi(get_ride_distance(*a)) > atoi(get_ride_distance(*b))) return -1;
+    else if (atoi(get_ride_distance(*a)) < atoi(get_ride_distance(*b))) return 1;
+
+    int mostrecent = most_recent(get_ride_date(*a), get_ride_date(*b));
+    if (mostrecent == 1) return -1;
+    else if (mostrecent == 2) return 1;
+
+    return (*b - *a);
+}

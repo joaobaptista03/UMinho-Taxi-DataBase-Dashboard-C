@@ -132,4 +132,11 @@ int first_driver7(const void *i1, const void *i2);
  */
 int first_ride(const void *i1, const void *i2);
 
+/**
+ *
+ * Este é o header da função que decide qual das Rides deve aparecer primeiro (Q9).
+ * 
+ */
+int first_ride9(const void *i1, const void *i2);
+
 #endif
