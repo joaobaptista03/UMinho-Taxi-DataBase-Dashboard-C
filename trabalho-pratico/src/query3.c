@@ -68,5 +68,6 @@ void query3 (int counter, char *N_arg, int mode) {
     // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-    if ((mode == 1) || (mode == 3)) printf("\nFim da Q3 - %f segundos (input nº %i)\n", cpu_time_used, counter);
+    if (mode == 1) printf("\n");
+    if ((mode == 1) || (mode == 3)) printf("Fim da Q3 - %f segundos (input nº %i)\n", cpu_time_used, counter);
 }
