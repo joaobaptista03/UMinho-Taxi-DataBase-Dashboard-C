@@ -263,10 +263,13 @@ int main() {
     puts("Regular Dataset Without Invalid Entries:");
     regular_without();
     puts("-------------------------------------------");
+    puts("Regular Dataset With Invalid Entries:");
     regular_with();
     puts("-------------------------------------------");
+    puts("Large Dataset Without Invalid Entries:");
     large_without();
     puts("-------------------------------------------");
+    puts("Large Dataset With Invalid Entries:");
     large_with();
     puts("-------------------------------------------");
 }
