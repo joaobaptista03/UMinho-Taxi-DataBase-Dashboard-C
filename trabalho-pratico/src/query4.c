@@ -9,7 +9,6 @@
 
 void query4 (int counter, char *cidade, int mode) {
     
-    // Medição de tempo
     clock_t start, end;
     double cpu_time_used;
     start = clock();
@@ -45,7 +44,6 @@ void query4 (int counter, char *cidade, int mode) {
     }
     
     if (contagem == 0) {
-        // Medição de tempo
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
         
@@ -64,7 +62,6 @@ void query4 (int counter, char *cidade, int mode) {
     
     if ((mode == 0) || (mode == 3)) handle_outputs(counter,output);
 
-    // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     if ((mode == 1) || (mode == 3)) printf("Fim da Q4 - %f segundos (input nº %i)\n", cpu_time_used, counter);

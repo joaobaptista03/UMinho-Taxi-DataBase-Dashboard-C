@@ -7,16 +7,15 @@
 
 #include "../include/query3.h"
 
-char **recent_rides;                                                                   // Criar array de strings dinâmicamente
+char **recent_rides;
 
 void query3 (int counter, char *N_arg, int mode) {
 
-    // Medição de tempo
     clock_t start, end;
     double cpu_time_used;
     start = clock();
     
-    int N = atoi(N_arg);                                                      // Converter argumento N string para int
+    int N = atoi(N_arg);
     if (N == 0) {
         if (mode == 1) puts("\nResultado: N = 0\n");
         end = clock();
@@ -35,18 +34,18 @@ void query3 (int counter, char *N_arg, int mode) {
     for (int i = 0; i <= get_nr_users(); i++)
         recent_rides[i] = malloc(11 * sizeof(char));
 
-    for (int i = 1; i <= get_nr_users(); i++) strcpy(recent_rides[i], "00/00/0000");                // Inicializar a array
+    for (int i = 1; i <= get_nr_users(); i++) strcpy(recent_rides[i], "00/00/0000");
 
-    for (int i = 1; i <= get_nr_rides(); i++) {                                              // Percorrer o catálogo das Rides
+    for (int i = 1; i <= get_nr_rides(); i++) {
             userLine = get_user_i(get_ride_user(i));
 
             if (most_recent(get_ride_date(i), recent_rides[userLine]) == 1) strcpy(recent_rides[userLine], get_ride_date(i));
-            if (stricmp(get_user_status(get_ride_user(i)), "active") == 0) tot_distancia[userLine] += atoi(get_ride_distance(i));      // Verificar se o User está ativo
+            if (stricmp(get_user_status(get_ride_user(i)), "active") == 0) tot_distancia[userLine] += atoi(get_ride_distance(i));
     }
 
-    for (int i = 1; i <= get_nr_users(); i++) tot_distancia_cpy[i] = tot_distancia[i];                       // Clonar tot_distancia para ser usado no for loop
+    for (int i = 1; i <= get_nr_users(); i++) tot_distancia_cpy[i] = tot_distancia[i];
 
-    for (int i = 0; i < N-1; i++) {                                                     // For loop que irá preencher user_maiores
+    for (int i = 0; i < N-1; i++) {
         int larg_totDist_user = larger_int(tot_distancia_cpy, (1 + get_nr_users()));
 
         if (larg_totDist_user == -1) {
@@ -84,7 +83,7 @@ void query3 (int counter, char *N_arg, int mode) {
     }
 
     if (mode == 1) puts("\nForma do Resultado: username;nome;distancia_total");
-    for (int i = 0; i < N; i++) {                                                  // For loop que irá criar a string de output e passá-la para a handle_outputs
+    for (int i = 0; i < N; i++) {
         char output[150];
         sprintf(output, "%s;%s;%i\n", get_user_username(user_maioresID[i]), get_user_name(get_user_username(user_maioresID[i])), tot_distancia[user_maioresID[i]]);
         if (mode == 1) printf("%s",output);
@@ -97,7 +96,6 @@ void query3 (int counter, char *N_arg, int mode) {
     for (int i = 0; i <= get_nr_users(); i++) free(recent_rides[i]);
     free(recent_rides);
 
-    // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     if (mode == 1) printf("\n");

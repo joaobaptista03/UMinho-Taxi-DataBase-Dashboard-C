@@ -9,7 +9,6 @@
 
 void query9 (int counter, char *data1, char* data2, int mode) {
 
-    // Medição de tempo
     clock_t start, end;
     double cpu_time_used;
     start = clock();
@@ -18,15 +17,17 @@ void query9 (int counter, char *data1, char* data2, int mode) {
     int capd = 2;
     int rides_d = 0;
 
-     for (int i = 1; i <= get_nr_rides(); i++) {                                                  // Percorrer o catálogo das rides
+     for (int i = 1; i <= get_nr_rides(); i++) {
          if (
              (most_recent(get_ride_date(i), data1) == 1 || most_recent(get_ride_date(i), data1) == 3) &&
              (most_recent(get_ride_date(i), data2) == 2 || most_recent(get_ride_date(i), data2) == 3) && 
              (atof((get_ride_tip(i))) > 0)) {
+              
               if (rides_d + 1 > capd) {
                   ridesd = realloc(ridesd, 2 * capd * sizeof(int));
                   capd *= 2;
               }
+              
               ridesd[rides_d] = i;
               rides_d++;
         }
@@ -44,7 +45,7 @@ void query9 (int counter, char *data1, char* data2, int mode) {
 
     qsort(ridesd, rides_d, sizeof(int), first_ride9);
 
-    for (int i = 0; i < rides_d; i++) {                                    // For loop que irá criar a string de output e passá-la para a handle_outputs
+    for (int i = 0; i < rides_d; i++) {
         char output[150];
         sprintf(output, "%s;%s;%s;%s;%s00\n", get_ride_id(ridesd[i]), get_ride_date(ridesd[i]), get_ride_distance(ridesd[i]), get_ride_city(ridesd[i]), get_ride_tip(ridesd[i]));
         if (mode == 1) printf("%s",output);
@@ -53,7 +54,6 @@ void query9 (int counter, char *data1, char* data2, int mode) {
 
     free(ridesd);
 
-    // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     if (mode == 1) printf("\n");

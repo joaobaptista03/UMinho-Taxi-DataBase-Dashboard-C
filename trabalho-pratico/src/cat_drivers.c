@@ -92,7 +92,6 @@ char* get_driver_status(char *id) {
 driver_struct inserir_drivers(FILE *drivers) {
     int nr_drivers = 1, cap_malloc = 1;
 
-    // Criar catálogo dos Drivers
     drivers_cat = malloc(sizeof(Driver));
     drivers_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 
@@ -107,7 +106,7 @@ driver_struct inserir_drivers(FILE *drivers) {
             strcpy(generic_d.acc_creation, "");
             strcpy(generic_d.status, "");
 
-    char *temp; temp = malloc(1000 * sizeof(char));             // String temporária que irá armazenar cada linha dos Ficheiros CSV
+    char *temp; temp = malloc(1000 * sizeof(char));
     for(int i = 0; fgets(temp, 1000, drivers); i++) {
         if (i != 0) {
             if (cap_malloc == nr_drivers) {

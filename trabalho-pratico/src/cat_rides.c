@@ -79,7 +79,6 @@ bool isRvalid (Ride ride1) {
 Ride* inserir_rides(FILE *rides) {
     int nr_rides = 1, cap_malloc = 1;
 
-    // Criar catálogo das Rides
     rides_cat = malloc(sizeof(Ride));
 
     Ride generic_r;
@@ -94,7 +93,7 @@ Ride* inserir_rides(FILE *rides) {
             strcpy(generic_r.tip, "");
             strcpy(generic_r.comment, "");
 
-    char *temp; temp = malloc(1000 * sizeof(char));                                // String temporária que irá armazenar cada linha dos Ficheiros CSV
+    char *temp; temp = malloc(1000 * sizeof(char));
     for(int i = 0; fgets(temp, 1000, rides); i++) {
         if (i != 0) {
             if (cap_malloc == nr_rides) {

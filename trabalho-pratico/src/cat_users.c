@@ -80,7 +80,6 @@ char* get_user_status(char *user) {
 user_struct inserir_users(FILE *users) {
     int nr_users = 1, cap_malloc = 1;;
 
-    // Criar catálogo dos Users
     users_cat = malloc(sizeof(User));
 
     User generic_u;
@@ -93,7 +92,7 @@ user_struct inserir_users(FILE *users) {
 
     users_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
 
-    char *temp; temp = malloc(1000 * sizeof(char));                                // String temporária que irá armazenar cada linha dos Ficheiros CSV
+    char *temp; temp = malloc(1000 * sizeof(char));
     for(int i = 0; fgets(temp, 1000, users); i++) {
         if (i != 0) {
             if (cap_malloc == nr_users) {

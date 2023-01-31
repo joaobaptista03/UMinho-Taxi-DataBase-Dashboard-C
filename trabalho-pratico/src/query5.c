@@ -9,7 +9,6 @@
 
 void query5 (int counter, char *data1, char* data2, int mode) {
 
-    // Medição de tempo
     clock_t start, end;
     double cpu_time_used;
     start = clock();
@@ -49,7 +48,6 @@ void query5 (int counter, char *data1, char* data2, int mode) {
     }
     
     if (contagem == 0) {
-        // Medição de tempo
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
         
@@ -66,7 +64,6 @@ void query5 (int counter, char *data1, char* data2, int mode) {
     if (mode == 1) printf("Resultado: %s\n",output);
     if ((mode == 0) || (mode == 3)) handle_outputs(counter,output);
 
-    // Medição de tempo
     end = clock();
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     if ((mode == 1) || (mode == 3)) printf("Fim da Q5 - %f segundos (input nº %i)\n", cpu_time_used, counter);
