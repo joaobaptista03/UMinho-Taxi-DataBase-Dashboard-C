@@ -106,7 +106,7 @@ void regular_without() {
 
     char *input; input = malloc(100 * sizeof(char));
     while (fgets(input, 100, inputs)) {
-        if (strchr(input, '\n')) *(strchr(input, '\n') - 1) = '\0';                             // Trocar '\n' por '\0' na string input
+        if (strchr(input, '\n')) *(strchr(input, '\n')) = '\0';                             // Trocar '\n' por '\0' na string input
         
         if (input[0] == '1') q1_test(counter, input + 2, "rwo");
         else if (input[0] == '2') q2_test(counter, input + 2, "rwo");
@@ -149,7 +149,7 @@ void regular_with() {
 
     char *input; input = malloc(100 * sizeof(char));
     while (fgets(input, 100, inputs)) {
-        if (strchr(input, '\n')) *(strchr(input, '\n') - 1) = '\0';                             // Trocar '\n' por '\0' na string input
+        if (strchr(input, '\n')) *(strchr(input, '\n')) = '\0';                             // Trocar '\n' por '\0' na string input
         
         if (input[0] == '1') q1_test(counter, input + 2, "rw");
         else if (input[0] == '2') q2_test(counter, input + 2, "rw");
@@ -192,7 +192,7 @@ void large_without() {
 
     char *input; input = malloc(100 * sizeof(char));
     while (fgets(input, 100, inputs)) {
-        if (strchr(input, '\n')) *(strchr(input, '\n') - 1) = '\0';                             // Trocar '\n' por '\0' na string input
+        if (strchr(input, '\n')) *(strchr(input, '\n')) = '\0';                             // Trocar '\n' por '\0' na string input
         
         if (input[0] == '1') q1_test(counter, input + 2, "lwo");
         else if (input[0] == '2') q2_test(counter, input + 2, "lwo");
@@ -235,7 +235,7 @@ void large_with() {
 
     char *input; input = malloc(100 * sizeof(char));
     while (fgets(input, 100, inputs)) {
-        if (strchr(input, '\n')) *(strchr(input, '\n') - 1) = '\0';                             // Trocar '\n' por '\0' na string input
+        if (strchr(input, '\n')) *(strchr(input, '\n')) = '\0';                             // Trocar '\n' por '\0' na string input
         
         if (input[0] == '1') q1_test(counter, input + 2, "lw");
         else if (input[0] == '2') q2_test(counter, input + 2, "lw");
