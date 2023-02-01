@@ -76,6 +76,10 @@ bool isRvalid (Ride ride1) {
     );
 }
 
+void free_rides() {
+    free(rides_cat);
+}
+
 Ride* inserir_rides(FILE *rides) {
     int nr_rides = 1, cap_malloc = 1;
 

@@ -55,6 +55,13 @@ double get_tot_gasto(int indice);
 
 /**
  *
+ * Este é o header da função que liberta a memória alocada para todas as Estatísticas.
+ * 
+ */
+void free_all_stats();
+
+/**
+ *
  * Este é o header da função que calcula o total gasto / auferido de uma viagem.
  * 
  */

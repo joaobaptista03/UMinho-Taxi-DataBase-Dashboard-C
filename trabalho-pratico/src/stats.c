@@ -37,6 +37,15 @@ double get_tot_gasto(int indice) {
     return tot_gasto[indice];
 }
 
+void free_all_stats() {
+    free(nr_viagens_d);
+    free(nr_viagens_u);
+    free(av_total_d);
+    free(av_total_u);
+    free(tot_auferido);
+    free(tot_gasto);
+}
+
 double total_gasto_auferido(char *class, int distance, double tip) {
     int taxa_base = 0, taxa_dist = 0;
     

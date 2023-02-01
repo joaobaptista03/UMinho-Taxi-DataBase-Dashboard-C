@@ -37,6 +37,11 @@ bool isUvalid(User user1) {
     );
 }
 
+void free_users() {
+    free(users_cat);
+    g_hash_table_destroy(users_hash);
+}
+
 int get_nr_users() {
     return g_hash_table_size(users_hash);
 }

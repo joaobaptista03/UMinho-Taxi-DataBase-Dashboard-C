@@ -38,13 +38,10 @@ void batch (char **argv) {
 
     handle_inputs(inputs);
 
-    /*
-    free(drivers_struct.driverscat);
-    free(users_struct.userscat);
-    free(rides_cat);
-    g_hash_table_destroy(users_struct.usershash);
-    g_hash_table_destroy(drivers_struct.drivershash);
-    */
+    free_drivers();
+    free_users();
+    free_rides();
+    free_all_stats();
 
     fclose(inputs);
         if (inputs != NULL) puts("\nFicheiro dos Inputs fechado\n");

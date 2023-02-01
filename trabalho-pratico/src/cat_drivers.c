@@ -89,6 +89,11 @@ char* get_driver_status(char *id) {
     return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].status;
 }
 
+void free_drivers() {
+    free(drivers_cat);
+    g_hash_table_destroy(drivers_hash);
+}
+
 driver_struct inserir_drivers(FILE *drivers) {
     int nr_drivers = 1, cap_malloc = 1;
 

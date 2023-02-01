@@ -98,6 +98,12 @@ char* get_user_pay_method(char *user);
  */
 char* get_user_status(char *user);
 
+/**
+ *
+ * Este é o header da função que liberta a memória alocada para o catálogo dos Users.
+ * 
+ */
+void free_users();
 
 /**
  *
