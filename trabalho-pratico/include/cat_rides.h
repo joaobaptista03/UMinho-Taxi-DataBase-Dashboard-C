@@ -93,13 +93,6 @@ char *get_ride_tip(int indice);
 
 /**
  *
- * Este é o header da função que liberta a memória alocada para o catálogo das Rides.
- * 
- */
-void free_rides();
-
-/**
- *
  * Este é o header da função que verifica se uma Ride é válido.
  * 
  */

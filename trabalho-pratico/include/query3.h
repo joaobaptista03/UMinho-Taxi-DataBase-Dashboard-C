@@ -12,7 +12,6 @@
 #include "cat_rides.h"
 #include "randomfuncs.h"
 #include "outputs.h"
-#include "stats.h"
 
 /**
  *

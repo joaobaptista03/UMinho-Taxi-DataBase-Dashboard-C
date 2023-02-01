@@ -13,7 +13,6 @@
 #include "cat_users.h"
 #include "randomfuncs.h"
 #include "outputs.h"
-#include "stats.h"
 
 /**
  *

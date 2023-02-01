@@ -114,13 +114,6 @@ char* get_driver_status(char *id);
 
 /**
  *
- * Este é o header da função que liberta a memória alocada para o catálogo dos Drivers.
- * 
- */
-void free_drivers();
-
-/**
- *
  * Este é o header da função que verifica se um Driver é válido.
  * 
  */

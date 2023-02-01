@@ -100,13 +100,6 @@ char* get_user_status(char *user);
 
 /**
  *
- * Este é o header da função que liberta a memória alocada para o catálogo dos Users.
- * 
- */
-void free_users();
-
-/**
- *
  * Este é o header da função que verifica se um User é válido.
  * 
  */
