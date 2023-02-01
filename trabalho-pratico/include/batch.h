@@ -8,11 +8,12 @@
 #ifndef BATCH_H
 #define BATCH_H
 
-#include "../include/cat_drivers.h"
-#include "../include/cat_users.h"
-#include "../include/cat_rides.h"
-#include "../include/files.h"
-#include "../include/inputs_batch.h"
+#include "cat_drivers.h"
+#include "cat_users.h"
+#include "cat_rides.h"
+#include "files.h"
+#include "inputs_batch.h"
+#include "stats.h"
 
 void batch (char **argv);
 
