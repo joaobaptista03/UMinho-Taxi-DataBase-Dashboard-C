@@ -23,10 +23,10 @@ typedef struct Driver Driver;
 
 /**
  *
- * Esta é a Struct que vai ser dada return no fim da função insere_driver.
+ * Esta é a Struct que liberta a memória do catálogo dos Drivers.
  * 
  */
-typedef struct driver_struct driver_struct;
+void free_drivers();
 
 /**
  *
@@ -124,6 +124,6 @@ bool isDvalid(Driver driver1);
  * Este é o header da função que insere os dados dos Drivers no catálogo.
  * 
  */
-driver_struct inserir_drivers(FILE *drivers);
+void inserir_drivers(FILE *drivers);
 
 #endif

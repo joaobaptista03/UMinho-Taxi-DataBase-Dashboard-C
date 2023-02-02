@@ -7,16 +7,6 @@
 
 #include "../include/interactive.h"
 
-struct driver_struct {
-    Driver* driverscat;
-    GHashTable* drivershash;
-};
-
-struct user_struct {
-    User* userscat;
-    GHashTable* usershash;
-};
-
 void interactive () {
 
     puts("Bem-vindo ao modo Interativo! Para continuar, coloque o caminho do diretório dos ficheiros CSV.\n");
@@ -33,9 +23,9 @@ void interactive () {
         return;
     }
 
-    driver_struct drivers_struct = inserir_drivers(drivers);
-    user_struct users_struct = inserir_users(users);
-    Ride* rides_cat = inserir_rides(rides);
+    inserir_drivers(drivers);
+    inserir_users(users);
+    inserir_rides(rides);
 
     fclose(drivers);
         if (drivers != NULL) puts("\nFicheiro dos Drivers fechado");
@@ -49,9 +39,7 @@ void interactive () {
 
     handle_input();
 
-    free(drivers_struct.driverscat);
-    free(users_struct.userscat);
-    free(rides_cat);
-    g_hash_table_destroy(users_struct.usershash);
-    g_hash_table_destroy(drivers_struct.drivershash);
+    free_drivers();
+    free_users();
+    free_rides();
 }

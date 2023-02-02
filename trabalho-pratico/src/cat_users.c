@@ -17,13 +17,13 @@ struct User {
 
 };
 
-struct user_struct {
-    User* userscat;
-    GHashTable* usershash;
-};
-
 GHashTable *users_hash;
 User *users_cat;
+
+void free_users() {
+    free(users_cat);
+    g_hash_table_destroy(users_hash);
+}
 
 bool isUvalid(User user1) {
     return (
@@ -35,11 +35,6 @@ bool isUvalid(User user1) {
         (strlen(user1.pay_method) > 0) &&
         ((stricmp(user1.status,"active") == 0) || (stricmp(user1.status,"inactive") == 0))
     );
-}
-
-void free_users() {
-    free(users_cat);
-    g_hash_table_destroy(users_hash);
 }
 
 int get_nr_users() {
@@ -82,7 +77,7 @@ char* get_user_status(char *user) {
     return users_cat[atoi(g_hash_table_lookup(users_hash, user))].status;
 }
 
-user_struct inserir_users(FILE *users) {
+void inserir_users(FILE *users) {
     int nr_users = 1, cap_malloc = 1;;
 
     users_cat = malloc(sizeof(User));
@@ -132,6 +127,4 @@ user_struct inserir_users(FILE *users) {
     puts("Catálogo dos Users preenchido");
     
     free(temp);
-    user_struct r = {users_cat, users_hash};
-    return r;
 }

@@ -22,6 +22,10 @@ struct Ride {
 
 Ride *rides_cat;
 
+void free_rides() {
+    free(rides_cat);
+}
+
 int get_nr_rides() {
     return atoi(rides_cat[0].id);
 }
@@ -76,11 +80,7 @@ bool isRvalid (Ride ride1) {
     );
 }
 
-void free_rides() {
-    free(rides_cat);
-}
-
-Ride* inserir_rides(FILE *rides) {
+void inserir_rides(FILE *rides) {
     int nr_rides = 1, cap_malloc = 1;
 
     rides_cat = malloc(sizeof(Ride));
@@ -133,6 +133,4 @@ Ride* inserir_rides(FILE *rides) {
     puts("Catálogo das Rides preenchido");
 
     free(temp);
-
-    return rides_cat;
 }

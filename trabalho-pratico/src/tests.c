@@ -16,16 +16,6 @@
 #include "../include/query8.h"
 #include "../include/query9.h"
 
-struct driver_struct {
-    Driver* driverscat;
-    GHashTable* drivershash;
-};
-
-struct user_struct {
-    User* userscat;
-    GHashTable* usershash;
-};
-
 void check(int counter, char *dataset) {
     char filename[30], filepath[60], resultfile[50];
     sprintf(filename, "command%d_output.txt", counter);
@@ -94,9 +84,9 @@ void regular_without() {
     FILE *users; users = fopen("Datasets/R-WITHOUT/users.csv", "r");
     FILE *rides; rides = fopen("Datasets/R-WITHOUT/rides.csv", "r");
 
-    driver_struct drivers_struct = inserir_drivers(drivers);
-    user_struct users_struct = inserir_users(users);
-    Ride* rides_cat = inserir_rides(rides);
+    inserir_drivers(drivers);
+    inserir_users(users);
+    inserir_rides(rides);
 
     fclose(drivers);
     fclose(users);
@@ -120,11 +110,9 @@ void regular_without() {
         counter++;
     }
 
-    free(drivers_struct.driverscat);
-    free(users_struct.userscat);
-    free(rides_cat);
-    g_hash_table_destroy(users_struct.usershash);
-    g_hash_table_destroy(drivers_struct.drivershash);
+    free_drivers();
+    free_users();
+    free_rides();
     fclose(inputs);
     free(input);
     system("rm -r Resultados");
@@ -137,9 +125,9 @@ void regular_with() {
     FILE *users; users = fopen("Datasets/R-WITH/users.csv", "r");
     FILE *rides; rides = fopen("Datasets/R-WITH/rides.csv", "r");
 
-    driver_struct drivers_struct = inserir_drivers(drivers);
-    user_struct users_struct = inserir_users(users);
-    Ride* rides_cat = inserir_rides(rides);
+    inserir_drivers(drivers);
+    inserir_users(users);
+    inserir_rides(rides);
 
     fclose(drivers);
     fclose(users);
@@ -163,11 +151,9 @@ void regular_with() {
         counter++;
     }
 
-    free(drivers_struct.driverscat);
-    free(users_struct.userscat);
-    free(rides_cat);
-    g_hash_table_destroy(users_struct.usershash);
-    g_hash_table_destroy(drivers_struct.drivershash);
+    free_drivers();
+    free_users();
+    free_rides();
     fclose(inputs);
     free(input);
     system("rm -r Resultados");
@@ -180,9 +166,9 @@ void large_without() {
     FILE *users; users = fopen("Datasets/L-WITHOUT/users.csv", "r");
     FILE *rides; rides = fopen("Datasets/L-WITHOUT/rides.csv", "r");
 
-    driver_struct drivers_struct = inserir_drivers(drivers);
-    user_struct users_struct = inserir_users(users);
-    Ride* rides_cat = inserir_rides(rides);
+    inserir_drivers(drivers);
+    inserir_users(users);
+    inserir_rides(rides);
 
     fclose(drivers);
     fclose(users);
@@ -206,11 +192,9 @@ void large_without() {
         counter++;
     }
 
-    free(drivers_struct.driverscat);
-    free(users_struct.userscat);
-    free(rides_cat);
-    g_hash_table_destroy(users_struct.usershash);
-    g_hash_table_destroy(drivers_struct.drivershash);
+    free_drivers();
+    free_users();
+    free_rides();
     fclose(inputs);
     free(input);
     system("rm -r Resultados");
@@ -223,9 +207,9 @@ void large_with() {
     FILE *users; users = fopen("Datasets/L-WITH/users.csv", "r");
     FILE *rides; rides = fopen("Datasets/L-WITH/rides.csv", "r");
 
-    driver_struct drivers_struct = inserir_drivers(drivers);
-    user_struct users_struct = inserir_users(users);
-    Ride* rides_cat = inserir_rides(rides);
+    inserir_drivers(drivers);
+    inserir_users(users);
+    inserir_rides(rides);
 
     fclose(drivers);
     fclose(users);
@@ -249,11 +233,9 @@ void large_with() {
         counter++;
     }
 
-    free(drivers_struct.driverscat);
-    free(users_struct.userscat);
-    free(rides_cat);
-    g_hash_table_destroy(users_struct.usershash);
-    g_hash_table_destroy(drivers_struct.drivershash);
+    free_drivers();
+    free_users();
+    free_rides();
     fclose(inputs);
     free(input);
     system("rm -r Resultados");

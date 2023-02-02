@@ -23,6 +23,13 @@ typedef struct Ride Ride;
 
 /**
  *
+ * Esta é a Struct que liberta a memória do catálogo das Rides.
+ * 
+ */
+void free_rides();
+
+/**
+ *
  * Este é o header da função que retornará o número de Rides.
  * 
  */
@@ -103,6 +110,6 @@ bool isRvalid(Ride ride1);
  * Este é o header da função que insere os dados das Rides no catálogo.
  * 
  */
-Ride* inserir_rides(FILE *rides);
+void inserir_rides(FILE *rides);
 
 #endif

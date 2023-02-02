@@ -23,10 +23,10 @@ typedef struct User User;
 
 /**
  *
- * Esta é a Struct que vai ser dada return no fim da função insere_users.
+ * Esta é a Struct que liberta a memória do catálogo dos Users.
  * 
  */
-typedef struct user_struct user_struct;
+void free_users();
 
 /**
  *
@@ -110,6 +110,6 @@ bool isUvalid(User user1);
  * Este é o header da função que insere os dados dos Users, users e rides nos catálogos respetivos.
  * 
  */
-user_struct inserir_users(FILE *users);
+void inserir_users(FILE *users);
 
 #endif
