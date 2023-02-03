@@ -114,7 +114,7 @@ char *get_gender_ride_user(char *gender, int indice);
  * Este é o header da função que insere os dados do Gender nas Estatísticas.
  * 
  */
-void insert_stats_gender(char *gender, int indice);
+void insert_stats_gender(char *gender1, char *gender2, int indice);
 
 /**
  *

@@ -26,6 +26,8 @@ struct city {
     int *rides;
 };
 
+//--------------------------------------------------------------------------------------------------------------------------------
+
 int get_driver_nr_viagens(int indice) {
     return nr_viagens_d[indice];
 }
@@ -122,12 +124,6 @@ int get_gender_ride_i_i (char *gender, int indice) {
     return -1;
 }
 
-void sorted_rides() {
-    sortedrides = calloc(get_nr_rides(), sizeof(int));
-    for(int i = 0; i < get_nr_rides(); i++) sortedrides[i] = i + 1;
-    qsort(sortedrides, get_nr_rides(), sizeof(int), sort_rides);
-}
-
 char *get_sorted_ride_date(int indice) {
     return get_ride_date(sortedrides[indice]);
 }
@@ -152,6 +148,8 @@ int get_sorted_ride_i(int indice) {
     return sortedrides[indice];
 }
 
+//--------------------------------------------------------------------------------------------------------------------------------
+
 void init_stats_d(int nr_drivers) {
     nr_viagens_d = calloc(nr_drivers + 1, sizeof(int));
     av_total_d = calloc(nr_drivers + 1, sizeof(int));
@@ -163,6 +161,8 @@ void init_stats_u(int nr_users) {
     av_total_u = calloc(nr_users + 1, sizeof(int));
     tot_gasto = calloc(nr_users + 1, sizeof(double));
 }
+
+//--------------------------------------------------------------------------------------------------------------------------------
 
 void insert_stats_d(int indice, int aval, double val) {
     nr_viagens_d[indice]++;
@@ -204,26 +204,38 @@ void insert_stats_c(char *name, int indice, double price) {
     cities[nr_cities - 1] = temp;
 }
 
-void insert_stats_gender(char *gender, int indice) {
-    if (stricmp(gender, "m") == 0) {
-        nr_rides_m++;
-        if (nr_rides_m > cap_rides_m) {
-            if (cap_rides_m != 0) cap_rides_m *= 2;
-                else cap_rides_m = 1;
-            rides_m = realloc(rides_m, cap_rides_m * sizeof(int));
-        }
-        rides_m[nr_rides_m - 1] = indice;
-    }
-    else if (stricmp(gender, "f") == 0) {
-        nr_rides_f++;
-        if (nr_rides_f > cap_rides_f) {
-            if (cap_rides_f != 0) cap_rides_f *= 2;
-                else cap_rides_f = 1;
-            rides_f = realloc(rides_f, cap_rides_f * sizeof(int));
-        }
-        rides_f[nr_rides_f - 1] = indice;
+void insert_stats_gender(char *gender1, char *gender2, int indice) {
+    if ((stricmp(gender1, gender2) == 0) && 
+        (stricmp(get_driver_status(get_ride_driver(indice)), "active") == 0) &&
+        (stricmp(get_user_status(get_ride_user(indice)), "active") == 0)) {
+            if (stricmp(gender1, "m") == 0) {
+                nr_rides_m++;
+                if (nr_rides_m > cap_rides_m) {
+                    if (cap_rides_m != 0) cap_rides_m *= 2;
+                        else cap_rides_m = 1;
+                    rides_m = realloc(rides_m, cap_rides_m * sizeof(int));
+                }
+                rides_m[nr_rides_m - 1] = indice;
+            }
+            else if (stricmp(gender1, "f") == 0) {
+                nr_rides_f++;
+                if (nr_rides_f > cap_rides_f) {
+                    if (cap_rides_f != 0) cap_rides_f *= 2;
+                        else cap_rides_f = 1;
+                    rides_f = realloc(rides_f, cap_rides_f * sizeof(int));
+                }
+                rides_f[nr_rides_f - 1] = indice;
+            }
     }
 }
+
+void sorted_rides() {
+    sortedrides = calloc(get_nr_rides(), sizeof(int));
+    for(int i = 0; i < get_nr_rides(); i++) sortedrides[i] = i + 1;
+    qsort(sortedrides, get_nr_rides(), sizeof(int), sort_rides);
+}
+
+//--------------------------------------------------------------------------------------------------------------------------------
 
 void free_cities() {
     for (int i = 0; i < nr_cities; i++) {
