@@ -88,6 +88,24 @@ char* get_city_ride_score_driver (char *name, int indice) {
     return NULL;
 }
 
+char *get_city_i_ride_date(char *cidade, int indice) {
+    for (int i = 0; i < nr_cities; i++) {
+        if (stricmp(cities[i].name, cidade) == 0) {
+            return get_ride_date((cities[i].rides)[indice]);
+        }
+    }
+    return NULL;
+}
+
+char *get_city_i_ride_distance(char *cidade, int indice) {
+    for (int i = 0; i < nr_cities; i++) {
+        if (stricmp(cities[i].name, cidade) == 0) {
+            return get_ride_distance((cities[i].rides)[indice]);
+        }
+    }
+    return 0;
+}
+
 int get_gender_nr_rides(char *gender) {
     if (stricmp(gender, "m") == 0) return nr_rides_m;
     else if (stricmp(gender, "f") == 0) return nr_rides_f;
@@ -233,6 +251,9 @@ void sorted_rides() {
     sortedrides = calloc(get_nr_rides(), sizeof(int));
     for(int i = 0; i < get_nr_rides(); i++) sortedrides[i] = i + 1;
     qsort(sortedrides, get_nr_rides(), sizeof(int), sort_rides);
+
+    for(int i = 0; i < nr_cities; i++)
+        qsort(cities[i].rides, cities[i].nr_viagens, sizeof(int), sort_rides);
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------

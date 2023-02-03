@@ -90,6 +90,20 @@ char* get_city_ride_score_driver (char *name, int indice);
 
 /**
  *
+ * Este é o header da função que devolve a Data de uma Ride de uma dada City
+ * 
+ */
+char *get_city_i_ride_date(char *cidade, int indice);
+
+/**
+ *
+ * Este é o header da função que devolve a distância de uma Ride de uma dada City
+ * 
+ */
+char *get_city_i_ride_distance(char *cidade, int indice);
+
+/**
+ *
  * Este é o header da função que devolve o número de Rides de um dado género.
  * 
  */
