@@ -56,6 +56,33 @@ double get_city_preco_medio(char *name) {
     return 0;
 }
 
+int get_city_nr_rides(char *name) {
+    for (int i = 0; i < nr_cities; i++) {
+        if (stricmp(cities[i].name, name) == 0) {
+            return cities[i].nr_viagens;
+        }
+    }
+    return 0;
+}
+
+char* get_city_ride_driver (char *name, int indice) {
+    for (int i = 0; i < nr_cities; i++) {
+        if (stricmp(cities[i].name, name) == 0) {
+            return get_ride_driver(cities[i].rides[indice]);
+        }
+    }
+    return NULL;
+}
+
+char* get_city_ride_score_driver (char *name, int indice) {
+    for (int i = 0; i < nr_cities; i++) {
+        if (stricmp(cities[i].name, name) == 0) {
+            return get_ride_score_driver(cities[i].rides[indice]);
+        }
+    }
+    return NULL;
+}
+
 void init_stats_d(int nr_drivers) {
     nr_viagens_d = calloc(nr_drivers + 1, sizeof(int));
     av_total_d = calloc(nr_drivers + 1, sizeof(int));

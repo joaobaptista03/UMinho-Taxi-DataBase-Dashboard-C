@@ -28,20 +28,20 @@ void query7 (int counter, char *input, int mode) {
     char cidade[20];
     strcpy(cidade, cidaded + 1);
 
-    double *tot_avaliacoes; tot_avaliacoes = calloc((1 + get_n_drivers()), sizeof(double));
+    int *tot_avaliacoes; tot_avaliacoes = calloc((1 + get_n_drivers()), sizeof(int));
     int *num_viagens; num_viagens = calloc((1 + get_n_drivers()), sizeof(int));
     double *av_med; av_med = calloc((1 + get_n_drivers()), sizeof(double));
     double *av_med_cpy; av_med_cpy = calloc((1 + get_n_drivers()), sizeof(double));
 
-    for (int i = 1; i <= get_nr_rides(); i++) {
-        if ((stricmp(get_driver_status(get_ride_driver(i)), "active") == 0) && (stricmp(get_ride_city(i), cidade) == 0)) {
-            tot_avaliacoes[get_driver_i(get_ride_driver(i))] += atof(get_ride_score_driver(i));
-            num_viagens[get_driver_i(get_ride_driver(i))]++;
+    for (int i = 0; i < get_city_nr_rides(cidade); i++) {
+        if ((stricmp(get_driver_status(get_city_ride_driver(cidade, i)), "active") == 0)) {
+            tot_avaliacoes[get_driver_i(get_city_ride_driver(cidade, i))] += atoi(get_city_ride_score_driver(cidade, i));
+            num_viagens[get_driver_i(get_city_ride_driver(cidade, i))]++;
         }
     }
 
     for (int i = 1; i <= get_n_drivers(); i++) {
-        if (num_viagens[i] != 0) av_med[i] = tot_avaliacoes[i] / num_viagens[i];
+        if (num_viagens[i] != 0) av_med[i] = (double) tot_avaliacoes[i] / num_viagens[i];
         else av_med[i] = 0;
     }
 

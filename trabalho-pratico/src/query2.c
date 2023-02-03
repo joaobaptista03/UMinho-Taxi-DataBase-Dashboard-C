@@ -26,7 +26,7 @@ void query2 (int counter, char *N_arg, int mode) {
         return;
     }
 
-    double *tot_avaliacoes; tot_avaliacoes = calloc((1 + get_n_drivers()), sizeof(double));
+    int *tot_avaliacoes; tot_avaliacoes = calloc((1 + get_n_drivers()), sizeof(int));
     int *num_viagens; num_viagens = calloc((1 + get_n_drivers()), sizeof(int));
     double *av_med; av_med = calloc((1 + get_n_drivers()), sizeof(double));
     double *av_med_cpy; av_med_cpy = calloc((1 + get_n_drivers()), sizeof(double));
@@ -39,14 +39,14 @@ void query2 (int counter, char *N_arg, int mode) {
 
     for (int i = 1; i <= get_nr_rides(); i++) {
         if (stricmp(get_driver_status(get_ride_driver(i)), "active") == 0) {
-            tot_avaliacoes[get_driver_i(get_ride_driver(i))] += atof(get_ride_score_driver(i));
+            tot_avaliacoes[get_driver_i(get_ride_driver(i))] += atoi(get_ride_score_driver(i));
             num_viagens[get_driver_i(get_ride_driver(i))]++;
             if (most_recent(get_ride_date(i), recent_ride[get_driver_i(get_ride_driver(i))]) == 1) strcpy(recent_ride[get_driver_i(get_ride_driver(i))], get_ride_date(i));
         }
     }
 
     for (int i = 1; i <= get_n_drivers(); i++) {
-        if (num_viagens[i] != 0) av_med[i] = tot_avaliacoes[i] / num_viagens[i];
+        if (num_viagens[i] != 0) av_med[i] = (double) tot_avaliacoes[i] / num_viagens[i];
         else av_med[i] = 0;
     }
 

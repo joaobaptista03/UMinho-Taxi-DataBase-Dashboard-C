@@ -69,6 +69,27 @@ double get_city_preco_medio(char *name);
 
 /**
  *
+ * Este é o header da função que devolve número de Rides de uma dada City.
+ * 
+ */
+int get_city_nr_rides(char *name);
+
+/**
+ *
+ * Este é o header da função que devolve o Driver de uma Ride de uma dada City
+ * 
+ */
+char* get_city_ride_driver (char *name, int indice);
+
+/**
+ *
+ * Este é o header da função que devolve o Score Driver de uma Ride de uma dada City
+ * 
+ */
+char* get_city_ride_score_driver (char *name, int indice);
+
+/**
+ *
  * Este é o header da função que insere os dados de um Driver nas Estatísticas.
  * 
  */
