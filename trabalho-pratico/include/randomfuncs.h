@@ -139,4 +139,11 @@ int first_ride(const void *i1, const void *i2);
  */
 int first_ride9(const void *i1, const void *i2);
 
+/**
+ *
+ * Este é o header da função que calcula o total gasto / auferido de uma viagem.
+ * 
+ */
+double total_gasto_auferido(char *class, int distance, double tip);
+
 #endif

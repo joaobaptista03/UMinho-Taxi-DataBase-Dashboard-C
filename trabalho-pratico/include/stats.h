@@ -13,6 +13,13 @@
 
 /**
  *
+ * Esta é a Struct que define o que é uma City, e contém todas as informações dela. Será inserida nas Estatísticas.
+ * 
+ */
+typedef struct city city;
+
+/**
+ *
  * Este é o header da função que devolve o número de viagens de um dado Driver.
  * 
  */
@@ -55,52 +62,31 @@ double get_tot_gasto(int indice);
 
 /**
  *
- * Este é o header da função que calcula o total gasto / auferido de uma viagem.
+ * Este é o header da função que devolve o preço médio de uma Cidade.
  * 
  */
-double total_gasto_auferido(char *class, int distance, double tip);
+double get_city_preco_medio(char *name);
 
 /**
  *
- * Este é o header da função que incrementa o número de viagens de um dado Driver.
+ * Este é o header da função que insere os dados de um Driver nas Estatísticas.
  * 
  */
-void inc_nr_viagens_d(int indice);
+void insert_stats_d(int indice, int aval, double val);
 
 /**
  *
- * Este é o header da função que incrementa o número de viagens de um dado User.
+ * Este é o header da função que insere os dados de um User nas Estatísticas.
  * 
  */
-void inc_nr_viagens_u(int indice);
+void insert_stats_u(int indice, int aval, double val);
 
 /**
  *
- * Este é o header da função que incrementa a avaliação total de um dado Driver.
+ * Este é o header da função que insere os dados de uma City nas Estatísticas.
  * 
  */
-void add_av_total_d(int indice, int aval);
-
-/**
- *
- * Este é o header da função que incrementa a avaliação total de um dado User.
- * 
- */
-void add_av_total_u(int indice, int aval);
-
-/**
- *
- * Este é o header da função que incrementa o total auferido de um dado Driver.
- * 
- */
-void add_total_auferido(int indice, double val);
-
-/**
- *
- * Este é o header da função que incrementa o total auferido de um dado User.
- * 
- */
-void add_total_gasto(int indice, double val);
+void insert_stats_c(char *name, int indice, double price);
 
 /**
  *

@@ -191,3 +191,22 @@ int first_ride9(const void *i1, const void *i2) {
 
     return (*b - *a);
 }
+
+double total_gasto_auferido(char *class, int distance, double tip) {
+    double taxa_base = 0, taxa_dist = 0;
+
+    if (stricmp(class, "basic") == 0) {
+        taxa_base = 3.25;
+        taxa_dist = 0.62;
+    }
+    else if (stricmp(class, "green") == 0) {
+            taxa_base = 4;
+            taxa_dist = 0.79;
+    }
+    else if (stricmp(class, "premium") == 0) {
+            taxa_base = 5.2;
+            taxa_dist = 0.94;
+    }
+
+    return taxa_base + (taxa_dist * distance) + tip;
+}

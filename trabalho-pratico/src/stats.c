@@ -12,6 +12,16 @@ int *av_total_d;
 int *av_total_u;
 double *tot_auferido;
 double *tot_gasto;
+city* cities;
+int nr_cities = 0;
+
+struct city {
+    char *name;
+    int nr_viagens;
+    int cap;
+    double total_price;
+    int *rides;
+};
 
 int get_driver_nr_viagens(int indice) {
     return nr_viagens_d[indice];
@@ -37,23 +47,13 @@ double get_tot_gasto(int indice) {
     return tot_gasto[indice];
 }
 
-double total_gasto_auferido(char *class, int distance, double tip) {
-    double taxa_base = 0, taxa_dist = 0;
-
-    if (stricmp(class, "basic") == 0) {
-        taxa_base = 3.25;
-        taxa_dist = 0.62;
+double get_city_preco_medio(char *name) {
+    for (int i = 0; i < nr_cities; i++) {
+        if (stricmp(cities[i].name, name) == 0) {
+            return cities[i].total_price / (double) cities[i].nr_viagens;
+        }
     }
-    else if (stricmp(class, "green") == 0) {
-            taxa_base = 4;
-            taxa_dist = 0.79;
-    }
-    else if (stricmp(class, "premium") == 0) {
-            taxa_base = 5.2;
-            taxa_dist = 0.94;
-    }
-
-    return taxa_base + (taxa_dist * distance) + tip;
+    return 0;
 }
 
 void init_stats_d(int nr_drivers) {
@@ -68,28 +68,52 @@ void init_stats_u(int nr_users) {
     tot_gasto = calloc(nr_users + 1, sizeof(double));
 }
 
-void inc_nr_viagens_d(int indice) {
+void insert_stats_d(int indice, int aval, double val) {
     nr_viagens_d[indice]++;
-}
-
-void inc_nr_viagens_u(int indice) {
-    nr_viagens_u[indice]++;
-}
-
-void add_av_total_d(int indice, int aval) {
     av_total_d[indice] += aval;
-}
-
-void add_av_total_u(int indice, int aval) {
-    av_total_u[indice] += aval;
-}
-
-void add_total_auferido(int indice, double val) {
     tot_auferido[indice] += val;
 }
 
-void add_total_gasto(int indice, double val) {
+void insert_stats_u(int indice, int aval, double val) {
+    nr_viagens_u[indice]++;
+    av_total_u[indice] += aval;
     tot_gasto[indice] += val;
+}
+
+void insert_stats_c(char *name, int indice, double price) {
+    for(int i = 0; i < nr_cities; i++) {
+        if (stricmp(cities[i].name, name) == 0) {
+            cities[i].nr_viagens++;
+            if (cities[i].nr_viagens > cities[i].cap) {
+                cities[i].cap *= 2;
+                cities[i].rides = realloc(cities[i].rides, cities[i].cap * sizeof(int));   
+            }
+            (cities[i].rides)[cities[i].nr_viagens - 1] = indice;
+            cities[i].total_price += price;
+            return;
+        }
+    }
+    
+    city temp;
+    temp.name = malloc((strlen(name) + 1) * sizeof(char));
+    strcpy(temp.name, name);
+    temp.nr_viagens = 1;
+    temp.total_price = price;
+    temp.rides = malloc(sizeof(int));
+    temp.cap = 1;
+    (temp.rides)[0] = indice;
+
+    nr_cities++;
+    cities = realloc(cities, nr_cities * sizeof(struct city));
+    cities[nr_cities - 1] = temp;
+}
+
+void free_cities() {
+    for (int i = 0; i < nr_cities; i++) {
+        free(cities[i].name);
+        free(cities[i].rides);
+    }
+    free(cities);
 }
 
 void free_all_stats() {
@@ -99,4 +123,5 @@ void free_all_stats() {
     free(av_total_u);
     free(tot_auferido);
     free(tot_gasto);
+    free_cities();
 }

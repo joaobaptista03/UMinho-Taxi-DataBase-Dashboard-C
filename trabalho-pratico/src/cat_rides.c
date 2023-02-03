@@ -112,15 +112,11 @@ void inserir_rides(FILE *rides) {
             if (isRvalid(temp_r)) { 
                 rides_cat[i] = temp_r;
                 nr_rides++;
-
-                inc_nr_viagens_d(get_driver_i(temp_r.driver));
-                inc_nr_viagens_u(get_user_i(temp_r.user));
-                add_av_total_d(get_driver_i(temp_r.driver), atoi(temp_r.score_driver));
-                add_av_total_u(get_user_i(temp_r.user), atoi(temp_r.score_user));
-
+                
                 double tot_gasto_auferido = total_gasto_auferido(get_driver_car_class(temp_r.driver), atoi(temp_r.distance), atof(temp_r.tip));
-                add_total_auferido(get_driver_i(temp_r.driver), tot_gasto_auferido);
-                add_total_gasto(get_user_i(temp_r.user), tot_gasto_auferido);
+                insert_stats_c(temp_r.city, i, tot_gasto_auferido - atof(temp_r.tip));
+                insert_stats_d(get_driver_i(temp_r.driver), atoi(temp_r.score_driver), tot_gasto_auferido);
+                insert_stats_u(get_user_i(temp_r.user), atoi(temp_r.score_user), tot_gasto_auferido);
 
             }
             else i--;

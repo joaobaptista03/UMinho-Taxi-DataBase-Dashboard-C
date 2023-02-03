@@ -12,38 +12,10 @@ void query4 (int counter, char *cidade, int mode) {
     clock_t start, end;
     double cpu_time_used;
     start = clock();
-
-    double preco = 0;
-    int contagem = 0;
-
-    for (int i = 1; i <= get_nr_rides(); i++) {
-        if (stricmp(get_ride_city(i), cidade) == 0) {
-            int distance = atoi(get_ride_distance(i));
-            char *class; class = malloc(10 * sizeof(char));
-            strcpy(class, get_driver_car_class(get_ride_driver(i)));
-
-            float taxa_base, taxa_dist;
-            if (stricmp(class, "basic") == 0) {
-                taxa_base = 3.25;
-                taxa_dist = 0.62;
-            }
-            else if (stricmp(class, "green") == 0) {
-                taxa_base = 4;
-                taxa_dist = 0.79;
-            }
-            else if (stricmp(class, "premium") == 0) {
-                taxa_base = 5.2;
-                taxa_dist = 0.94;
-            }
-
-            preco += taxa_dist * distance + taxa_base;
-            contagem++;
-
-            free(class);
-        }
-    }
     
-    if (contagem == 0) {
+    double preco_medio = get_city_preco_medio(cidade);
+
+    if (preco_medio == 0) {
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
         
@@ -54,8 +26,7 @@ void query4 (int counter, char *cidade, int mode) {
     }
     
     char output[150];
-    double resultado = preco/contagem;
-    sprintf(output, "%.3f\n", resultado);
+    sprintf(output, "%.3f\n", preco_medio);
     
     if (mode == 1) printf("\nForma do Resultado: preco_medio");
     if (mode == 1) printf("\nResultado: %s\n",output);
