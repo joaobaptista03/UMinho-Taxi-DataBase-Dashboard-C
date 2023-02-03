@@ -16,6 +16,7 @@ city* cities;
 int nr_cities = 0;
 int *rides_m, nr_rides_m = 0, cap_rides_m = 0;
 int *rides_f, nr_rides_f = 0, cap_rides_f = 0;
+int *sortedrides;
 
 struct city {
     char *name;
@@ -119,6 +120,28 @@ int get_gender_ride_i_i (char *gender, int indice) {
         return rides_f[indice];
     }
     return -1;
+}
+
+void sorted_rides() {
+    sortedrides = calloc(get_nr_rides(), sizeof(int));
+    for(int i = 0; i < get_nr_rides(); i++) sortedrides[i] = i + 1;
+    qsort(sortedrides, get_nr_rides(), sizeof(int), sort_rides);
+}
+
+char *get_sorted_ride_date(int indice) {
+    return get_ride_date(sortedrides[indice]);
+}
+
+char *get_sorted_ride_driver(int indice) {
+    return get_ride_driver(sortedrides[indice]);
+}
+
+char *get_sorted_ride_distance(int indice) {
+    return get_ride_distance(sortedrides[indice]);
+}
+
+char *get_sorted_ride_city(int indice) {
+    return get_ride_city(sortedrides[indice]);
 }
 
 void init_stats_d(int nr_drivers) {

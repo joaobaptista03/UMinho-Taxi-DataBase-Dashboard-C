@@ -96,11 +96,19 @@ bool isFloat (char *string) {
 }
 
 bool compare (FILE *file1, FILE *file2) {
-    char input1[100], input2[100];
-    while (fgets(input1, 100, file1) && fgets(input2, 100, file2)) {
-        if (strcmp(input1, input2) != 0) return false;
+    int ch1, ch2;
+    int same = 1;
+    while (((ch1 = fgetc(file1)) != EOF) && ((ch2 = fgetc(file2)) != EOF)) {
+        if (ch1 != ch2) {
+            same = 0;
+            break;
+        }
     }
-    return true;
+    if (same) {
+        if (fgetc(file1) == EOF && fgetc(file2) == EOF) same = 1;
+        else same = 0;
+    }
+    return same;
 }
 
 int av_elem (int *id_maiores, int nr_maiores, double *av_med, double av) {
@@ -209,4 +217,13 @@ double total_gasto_auferido(char *class, int distance, double tip) {
     }
 
     return taxa_base + (taxa_dist * distance) + tip;
+}
+
+int sort_rides (const void *i1, const void *i2) {
+    int *a = (int*)i1;
+    int *b = (int*)i2;
+
+    int mostrecent = most_recent(get_ride_date(*a), get_ride_date(*b));
+    if (mostrecent == 1) return -1;
+    return 1;
 }

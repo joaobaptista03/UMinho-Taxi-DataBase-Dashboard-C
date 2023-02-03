@@ -125,6 +125,41 @@ int get_gender_ride_i_i (char *gender, int indice);
 
 /**
  *
+ * Este é o header da função que ordena uma array auxiliar pela data da Ride.
+ * 
+ */
+void sorted_rides();
+
+/**
+ *
+ * Este é o header da função que devolve a data da Ride dado um índice da array das Rides ordenadas.
+ * 
+ */
+char *get_sorted_ride_date(int indice);
+
+/**
+ *
+ * Este é o header da função que devolve o Driver da Ride dado um índice da array das Rides ordenadas.
+ * 
+ */
+char *get_sorted_ride_driver(int indice);
+
+/**
+ *
+ * Este é o header da função que devolve a distância da Ride dado um índice da array das Rides ordenadas.
+ * 
+ */
+char *get_sorted_ride_distance(int indice);
+
+/**
+ *
+ * Este é o header da função que devolve a cidade da Ride dado um índice da array das Rides ordenadas.
+ * 
+ */
+char *get_sorted_ride_city(int indice);
+
+/**
+ *
  * Este é o header da função que insere os dados de um Driver nas Estatísticas.
  * 
  */

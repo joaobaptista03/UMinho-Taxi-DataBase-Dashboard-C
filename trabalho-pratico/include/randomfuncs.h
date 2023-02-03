@@ -146,4 +146,11 @@ int first_ride9(const void *i1, const void *i2);
  */
 double total_gasto_auferido(char *class, int distance, double tip);
 
+/**
+ *
+ * Este é o header da função auxiliar ao qsort que ordena uma array auxiliar pela data das Rides.
+ * 
+ */
+int sort_rides (const void *i1, const void *i2);
+
 #endif

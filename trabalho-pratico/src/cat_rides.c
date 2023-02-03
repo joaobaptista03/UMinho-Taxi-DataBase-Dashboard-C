@@ -129,7 +129,7 @@ void inserir_rides(FILE *rides) {
             temp_r = generic_r;
         }
     }
-
+    
     sprintf(rides_cat[0].id, "%d", nr_rides - 1);
     strcpy(rides_cat[0].date, "");
     strcpy(rides_cat[0].driver, "");
@@ -140,6 +140,8 @@ void inserir_rides(FILE *rides) {
     strcpy(rides_cat[0].score_driver, "");
     strcpy(rides_cat[0].tip, "");
     strcpy(rides_cat[0].comment, "");
+
+    sorted_rides();
 
     puts("Catálogo das Rides preenchido");
 

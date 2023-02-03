@@ -30,6 +30,8 @@ void check(int counter, char *dataset) {
     FILE *result = fopen(resultfile, "r");
     if (compare(expected, result)) printf("Test %d passed ✅\n", counter);
         else printf("Test %d failed ❌\n", counter);
+    fclose(expected);
+    fclose(result);
 }
 
 void q1_test(int counter, char *id, char *dataset) {
@@ -77,140 +79,9 @@ void q9_test(int counter, char *data1, char *data2, char *dataset) {
     check(counter, dataset);
 }
 
-void regular_without() {
-    system("mkdir Resultados");                                               // Criar diretório para os Resultados
-    FILE *inputs; inputs = fopen("Datasets/R-WITHOUT/inputs.txt", "r");
-    FILE *drivers; drivers = fopen("Datasets/R-WITHOUT/drivers.csv", "r");
-    FILE *users; users = fopen("Datasets/R-WITHOUT/users.csv", "r");
-    FILE *rides; rides = fopen("Datasets/R-WITHOUT/rides.csv", "r");
-    
-
-    inserir_drivers(drivers);
-    inserir_users(users);
-    inserir_rides(rides);
-
-    fclose(drivers);
-    fclose(users);
-    fclose(rides);
-
-    int counter = 1;
-
-    char *input; input = malloc(100 * sizeof(char));
-    while (fgets(input, 100, inputs)) {
-        if (strchr(input, '\n')) *(strchr(input, '\n')) = '\0';                             // Trocar '\n' por '\0' na string input
-        
-        if (input[0] == '1') q1_test(counter, input + 2, "rwo");
-        else if (input[0] == '2') q2_test(counter, input + 2, "rwo");
-        else if (input[0] == '3') q3_test(counter, input + 2, "rwo");
-        else if (input[0] == '4') q4_test(counter, input + 2, "rwo");
-        else if (input[0] == '5') q5_test(counter, input + 2, input + 13, "rwo");
-        else if (input[0] == '6') q6_test(counter, input + 2, "rwo");
-        else if (input[0] == '7') q7_test(counter, input + 2, "rwo");                             // Tem de fazer parsing porque o tamanho da city varia
-        else if (input[0] == '8') q8_test(counter, input + 2, "rwo");
-        else if (input[0] == '9') q9_test(counter, input + 2, input + 13, "rwo");
-        counter++;
-    }
-
-    free_drivers();
-    free_users();
-    free_rides();
-    free_all_stats();
-
-    fclose(inputs);
-    free(input);
-    system("rm -r Resultados");
-}
-
-void regular_with() {
-    system("mkdir Resultados");                                               // Criar diretório para os Resultados
-    FILE *inputs; inputs = fopen("Datasets/R-WITH/inputs.txt", "r");
-    FILE *drivers; drivers = fopen("Datasets/R-WITH/drivers.csv", "r");
-    FILE *users; users = fopen("Datasets/R-WITH/users.csv", "r");
-    FILE *rides; rides = fopen("Datasets/R-WITH/rides.csv", "r");
-
-    
-    inserir_drivers(drivers);
-    inserir_users(users);
-    inserir_rides(rides);
-
-    fclose(drivers);
-    fclose(users);
-    fclose(rides);
-
-    int counter = 1;
-
-    char *input; input = malloc(100 * sizeof(char));
-    while (fgets(input, 100, inputs)) {
-        if (strchr(input, '\n')) *(strchr(input, '\n')) = '\0';                             // Trocar '\n' por '\0' na string input
-        
-        if (input[0] == '1') q1_test(counter, input + 2, "rw");
-        else if (input[0] == '2') q2_test(counter, input + 2, "rw");
-        else if (input[0] == '3') q3_test(counter, input + 2, "rw");
-        else if (input[0] == '4') q4_test(counter, input + 2, "rw");
-        else if (input[0] == '5') q5_test(counter, input + 2, input + 13, "rw");
-        else if (input[0] == '6') q6_test(counter, input + 2, "rw");
-        else if (input[0] == '7') q7_test(counter, input + 2, "rw");                             // Tem de fazer parsing porque o tamanho da city varia
-        else if (input[0] == '8') q8_test(counter, input + 2, "rw");
-        else if (input[0] == '9') q9_test(counter, input + 2, input + 13, "rw");
-        counter++;
-    }
-
-    free_drivers();
-    free_users();
-    free_rides();
-    free_all_stats();
-
-    fclose(inputs);
-    free(input);
-    system("rm -r Resultados");
-}
-
-void large_without() {
-    system("mkdir Resultados");                                               // Criar diretório para os Resultados
-    FILE *inputs; inputs = fopen("Datasets/L-WITHOUT/inputs.txt", "r");
-    FILE *drivers; drivers = fopen("Datasets/L-WITHOUT/drivers.csv", "r");
-    FILE *users; users = fopen("Datasets/L-WITHOUT/users.csv", "r");
-    FILE *rides; rides = fopen("Datasets/L-WITHOUT/rides.csv", "r");
-
-    
-    inserir_drivers(drivers);
-    inserir_users(users);
-    inserir_rides(rides);
-
-    fclose(drivers);
-    fclose(users);
-    fclose(rides);
-
-    int counter = 1;
-
-    char *input; input = malloc(100 * sizeof(char));
-    while (fgets(input, 100, inputs)) {
-        if (strchr(input, '\n')) *(strchr(input, '\n')) = '\0';                             // Trocar '\n' por '\0' na string input
-        
-        if (input[0] == '1') q1_test(counter, input + 2, "lwo");
-        else if (input[0] == '2') q2_test(counter, input + 2, "lwo");
-        else if (input[0] == '3') q3_test(counter, input + 2, "lwo");
-        else if (input[0] == '4') q4_test(counter, input + 2, "lwo");
-        else if (input[0] == '5') q5_test(counter, input + 2, input + 13, "lwo");
-        else if (input[0] == '6') q6_test(counter, input + 2, "lwo");
-        else if (input[0] == '7') q7_test(counter, input + 2, "lwo");                             // Tem de fazer parsing porque o tamanho da city varia
-        else if (input[0] == '8') q8_test(counter, input + 2, "lwo");
-        else if (input[0] == '9') q9_test(counter, input + 2, input + 13, "lwo");
-        counter++;
-    }
-
-    free_drivers();
-    free_users();
-    free_rides();
-    free_all_stats();
-
-    fclose(inputs);
-    free(input);
-    system("rm -r Resultados");
-}
-
-void large_with() {
-    system("mkdir Resultados");                                               // Criar diretório para os Resultados
+int main() {
+    puts("Large Dataset With Invalid Entries:");
+    system("mkdir Resultados");
     FILE *inputs; inputs = fopen("Datasets/L-WITH/inputs.txt", "r");
     FILE *drivers; drivers = fopen("Datasets/L-WITH/drivers.csv", "r");
     FILE *users; users = fopen("Datasets/L-WITH/users.csv", "r");
@@ -229,7 +100,7 @@ void large_with() {
 
     char *input; input = malloc(100 * sizeof(char));
     while (fgets(input, 100, inputs)) {
-        if (strchr(input, '\n')) *(strchr(input, '\n')) = '\0';                             // Trocar '\n' por '\0' na string input
+        if (strchr(input, '\n')) *(strchr(input, '\n')) = '\0';
         
         if (input[0] == '1') q1_test(counter, input + 2, "lw");
         else if (input[0] == '2') q2_test(counter, input + 2, "lw");
@@ -237,7 +108,7 @@ void large_with() {
         else if (input[0] == '4') q4_test(counter, input + 2, "lw");
         else if (input[0] == '5') q5_test(counter, input + 2, input + 13, "lw");
         else if (input[0] == '6') q6_test(counter, input + 2, "lw");
-        else if (input[0] == '7') q7_test(counter, input + 2, "lw");                             // Tem de fazer parsing porque o tamanho da city varia
+        else if (input[0] == '7') q7_test(counter, input + 2, "lw");
         else if (input[0] == '8') q8_test(counter, input + 2, "lw");
         else if (input[0] == '9') q9_test(counter, input + 2, input + 13, "lw");
         counter++;
@@ -251,19 +122,5 @@ void large_with() {
     fclose(inputs);
     free(input);
     system("rm -r Resultados");
-}
-
-int main() {
-    puts("Regular Dataset Without Invalid Entries:");
-    regular_without();
-    puts("-------------------------------------------");
-    puts("Regular Dataset With Invalid Entries:");
-    regular_with();
-    puts("-------------------------------------------");
-    puts("Large Dataset Without Invalid Entries:");
-    large_without();
-    puts("-------------------------------------------");
-    puts("Large Dataset With Invalid Entries:");
-    large_with();
     puts("-------------------------------------------");
 }
