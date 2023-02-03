@@ -202,6 +202,11 @@ void free_cities() {
     free(cities);
 }
 
+void free_gender() {
+    free(rides_m);
+    free(rides_f);
+}
+
 void free_all_stats() {
     free(nr_viagens_d);
     free(nr_viagens_u);
@@ -210,4 +215,5 @@ void free_all_stats() {
     free(tot_auferido);
     free(tot_gasto);
     free_cities();
+    free_gender();
 }
