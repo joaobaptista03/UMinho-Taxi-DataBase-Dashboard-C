@@ -13,6 +13,7 @@
 #include "cat_rides.h"
 #include "files.h"
 #include "inputs_batch.h"
+#include "stats.h"
 
 void batch (char **argv);
 

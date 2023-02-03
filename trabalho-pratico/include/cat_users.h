@@ -13,6 +13,7 @@
 #include <stdbool.h>
 #include "age_time.h"
 #include "randomfuncs.h"
+#include "stats.h"
 
 /**
  *

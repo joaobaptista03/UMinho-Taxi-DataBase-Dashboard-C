@@ -129,6 +129,8 @@ void inserir_drivers(FILE *drivers) {
         }
     }
 
+    init_stats_d(g_hash_table_size(drivers_hash));
+
     strcpy(drivers_cat[0].id, "");
     strcpy(drivers_cat[0].name, "");
     strcpy(drivers_cat[0].birth_date, "");

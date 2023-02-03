@@ -29,6 +29,7 @@ void batch (char **argv) {
     free_drivers();
     free_users();
     free_rides();
+    free_all_stats();
 
     fclose(inputs);
         if (inputs != NULL) puts("\nFicheiro dos Inputs fechado\n");

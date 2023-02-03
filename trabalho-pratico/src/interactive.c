@@ -42,4 +42,5 @@ void interactive () {
     free_drivers();
     free_users();
     free_rides();
+    free_all_stats();
 }

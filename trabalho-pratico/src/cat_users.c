@@ -116,6 +116,8 @@ void inserir_users(FILE *users) {
         }
     }
 
+    init_stats_u(g_hash_table_size(users_hash));
+
     strcpy(users_cat[0].user, "");
     strcpy(users_cat[0].name, "");
     strcpy(users_cat[0].gender, "");

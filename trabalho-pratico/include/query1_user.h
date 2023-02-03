@@ -16,6 +16,7 @@
 #include "randomfuncs.h"
 #include "outputs.h"
 #include "age_time.h"
+#include "stats.h"
 
 /**
  *
