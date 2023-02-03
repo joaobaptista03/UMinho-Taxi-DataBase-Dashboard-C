@@ -83,6 +83,7 @@ void regular_without() {
     FILE *drivers; drivers = fopen("Datasets/R-WITHOUT/drivers.csv", "r");
     FILE *users; users = fopen("Datasets/R-WITHOUT/users.csv", "r");
     FILE *rides; rides = fopen("Datasets/R-WITHOUT/rides.csv", "r");
+    
 
     inserir_drivers(drivers);
     inserir_users(users);
@@ -113,6 +114,8 @@ void regular_without() {
     free_drivers();
     free_users();
     free_rides();
+    free_all_stats();
+
     fclose(inputs);
     free(input);
     system("rm -r Resultados");
@@ -125,6 +128,7 @@ void regular_with() {
     FILE *users; users = fopen("Datasets/R-WITH/users.csv", "r");
     FILE *rides; rides = fopen("Datasets/R-WITH/rides.csv", "r");
 
+    
     inserir_drivers(drivers);
     inserir_users(users);
     inserir_rides(rides);
@@ -154,6 +158,8 @@ void regular_with() {
     free_drivers();
     free_users();
     free_rides();
+    free_all_stats();
+
     fclose(inputs);
     free(input);
     system("rm -r Resultados");
@@ -166,6 +172,7 @@ void large_without() {
     FILE *users; users = fopen("Datasets/L-WITHOUT/users.csv", "r");
     FILE *rides; rides = fopen("Datasets/L-WITHOUT/rides.csv", "r");
 
+    
     inserir_drivers(drivers);
     inserir_users(users);
     inserir_rides(rides);
@@ -195,6 +202,8 @@ void large_without() {
     free_drivers();
     free_users();
     free_rides();
+    free_all_stats();
+
     fclose(inputs);
     free(input);
     system("rm -r Resultados");
@@ -207,6 +216,7 @@ void large_with() {
     FILE *users; users = fopen("Datasets/L-WITH/users.csv", "r");
     FILE *rides; rides = fopen("Datasets/L-WITH/rides.csv", "r");
 
+    
     inserir_drivers(drivers);
     inserir_users(users);
     inserir_rides(rides);
@@ -236,6 +246,8 @@ void large_with() {
     free_drivers();
     free_users();
     free_rides();
+    free_all_stats();
+
     fclose(inputs);
     free(input);
     system("rm -r Resultados");
