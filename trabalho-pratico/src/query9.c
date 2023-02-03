@@ -17,18 +17,16 @@ void query9 (int counter, char *data1, char* data2, int mode) {
     int capd = 2;
     int rides_d = 0;
 
-     for (int i = 1; i <= get_nr_rides(); i++) {
-         if (
-             (most_recent(get_ride_date(i), data1) == 1 || most_recent(get_ride_date(i), data1) == 3) &&
-             (most_recent(get_ride_date(i), data2) == 2 || most_recent(get_ride_date(i), data2) == 3) && 
-             (atof((get_ride_tip(i))) > 0)) {
+     for (int i = 0; (i < get_nr_rides()) && (most_recent(data1, get_sorted_ride_date(i)) != 1); i++) {
+         if ((most_recent(get_sorted_ride_date(i), data2) == 2 || most_recent(get_sorted_ride_date(i), data2) == 3) && 
+             (atof((get_sorted_ride_tip(i))) > 0)) {
               
               if (rides_d + 1 > capd) {
                   ridesd = realloc(ridesd, 2 * capd * sizeof(int));
                   capd *= 2;
               }
               
-              ridesd[rides_d] = i;
+              ridesd[rides_d] = get_sorted_ride_i(i);
               rides_d++;
         }
     }

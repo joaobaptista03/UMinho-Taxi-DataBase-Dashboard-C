@@ -144,6 +144,14 @@ char *get_sorted_ride_city(int indice) {
     return get_ride_city(sortedrides[indice]);
 }
 
+char *get_sorted_ride_tip(int indice) {
+    return get_ride_tip(sortedrides[indice]);
+}
+
+int get_sorted_ride_i(int indice) {
+    return sortedrides[indice];
+}
+
 void init_stats_d(int nr_drivers) {
     nr_viagens_d = calloc(nr_drivers + 1, sizeof(int));
     av_total_d = calloc(nr_drivers + 1, sizeof(int));

@@ -27,7 +27,7 @@ void query6 (int counter, char *input, int mode) {
     int distance = 0;
     int contagem = 0;
 
-    for(int i = 0; (i <= get_nr_rides()) && (most_recent(data1, get_sorted_ride_date(i)) != 1); i++) {
+    for(int i = 0; (i < get_nr_rides()) && (most_recent(data1, get_sorted_ride_date(i)) != 1); i++) {
         
         if ((most_recent(get_sorted_ride_date(i), data2) == 2 || most_recent(get_sorted_ride_date(i), data2) == 3)
         && (stricmp(get_sorted_ride_city(i), city) == 0)) {

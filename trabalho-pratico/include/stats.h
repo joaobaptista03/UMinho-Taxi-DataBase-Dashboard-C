@@ -160,6 +160,20 @@ char *get_sorted_ride_city(int indice);
 
 /**
  *
+ * Este é o header da função que devolve a Tip da Ride dado um índice da array das Rides ordenadas.
+ * 
+ */
+char *get_sorted_ride_tip(int indice);
+
+/**
+ *
+ * Este é o header da função que devolve o índice da Ride dado um índice da array das Rides ordenadas.
+ * 
+ */
+int get_sorted_ride_i(int indice);
+
+/**
+ *
  * Este é o header da função que insere os dados de um Driver nas Estatísticas.
  * 
  */
