@@ -14,6 +14,8 @@ double *tot_auferido;
 double *tot_gasto;
 city* cities;
 int nr_cities = 0;
+int *rides_m, nr_rides_m = 0, cap_rides_m = 0;
+int *rides_f, nr_rides_f = 0, cap_rides_f = 0;
 
 struct city {
     char *name;
@@ -83,6 +85,42 @@ char* get_city_ride_score_driver (char *name, int indice) {
     return NULL;
 }
 
+int get_gender_nr_rides(char *gender) {
+    if (stricmp(gender, "m") == 0) return nr_rides_m;
+    else if (stricmp(gender, "f") == 0) return nr_rides_f;
+    return 0;
+}
+
+char *get_gender_ride_driver(char *gender, int indice) {
+    if (stricmp(gender, "m") == 0) {
+        return get_ride_driver(rides_m[indice]);
+    }
+    if (stricmp(gender, "f") == 0) {
+        return get_ride_driver(rides_f[indice]);
+    }
+    return NULL;
+}
+
+char *get_gender_ride_user(char *gender, int indice) {
+    if (stricmp(gender, "m") == 0) {
+        return get_ride_user(rides_m[indice]);
+    }
+    if (stricmp(gender, "f") == 0) {
+        return get_ride_user(rides_f[indice]);
+    }
+    return NULL;
+}
+
+int get_gender_ride_i_i (char *gender, int indice) {
+    if (stricmp(gender, "m") == 0) {
+        return rides_m[indice];
+    }
+    if (stricmp(gender, "f") == 0) {
+        return rides_f[indice];
+    }
+    return -1;
+}
+
 void init_stats_d(int nr_drivers) {
     nr_viagens_d = calloc(nr_drivers + 1, sizeof(int));
     av_total_d = calloc(nr_drivers + 1, sizeof(int));
@@ -133,6 +171,27 @@ void insert_stats_c(char *name, int indice, double price) {
     nr_cities++;
     cities = realloc(cities, nr_cities * sizeof(struct city));
     cities[nr_cities - 1] = temp;
+}
+
+void insert_stats_gender(char *gender, int indice) {
+    if (stricmp(gender, "m") == 0) {
+        nr_rides_m++;
+        if (nr_rides_m > cap_rides_m) {
+            if (cap_rides_m != 0) cap_rides_m *= 2;
+                else cap_rides_m = 1;
+            rides_m = realloc(rides_m, cap_rides_m * sizeof(int));
+        }
+        rides_m[nr_rides_m - 1] = indice;
+    }
+    else if (stricmp(gender, "f") == 0) {
+        nr_rides_f++;
+        if (nr_rides_f > cap_rides_f) {
+            if (cap_rides_f != 0) cap_rides_f *= 2;
+                else cap_rides_f = 1;
+            rides_f = realloc(rides_f, cap_rides_f * sizeof(int));
+        }
+        rides_f[nr_rides_f - 1] = indice;
+    }
 }
 
 void free_cities() {

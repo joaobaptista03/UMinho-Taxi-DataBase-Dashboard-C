@@ -13,20 +13,17 @@ void query8 (int counter, char *input, int mode) {
     double cpu_time_used;
     start = clock();
 
-    char genero = input[0];
+    char genero[1]; genero[0] = *input; genero[1] = '\0';
     int anos = atoi(input + 2);
 
     int *ridesr = malloc(2 * sizeof(int));
     int cap = 2;
     int rides_n = 0;
 
-    for (int i = 1; i <= get_nr_rides(); i++) {
-        if ((stricmp(get_driver_status(get_ride_driver(i)), "active") == 0) 
-            && (stricmp(get_user_status(get_ride_user(i)), "active") == 0)
-            && (get_driver_gender(get_ride_driver(i))[0] == genero)
-            && (get_user_gender(get_ride_user(i))[0] == genero)
-            && (age(get_driver_acc_creation(get_ride_driver(i))) >= anos)
-            && (age(get_user_acc_creation(get_ride_user(i))) >= anos)
+    for (int i = 0; i < get_gender_nr_rides(genero); i++) {
+
+        if ((age(get_driver_acc_creation(get_gender_ride_driver(genero, i))) >= anos)
+            && (age(get_user_acc_creation(get_gender_ride_user(genero, i))) >= anos)
             ) {
               
               if (rides_n == cap) {
@@ -34,7 +31,7 @@ void query8 (int counter, char *input, int mode) {
                 ridesr = realloc(ridesr, cap * sizeof(int));
               }
               
-              ridesr[rides_n] = i;
+              ridesr[rides_n] = get_gender_ride_i_i(genero, i);
               rides_n++;
 
         }

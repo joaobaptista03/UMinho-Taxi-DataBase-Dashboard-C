@@ -90,6 +90,41 @@ char* get_city_ride_score_driver (char *name, int indice);
 
 /**
  *
+ * Este é o header da função que devolve o número de Rides de um dado género.
+ * 
+ */
+int get_gender_nr_rides(char *gender);
+
+/**
+ *
+ * Este é o header da função que devolve o Driver de uma dada Ride de um dado Gender.
+ * 
+ */
+char *get_gender_ride_driver(char *gender, int indice);
+
+/**
+ *
+ * Este é o header da função que devolve o User de uma dada Ride de um dado Gender.
+ * 
+ */
+char *get_gender_ride_user(char *gender, int indice);
+
+/**
+ *
+ * Este é o header da função que insere os dados do Gender nas Estatísticas.
+ * 
+ */
+void insert_stats_gender(char *gender, int indice);
+
+/**
+ *
+ * Este é o header da função que devolve o índice da Ride dado o índice da Ride na array de um dado Gender.
+ * 
+ */
+int get_gender_ride_i_i (char *gender, int indice);
+
+/**
+ *
  * Este é o header da função que insere os dados de um Driver nas Estatísticas.
  * 
  */

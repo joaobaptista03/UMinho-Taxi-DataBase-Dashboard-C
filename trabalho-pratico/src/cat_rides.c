@@ -112,7 +112,12 @@ void inserir_rides(FILE *rides) {
             if (isRvalid(temp_r)) { 
                 rides_cat[i] = temp_r;
                 nr_rides++;
-                
+
+                if ((get_driver_gender(temp_r.driver)[0] == get_user_gender(temp_r.user)[0]) &&
+                    (stricmp(get_driver_status(temp_r.driver), "active") == 0) &&
+                    (stricmp(get_user_status(temp_r.user), "active") == 0))
+                    insert_stats_gender(get_driver_gender(temp_r.driver), i);
+
                 double tot_gasto_auferido = total_gasto_auferido(get_driver_car_class(temp_r.driver), atoi(temp_r.distance), atof(temp_r.tip));
                 insert_stats_c(temp_r.city, i, tot_gasto_auferido - atof(temp_r.tip));
                 insert_stats_d(get_driver_i(temp_r.driver), atoi(temp_r.score_driver), tot_gasto_auferido);
