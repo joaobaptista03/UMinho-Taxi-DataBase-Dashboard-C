@@ -245,6 +245,7 @@ void free_all_stats() {
     free(av_total_u);
     free(tot_auferido);
     free(tot_gasto);
+    free(sortedrides);
     free_cities();
     free_gender();
 }
