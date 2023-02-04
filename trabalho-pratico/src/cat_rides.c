@@ -84,6 +84,7 @@ void inserir_rides(FILE *rides) {
     int nr_rides = 1, cap_malloc = 1;
 
     rides_cat = malloc(sizeof(Ride));
+    init_stats_c();
 
     Ride generic_r;
             strcpy(generic_r.id, "");

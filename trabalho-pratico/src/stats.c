@@ -13,6 +13,7 @@ int *av_total_u;
 int *dist_total_u;
 double *tot_auferido;
 double *tot_gasto;
+GHashTable *citieshash;
 city* cities;
 int nr_cities = 0;
 int *rides_m, nr_rides_m = 0, cap_rides_m = 0;
@@ -63,57 +64,39 @@ double get_tot_gasto(int indice) {
 }
 
 double get_city_preco_medio(char *name) {
-    for (int i = 0; i < nr_cities; i++) {
-        if (stricmp(cities[i].name, name) == 0) {
-            return cities[i].total_price / (double) cities[i].nr_viagens;
-        }
-    }
+    char *ind = g_hash_table_lookup(citieshash, name);
+    if (ind != NULL) return cities[atoi(ind)].total_price / (double) cities[atoi(ind)].nr_viagens;
     return 0;
 }
 
 int get_city_nr_rides(char *name) {
-    for (int i = 0; i < nr_cities; i++) {
-        if (stricmp(cities[i].name, name) == 0) {
-            return cities[i].nr_viagens;
-        }
-    }
+    char *ind = g_hash_table_lookup(citieshash, name);
+    if (ind != NULL) return cities[atoi(ind)].nr_viagens;
     return 0;
 }
 
 char* get_city_ride_driver (char *name, int indice) {
-    for (int i = 0; i < nr_cities; i++) {
-        if (stricmp(cities[i].name, name) == 0) {
-            return get_ride_driver(cities[i].rides[indice]);
-        }
-    }
+    char *ind = g_hash_table_lookup(citieshash, name);
+    if (ind != NULL) return get_ride_driver(cities[atoi(ind)].rides[indice]);
     return NULL;
 }
 
 char* get_city_ride_score_driver (char *name, int indice) {
-    for (int i = 0; i < nr_cities; i++) {
-        if (stricmp(cities[i].name, name) == 0) {
-            return get_ride_score_driver(cities[i].rides[indice]);
-        }
-    }
+    char *ind = g_hash_table_lookup(citieshash, name);
+    if (ind != NULL) return get_ride_score_driver(cities[atoi(ind)].rides[indice]);
     return NULL;
 }
 
 char *get_city_i_ride_date(char *cidade, int indice) {
-    for (int i = 0; i < nr_cities; i++) {
-        if (stricmp(cities[i].name, cidade) == 0) {
-            return get_ride_date((cities[i].rides)[indice]);
-        }
-    }
+    char *ind = g_hash_table_lookup(citieshash, cidade);
+    if (ind != NULL) return get_ride_date(cities[atoi(ind)].rides[indice]);
     return NULL;
 }
 
 char *get_city_i_ride_distance(char *cidade, int indice) {
-    for (int i = 0; i < nr_cities; i++) {
-        if (stricmp(cities[i].name, cidade) == 0) {
-            return get_ride_distance((cities[i].rides)[indice]);
-        }
-    }
-    return 0;
+    char *ind = g_hash_table_lookup(citieshash, cidade);
+    if (ind != NULL) return get_ride_distance(cities[atoi(ind)].rides[indice]);
+    return NULL;
 }
 
 int get_gender_nr_rides(char *gender) {
@@ -217,6 +200,10 @@ void init_stats_u(int nr_users) {
     for (int i = 0; i <= get_nr_users(); i++) strcpy(recent_ride_u[i], "00/00/0000");
 }
 
+void init_stats_c() {
+    citieshash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+}
+
 //--------------------------------------------------------------------------------------------------------------------------------
 
 void insert_stats_d(int indice, int aval, double val, char* date) {
@@ -251,7 +238,7 @@ void insert_stats_c(char *name, int indice, double price) {
             return;
         }
     }
-    
+
     city temp;
     temp.name = malloc((strlen(name) + 1) * sizeof(char));
     strcpy(temp.name, name);
@@ -264,6 +251,7 @@ void insert_stats_c(char *name, int indice, double price) {
     nr_cities++;
     cities = realloc(cities, nr_cities * sizeof(struct city));
     cities[nr_cities - 1] = temp;
+    g_hash_table_insert(citieshash, g_strdup(name), g_strdup_printf("%d", nr_cities-1));
 }
 
 void insert_stats_gender(char *gender1, char *gender2, int indice) {
@@ -348,4 +336,5 @@ void free_all_stats() {
     free_cities();
     free_gender();
     free_recent_rides();
+    g_hash_table_destroy(citieshash);
 }

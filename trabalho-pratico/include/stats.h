@@ -277,4 +277,11 @@ void init_stats_d(int nr_drivers);
  */
 void init_stats_u(int nr_users);
 
+/**
+ *
+ * Este é o header da função que inicializa as Estatísticas das Cidades.
+ * 
+ */
+void init_stats_c();
+
 #endif
