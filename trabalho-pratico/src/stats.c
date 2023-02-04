@@ -23,6 +23,7 @@ int *sorteddrivers;
 int *sortedusers;
 char **recent_ride_d;
 char **recent_ride_u;
+int active_drivers = 0;
 
 
 struct city {
@@ -34,6 +35,10 @@ struct city {
 };
 
 //--------------------------------------------------------------------------------------------------------------------------------
+
+int get_driver_nr_active() {
+    return active_drivers;
+}
 
 int get_driver_nr_viagens(int indice) {
     return nr_viagens_d[indice];
@@ -213,6 +218,10 @@ void insert_stats_d(int indice, int aval, double val, char* date) {
 
     if (most_recent(date, recent_ride_d[indice]) == 1) 
         strcpy(recent_ride_d[indice], date);
+}
+
+void insert_driver_status(char *status) {
+    if (stricmp(status, "active") == 0) active_drivers++;
 }
 
 void insert_stats_u(int indice, int aval, double val, char *date, int dist) {

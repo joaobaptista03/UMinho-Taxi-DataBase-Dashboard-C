@@ -122,6 +122,8 @@ void inserir_drivers(FILE *drivers) {
                 drivers_cat[i] = temp_d;
                 g_hash_table_insert(drivers_hash, g_strdup(temp_d.id), g_strdup_printf("%i", i));
                 nr_drivers++;
+
+                insert_driver_status(temp_d.status);
             }
             else i--;
 

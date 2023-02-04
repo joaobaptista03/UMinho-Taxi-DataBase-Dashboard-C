@@ -23,6 +23,15 @@ void query2 (int counter, char *N_arg, int mode) {
         return;
     }
 
+    if (N > get_driver_nr_active()) {
+        if (mode == 1) puts("\nResultado: Não existem N Drivers\n");
+        end = clock();
+        cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        if ((mode == 1) || (mode == 3)) printf("Fim da Q2 - %f segundos (input nº %i)\n", cpu_time_used, counter);
+        if ((mode == 0) || (mode == 3)) handle_outputs(counter, "");
+        return;
+    }
+
     if (mode == 1) puts("\nForma do Resultado: id;nome;avaliacao_media");
     for (int i = 0, j = 0; i < N; j++) {
         char id_i[13]; sprintf(id_i, "%012d", get_sorted_driver(j));

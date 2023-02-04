@@ -20,6 +20,13 @@ typedef struct city city;
 
 /**
  *
+ * Este é o header da função que devolve o número Drivers ativos.
+ * 
+ */
+int get_driver_nr_active();
+
+/**
+ *
  * Este é o header da função que devolve o número de viagens de um dado Driver.
  * 
  */
@@ -241,6 +248,13 @@ int get_sorted_ride_i(int indice);
  * 
  */
 void insert_stats_d(int indice, int aval, double val, char* date);
+
+/**
+ *
+ * Este é o header da função que incrementa o número de Drivers ativos nas Estatísticas.
+ * 
+ */
+void insert_driver_status(char *status);
 
 /**
  *
