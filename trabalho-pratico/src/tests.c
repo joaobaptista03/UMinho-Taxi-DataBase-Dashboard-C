@@ -101,7 +101,8 @@ int main() {
     char *input; input = malloc(100 * sizeof(char));
     while (fgets(input, 100, inputs)) {
         if (strchr(input, '\n')) *(strchr(input, '\n')) = '\0';
-        
+        puts("-----------------------------------------------");
+        printf("Input: %s\n", input);
         if (input[0] == '1') q1_test(counter, input + 2, "lw");
         else if (input[0] == '2') q2_test(counter, input + 2, "lw");
         else if (input[0] == '3') q3_test(counter, input + 2, "lw");
