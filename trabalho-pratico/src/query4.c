@@ -21,7 +21,7 @@ void query4 (int counter, char *cidade, int mode) {
         
         if (mode == 1) puts("\nResultado: Não há viagens!\n");
         if ((mode == 0) || (mode == 3)) handle_outputs(counter, "");
-        if ((mode == 1) || (mode == 3)) printf("Fim da Q4 (Sem viagens) - %f segundos(input nº %i)\n", cpu_time_used, counter);
+        if ((mode == 1) || (mode == 3)) printf("Fim da Q4 (Sem viagens) - %f segundos (input nº %i)\n", cpu_time_used, counter);
         return;
     }
     
