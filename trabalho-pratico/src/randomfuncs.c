@@ -132,35 +132,6 @@ int dist_elem (int *user_maioresID, int nr_maiores, int *tot_distancia, int dist
     return r;
 }
 
-int first_driver(const void *i1, const void *i2) {
-    int *a = (int*)i1;
-    int *b = (int*)i2;
-
-    char id1[13]; sprintf(id1, "%012d", *a);
-    char id2[13]; sprintf(id2, "%012d", *b);
-
-    int mostrecent = most_recent(get_driver_recdate(get_driver_i(id1)), get_driver_recdate(get_driver_i(id2)));
-    if (mostrecent == 1) return -1;
-    else if (mostrecent == 2) return 1;
-    else if (mostrecent == 3) {
-        if (atoi(id1) - atoi(id2) < 0) return -1;
-    }
-    return 1;
-}
-
-int first_user(const void *i1, const void *i2) {
-    int *a = (int*)i1;
-    int *b = (int*)i2;
-
-    int mostrecent = most_recent(get_recdate_user(*a), get_recdate_user(*b));
-    if (mostrecent == 1) return -1;
-    else if (mostrecent == 2) return 1;
-    else if (mostrecent == 3) {
-        if (strcmp(get_user_username(*a), get_user_username(*b)) > 0) return 1;
-    }
-    return -1;
-}
-
 int first_driver7(const void *i1, const void *i2) {
     int *a = (int*)i1;
     int *b = (int*)i2;
@@ -247,4 +218,18 @@ int sort_drivers (const void *i1, const void *i2) {
     if (mostrecent == 2) return 1;
 
     return (*a - *b);
+}
+
+int sort_users (const void *i1, const void *i2) {
+    int *a = (int*)i1;
+    int *b = (int*)i2;
+
+    if (get_user_dist_total(*a) > get_user_dist_total(*b)) return -1;
+    if (get_user_dist_total(*a) < get_user_dist_total(*b)) return 1;
+
+    int mostrecent = most_recent(get_user_recdate(*a), get_user_recdate(*b));
+    if (mostrecent == 1) return -1;
+    if (mostrecent == 2) return 1;
+
+    return strcmp(get_user_username(*a), get_user_username(*b));
 }

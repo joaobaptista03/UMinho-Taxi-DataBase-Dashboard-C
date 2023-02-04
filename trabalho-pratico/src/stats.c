@@ -10,6 +10,7 @@ int *nr_viagens_d;
 int *nr_viagens_u;
 int *av_total_d;
 int *av_total_u;
+int *dist_total_u;
 double *tot_auferido;
 double *tot_gasto;
 city* cities;
@@ -18,7 +19,9 @@ int *rides_m, nr_rides_m = 0, cap_rides_m = 0;
 int *rides_f, nr_rides_f = 0, cap_rides_f = 0;
 int *sortedrides;
 int *sorteddrivers;
-char **recent_ride;
+int *sortedusers;
+char **recent_ride_d;
+char **recent_ride_u;
 
 
 struct city {
@@ -45,6 +48,10 @@ int get_driver_av_total(int indice) {
 
 int get_user_av_total(int indice) {
     return av_total_u[indice];
+}
+
+int get_user_dist_total(int indice) {
+    return dist_total_u[indice];
 }
 
 double get_tot_auferido(int indice) {
@@ -170,11 +177,19 @@ int get_sorted_ride_i(int indice) {
 }
 
 char* get_driver_recdate (int indice) {
-    return recent_ride[indice];
+    return recent_ride_d[indice];
+}
+
+char* get_user_recdate (int indice) {
+    return recent_ride_u[indice];
 }
 
 int get_sorted_driver(int indice) {
     return sorteddrivers[indice];
+}
+
+int get_sorted_user(int indice) {
+    return sortedusers[indice];
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------
@@ -184,16 +199,22 @@ void init_stats_d(int nr_drivers) {
     av_total_d = calloc(nr_drivers + 1, sizeof(int));
     tot_auferido = calloc(nr_drivers + 1, sizeof(double));
 
-    recent_ride = malloc((1 + get_n_drivers()) * sizeof(char*));
+    recent_ride_d = malloc((1 + get_n_drivers()) * sizeof(char*));
     for (int i = 0; i < (1 + get_n_drivers()); i++)
-        recent_ride[i] = malloc((11+1) * sizeof(char));
-    for (int i = 0; i <= get_n_drivers(); i++) strcpy(recent_ride[i], "00/00/0000");
+        recent_ride_d[i] = malloc((11+1) * sizeof(char));
+    for (int i = 0; i <= get_n_drivers(); i++) strcpy(recent_ride_d[i], "00/00/0000");
 }
 
 void init_stats_u(int nr_users) {
     nr_viagens_u = calloc(nr_users + 1, sizeof(int));
     av_total_u = calloc(nr_users + 1, sizeof(int));
     tot_gasto = calloc(nr_users + 1, sizeof(double));
+    dist_total_u = calloc(nr_users + 1, sizeof(double));
+
+    recent_ride_u = malloc((1 + get_nr_users()) * sizeof(char*));
+    for (int i = 0; i < (1 + get_nr_users()); i++)
+        recent_ride_u[i] = malloc((11+1) * sizeof(char));
+    for (int i = 0; i <= get_nr_users(); i++) strcpy(recent_ride_u[i], "00/00/0000");
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------
@@ -203,14 +224,18 @@ void insert_stats_d(int indice, int aval, double val, char* date) {
     av_total_d[indice] += aval;
     tot_auferido[indice] += val;
 
-    if (most_recent(date, recent_ride[indice]) == 1) 
-        strcpy(recent_ride[indice], date);
+    if (most_recent(date, recent_ride_d[indice]) == 1) 
+        strcpy(recent_ride_d[indice], date);
 }
 
-void insert_stats_u(int indice, int aval, double val) {
+void insert_stats_u(int indice, int aval, double val, char *date, int dist) {
     nr_viagens_u[indice]++;
     av_total_u[indice] += aval;
     tot_gasto[indice] += val;
+    dist_total_u[indice] += dist;
+
+    if (most_recent(date, recent_ride_u[indice]) == 1) 
+        strcpy(recent_ride_u[indice], date);
 }
 
 void insert_stats_c(char *name, int indice, double price) {
@@ -281,6 +306,12 @@ void sorted_drivers() {
     qsort(sorteddrivers, get_n_drivers(), sizeof(int), sort_drivers);
 }
 
+void sorted_users() {
+    sortedusers = calloc(get_nr_users(), sizeof(int));
+    for(int i = 0; i < get_nr_users(); i++) sortedusers[i] = i + 1;
+    qsort(sortedusers, get_nr_users(), sizeof(int), sort_users);
+}
+
 //--------------------------------------------------------------------------------------------------------------------------------
 
 void free_cities() {
@@ -296,9 +327,11 @@ void free_gender() {
     free(rides_f);
 }
 
-void free_recent_ride() {
-    for(int i = 0; i <= get_n_drivers(); i++) free(recent_ride[i]);
-    free(recent_ride);
+void free_recent_rides() {
+    for(int i = 0; i <= get_n_drivers(); i++) free(recent_ride_d[i]);
+    free(recent_ride_d);
+    for(int i = 0; i <= get_nr_users(); i++) free(recent_ride_u[i]);
+    free(recent_ride_u);
 }
 
 void free_all_stats() {
@@ -306,10 +339,13 @@ void free_all_stats() {
     free(nr_viagens_u);
     free(av_total_d);
     free(av_total_u);
+    free(dist_total_u);
     free(tot_auferido);
     free(tot_gasto);
     free(sortedrides);
+    free(sorteddrivers);
+    free(sortedusers);
     free_cities();
     free_gender();
-    free_recent_ride();
+    free_recent_rides();
 }

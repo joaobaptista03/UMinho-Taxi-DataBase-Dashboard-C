@@ -106,20 +106,6 @@ int dist_elem (int *user_maioresID, int nr_maiores, int *tot_distancia, int dist
 
 /**
  *
- * Este é o header da função que decide qual dos drivers deve aparecer primeiro.
- * 
- */
-int first_driver(const void *i1, const void *i2);
-
-/**
- *
- * Este é o header da função que decide qual dos Users deve aparecer primeiro.
- * 
- */
-int first_user(const void *i1, const void *i2);
-
-/**
- *
  * Este é o header da função que decide qual dos Drivers deve aparecer primeiro (Q7).
  * 
  */
@@ -159,5 +145,12 @@ int sort_rides (const void *i1, const void *i2);
  * 
  */
 int sort_drivers (const void *i1, const void *i2);
+
+/**
+ *
+ * Este é o header da função auxiliar ao qsort que ordena uma array auxiliar dos Users.
+ * 
+ */
+int sort_users (const void *i1, const void *i2);
 
 #endif

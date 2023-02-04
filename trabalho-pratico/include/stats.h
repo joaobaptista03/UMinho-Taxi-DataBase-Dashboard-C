@@ -48,6 +48,13 @@ int get_user_av_total(int indice);
 
 /**
  *
+ * Este é o header da função que devolve a distância total de um dado User.
+ * 
+ */
+int get_user_dist_total(int indice);
+
+/**
+ *
  * Este é o header da função que devolve o total auferido de um dado Driver.
  * 
  */
@@ -132,10 +139,24 @@ char* get_driver_recdate (int indice);
 
 /**
  *
+ * Este é o header da função que devolve a data da Ride mais recente de um dado User.
+ * 
+ */
+char* get_user_recdate (int indice);
+
+/**
+ *
  * Este é o header da função que devolve o id do N maior Driver para as Q2 e Q7.
  * 
  */
 int get_sorted_driver(int indice);
+
+/**
+ *
+ * Este é o header da função que devolve o id do N maior User para a Q3.
+ * 
+ */
+int get_sorted_user(int indice);
 
 /**
  *
@@ -164,6 +185,13 @@ void sorted_rides();
  * 
  */
 void sorted_drivers();
+
+/**
+ *
+ * Este é o header da função que ordena a array dos Users.
+ * 
+ */
+void sorted_users();
 
 /**
  *
@@ -219,7 +247,7 @@ void insert_stats_d(int indice, int aval, double val, char* date);
  * Este é o header da função que insere os dados de um User nas Estatísticas.
  * 
  */
-void insert_stats_u(int indice, int aval, double val);
+void insert_stats_u (int indice, int aval, double val, char *date, int dist);
 
 /**
  *
