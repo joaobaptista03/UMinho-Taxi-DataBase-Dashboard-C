@@ -139,7 +139,7 @@ int first_driver(const void *i1, const void *i2) {
     char id1[13]; sprintf(id1, "%012d", *a);
     char id2[13]; sprintf(id2, "%012d", *b);
 
-    int mostrecent = most_recent(get_recdate_driver(id1), get_recdate_driver(id2));
+    int mostrecent = most_recent(get_driver_recdate(get_driver_i(id1)), get_driver_recdate(get_driver_i(id2)));
     if (mostrecent == 1) return -1;
     else if (mostrecent == 2) return 1;
     else if (mostrecent == 3) {
@@ -226,4 +226,25 @@ int sort_rides (const void *i1, const void *i2) {
     int mostrecent = most_recent(get_ride_date(*a), get_ride_date(*b));
     if (mostrecent == 1) return -1;
     return 1;
+}
+
+int sort_drivers (const void *i1, const void *i2) {
+    int *a = (int*)i1;
+    int *b = (int*)i2;
+
+    char id_1[13], id_2[13];
+    sprintf(id_1, "%012d", *a);
+    sprintf(id_2, "%012d", *b);
+
+    double av_media1 = (double) get_driver_av_total(get_driver_i(id_1)) / get_driver_nr_viagens(get_driver_i(id_1));
+    double av_media2 = (double) get_driver_av_total(get_driver_i(id_2)) / get_driver_nr_viagens(get_driver_i(id_2));
+
+    if (av_media1 > av_media2) return -1;
+    if (av_media1 < av_media2) return 1;
+
+    int mostrecent = most_recent(get_driver_recdate(get_driver_i(id_1)), get_driver_recdate(get_driver_i(id_2)));
+    if (mostrecent == 1) return -1;
+    if (mostrecent == 2) return 1;
+
+    return (*a - *b);
 }

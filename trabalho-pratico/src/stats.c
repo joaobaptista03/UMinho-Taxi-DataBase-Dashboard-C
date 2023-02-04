@@ -17,6 +17,9 @@ int nr_cities = 0;
 int *rides_m, nr_rides_m = 0, cap_rides_m = 0;
 int *rides_f, nr_rides_f = 0, cap_rides_f = 0;
 int *sortedrides;
+int *sorteddrivers;
+char **recent_ride;
+
 
 struct city {
     char *name;
@@ -166,12 +169,25 @@ int get_sorted_ride_i(int indice) {
     return sortedrides[indice];
 }
 
+char* get_driver_recdate (int indice) {
+    return recent_ride[indice];
+}
+
+int get_sorted_driver(int indice) {
+    return sorteddrivers[indice];
+}
+
 //--------------------------------------------------------------------------------------------------------------------------------
 
 void init_stats_d(int nr_drivers) {
     nr_viagens_d = calloc(nr_drivers + 1, sizeof(int));
     av_total_d = calloc(nr_drivers + 1, sizeof(int));
     tot_auferido = calloc(nr_drivers + 1, sizeof(double));
+
+    recent_ride = malloc((1 + get_n_drivers()) * sizeof(char*));
+    for (int i = 0; i < (1 + get_n_drivers()); i++)
+        recent_ride[i] = malloc((11+1) * sizeof(char));
+    for (int i = 0; i <= get_n_drivers(); i++) strcpy(recent_ride[i], "00/00/0000");
 }
 
 void init_stats_u(int nr_users) {
@@ -182,10 +198,13 @@ void init_stats_u(int nr_users) {
 
 //--------------------------------------------------------------------------------------------------------------------------------
 
-void insert_stats_d(int indice, int aval, double val) {
+void insert_stats_d(int indice, int aval, double val, char* date) {
     nr_viagens_d[indice]++;
     av_total_d[indice] += aval;
     tot_auferido[indice] += val;
+
+    if (most_recent(date, recent_ride[indice]) == 1) 
+        strcpy(recent_ride[indice], date);
 }
 
 void insert_stats_u(int indice, int aval, double val) {
@@ -256,6 +275,12 @@ void sorted_rides() {
         qsort(cities[i].rides, cities[i].nr_viagens, sizeof(int), sort_rides);
 }
 
+void sorted_drivers() {
+    sorteddrivers = calloc(get_n_drivers(), sizeof(int));
+    for(int i = 0; i < get_n_drivers(); i++) sorteddrivers[i] = atoi(get_driver_id(i+1));
+    qsort(sorteddrivers, get_n_drivers(), sizeof(int), sort_drivers);
+}
+
 //--------------------------------------------------------------------------------------------------------------------------------
 
 void free_cities() {
@@ -271,6 +296,11 @@ void free_gender() {
     free(rides_f);
 }
 
+void free_recent_ride() {
+    for(int i = 0; i <= get_n_drivers(); i++) free(recent_ride[i]);
+    free(recent_ride);
+}
+
 void free_all_stats() {
     free(nr_viagens_d);
     free(nr_viagens_u);
@@ -281,4 +311,5 @@ void free_all_stats() {
     free(sortedrides);
     free_cities();
     free_gender();
+    free_recent_ride();
 }

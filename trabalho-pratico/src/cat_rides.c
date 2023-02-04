@@ -116,7 +116,7 @@ void inserir_rides(FILE *rides) {
                 insert_stats_gender(get_driver_gender(temp_r.driver), get_user_gender(temp_r.user), i);
                 double tot_gasto_auferido = total_gasto_auferido(get_driver_car_class(temp_r.driver), atoi(temp_r.distance), atof(temp_r.tip));
                 insert_stats_c(temp_r.city, i, tot_gasto_auferido - atof(temp_r.tip));
-                insert_stats_d(get_driver_i(temp_r.driver), atoi(temp_r.score_driver), tot_gasto_auferido);
+                insert_stats_d(get_driver_i(temp_r.driver), atoi(temp_r.score_driver), tot_gasto_auferido, temp_r.date);
                 insert_stats_u(get_user_i(temp_r.user), atoi(temp_r.score_user), tot_gasto_auferido);
 
             }
@@ -138,6 +138,7 @@ void inserir_rides(FILE *rides) {
     strcpy(rides_cat[0].comment, "");
 
     sorted_rides();
+    sorted_drivers();
 
     puts("Catálogo das Rides preenchido");
 

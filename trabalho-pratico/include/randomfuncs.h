@@ -153,4 +153,11 @@ double total_gasto_auferido(char *class, int distance, double tip);
  */
 int sort_rides (const void *i1, const void *i2);
 
+/**
+ *
+ * Este é o header da função auxiliar ao qsort que ordena uma array auxiliar dos Drivers.
+ * 
+ */
+int sort_drivers (const void *i1, const void *i2);
+
 #endif

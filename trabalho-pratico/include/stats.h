@@ -125,6 +125,20 @@ char *get_gender_ride_user(char *gender, int indice);
 
 /**
  *
+ * Este é o header da função que devolve a data da Ride mais recente de um dado Driver.
+ * 
+ */
+char* get_driver_recdate (int indice);
+
+/**
+ *
+ * Este é o header da função que devolve o id do N maior Driver para as Q2 e Q7.
+ * 
+ */
+int get_sorted_driver(int indice);
+
+/**
+ *
  * Este é o header da função que insere os dados do Gender nas Estatísticas.
  * 
  */
@@ -143,6 +157,13 @@ int get_gender_ride_i_i (char *gender, int indice);
  * 
  */
 void sorted_rides();
+
+/**
+ *
+ * Este é o header da função que ordena a array dos Drivers.
+ * 
+ */
+void sorted_drivers();
 
 /**
  *
@@ -191,7 +212,7 @@ int get_sorted_ride_i(int indice);
  * Este é o header da função que insere os dados de um Driver nas Estatísticas.
  * 
  */
-void insert_stats_d(int indice, int aval, double val);
+void insert_stats_d(int indice, int aval, double val, char* date);
 
 /**
  *
