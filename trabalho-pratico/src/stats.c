@@ -70,7 +70,7 @@ double get_tot_gasto(int indice) {
 
 double get_city_preco_medio(char *name) {
     char *ind = g_hash_table_lookup(citieshash, name);
-    if (ind != NULL) return cities[ind_i].total_price / (double) cities[ind_i].nr_viagens;
+    if (ind != NULL) return cities[atoi(ind)].total_price / (double) cities[atoi(ind)].nr_viagens;
     return 0;
 }
 
