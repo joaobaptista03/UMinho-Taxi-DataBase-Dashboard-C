@@ -37,7 +37,9 @@ void query6 (int counter, char *input, int mode) {
         
         if ((most_recent(cityridedate, data2) == 2 || most_recent(cityridedate, data2) == 3)) {
             contagem++;
-            distance += atoi(get_city_i_ride_distance(city, i));
+            char *cityiridedistance = get_city_i_ride_distance(city, i);
+            distance += atoi(cityiridedistance);
+            free(cityiridedistance);
         }
         free(cityridedate);
     }

@@ -29,7 +29,8 @@ void query5 (int counter, char *data1, char* data2, int mode) {
 
         if ((most_recent(sortedridedate, data2) == 2 || most_recent(sortedridedate, data2) == 3)) {
 
-            char *class = get_driver_car_class(get_sorted_ride_driver(i));
+            char *sortedridedriver = get_sorted_ride_driver(i);
+            char *class = get_driver_car_class(sortedridedriver);
 
             float taxa_base, taxa_dist;
             if (stricmp(class, "basic") == 0) {
@@ -50,7 +51,7 @@ void query5 (int counter, char *data1, char* data2, int mode) {
             preco += taxa_dist * atoi(sortedridedistance) + taxa_base;
             free(sortedridedistance);
 
-            free(class);
+            free(class); free(sortedridedriver);
         }
 
         free(sortedridedate);
