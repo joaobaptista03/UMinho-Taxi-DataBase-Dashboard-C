@@ -15,9 +15,6 @@ a.out
 *.o
 *.exe
 
-*users*.csv
-*drivers*.csv
-*rides*.csv
 Resultados/
 comandos.txt
 enunciado.pdf
