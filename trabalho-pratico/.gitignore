@@ -15,6 +15,7 @@ a.out
 *.o
 *.exe
 
+Datasets/
 Resultados/
 comandos.txt
 enunciado.pdf
