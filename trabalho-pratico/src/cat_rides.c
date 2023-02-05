@@ -146,6 +146,7 @@ void inserir_rides(FILE *rides) {
     sorted_users();
 
     puts("Catálogo das Rides preenchido");
+    puts("Estatísticas preenchidas");
 
     free(temp);
 }
