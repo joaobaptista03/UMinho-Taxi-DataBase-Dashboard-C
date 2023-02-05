@@ -78,6 +78,9 @@ void q9_test(int counter, char *data1, char *data2) {
 }
 
 int main() {
+
+    clock_t start = clock();
+
     puts("Bem-vindo ao Programa de Testes! Para continuar, coloque o caminho do diretório dos ficheiros CSV (Dataset Large with Invalid entries obrigatoriamente).\n");
 
     char csvs[200];
@@ -126,4 +129,8 @@ int main() {
     free(input);
     system("rm -r Resultados");
     puts("-------------------------------------------");
+
+    clock_t end = clock();
+    double cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+    printf("Programa Terminado (%f segundos)\n\n", cpu_time_used );
 }
