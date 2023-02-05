@@ -9,20 +9,24 @@
 
 void batch (char **argv) {
     FILE *drivers = open_files(argv[1], "/drivers.csv");
+        if (drivers == NULL) return;
     FILE *users = open_files(argv[1], "/users.csv");
+        if (users == NULL) return;
     FILE *rides = open_files(argv[1], "/rides.csv");
-    FILE *inputs; inputs = fopen(argv[2], "r");
+        if (rides == NULL) return;
+    FILE *inputs; inputs = open_files(argv[2], "");
+        if (inputs == NULL) return;
 
     inserir_drivers(drivers);
     inserir_users(users);
     inserir_rides(rides);
 
     fclose(drivers);
-        if (drivers != NULL) puts("\nFicheiro dos Drivers fechado");
+        puts("\nFicheiro dos Drivers fechado");
     fclose(rides);
-        if (rides != NULL) puts("Ficheiro dos Rides fechado");
+        puts("Ficheiro dos Rides fechado");
     fclose(users);
-        if (users != NULL) puts("Ficheiro dos Users fechado");
+        puts("Ficheiro dos Users fechado");
 
     handle_inputs(inputs);
 

@@ -1,5 +1,5 @@
 /**
- * @file query8.c
+ * @file query8.
  * 
  * Este ficheiro contém o conteúdo das funções relacionadas com as Query 8.
  * 
@@ -16,7 +16,7 @@ void query8 (int counter, char *input, int mode) {
     char genero[1]; genero[0] = *input; genero[1] = '\0';
     int anos = atoi(input + 2);
 
-    int *ridesr = malloc(2 * sizeof(int));
+    int *ridesr = calloc(2, sizeof(int));
     int cap = 2;
     int rides_n = 0;
 
@@ -40,6 +40,7 @@ void query8 (int counter, char *input, int mode) {
     if (mode == 1) puts("\nForma do Resultado: id_condutor;nome_condutor;username_utilizador;nome_utilizador");
 
     if (rides_n == 0) {
+        free(ridesr);
         if (mode == 1) puts("\nResultado: Não existe nenhuma viagem.\n");
         end = clock();
         cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;

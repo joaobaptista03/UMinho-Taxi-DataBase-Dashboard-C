@@ -90,6 +90,7 @@ char* get_driver_status(char *id) {
 }
 
 void inserir_drivers(FILE *drivers) {
+    puts("");
     int nr_drivers = 1, cap_malloc = 1;
 
     drivers_cat = malloc(sizeof(Driver));

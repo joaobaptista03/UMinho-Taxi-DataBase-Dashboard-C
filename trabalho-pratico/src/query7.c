@@ -58,6 +58,11 @@ void query7 (int counter, char *input, int mode) {
         int larg_av_ind = larger_double(av_med_cpy, (1 + get_n_drivers()));
 
         if (larg_av_ind == -1) {
+            free(tot_avaliacoes);
+            free(num_viagens);
+            free(av_med);
+            free(av_med_cpy);
+            free(id_maiores);
             end = clock();
             cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
             if (mode == 1) puts("\nResultado: Não existem Rides suficientes!\n");

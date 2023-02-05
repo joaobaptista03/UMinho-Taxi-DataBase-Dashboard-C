@@ -13,7 +13,7 @@ void query9 (int counter, char *data1, char* data2, int mode) {
     double cpu_time_used;
     start = clock();
     
-    int *ridesd = malloc(2 * sizeof(int));
+    int *ridesd = calloc(2, sizeof(int));
     int capd = 2;
     int rides_d = 0;
 
