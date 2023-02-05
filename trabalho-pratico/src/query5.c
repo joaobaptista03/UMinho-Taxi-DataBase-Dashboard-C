@@ -18,12 +18,18 @@ void query5 (int counter, char *data1, char* data2, int mode) {
     double preco = 0;
     int contagem = 0;
 
-    for(int i = 0; (i < get_nr_rides()) && (most_recent(data1, get_sorted_ride_date(i)) != 1); i++) {
+    for(int i = 0; i < get_nr_rides(); i++) {
         
-        if ((most_recent(get_sorted_ride_date(i), data2) == 2 || most_recent(get_sorted_ride_date(i), data2) == 3)) {
+        char *sortedridedate = get_sorted_ride_date(i);
 
-            char *class; class = malloc(10 * sizeof(char));
-            strcpy(class, get_driver_car_class(get_sorted_ride_driver(i)));
+        if (most_recent(data1, sortedridedate) == 1) {
+            free(sortedridedate);
+            break;
+        }
+
+        if ((most_recent(sortedridedate, data2) == 2 || most_recent(sortedridedate, data2) == 3)) {
+
+            char *class = get_driver_car_class(get_sorted_ride_driver(i));
 
             float taxa_base, taxa_dist;
             if (stricmp(class, "basic") == 0) {
@@ -39,11 +45,15 @@ void query5 (int counter, char *data1, char* data2, int mode) {
                 taxa_dist = 0.94;
             }
             contagem++;
-            preco += taxa_dist * atoi(get_sorted_ride_distance(i)) + taxa_base;
+
+            char *sortedridedistance = get_sorted_ride_distance(i);
+            preco += taxa_dist * atoi(sortedridedistance) + taxa_base;
+            free(sortedridedistance);
 
             free(class);
-
         }
+
+        free(sortedridedate);
     }
     
     if (contagem == 0) {

@@ -111,32 +111,20 @@ int get_gender_nr_rides(char *gender) {
 }
 
 char *get_gender_ride_driver(char *gender, int indice) {
-    if (stricmp(gender, "m") == 0) {
-        return get_ride_driver(rides_m[indice]);
-    }
-    if (stricmp(gender, "f") == 0) {
-        return get_ride_driver(rides_f[indice]);
-    }
+    if (stricmp(gender, "m") == 0) return get_ride_driver(rides_m[indice]);
+    if (stricmp(gender, "f") == 0) return get_ride_driver(rides_f[indice]);
     return NULL;
 }
 
 char *get_gender_ride_user(char *gender, int indice) {
-    if (stricmp(gender, "m") == 0) {
-        return get_ride_user(rides_m[indice]);
-    }
-    if (stricmp(gender, "f") == 0) {
-        return get_ride_user(rides_f[indice]);
-    }
+    if (stricmp(gender, "m") == 0) return get_ride_user(rides_m[indice]);
+    if (stricmp(gender, "f") == 0) return get_ride_user(rides_f[indice]);
     return NULL;
 }
 
 int get_gender_ride_i_i (char *gender, int indice) {
-    if (stricmp(gender, "m") == 0) {
-        return rides_m[indice];
-    }
-    if (stricmp(gender, "f") == 0) {
-        return rides_f[indice];
-    }
+    if (stricmp(gender, "m") == 0) return rides_m[indice];
+    if (stricmp(gender, "f") == 0) return rides_f[indice];
     return -1;
 }
 
@@ -165,11 +153,11 @@ int get_sorted_ride_i(int indice) {
 }
 
 char* get_driver_recdate (int indice) {
-    return recent_ride_d[indice];
+    return strdup(recent_ride_d[indice]);
 }
 
 char* get_user_recdate (int indice) {
-    return recent_ride_u[indice];
+    return strdup(recent_ride_u[indice]);
 }
 
 int get_sorted_driver(int indice) {
@@ -264,9 +252,13 @@ void insert_stats_c(char *name, int indice, double price) {
 }
 
 void insert_stats_gender(char *gender1, char *gender2, int indice) {
+    char *ridedriver = get_ride_driver(indice);
+    char *driverstatus = get_driver_status(ridedriver);
+    char *rideuser = get_ride_user(indice);
+    char *userstatus = get_user_status(rideuser);
     if ((stricmp(gender1, gender2) == 0) && 
-        (stricmp(get_driver_status(get_ride_driver(indice)), "active") == 0) &&
-        (stricmp(get_user_status(get_ride_user(indice)), "active") == 0)) {
+        (stricmp(driverstatus, "active") == 0) &&
+        (stricmp(userstatus, "active") == 0)) {
             if (stricmp(gender1, "m") == 0) {
                 nr_rides_m++;
                 if (nr_rides_m > cap_rides_m) {
@@ -286,6 +278,7 @@ void insert_stats_gender(char *gender1, char *gender2, int indice) {
                 rides_f[nr_rides_f - 1] = indice;
             }
     }
+    free(ridedriver); free(driverstatus); free(rideuser); free(userstatus);
 }
 
 void sorted_rides() {
@@ -299,7 +292,11 @@ void sorted_rides() {
 
 void sorted_drivers() {
     sorteddrivers = calloc(get_n_drivers(), sizeof(int));
-    for(int i = 0; i < get_n_drivers(); i++) sorteddrivers[i] = atoi(get_driver_id(i+1));
+    for(int i = 0; i < get_n_drivers(); i++) {
+        char *driver_id = get_driver_id(i+1);
+        sorteddrivers[i] = atoi(driver_id);
+        free(driver_id);
+    }
     qsort(sorteddrivers, get_n_drivers(), sizeof(int), sort_drivers);
 }
 

@@ -22,10 +22,9 @@ void query8 (int counter, char *input, int mode) {
 
     for (int i = 0; i < get_gender_nr_rides(genero); i++) {
 
-        if ((age(get_driver_acc_creation(get_gender_ride_driver(genero, i))) >= anos)
-            && (age(get_user_acc_creation(get_gender_ride_user(genero, i))) >= anos)
-            ) {
-              
+        char *genderridedriver = get_gender_ride_driver(genero, i); char *driveracccreation = get_driver_acc_creation(genderridedriver);
+        char *genderrideuser = get_gender_ride_user(genero, i); char *useracccreation = get_user_acc_creation(genderrideuser);
+        if ((age(driveracccreation) >= anos) && (age(useracccreation) >= anos)) {
               if (rides_n == cap) {
                 cap *= 2;
                 ridesr = realloc(ridesr, cap * sizeof(int));
@@ -33,8 +32,9 @@ void query8 (int counter, char *input, int mode) {
               
               ridesr[rides_n] = get_gender_ride_i_i(genero, i);
               rides_n++;
-
         }
+        free(genderridedriver); free(driveracccreation);
+        free(genderrideuser); free(useracccreation);
     }
     
     if (mode == 1) puts("\nForma do Resultado: id_condutor;nome_condutor;username_utilizador;nome_utilizador");
@@ -52,7 +52,10 @@ void query8 (int counter, char *input, int mode) {
 
     for (int i = 0; i < rides_n; i++) {
         char output[150];
-        sprintf(output, "%s;%s;%s;%s\n", get_ride_driver(ridesr[i]), get_driver_name(get_ride_driver(ridesr[i])), get_ride_user(ridesr[i]), get_user_name(get_ride_user(ridesr[i])));
+        char *ridedriver = get_ride_driver(ridesr[i]); char *drivername = get_driver_name(ridedriver);
+        char *rideuser = get_ride_user(ridesr[i]); char *username = get_user_name(rideuser);
+        sprintf(output, "%s;%s;%s;%s\n", ridedriver, drivername, rideuser, username);
+        free(ridedriver); free(drivername); free(rideuser); free(username);
         if (mode == 1) printf("%s",output);
         if ((mode == 0) || (mode == 3)) handle_outputs(counter, output);
     }

@@ -34,10 +34,16 @@ void query7 (int counter, char *input, int mode) {
     double *av_med_cpy; av_med_cpy = calloc((1 + get_n_drivers()), sizeof(double));
 
     for (int i = 0; i < get_city_nr_rides(cidade); i++) {
-        if ((stricmp(get_driver_status(get_city_ride_driver(cidade, i)), "active") == 0)) {
-            tot_avaliacoes[get_driver_i(get_city_ride_driver(cidade, i))] += atoi(get_city_ride_score_driver(cidade, i));
-            num_viagens[get_driver_i(get_city_ride_driver(cidade, i))]++;
+        char *cityridedriver = get_city_ride_driver(cidade, i);
+        char *driverstatus = get_driver_status(cityridedriver);
+        if ((stricmp(driverstatus, "active") == 0)) {
+            char *cityridedriver = get_city_ride_driver(cidade, i);
+            char *cityridescoredriver = get_city_ride_score_driver(cidade, i);
+            tot_avaliacoes[get_driver_i(cityridedriver)] += atoi(cityridescoredriver);
+            num_viagens[get_driver_i(cityridedriver)]++;
+            free(cityridedriver); free(cityridescoredriver);
         }
+        free(driverstatus); free(cityridedriver);
     }
 
     for (int i = 1; i <= get_n_drivers(); i++) {
@@ -59,8 +65,9 @@ void query7 (int counter, char *input, int mode) {
             if ((mode == 0) || (mode == 3)) handle_outputs(counter, "");
             return;
         }
-
-        id_maiores[i] = atoi(get_driver_id(larg_av_ind));
+        char *driverid = get_driver_id(larg_av_ind);
+        id_maiores[i] = atoi(driverid);
+        free(driverid);
         av_med_cpy[larg_av_ind] = 0;
     }
 
@@ -74,7 +81,9 @@ void query7 (int counter, char *input, int mode) {
             id_maiores = realloc(id_maiores, (cap + 5) * sizeof(int));
             cap += 5;
         }
-        id_maiores[nr_maiores] = atoi(get_driver_id(aux_av_i));
+        char *driverid = get_driver_id(aux_av_i);
+        id_maiores[nr_maiores] = atoi(driverid);
+        free(driverid);
         av_med_cpy[aux_av_i] = 0;
         aux_av_i = larger_double(av_med_cpy, (1 + get_n_drivers()));
     }
@@ -90,7 +99,9 @@ void query7 (int counter, char *input, int mode) {
     for (int i = 0; i < N; i++) {
         char output[150];
         char id_i[30]; sprintf(id_i, "%012d", id_maiores[i]);
-        sprintf(output, "%s;%s;%.3f\n", id_i, get_driver_name(id_i), av_med[get_driver_i(id_i)]);
+        char *drivername = get_driver_name(id_i);
+        sprintf(output, "%s;%s;%.3f\n", id_i, drivername, av_med[get_driver_i(id_i)]);
+        free(drivername);
         if (mode == 1) printf("%s",output);
         if ((mode == 0) || (mode == 3)) handle_outputs(counter, output);
     }

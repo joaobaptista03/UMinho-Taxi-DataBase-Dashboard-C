@@ -25,14 +25,20 @@ void query3 (int counter, char *N_arg, int mode) {
 
     if (mode == 1) puts("\nForma do Resultado: username;nome;distancia_total");
     for (int i = 0, j = 0; i < N; j++) {
-        if (stricmp(get_user_status(get_user_username(get_sorted_user(j))), "active") == 0) {
+        
+        char *user_username = get_user_username(get_sorted_user(j));
+        char *userstatus = get_user_status(user_username);
+        if (stricmp(userstatus, "active") == 0) {
             char output[150];
-            sprintf(output, "%s;%s;%d\n", get_user_username(get_sorted_user(j)), get_user_name(get_user_username(get_sorted_user(j))), get_user_dist_total(get_sorted_user(j)));
+            char *username = get_user_name(user_username);
+            sprintf(output, "%s;%s;%d\n", user_username, username, get_user_dist_total(get_sorted_user(j)));
+            free(username);
             if (mode == 1) printf("%s",output);
             if ((mode == 0) || (mode == 3)) handle_outputs(counter, output);
        
             i++;
         }
+        free(user_username); free(userstatus);
     }
 
     end = clock();

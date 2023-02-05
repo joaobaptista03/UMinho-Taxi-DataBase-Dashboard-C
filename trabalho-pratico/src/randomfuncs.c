@@ -147,13 +147,21 @@ int first_ride(const void *i1, const void *i2) {
     int *a = (int*)i1;
     int *b = (int*)i2;
 
-    int mostrecent_d = most_recent(get_driver_acc_creation(get_ride_driver(*a)), get_driver_acc_creation(get_ride_driver(*b)));
-    int mostrecent_u = most_recent(get_user_acc_creation(get_ride_user(*a)), get_user_acc_creation(get_ride_user(*b)));
-
+    char *ridedriver1 = get_ride_driver(*a); char *driver1acc_creation = get_driver_acc_creation(ridedriver1);
+    char *ridedriver2 = get_ride_driver(*b); char *driver2acc_creation = get_driver_acc_creation(ridedriver2);
+    int mostrecent_d = most_recent(driver1acc_creation, driver2acc_creation);
+    free(ridedriver1); free(ridedriver2); free(driver1acc_creation); free(driver2acc_creation);
     if (mostrecent_d == 1) return 1;
     if (mostrecent_d == 2) return -1;
+
+    char *rideuser1 = get_ride_user(*a); char *user1acc_creation = get_user_acc_creation(rideuser1);
+    char *rideuser2 = get_ride_user(*b); char *user2acc_creation = get_user_acc_creation(rideuser2);
+    int mostrecent_u = most_recent(user1acc_creation, user2acc_creation);
+    free(rideuser1); free(rideuser2); free(user1acc_creation); free(user2acc_creation);
+    
     if (mostrecent_u == 1) return 1;
     if (mostrecent_u == 2) return -1;
+    
     return (*a - *b);
 }
 
@@ -161,10 +169,19 @@ int first_ride9(const void *i1, const void *i2) {
     int *a = (int*)i1;
     int *b = (int*)i2;
 
-    if (atoi(get_ride_distance(*a)) > atoi(get_ride_distance(*b))) return -1;
-    else if (atoi(get_ride_distance(*a)) < atoi(get_ride_distance(*b))) return 1;
+    char *ride1distance = get_ride_distance(*a);
+    char *ride2distance = get_ride_distance(*b);
+    int ride1distance_int = atoi(ride1distance);
+    int ride2distance_int = atoi(ride2distance);
+    free(ride1distance); free(ride2distance);
 
-    int mostrecent = most_recent(get_ride_date(*a), get_ride_date(*b));
+    if (ride1distance_int > ride2distance_int) return -1;
+    else if (ride1distance_int < ride2distance_int) return 1;
+
+    char *ride1date = get_ride_date(*a);
+    char *ride2date = get_ride_date(*b);
+    int mostrecent = most_recent(ride1date, ride2date);
+    free(ride1date); free(ride2date);
     if (mostrecent == 1) return -1;
     else if (mostrecent == 2) return 1;
 
@@ -187,6 +204,7 @@ double total_gasto_auferido(char *class, int distance, double tip) {
             taxa_dist = 0.94;
     }
 
+    free(class);
     return taxa_base + (taxa_dist * distance) + tip;
 }
 
@@ -194,8 +212,12 @@ int sort_rides (const void *i1, const void *i2) {
     int *a = (int*)i1;
     int *b = (int*)i2;
 
-    int mostrecent = most_recent(get_ride_date(*a), get_ride_date(*b));
+    char *ride1date = get_ride_date(*a);
+    char *ride2date = get_ride_date(*b);
+    int mostrecent = most_recent(ride1date, ride2date);
+    free(ride1date); free(ride2date);
     if (mostrecent == 1) return -1;
+
     return 1;
 }
 
@@ -213,7 +235,10 @@ int sort_drivers (const void *i1, const void *i2) {
     if (av_media1 > av_media2) return -1;
     if (av_media1 < av_media2) return 1;
 
-    int mostrecent = most_recent(get_driver_recdate(get_driver_i(id_1)), get_driver_recdate(get_driver_i(id_2)));
+    char *driver1recdate = get_driver_recdate(get_driver_i(id_1));
+    char *driver2recdate = get_driver_recdate(get_driver_i(id_2));
+    int mostrecent = most_recent(driver1recdate, driver2recdate);
+    free(driver1recdate); free(driver2recdate);
     if (mostrecent == 1) return -1;
     if (mostrecent == 2) return 1;
 
@@ -227,9 +252,16 @@ int sort_users (const void *i1, const void *i2) {
     if (get_user_dist_total(*a) > get_user_dist_total(*b)) return -1;
     if (get_user_dist_total(*a) < get_user_dist_total(*b)) return 1;
 
-    int mostrecent = most_recent(get_user_recdate(*a), get_user_recdate(*b));
+    char *user1recdate = get_user_recdate(*a);
+    char *user2recdate = get_user_recdate(*b);
+    int mostrecent = most_recent(user1recdate, user2recdate);
+    free(user1recdate); free(user2recdate);
     if (mostrecent == 1) return -1;
     if (mostrecent == 2) return 1;
 
-    return strcmp(get_user_username(*a), get_user_username(*b));
+    char *username1 = get_user_username(*a);
+    char *username2 = get_user_username(*b);
+    int result = strcmp(username1, username2);
+    free(username1); free(username2);
+    return result;
 }

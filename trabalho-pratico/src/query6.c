@@ -27,12 +27,19 @@ void query6 (int counter, char *input, int mode) {
     int distance = 0;
     int contagem = 0;
 
-    for(int i = 0; (i < get_city_nr_rides(city)) && (most_recent(data1, get_city_i_ride_date(city, i)) != 1); i++) {
+    for(int i = 0; (i < get_city_nr_rides(city)); i++) {
+
+        char *cityridedate = get_city_i_ride_date(city, i);
+        if (most_recent(data1, cityridedate) == 1) {
+            free(cityridedate);
+            break;   
+        }
         
-        if ((most_recent(get_city_i_ride_date(city, i), data2) == 2 || most_recent(get_city_i_ride_date(city, i), data2) == 3)) {
+        if ((most_recent(cityridedate, data2) == 2 || most_recent(cityridedate, data2) == 3)) {
             contagem++;
             distance += atoi(get_city_i_ride_distance(city, i));
         }
+        free(cityridedate);
     }
     
     if (contagem == 0) {

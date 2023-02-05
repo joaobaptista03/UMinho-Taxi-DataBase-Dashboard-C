@@ -54,39 +54,39 @@ int get_driver_i(char *id) {
 }
 
 char* get_driver_id(int indice) {
-    return drivers_cat[indice].id;
+    return strdup(drivers_cat[indice].id);
 }
 
 char* get_driver_name(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].name;
+    return strdup(drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].name);
 }
 
 char* get_driver_birth_date(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].birth_date;
+    return strdup(drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].birth_date);
 }
 
 char* get_driver_gender(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].gender;
+    return strdup(drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].gender);
 }
 
 char* get_driver_car_class(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].car_class;
+    return strdup(drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].car_class);
 }
 
 char* get_driver_license_plate(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].license_plate;
+    return strdup(drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].license_plate);
 }
 
 char* get_driver_city(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].city;
+    return strdup(drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].city);
 }
 
 char* get_driver_acc_creation(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].acc_creation;
+    return strdup(drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].acc_creation);
 }
 
 char* get_driver_status(char *id) {
-    return drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].status;
+    return strdup(drivers_cat[atoi(g_hash_table_lookup(drivers_hash, id))].status);
 }
 
 void inserir_drivers(FILE *drivers) {

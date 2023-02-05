@@ -50,31 +50,31 @@ int get_user_i(char *user) {
 }
 
 char* get_user_username(int indice) {
-    return users_cat[indice].user;
+    return strdup(users_cat[indice].user);
 }
 
 char* get_user_name(char *user) {
-    return users_cat[atoi(g_hash_table_lookup(users_hash, user))].name;
+    return strdup(users_cat[atoi(g_hash_table_lookup(users_hash, user))].name);
 }
 
 char* get_user_gender(char *user) {
-    return users_cat[atoi(g_hash_table_lookup(users_hash, user))].gender;
+    return strdup(users_cat[atoi(g_hash_table_lookup(users_hash, user))].gender);
 }
 
 char* get_user_birth_date(char *user) {
-    return users_cat[atoi(g_hash_table_lookup(users_hash, user))].birth_date;
+    return strdup(users_cat[atoi(g_hash_table_lookup(users_hash, user))].birth_date);
 }
 
 char* get_user_acc_creation(char *user) {
-    return users_cat[atoi(g_hash_table_lookup(users_hash, user))].acc_creation;
+    return strdup(users_cat[atoi(g_hash_table_lookup(users_hash, user))].acc_creation);
 }
 
 char* get_user_pay_method(char *user) {
-    return users_cat[atoi(g_hash_table_lookup(users_hash, user))].pay_method;
+    return strdup(users_cat[atoi(g_hash_table_lookup(users_hash, user))].pay_method);
 }
 
 char* get_user_status(char *user) {
-    return users_cat[atoi(g_hash_table_lookup(users_hash, user))].status;
+    return strdup(users_cat[atoi(g_hash_table_lookup(users_hash, user))].status);
 }
 
 void inserir_users(FILE *users) {

@@ -31,39 +31,39 @@ int get_nr_rides() {
 }
 
 char *get_ride_id(int indice) {
-    return rides_cat[indice].id;
+    return strdup(rides_cat[indice].id);
 }
 
 char *get_ride_date(int indice) {
-    return rides_cat[indice].date;
+    return strdup(rides_cat[indice].date);
 }
 
 char *get_ride_driver(int indice) {
-    return rides_cat[indice].driver;
+    return strdup(rides_cat[indice].driver);
 }
 
 char *get_ride_user(int indice) {
-    return rides_cat[indice].user;
+    return strdup(rides_cat[indice].user);
 }
 
 char *get_ride_city(int indice) {
-    return rides_cat[indice].city;
+    return strdup(rides_cat[indice].city);
 }
 
 char *get_ride_distance(int indice) {
-    return rides_cat[indice].distance;
+    return strdup(rides_cat[indice].distance);
 }
 
 char *get_ride_score_user(int indice) {
-    return rides_cat[indice].score_user;
+    return strdup(rides_cat[indice].score_user);
 }
 
 char *get_ride_score_driver(int indice) {
-    return rides_cat[indice].score_driver;
+    return strdup(rides_cat[indice].score_driver);
 }
 
 char *get_ride_tip(int indice) {
-    return rides_cat[indice].tip;
+    return strdup(rides_cat[indice].tip);
 }
 
 bool isRvalid (Ride ride1) {
@@ -114,7 +114,10 @@ void inserir_rides(FILE *rides) {
                 rides_cat[i] = temp_r;
                 nr_rides++;
 
-                insert_stats_gender(get_driver_gender(temp_r.driver), get_user_gender(temp_r.user), i);
+                char *drivergender = get_driver_gender(temp_r.driver);
+                char *usergender = get_user_gender(temp_r.user);
+                insert_stats_gender(drivergender, usergender, i); free(drivergender); free(usergender);
+
                 double tot_gasto_auferido = total_gasto_auferido(get_driver_car_class(temp_r.driver), atoi(temp_r.distance), atof(temp_r.tip));
                 insert_stats_c(temp_r.city, i, tot_gasto_auferido - atof(temp_r.tip));
                 insert_stats_d(get_driver_i(temp_r.driver), atoi(temp_r.score_driver), tot_gasto_auferido, temp_r.date);
