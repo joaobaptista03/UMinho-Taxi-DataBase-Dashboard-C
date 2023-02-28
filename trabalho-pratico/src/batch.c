@@ -38,3 +38,5 @@ void batch (char **argv) {
     fclose(inputs);
         if (inputs != NULL) puts("\nFicheiro dos Inputs fechado\n");
 }
+
+// Es gay
