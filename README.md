@@ -1,9 +1,1 @@
-Membros do Grupo 24:
-
-Nome - Aluno - GitHub User
-
-João Pedro Mota Baptista - a100705 - joaopedro2003
-
-João Pedro da Rocha Rodrigues - a100896 - joaorodrigues03
-
-Mateus Lemos Martins - a100645 - mateusmartins2702
+Third project I made in Universidade do Minho, 2nd year - 1st semester
