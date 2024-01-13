@@ -1,6 +1,6 @@
 # Taxi Database Dashboard
 
-This project is a comprehensive solution for managing and analyzing ride-sharing data. It includes functionalities to process driver, user, and ride information, perform various queries, and conduct both functional and performance testing.
+This project in C is a comprehensive solution for managing and analyzing ride-sharing data. It includes functionalities to process driver, user, and ride information, perform various queries, and conduct both functional and performance testing.
 
 ## Description
 
